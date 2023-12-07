@@ -1,0 +1,120 @@
+body {
+    background-color: #535353;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+    text-align: center;
+    font-size: 80px;
+    font-style: italic; 
+    margin: 0px;
+    font-weight: 1000px;
+    color: white;  
+}
+
+#bingoContainer {
+    background-color: #535353;  
+    width: 500px;
+    height: 477px;
+    margin: auto;
+    padding-top: 23px;  
+}
+
+#board {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: white;
+    margin: auto;
+    width: 450px;
+}
+
+.row {
+    display: flex;
+    flex-direction:row;
+}
+
+.bingo:hover {
+    cursor: pointer;
+    animation: 1.5s hoverAnimation linear infinite;
+}
+
+@keyframes hoverAnimation {
+    0%{
+        transform: scale(1);
+        rotate: 0deg;
+    }       
+    25%{
+        rotate: 5deg;
+        
+    }
+    50%{
+        transform: scale(1.2);
+        rotate: 0deg;
+    }
+    75%{
+        rotate: -5deg;
+    }
+    100%{
+        transform: scale(1);
+        rotate: 0deg;
+    }
+}
+
+.bingo {
+   width: 80px;
+   height: 80px;
+   color: black;
+   font-size: larger;
+   text-align: center;
+   line-height: 80px;
+   border-radius: 5px;
+   background-color: #DEE1E6;
+   box-shadow: -4px 2px 8px 1px rgba(0,0,0,0.4);
+   flex: 1;
+   margin:5px;
+}
+
+div.highlight { 
+   background-color: #7798AB; 
+   color: white;
+}
+
+div.Free { 
+    background-color: #7798AB; 
+    color: white;
+ }
+
+.resetButton { 
+    color: white;
+    font-size: larger;
+    border-radius: 5px;
+    border: none;
+    background-color: #7798AB;
+    padding: 15px;
+    margin: 10px auto 10px auto;
+    display: flex;
+    box-shadow: -4px 2px 8px 1px rgba(0,0,0,0.4);
+}
+
+.resetButton:hover{
+    background-color: #1b383f;; 
+    animation: .2s btnHover linear forwards;
+}
+
+@keyframes btnHover {
+    0%{
+        transform: scale(1);
+    }
+    50%{
+        transform: scale(1.025);
+    }
+    100%{
+        transform: scale(1.05);
+    }
+}
+
+.btnContainer{
+    padding: 15px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
