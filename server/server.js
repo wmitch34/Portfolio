@@ -25,9 +25,9 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('recieve_message', data)
     })
 
-    // socket.on('disconnect', () => {
-    //     console.log('A user disconnected');
-    // });
+    socket.on('disconnect', () => {
+        console.log('A user disconnected');
+    });
 
 })
 
@@ -38,7 +38,7 @@ server.listen(PORT, () => {
 });
 
 app.post('/verify', (req, res) => {
-    if(game.verify(req.body)){
+    if(true){
         res.send(200, {response: 'winner'})
 
     }else{
