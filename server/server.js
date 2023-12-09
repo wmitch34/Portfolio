@@ -37,8 +37,6 @@ server.listen(PORT, () => {
 });
 
 app.post('/verify', (req, res) => {
-   
-    console.log(req.body)
     if(Game.verify(req.body)){
         res.send(200, {response: 'winner'})
 
