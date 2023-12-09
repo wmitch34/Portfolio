@@ -32,7 +32,10 @@ function initCard(){
 }
 
 export default function App(){
-    const[inputVal, setInputVal] = useState("")
+    const[inputVal, setInputVal] = useState([""])
+    const[board, setBoard] = useState(initCard())
+    const[user, setUser ] = useState('CaveMan')
+    const[chatHistory, setChathistory] = useState([])
 
     const sendMessage = () =>{
         socket.emit("send_message", {message: inputVal})
@@ -40,22 +43,11 @@ export default function App(){
 
     useEffect(() =>{
         socket.on('recieve_message', (data)=>{
-            // alert(data.message)
-            setChathistory(data.message)
+            setChathistory([...inputVal, data.message])
+            console.log(data)
         })
     }, [socket])
-
-
-
-    // use state to control contents of card
-    const[board, setBoard] = useState(initCard())
-    const[user, setUser ] = useState('CaveMan')
-    const[chatHistory, setChathistory] = useState("")
-
-    const updateChathistory = () =>{
-        setChathistory([...chatHistory, inputVal])
-    }
-
+    
     // handler for genereting new board
     const handleButtonClick = () => {
         const elements = document.querySelectorAll('*');
@@ -66,6 +58,7 @@ export default function App(){
         setBoard(newBoard);
     };
 
+    // Controller for submitting board to axios
     const checkBoard = () => {
         console.log(submitBoard(board, user));
     };
@@ -85,8 +78,8 @@ export default function App(){
         if(inputVal === ""){
             return
         }
-        // updateChathistory(inputVal)
         sendMessage()
+        setChathistory([...chatHistory, {user:user, message:inputVal}])
         setInputVal("")
     }
     
@@ -115,10 +108,18 @@ export default function App(){
                 <button onClick={checkBoard} className='submitBoardButton'>Submit Board</button>
             </div>
             
+            <div>
+                <input 
+                    value={user}
+                    onChange ={(event) =>{
+                        setUser(event.target.value)
+                    }}
+                />
+            </div>
             <div id ={"chatboxContainer"}>
-                {/* {chatHistory.map((message) =>( */}
-                    <p>{chatHistory}</p>
-                {/* ))} */}
+                {chatHistory.map((message) =>(
+                    <p>{message.user}: {message.message}</p>
+                ))}
             </div>
             <div>
                 <input 

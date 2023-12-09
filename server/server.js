@@ -4,7 +4,7 @@ const http = require('http');
 const {Server} = require('socket.io')
 const cors = require("cors");
 
-const game = require('./src/game.js');
+const Game = require('./src/game.js');
 
 app.use(cors());
 
@@ -12,7 +12,7 @@ const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
-        origin: "http://localhost:3000",
+        origin: "http://127.0.0.1:3000",
         methods: ["GET", "POST"]
     }
 })
@@ -38,7 +38,8 @@ server.listen(PORT, () => {
 });
 
 app.post('/verify', (req, res) => {
-    if(true){
+    console.log('Hit endpoint')
+    if(Game.verify()){
         res.send(200, {response: 'winner'})
 
     }else{
@@ -46,4 +47,4 @@ app.post('/verify', (req, res) => {
     }
 });
 
-game.game();
+Game.game();
