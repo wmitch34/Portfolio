@@ -22,6 +22,5 @@ export async function submitBoard(board, user){
         console.log(err)
     })
 
-
     return ret;
 }    
