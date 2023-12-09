@@ -3,11 +3,10 @@ const app = express();
 const http = require('http');
 const {Server} = require('socket.io')
 const cors = require("cors");
-
+const bodyParser = require('body-parser');
 const Game = require('./src/game.js');
 
-app.use(cors());
-
+app.use(cors(), bodyParser.json())
 const server = http.createServer(app);
 
 const io = new Server(server, {
@@ -38,8 +37,9 @@ server.listen(PORT, () => {
 });
 
 app.post('/verify', (req, res) => {
-    console.log('Hit endpoint')
-    if(Game.verify()){
+   
+    console.log(req.body)
+    if(Game.verify(req.body)){
         res.send(200, {response: 'winner'})
 
     }else{

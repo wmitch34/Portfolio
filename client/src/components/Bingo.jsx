@@ -117,8 +117,8 @@ export default function App(){
                 />
             </div>
             <div id ={"chatboxContainer"}>
-                {chatHistory.map((message) =>(
-                    <p>{message.user}: {message.message}</p>
+                {chatHistory.map((message, index) =>(
+                    <p key = {index}>{message.user}: {message.message}</p>
                 ))}
             </div>
             <div>
