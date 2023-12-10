@@ -8,6 +8,7 @@ const Game = require('./src/game.js');
 
 app.use(cors(), bodyParser.json())
 const server = http.createServer(app);
+const chatHistory = [];
 
 const io = new Server(server, {
     cors: {
@@ -20,8 +21,12 @@ io.on('connection', (socket) => {
     console.log(`User connected: ${socket.id}`);
 
     socket.on('send_message', (data) => {
-        console.log(data, socket.id);
-        socket.broadcast.emit('recieve_message', data)
+        chatHistory.push(data)
+        socket.broadcast.emit('recieve_message', chatHistory)
+    })
+
+    socket.on('req_history', (data)=>{
+        socket.emit('recieve_message', chatHistory)
     })
 
     socket.on('disconnect', () => {

@@ -37,16 +37,21 @@ export default function App(){
     const[user, setUser ] = useState('CaveMan')
     const[chatHistory, setChathistory] = useState([])
 
-    const sendMessage = () =>{
-        socket.emit("send_message", {message: inputVal})
-    };
+    useEffect(()=>{
+        socket.emit('req_history')
+    },[])
 
     useEffect(() =>{
         socket.on('recieve_message', (data)=>{
-            setChathistory([...inputVal, data.message])
-            console.log(data)
+            setChathistory(data)
         })
+        
     }, [socket])
+
+    const sendMessage = () =>{
+        setChathistory([...chatHistory, {message: inputVal, user:user}])
+        socket.emit("send_message", {message: inputVal, user:user})
+    };
     
     // handler for genereting new board
     const handleButtonClick = () => {
@@ -79,9 +84,9 @@ export default function App(){
             return
         }
         sendMessage()
-        setChathistory([...chatHistory, {user:user, message:inputVal}])
         setInputVal("")
     }
+
     
     // Return the element
     return (
