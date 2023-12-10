@@ -6,6 +6,10 @@ const cors = require("cors");
 const bodyParser = require('body-parser');
 const Game = require('./src/game.js');
 
+let PORT;
+
+process.env.STATUS === 'production'? (PORT = process.env.PROD_PORT):(PORT = process.env.DEV_PORT)
+
 app.use(cors(), bodyParser.json())
 const server = http.createServer(app);
 const chatHistory = [];
@@ -34,8 +38,6 @@ io.on('connection', (socket) => {
     });
 
 })
-
-const PORT = 3001;
 
 server.listen(PORT, () => {
     console.log(`Now listening on port ${PORT}`); 
