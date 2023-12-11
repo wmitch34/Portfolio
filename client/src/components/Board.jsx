@@ -19,13 +19,13 @@ function initCard(){
                 number = (col*15) + (Math.floor(Math.random() * 15) + 1);
             }
             // Push valid number to 'used' and card
-            tempCard[row][col] = {value: number, class_List: 'bingo', id: id};
+            tempCard[row][col] = {value: number, id: id, class_List: 'bingo'};
             used.push(number);
             id++;
         }            
     }
     // Manually override contents of Free space
-    tempCard[2][2] = {value: 'Free', class_List: 'bingo Free', id: 12};
+    tempCard[2][2] = {value: 'Free', class_List: 'highlight-obj bingo', id: 12};
     return tempCard;
 }
 
@@ -34,38 +34,36 @@ export default function Board(props){
     const user = props.user;
 
     // handler for genereting new board
-    const handleButtonClick = () => {
+    const handleResetBoard = () => {
         const elements = document.querySelectorAll('*');
         elements.forEach((element) => {
-            element.classList.remove('highlight');
+            element.classList.remove('highlight-obj');
         });        
         const newBoard = initCard();
         setBoard(newBoard);
     };
 
-    // Controller for submitting board to axios
     const checkBoard = () => {
         console.log(submitBoard(board, user));
     };
 
-    // Define event handler method handleMouseClick 
-    function handleMouseClick(event){
+    function handleTileClick(event){
         let classList = event.target.classList
-        if(classList.contains('highlight')){
-            classList.remove('highlight');
+        if(classList.contains('highlight-obj')){
+            classList.remove('highlight-obj');
         }else{
-            classList.add('highlight');
+            classList.add('highlight-obj');
         }       
     };
 
     return(
         <>
-            <div id = 'bingoContainer'>
-                <div id = 'container' className ='gird-offset'>
+            <div id = 'bingoContainer' className='w-100'>
+                <div  className ='w-100'>
                     {board.map((row, index) => (
-                        <div key = {index} className= 'row grid-offset'>
+                        <div key = {index} className= 'board-row'>
                             {row.map((tile) => (
-                                <div key = {tile.id} className= {'col-2 text-center'} onClick={handleMouseClick}>
+                                <div key = {tile.id} className= {tile.class_List} onClick={handleTileClick}>
                                     {tile.value}
                                 </div>
                             ))}
@@ -74,11 +72,11 @@ export default function Board(props){
                 </div>  
             </div>
 
-            <div className=''>
-                <button onClick={handleButtonClick} className=''>Reset Board</button>
+            <div className='container'>
+                <button onClick={handleResetBoard} className='btn btn-primary'>Reset Board</button>
             </div>
-            <div className=''>
-                <button onClick={checkBoard} className=''>Submit Board</button>
+            <div className='container'>
+                <button onClick={checkBoard} className='btn btn-primary'>Submit Board</button>
             </div>
         </>
 

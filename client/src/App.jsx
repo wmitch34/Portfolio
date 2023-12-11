@@ -16,7 +16,7 @@ export default function App(){
     return (
         <div className='container'>
             <div className = 'row'>
-                <div class="col text-center">
+                <div className="col text-center">
                     <h1 className = 'header'>Bingo</h1>
                 </div>
             </div>

@@ -1,6 +1,19 @@
-#board {
-    border: 2px solid rgb(0, 0, 0);
-    background-color: white;
+.board-row{
+    display:flex;
+    width: 100%;
+}
+
+.bingo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size:larger;
+    border-radius: 5px;
+    background-color: grey;
+    aspect-ratio: 1 / 1; 
+    margin: 2px;
+    flex: 0 0 calc(20%-10px); 
 }
 
 .bingo:hover {
@@ -30,35 +43,11 @@
     }
 }
 
-.bingo {
-   color: black;
-   font-size: larger;
-   text-align: center;
-   border-radius: 5px;
-   background-color: #DEE1E6;
-   box-shadow: -4px 2px 8px 1px rgba(0,0,0,0.4);
-}
 
-div.highlight { 
+
+div.highlight-obj { 
    background-color: #7798AB; 
    color: white;
-}
-
-div.Free { 
-    background-color: #7798AB; 
-    color: white;
- }
-
-.resetButton { 
-    color: white;
-    font-size: larger;
-    border-radius: 5px;
-    border: none;
-    background-color: #7798AB;
-    padding: 15px;
-    margin: 10px auto 10px auto;
-    display: flex;
-    box-shadow: -4px 2px 8px 1px rgba(0,0,0,0.4);
 }
 
 .resetButton:hover{
@@ -76,8 +65,4 @@ div.Free {
     100%{
         transform: scale(1.05);
     }
-}
-
-.grid-offset{
-    padding-left: calc((100% / 10) /2);
 }
