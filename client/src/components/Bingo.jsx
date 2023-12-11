@@ -43,7 +43,16 @@ export default function App(){
 
     useEffect(() =>{
         socket.on('recieve_message', (data)=>{
+            console.log(data)
             setChathistory(data)
+        })
+
+        socket.on('game_over', (data)=>{
+            console.log('gameOver: ', data)
+        })
+
+        socket.on('rolled_number', (data)=>{
+            console.log(data)
         })
         
     }, [socket])

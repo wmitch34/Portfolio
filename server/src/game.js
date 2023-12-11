@@ -1,10 +1,31 @@
+let delay = 30000
 let rolledList = ['Free']
+let gameOver = false;
+let winners = [];
 
-const game = ()=> {
-    for(let i = 1; i <76; i++ ){
-        rolledList.push(i);
+function game(io){
+    if(gameOver){
+        io.emit('game_over', (winners));
     }
-    console.log(rolledList)
+
+    let roll = Math.floor(Math.random() * 76) + 1;
+    while(rolledList.includes(roll)){
+        roll = Math.floor(Math.random() * 76) + 1;
+    }
+    
+    console.log(roll)
+    rolledList.push(roll)
+    io.emit('rolled_number', roll);
+    
+    console.log('Delaying 30s');   
+    
+    setTimeout(()=> game(io),delay);  
+    
+}
+
+const setGameOver= (winner) => {
+    winners.push(winner)
+    gameOver = true;
 }
 
 const verify = (reqBody)=> {
@@ -73,4 +94,5 @@ const verify = (reqBody)=> {
 
 exports.verify = verify;
 exports.game = game;
+exports.setGameOver = setGameOver
 

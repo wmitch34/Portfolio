@@ -1,5 +1,5 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();
 const http = require('http');
 const {Server} = require('socket.io')
 const cors = require("cors");
@@ -7,12 +7,31 @@ const bodyParser = require('body-parser');
 const Game = require('./src/game.js');
 
 let PORT;
-
+const chatHistory = [];
 process.env.STATUS === 'production'? (PORT = process.env.PROD_PORT):(PORT = process.env.DEV_PORT)
 
+const app = express();
 app.use(cors(), bodyParser.json())
 const server = http.createServer(app);
-const chatHistory = [];
+
+app.post('/verify', (req, res) => {
+    try{
+
+        if(Game.verify(req.body)){
+            Game.setGameOver(req.body.user)
+            res.status(200).send({response: 'winner'})
+    
+        }else{
+            res.status(200).send({response: 'loser'})
+        }
+    }catch(e){
+        console.log('Server Error: ', e)
+    }
+});
+
+server.listen(PORT, () => {
+    console.log(`Now listening on port ${PORT}`); 
+});
 
 const io = new Server(server, {
     cors: {
@@ -36,20 +55,6 @@ io.on('connection', (socket) => {
     socket.on('disconnect', () => {
         console.log('A user disconnected');
     });
-
 })
 
-server.listen(PORT, () => {
-    console.log(`Now listening on port ${PORT}`); 
-});
-
-app.post('/verify', (req, res) => {
-    if(Game.verify(req.body)){
-        res.send(200, {response: 'winner'})
-
-    }else{
-        res.send(200, {response: 'loser'})
-    }
-});
-
-Game.game();
+Game.game(io);
