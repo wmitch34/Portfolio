@@ -1,35 +1,6 @@
-body {
-    background-color: #535353;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.header {
-    text-align: center;
-    font-size: 80px;
-    font-style: italic; 
-    margin: 0px;
-    font-weight: 1000px;
-    color: white;  
-}
-
-#bingoContainer {
-    background-color: #535353;  
-    width: 500px;
-    height: 477px;
-    margin: auto;
-    padding-top: 23px;  
-}
-
 #board {
     border: 2px solid rgb(0, 0, 0);
     background-color: white;
-    margin: auto;
-    width: 450px;
-}
-
-.row {
-    display: flex;
-    flex-direction:row;
 }
 
 .bingo:hover {
@@ -60,17 +31,12 @@ body {
 }
 
 .bingo {
-   width: 80px;
-   height: 80px;
    color: black;
    font-size: larger;
    text-align: center;
-   line-height: 80px;
    border-radius: 5px;
    background-color: #DEE1E6;
    box-shadow: -4px 2px 8px 1px rgba(0,0,0,0.4);
-   flex: 1;
-   margin:5px;
 }
 
 div.highlight { 
@@ -112,9 +78,6 @@ div.Free {
     }
 }
 
-.btnContainer{
-    padding: 15px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;
+.grid-offset{
+    padding-left: calc((100% / 10) /2);
 }
