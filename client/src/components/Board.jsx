@@ -39,7 +39,8 @@ export default function Board(props){
         elements.forEach((element) => {
             element.classList.remove('highlight-obj');
         });        
-        const newBoard = initCard();
+        let newBoard = initCard();
+        console.log(newBoard)
         setBoard(newBoard);
     };
 
