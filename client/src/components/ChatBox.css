@@ -1,0 +1,8 @@
+.message-window{
+ flex: 2;
+}
+
+.row-container{
+    display: flex;
+    flex-direction: column;
+}
