@@ -1,18 +1,19 @@
 import React, { useRef, useState, useEffect } from 'react';
-import "./board.css"
+import "./Chatbox.css"
 import io from 'socket.io-client'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const socket = io.connect("http://localhost:3001");
 
 export default function Chatbox(props){
     
+    const inputRef = useRef(null);
     const scrollRef = useRef(null);
-    const[inputVal, setInputVal] = useState([""])
-    const[chatHistory, setChathistory] = useState([])
-    let user = props.user
-    let setUser = props.setUser
-
+    const[inputVal, setInputVal] = useState("");
+    const[chatHistory, setChathistory] = useState([]);
+    let user = props.user;
+    let setUser = props.setUser;
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -45,12 +46,14 @@ export default function Chatbox(props){
         socket.emit("send_message", {message: inputVal, user:user})
     };
 
-    const handlSendMessage = () =>{
+    const handlSendMessage = (event) =>{
+        event.preventDefault()
         if(inputVal === ""){
             return
         }
         sendMessage()
         setInputVal("")
+        inputRef.current.focus()
     }
 
 
@@ -61,35 +64,44 @@ export default function Chatbox(props){
 
                     <div className="row flex-grow-1">
                         <div>
-                            <input 
-                                value={user}
-                                onChange ={(event) => {
-                                    setUser(event.target.value)
-                                }}
-                                className='form-control'
-                            />
 
+                            <form className='text-box-container'>
+                                <input 
+                                    placeholder='Display Name...'
+                                    value={user}
+                                    onChange ={(event) => {
+                                        setUser(event.target.value)
+                                    }}
+                                    className='form-control chat-text-field'
+                                />
+                            </form>                        
                         </div>
                     </div>
              
                     <div className="row flex-grow-3">
-                        <div className='w-100 message-window' style={{ height: '300px', overflowY: 'auto' }} ref = {scrollRef}>
-                            {chatHistory.map((message, index) =>(
-                                <p key = {index}>{message.user}: {message.message}</p>
-                            ))}
+                        <div className= 'message-window-container'>
+                            <div className='w-100 message-window' style ={{height: '282px', overflowY: 'auto', }} ref = {scrollRef}>
+                                {chatHistory.map((message, index) =>(
+                                    <p key = {index}>{message.user}: {message.message}</p>
+                                ))}
+                            </div>
                         </div>
                     </div>
 
                     <div className="row flex-grow-1">
-                        <div className='w-100 overFlow-auto '>
-                            <input 
-                                value={inputVal}
-                                onChange ={(event) =>{
-                                    setInputVal(event.target.value)
-                                }}
-                                className='form-control'
-                            />
-                            <button onClick = {handlSendMessage}>Send Message</button>
+                        <div className='w-100 overFlow-auto ' style={{display: 'inline'}}>
+                                <form className='text-box-container'>
+                                    <input 
+                                        value={inputVal}
+                                        placeholder='Message...'
+                                        onChange ={(event) =>{
+                                            setInputVal(event.target.value)
+                                        }}
+                                        ref={inputRef}
+                                        className='form-control chat-text-field'
+                                    />
+                                    <button type = 'button' onClick = {handlSendMessage} className='rounded-circle'><i class="bi bi-arrow-right-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
+                                </form>
                         </div>
                     </div> 
                 </div>
