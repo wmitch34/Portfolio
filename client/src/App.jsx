@@ -6,7 +6,7 @@ import BingoInfo from './components/BingoInfo';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function App(){
-    const[user, setUser] = useState(["CaveMan"])
+    const[user, setUser] = useState("")
 
     const handleSetUser = (val) => {
         console.log('here')

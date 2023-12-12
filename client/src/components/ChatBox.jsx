@@ -67,7 +67,7 @@ export default function Chatbox(props){
 
                             <form className='text-box-container'>
                                 <input 
-                                    placeholder='Display Name...'
+                                    placeholder='Enter user name...'
                                     value={user}
                                     onChange ={(event) => {
                                         setUser(event.target.value)
@@ -82,7 +82,7 @@ export default function Chatbox(props){
                         <div className= 'message-window-container'>
                             <div className='w-100 message-window' style ={{height: '282px', overflowY: 'auto', }} ref = {scrollRef}>
                                 {chatHistory.map((message, index) =>(
-                                    <p key = {index}>{message.user}: {message.message}</p>
+                                    <div style={{backgroundColor: '#121212', padding: '5px', borderRadius: '10px',marginBottom: '10px'}}><div style={{padding: '5px'}}key = {index}>{message.user}:<br/>{message.message}</div></div>
                                 ))}
                             </div>
                         </div>
@@ -100,7 +100,7 @@ export default function Chatbox(props){
                                         ref={inputRef}
                                         className='form-control chat-text-field'
                                     />
-                                    <button type = 'button' onClick = {handlSendMessage} className='rounded-circle'><i class="bi bi-arrow-right-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
+                                    <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i class="bi bi-arrow-right-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
                                 </form>
                         </div>
                     </div> 
