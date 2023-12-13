@@ -63,9 +63,8 @@ export default function Chatbox(props){
                 <div className="col-12 d-flex flex-column">
                     <div className="row flex-grow-1">
                         <h1>Global Chat</h1>
-                        
                     </div>
-
+            
                     <div className="row flex-grow-1">
                         <div>
 
@@ -108,7 +107,7 @@ export default function Chatbox(props){
                                         ref={inputRef}
                                         className='form-control chat-text-field'
                                     />
-                                    <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i class="bi bi-arrow-right-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
+                                    <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i class="bi bi-arrow-up-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
                                 </form>
                         </div>
                     </div> 
