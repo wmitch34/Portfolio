@@ -48,7 +48,7 @@ export default function Chatbox(props){
 
     const handlSendMessage = (event) =>{
         event.preventDefault()
-        if(inputVal === ""){
+        if(inputVal === "" || props.user ===""){
             return
         }
         sendMessage()
@@ -61,6 +61,10 @@ export default function Chatbox(props){
         <div className="container-fluid" >
             <div className="row" style={{ height: '100%' }}>
                 <div className="col-12 d-flex flex-column">
+                    <div className="row flex-grow-1">
+                        <h1>Global Chat</h1>
+                        
+                    </div>
 
                     <div className="row flex-grow-1">
                         <div>
@@ -82,8 +86,12 @@ export default function Chatbox(props){
                         <div className= 'message-window-container'>
                             <div className='w-100 message-window' style ={{height: '282px', overflowY: 'auto', }} ref = {scrollRef}>
                                 {chatHistory.map((message, index) =>(
-                                    <div style={{backgroundColor: '#121212', padding: '5px', borderRadius: '10px',marginBottom: '10px'}}><div style={{padding: '5px'}}key = {index}>{message.user}:<br/>{message.message}</div></div>
-                                ))}
+                                    <>
+                                        <div style={{color: '#121212'}}>{message.user}</div>
+                                        <div style={{backgroundColor: '#121212', padding: '5px', borderRadius: '10px',marginBottom: '10px'}}><div style={{padding: '5px'}}key = {index}>{message.message}</div></div>
+                                
+                                    </>
+                                    ))}
                             </div>
                         </div>
                     </div>
