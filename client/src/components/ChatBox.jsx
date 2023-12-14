@@ -1,10 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react';
 import "./Chatbox.css"
-import io from 'socket.io-client'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-const socket = io.connect("http://localhost:3001");
+
 
 export default function Chatbox(props){
     
@@ -12,8 +11,7 @@ export default function Chatbox(props){
     const scrollRef = useRef(null);
     const[inputVal, setInputVal] = useState("");
     const[chatHistory, setChathistory] = useState([]);
-    let user = props.user;
-    let setUser = props.setUser;
+    const{ user, setUser, socket} = props
 
     useEffect(() => {
         if (scrollRef.current) {
@@ -29,14 +27,6 @@ export default function Chatbox(props){
         socket.on('recieve_message', (data)=>{
             console.log(data)
             setChathistory(data)
-        })
-
-        socket.on('game_over', (data)=>{
-            console.log('gameOver: ', data)
-        })
-
-        socket.on('rolled_number', (data)=>{
-            console.log(data)
         })
         
     }, [socket])
@@ -107,7 +97,7 @@ export default function Chatbox(props){
                                         ref={inputRef}
                                         className='form-control chat-text-field'
                                     />
-                                    <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i class="bi bi-arrow-up-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
+                                    <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i className="bi bi-arrow-up-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
                                 </form>
                         </div>
                     </div> 

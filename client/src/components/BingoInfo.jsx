@@ -1,7 +1,20 @@
-export default function BingoInfo(){
+import React, { useState, useEffect } from 'react';
+
+export default function BingoInfo(props){
+    const {socket} = props
+    const [roll, setRoll] = useState()
+
+    useEffect(() =>{
+        socket.on('rolled_number', (data)=>{
+            setRoll(data)
+        })
+        
+    }, [socket])
+
     return(
         <>
             <h1>Info Goes here</h1>
+            <p>{roll}</p>
         </>
     )
 }

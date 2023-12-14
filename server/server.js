@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const Game = require('./src/game.js');
 
 let PORT;
-const chatHistory = [];
+let chatHistory = [];
 process.env.STATUS === 'production'? (PORT = process.env.PROD_PORT):(PORT = process.env.DEV_PORT)
 
 const app = express();
@@ -17,12 +17,14 @@ const server = http.createServer(app);
 app.post('/verify', (req, res) => {
     try{
 
-        if(Game.verify(req.body)){
-            Game.setGameOver(req.body.user)
-            res.status(200).send({response: 'winner'})
+        if(Game.gameState.verify(req.body.board)){
+            Game.gameState.setGameOver(req.body.user)
+            chatHistory = []
+            io.emit('recieve_message', chatHistory)
+            res.status(200).send({response: true})
     
         }else{
-            res.status(200).send({response: 'loser'})
+            res.status(200).send({response: false})
         }
     }catch(e){
         console.log('Server Error: ', e)
@@ -57,4 +59,4 @@ io.on('connection', (socket) => {
     });
 })
 
-Game.game(io);
+setTimeout(()=> Game.game(io), 10000);
