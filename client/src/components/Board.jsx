@@ -58,26 +58,24 @@ export default function Board(props){
     };
 
     return(
-        <>
-            <div id = 'bingoContainer' className='w-100'>
-                <div  className ='w-100'>
-                    {board.map((row, index) => (
-                        <div key = {index} className= 'board-row'>
-                            {row.map((tile) => (
-                                <div key = {tile.id} className= {tile.class_List} onClick={handleTileClick}>
-                                    {tile.value}
-                                </div>
-                            ))}
-                        </div>
-                    ))}
-                </div>  
+        <div className='container'>
+            <div className= 'board'>
+                {board.map((row, index) => (
+                    <div key = {index} className= 'board-row'>
+                        {row.map((tile) => (
+                            <div key = {tile.id} className= {tile.class_List} onClick={handleTileClick}>
+                                {tile.value}
+                            </div>
+                        ))}
+                    </div>
+                ))}
             </div>
 
             <div className='container'>
                 <button onClick={handleResetBoard} className='btn btn-primary'>Reset Board</button>
                 <button onClick={checkBoard} className='btn btn-primary'>Submit Board</button>
             </div>
-        </>
+        </div>
 
     )
     

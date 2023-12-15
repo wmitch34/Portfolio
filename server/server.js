@@ -50,7 +50,7 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('recieve_message', chatHistory)
     })
 
-    socket.on('req_history', (data)=>{
+    socket.on('req_chat_history', (data)=>{
         socket.emit('recieve_message', chatHistory)
     })
 

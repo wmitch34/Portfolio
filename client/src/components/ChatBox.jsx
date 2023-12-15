@@ -20,13 +20,17 @@ export default function Chatbox(props){
     }, [chatHistory]);
 
     useEffect(()=>{
-        socket.emit('req_history')
+        socket.emit('req_chat_history')
+        socket.emit('req_board_hist')
     },[])
 
     useEffect(() =>{
         socket.on('recieve_message', (data)=>{
-            console.log(data)
             setChathistory(data)
+        })
+
+        socket.on('recieve_board_history', (data)=>{
+            setBoardHistory(data)
         })
         
     }, [socket])
@@ -75,11 +79,11 @@ export default function Chatbox(props){
                         <div className= 'message-window-container'>
                             <div className='w-100 message-window' style ={{height: '282px', overflowY: 'auto', }} ref = {scrollRef}>
                                 {chatHistory.map((message, index) =>(
-                                    <>
+                                    <div key = {index}>
                                         <div style={{color: '#121212'}}>{message.user}</div>
                                         <div style={{backgroundColor: '#121212', padding: '5px', borderRadius: '10px',marginBottom: '10px'}}><div style={{padding: '5px'}}key = {index}>{message.message}</div></div>
                                 
-                                    </>
+                                    </div>
                                     ))}
                             </div>
                         </div>
