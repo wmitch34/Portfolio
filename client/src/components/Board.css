@@ -1,6 +1,6 @@
 .board-row{
     display:flex;
-    width: 100%;
+    width: 90%;
 }
 
 .bingo {
@@ -14,7 +14,7 @@
     background-color: grey;
     aspect-ratio: 1 / 1; 
     border: 2px solid #121212;
-    flex: 0 0 calc(20%-10px); 
+    
 }
 
 .bingo:hover {

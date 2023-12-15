@@ -75,8 +75,6 @@ export default function Board(props){
 
             <div className='container'>
                 <button onClick={handleResetBoard} className='btn btn-primary'>Reset Board</button>
-            </div>
-            <div className='container'>
                 <button onClick={checkBoard} className='btn btn-primary'>Submit Board</button>
             </div>
         </>

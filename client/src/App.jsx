@@ -55,11 +55,14 @@ export default function App(){
             </div>
             <div className="row">
                 <div className="col text-center">
-                    <div style ={{display: 'flex'}} className='w-100'>
-                        {rollHist.map((roll, index) =>(
-                            <div key={index} style={{margin: '10px'}}>{roll}</div>
-                        ))}
-                    </div>
+                    <h1 className = 'header'>Roll History</h1>
+                </div>
+            </div >
+            <div className="row">
+                <div className="col text-center roll-hist-container ">
+                    {rollHist.map((roll, index) =>(
+                        <div key={index} className='roll-hist-bingo'>{roll}</div>
+                    ))}
                 </div>
             </div>
         </div>
