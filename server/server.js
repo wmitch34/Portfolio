@@ -31,9 +31,9 @@ app.post('/verify', (req, res) => {
     }
 });
 
-app.get('/getBoardInterval', (req, res) => {
+app.get('/getRollDelay', (req, res) => {
     try{
-        res.status(200).send({response: {gameTimer: Game.gameState.delay, restartTimer: Game.gameState.gameOverTimer}})
+        res.status(200).send({delay: Game.gameState.delay})
     }catch(e){
         console.log('Server Error: ', e)
     }
@@ -76,4 +76,4 @@ io.on('connection', (socket) => {
 
 })
 
-setTimeout(()=> Game.game(io), 10000);
+setTimeout(()=> Game.game(io), 5000);

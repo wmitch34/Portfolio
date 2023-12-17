@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import BingoInfo from './components/BingoInfo';
 import Chatbox from './components/ChatBox';
-import { submitBoard } from './api';
+import { submitBoard, getRollDelay } from './api';
 import './App.css'
 
 const socket = io.connect("http://localhost:3001");
@@ -50,6 +50,8 @@ export default function App(){
     const[board, setBoard] = useState(initCard());
     const[gameOver, setGameOver] = useState(false);
     const[timer, setTimer] = useState(0);
+    //assume a 15 second delay
+    const[rollDelay, setRollDelay] = useState(15);
 
 
     const checkBoard = () => {
@@ -82,6 +84,11 @@ export default function App(){
         }       
     };
 
+    const handleSetRollDelay = (val) => {
+        console.log(val)
+        setRollDelay(val)
+    }
+
     useEffect(() =>{
         socket.on('rolled_number', (data)=>{
             handleSetHistory(data)
@@ -106,14 +113,19 @@ export default function App(){
 
         return () => {
             socket.off('rolled_number');
-            socket.off('send_roll_hist');
-            socket.off('game_over')
+            socket.off('game_over');
+            socket.off('send_curr_time')
         };
         
     }, [socket]);
 
     useEffect(()=>{
         socket.emit('req_current_time');
+        socket.emit('req_roll_hist');
+        getRollDelay().then( delay => {
+            handleSetRollDelay(delay / 1000)
+        })
+    
     }, []);
 
     return (
@@ -148,7 +160,7 @@ export default function App(){
                 </div>
                 <div className='col-3 align-items-center justify-content-center'>
                     <BingoInfo socket = {socket}/>
-                    <div>{formatTime((timer))}</div>
+                    <div>Next roll in 00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
                 </div>
             </div>
             <div className="row">
