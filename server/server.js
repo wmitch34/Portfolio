@@ -31,6 +31,14 @@ app.post('/verify', (req, res) => {
     }
 });
 
+app.get('/getBoardInterval', (req, res) => {
+    try{
+        res.status(200).send({response: {gameTimer: Game.gameState.delay, restartTimer: Game.gameState.gameOverTimer}})
+    }catch(e){
+        console.log('Server Error: ', e)
+    }
+});
+
 server.listen(PORT, () => {
     console.log(`Now listening on port ${PORT}`); 
 });
@@ -50,13 +58,22 @@ io.on('connection', (socket) => {
         socket.broadcast.emit('recieve_message', chatHistory)
     })
 
-    socket.on('req_chat_history', (data)=>{
+    socket.on('req_chat_history', ()=>{
         socket.emit('recieve_message', chatHistory)
+    })
+
+    socket.on('req_roll_hist', () =>{
+        socket.emit('send_roll_hist', Game.gameState.rolledList )
     })
 
     socket.on('disconnect', () => {
         console.log('A user disconnected');
     });
+
+    socket.on('req_current_time', ()=>{
+        socket.emit('send_curr_time', Game.gameState.second)
+    });
+
 })
 
 setTimeout(()=> Game.game(io), 10000);

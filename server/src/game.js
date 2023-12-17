@@ -16,6 +16,8 @@ let gameState = {
     gameOver: false,
     winners: [],
     choiceList: setChoiceList(),
+    gameOverTimer: 30000,
+    second: 0,
 
     setGameOver(winner){
         gameState.winners.push(winner)
@@ -81,34 +83,41 @@ let gameState = {
         this.rolledList = ['Free'];
         this.gameOver = false;
         this.winners = [];
-        this.choiceList = setChoiceList()
+        this.choiceList = setChoiceList();
+        this.second = 0;
     },
 }
 
 // Driver function for game -- RECURSIVE
 function game(io){
-    // Base case. If gameOver is turned to true, or the choice array is empty, end the game
-    if(gameState.gameOver || gameState.choiceList.length === 0){
-        io.emit('game_over', (gameState.winners));
-        gameState.resetGame();
-        console.log("Restarting game in 30s....");
-        setTimeout(()=>{
-            console.log("....Restarting.")
-            game(io)}, 30000);
-        return;
-    }
+    // Wait 1 second and emit a time
+    setTimeout(()=>{
+        io.emit('send_curr_time', gameState.second)
+        gameState.second = gameState.second + 1;
+        game(io)
+    }, 1000);
 
-    // Get a random roll from the choiceList, then remove it from the choiceList
-    let randomIndex = Math.floor(Math.random() * gameState.choiceList.length);
-    let roll = gameState.choiceList[randomIndex];
-    gameState.choiceList.splice(randomIndex, 1)
-    
-    // console.log(roll)
-    gameState.rolledList.push(roll)
-    io.emit('rolled_number', roll);  
-    
-    // Recursive call
-    setTimeout(()=> game(io), gameState.delay);  
+    // // Base case. If gameOver is turned to true, or the choice array is empty, end the game
+    // if(gameState.gameOver || gameState.choiceList.length === 0){
+    //     io.emit('game_over', (gameState.winners));
+    //     gameState.resetGame();
+    //     console.log("Restarting game....");
+    //     game(io);
+    //     return;
+    // }
+
+    // if(gameState.second % 30 === 0){
+
+    //     // Get a random roll from the choiceList, then remove it from the choiceList
+    //     let randomIndex = Math.floor(Math.random() * gameState.choiceList.length);
+    //     let roll = gameState.choiceList[randomIndex];
+    //     gameState.choiceList.splice(randomIndex, 1)
+        
+    //     // console.log(roll)
+    //     gameState.rolledList.push(roll)
+    //     io.emit('rolled_number', roll);
+            
+    // }    
     
 }
 

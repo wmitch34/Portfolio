@@ -23,4 +23,4 @@ export async function submitBoard(board, user){
     })
 
     return ret;
-}    
+}   

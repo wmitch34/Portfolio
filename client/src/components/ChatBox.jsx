@@ -21,7 +21,6 @@ export default function Chatbox(props){
 
     useEffect(()=>{
         socket.emit('req_chat_history')
-        socket.emit('req_board_hist')
     },[])
 
     useEffect(() =>{
@@ -61,7 +60,6 @@ export default function Chatbox(props){
             
                     <div className="row flex-grow-1">
                         <div>
-
                             <form className='text-box-container'>
                                 <input 
                                     placeholder='Enter user name...'
@@ -81,8 +79,9 @@ export default function Chatbox(props){
                                 {chatHistory.map((message, index) =>(
                                     <div key = {index}>
                                         <div style={{color: '#121212'}}>{message.user}</div>
-                                        <div style={{backgroundColor: '#121212', padding: '5px', borderRadius: '10px',marginBottom: '10px'}}><div style={{padding: '5px'}}key = {index}>{message.message}</div></div>
-                                
+                                        <div style={{backgroundColor: '#121212', padding: '5px', borderRadius: '10px',marginBottom: '5px 5px 5px 5px'}}>
+                                            <div style={{padding: '5px'}}key = {index}>{message.message}</div>
+                                        </div>
                                     </div>
                                     ))}
                             </div>
@@ -91,18 +90,18 @@ export default function Chatbox(props){
 
                     <div className="row flex-grow-1">
                         <div className='w-100 overFlow-auto ' style={{display: 'inline'}}>
-                                <form className='text-box-container'>
-                                    <input 
-                                        value={inputVal}
-                                        placeholder='Message...'
-                                        onChange ={(event) =>{
-                                            setInputVal(event.target.value)
-                                        }}
-                                        ref={inputRef}
-                                        className='form-control chat-text-field'
-                                    />
-                                    <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i className="bi bi-arrow-up-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
-                                </form>
+                            <form className='text-box-container'>
+                                <input 
+                                    value={inputVal}
+                                    placeholder='Message...'
+                                    onChange ={(event) =>{
+                                        setInputVal(event.target.value)
+                                    }}
+                                    ref={inputRef}
+                                    className='form-control chat-text-field'
+                                />
+                                <button type = 'submit' onClick = {handlSendMessage} className='rounded-circle'><i className="bi bi-arrow-up-circle-fill fs-3" style={{color: '#0d6efd'}}></i></button>
+                            </form>
                         </div>
                     </div> 
                 </div>
