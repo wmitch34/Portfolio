@@ -10,7 +10,7 @@ function setChoiceList(){
 
 // Set initial Gamestate
 let gameState = {
-    delay: 15000,
+    delay: 1000,
 
     rolledList: ['Free'],
     gameOver: false,
@@ -93,8 +93,17 @@ function game(io){
     
     setTimeout(()=>{
         // Base case. If gameOver is turned to true, or the choice array is empty, end the game
-        if(gameState.gameOver || gameState.choiceList.length === 0){
+        if(gameState.gameOver){
             io.emit('game_over', (gameState.winners));
+            setTimeout(()=>{
+                gameState.resetGame();
+                console.log("Restarting game....");
+                game(io);
+
+            }, gameState.gameOverTimer)
+            return;
+        }else if(gameState.choiceList.length === 0){
+            io.emit('game_over', ('Game concluded with no winning submissions'));
             setTimeout(()=>{
                 gameState.resetGame();
                 console.log("Restarting game....");

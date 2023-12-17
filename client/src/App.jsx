@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-import BingoInfo from './components/BingoInfo';
 import Chatbox from './components/ChatBox';
 import { submitBoard, getRollDelay } from './api';
 import './App.css'
@@ -35,23 +34,16 @@ function initCard(){
     return tempCard;
 }
 
-function formatTime(timeInSeconds){
-    const hours = Math.floor(timeInSeconds / 3600);
-    const minutes = Math.floor((timeInSeconds % 3600) / 60);
-    const seconds = Math.floor(timeInSeconds % 60);
-
-    const formatted = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-    return formatted;
-};
-
 export default function App(){
     const[user, setUser] = useState("");
     const[rollHist, setRollHist] = useState([]);
     const[board, setBoard] = useState(initCard());
     const[gameOver, setGameOver] = useState(false);
     const[timer, setTimer] = useState(0);
+    const [roll, setRoll] = useState()
     //assume a 15 second delay
     const[rollDelay, setRollDelay] = useState(15);
+    const[gameOverTimer, setGameOverTimer] = useState(30)
 
 
     const checkBoard = () => {
@@ -60,11 +52,11 @@ export default function App(){
 
     const handleSetUser = (val) => {
         setUser(val);
-    }
+    };
 
     const handleSetHistory = (val) => {
         setRollHist(prevArray => [...prevArray, val])
-    }
+    };
 
     const handleResetBoard = () => {
         const elements = document.querySelectorAll('*');
@@ -85,36 +77,55 @@ export default function App(){
     };
 
     const handleSetRollDelay = (val) => {
-        console.log(val)
         setRollDelay(val)
+    };
+
+    const runGameOverTimer = () => {
+        if(gameOverTimer == 0){
+            setGameOverTimer(30)
+            return
+        }
+        setInterval(()=>{
+            setGameOverTimer(prev => prev - 1);
+            runGameOverTimer()
+        }, 1000)
+
     }
+
+    const handleGameOver =(data)=>{
+        console.log("Game Over!: ", data);
+        setRollHist([]);
+        handleResetBoard();
+        setGameOver(true);
+
+        runGameOverTimer()
+    } 
 
     useEffect(() =>{
         socket.on('rolled_number', (data)=>{
+            setGameOver(false)
+            setRoll(data)
             handleSetHistory(data)
         });
 
         socket.on('game_over', (data)=>{
-            console.log('Game over: ', data);
-            setRollHist([]);
-            handleResetBoard();
-            setGameOver(true)
+            handleGameOver(data);
         })
 
         socket.on('send_roll_hist', (data)=>{
             const trimmed_hist = data.slice(1);
+            setRoll(trimmed_hist[trimmed_hist.length -1])
             setRollHist(trimmed_hist);
         })
 
         socket.on('send_curr_time', (data)=>{
-            console.log("Game time: ", data)
             setTimer(data)
         })
 
         return () => {
             socket.off('rolled_number');
             socket.off('game_over');
-            socket.off('send_curr_time')
+            socket.off('send_curr_time');
         };
         
     }, [socket]);
@@ -159,8 +170,18 @@ export default function App(){
                     </div>
                 </div>
                 <div className='col-3 align-items-center justify-content-center'>
-                    <BingoInfo socket = {socket}/>
-                    <div>Next roll in 00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
+                    <h1>Info Goes here</h1>
+                    {!gameOver && 
+                    
+                    (<><div>Next roll in 00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
+                    <div className='current-roll-container w-100'>
+                        <div className='current-roll '>{roll}</div>
+                    </div></>)
+                    }
+                    {gameOver &&
+                        <div>Next Game in 00:{(gameOverTimer) < 10 ?"0"+(gameOverTimer): gameOverTimer }</div>
+
+                    }
                 </div>
             </div>
             <div className="row">
