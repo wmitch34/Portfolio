@@ -8,6 +8,8 @@ import './App.css'
 
 const socket = io.connect("http://localhost:3001");
 
+const FLASHINTERVAL = 5;
+
 function initCard(){
     // track used to avoid repeats
     let used = [];
@@ -30,31 +32,31 @@ function initCard(){
         }            
     }
     // Manually override contents of Free space
-    tempCard[2][2] = {value: 'Free', class_List: 'highlight-obj bingo', id: 12};
+    tempCard[2][2] = {value: 'Free', class_List: 'bingo highlight-obj', id: 12};
     return tempCard;
 }
 
 export default function App(){
-    const[user, setUser] = useState("");
+    const[user, setUser] = useState("Will");
     const[rollHist, setRollHist] = useState([]);
     const[board, setBoard] = useState(initCard());
     const[gameOver, setGameOver] = useState();
     const[timer, setTimer] = useState(0);
-    const[roll, setRoll] = useState(0)
+    const[roll, setRoll] = useState(0);
 
-    const[rollDelay, setRollDelay] = useState()
+    const[rollDelay, setRollDelay] = useState();
 
     // API call to check users board
     const checkBoard = () => {
         console.log(submitBoard(board, user));
     };
     // handler for setting user
-    const handleSetUser = (val) => {
-        setUser(val);
+    const handleSetUser = (data) => {
+        setUser(data);
     };
     // handler for adding the curr roll to history
-    const handleSetHistory = (val) => {
-        setRollHist(prevArray => [...prevArray, val])
+    const handleSetHistory = (data) => {
+        setRollHist(prevArray => [...prevArray, data])
     };
     // handler for reset board btn
     const handleResetBoard = () => {
@@ -80,6 +82,28 @@ export default function App(){
         setGameOver(true);
         setRollHist([]);
         handleResetBoard();
+    };
+    //handler for setting timer
+    const handleSetTimer = (data) =>{
+        setTimer(data)
+    }
+    // handle click for hint
+    const handleHistClick = (data)=>{
+        let board1D = board.flat()
+
+        board1D.forEach(tile => {
+            if(tile.value == data){
+                let tileDOM = document.getElementById(`tile-${tile.value}`)
+                if(!tileDOM.classList.contains('highlight-obj')){
+                    document.getElementById(`hist-${data}`).style.backgroundColor = "white";
+                    tileDOM.classList.add('hint-pulse')
+    
+                    setTimeout(()=>{
+                        tileDOM.classList.remove('hint-pulse')
+                    }, 2000)
+                }
+            }
+        })
     }
 
     useEffect(() =>{
@@ -102,7 +126,7 @@ export default function App(){
         // on timer change
         socket.on('send_curr_time', (data)=>{
             Promise.resolve(data).then((reslovedData) =>{
-                setTimer(reslovedData);
+                handleSetTimer(reslovedData);       
             })
         })
 
@@ -154,7 +178,12 @@ export default function App(){
                             {board.map((row, index) => (
                                 <div key = {index} className= 'board-row'>
                                     {row.map((tile) => (
-                                        <div key = {tile.id} className= {tile.class_List} onClick={handleTileClick}>
+                                        <div
+                                            key = {tile.id}
+                                            className= {tile.class_List}
+                                            onClick={handleTileClick}
+                                            id = {'tile-'+tile.value}                                            
+                                            >
                                             {tile.value}
                                         </div>
                                     ))}
@@ -162,7 +191,6 @@ export default function App(){
                             ))}
                         </div>
                         <div className='container'>
-                            <button onClick={handleResetBoard} className='btn btn-primary'>Reset Board</button>
                             <button onClick={checkBoard} className='btn btn-primary'>Submit Board</button>
                         </div>
                     </div>
@@ -189,7 +217,7 @@ export default function App(){
             <div className="row">
                 <div className="col text-center roll-hist-container ">
                     {rollHist.map((roll, index) =>(
-                        <div key={index} className='roll-hist-bingo'>{roll}</div>
+                        <div key={index} className='roll-hist-bingo' id = {'hist-'+roll} onClick={() => handleHistClick(roll)}>{roll}</div>
                     ))}
                 </div>
             </div>
