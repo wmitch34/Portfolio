@@ -3,7 +3,7 @@ import io from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Chatbox from './components/ChatBox';
-import { submitBoard, getRollDelay } from './api';
+import { submitBoard } from './api';
 import './App.css'
 
 const socket = io.connect("http://localhost:3001");
@@ -38,26 +38,25 @@ export default function App(){
     const[user, setUser] = useState("");
     const[rollHist, setRollHist] = useState([]);
     const[board, setBoard] = useState(initCard());
-    const[gameOver, setGameOver] = useState(false);
+    const[gameOver, setGameOver] = useState();
     const[timer, setTimer] = useState(0);
-    const [roll, setRoll] = useState()
-    //assume a 15 second delay
-    const[rollDelay, setRollDelay] = useState(15);
-    const[gameOverTimer, setGameOverTimer] = useState(30)
+    const[roll, setRoll] = useState(0)
 
+    const[rollDelay, setRollDelay] = useState()
 
+    // API call to check users board
     const checkBoard = () => {
         console.log(submitBoard(board, user));
     };
-
+    // handler for setting user
     const handleSetUser = (val) => {
         setUser(val);
     };
-
+    // handler for adding the curr roll to history
     const handleSetHistory = (val) => {
         setRollHist(prevArray => [...prevArray, val])
     };
-
+    // handler for reset board btn
     const handleResetBoard = () => {
         const elements = document.querySelectorAll('*');
         elements.forEach((element) => {
@@ -66,7 +65,7 @@ export default function App(){
         let newBoard = initCard();
         setBoard(newBoard);
     };
-
+    // handler for tile click event
     const handleTileClick = (event) => {
         let classList = event.target.classList
         if(classList.contains('highlight-obj')){
@@ -75,68 +74,67 @@ export default function App(){
             classList.add('highlight-obj');
         }       
     };
-
-    const handleSetRollDelay = (val) => {
-        setRollDelay(val)
-    };
-
-    const runGameOverTimer = () => {
-        if(gameOverTimer == 0){
-            setGameOverTimer(30)
-            return
-        }
-        setInterval(()=>{
-            setGameOverTimer(prev => prev - 1);
-            runGameOverTimer()
-        }, 1000)
-
-    }
-
-    const handleGameOver =(data)=>{
+    // handler for server saying the game is over
+    const handleGameOver = (data)=>{
         console.log("Game Over!: ", data);
+        setGameOver(true);
         setRollHist([]);
         handleResetBoard();
-        setGameOver(true);
-
-        runGameOverTimer()
-    } 
+    }
 
     useEffect(() =>{
+        // on rolled number
         socket.on('rolled_number', (data)=>{
-            setGameOver(false)
-            setRoll(data)
-            handleSetHistory(data)
+            Promise.resolve(data).then((reslovedData) =>{
+                setGameOver(false);
+                setRoll(reslovedData);
+                handleSetHistory(reslovedData);
+            })
         });
 
+        // on game over
         socket.on('game_over', (data)=>{
-            handleGameOver(data);
+            Promise.resolve(data).then((reslovedData) =>{
+                handleGameOver(reslovedData);
+            })
         })
 
-        socket.on('send_roll_hist', (data)=>{
-            const trimmed_hist = data.slice(1);
-            setRoll(trimmed_hist[trimmed_hist.length -1])
-            setRollHist(trimmed_hist);
-        })
-
+        // on timer change
         socket.on('send_curr_time', (data)=>{
-            setTimer(data)
+            Promise.resolve(data).then((reslovedData) =>{
+                setTimer(reslovedData);
+            })
+        })
+
+        // on start
+        socket.on('send_game_state', (data)=>{
+            Promise.resolve(data).then((reslovedData) =>{
+                setTimer(reslovedData.second)
+                setRollDelay(reslovedData.delay / 1000)
+                
+                const trimmed_hist = reslovedData.rolledList.slice(1);
+                // setRoll here to avoid waiting 1s for the poll
+                setRoll(trimmed_hist[trimmed_hist.length - 1])
+                setRollHist(trimmed_hist);
+            })
+            
         })
 
         return () => {
             socket.off('rolled_number');
             socket.off('game_over');
             socket.off('send_curr_time');
+            socket.off('send_game_state');
         };
         
     }, [socket]);
 
     useEffect(()=>{
-        socket.emit('req_current_time');
-        socket.emit('req_roll_hist');
-        getRollDelay().then( delay => {
-            handleSetRollDelay(delay / 1000)
-        })
-    
+        socket.emit('req_game_state');
+        
+        return () =>{
+            socket.off('req_game_state')
+        }
     }, []);
 
     return (
@@ -170,18 +168,17 @@ export default function App(){
                     </div>
                 </div>
                 <div className='col-3 align-items-center justify-content-center'>
-                    <h1>Info Goes here</h1>
+                    <h1>Latest Roll</h1>
                     {!gameOver && 
-                    
-                    (<><div>Next roll in 00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
-                    <div className='current-roll-container w-100'>
-                        <div className='current-roll '>{roll}</div>
-                    </div></>)
-                    }
-                    {gameOver &&
-                        <div>Next Game in 00:{(gameOverTimer) < 10 ?"0"+(gameOverTimer): gameOverTimer }</div>
+                        (<>
+                            <div>Next roll in 00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
 
+                            <div className='current-roll-container w-100'>
+                                <div className='current-roll '>{roll}</div>
+                            </div>
+                        </>)
                     }
+                    {gameOver && <div>Next Game starting soon!</div>}
                 </div>
             </div>
             <div className="row">

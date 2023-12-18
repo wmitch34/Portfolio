@@ -74,6 +74,10 @@ io.on('connection', (socket) => {
         socket.emit('send_curr_time', Game.gameState.second)
     });
 
+    socket.on('req_game_state', ()=>{
+        socket.emit('send_game_state', Game.gameState);
+    })
+
 })
 
 setTimeout(()=> Game.game(io), 5000);

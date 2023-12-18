@@ -10,13 +10,19 @@ function setChoiceList(){
 
 // Set initial Gamestate
 let gameState = {
-    delay: 1000,
-
+    // How often a value rolls
+    delay: 15000,
+    // values that have been rolled
     rolledList: ['Free'],
+    //State of the curr game
     gameOver: false,
+    // List off curr winners
     winners: [],
+    // list of remaining picks
     choiceList: setChoiceList(),
+    // length of game over timer
     gameOverTimer: 30000,
+    // curr time in loop btwn sending next val
     second: 0,
 
     setGameOver(winner){
