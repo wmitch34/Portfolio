@@ -3,6 +3,7 @@ import io from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Chatbox from './components/ChatBox';
+import Tile from './components/Tile'
 import { submitBoard } from './api';
 import './App.css'
 
@@ -43,6 +44,7 @@ export default function App(){
     const[gameOver, setGameOver] = useState();
     const[timer, setTimer] = useState(0);
     const[roll, setRoll] = useState(0);
+    const[hint, setHint] = useState();
 
     const[rollDelay, setRollDelay] = useState();
 
@@ -95,12 +97,14 @@ export default function App(){
             if(tile.value == data){
                 let tileDOM = document.getElementById(`tile-${tile.value}`)
                 if(!tileDOM.classList.contains('highlight-obj')){
+                    setHint(tile.value);
                     document.getElementById(`hist-${data}`).style.backgroundColor = "white";
-                    tileDOM.classList.add('hint-pulse')
+                    // tileDOM.classList.add('hint-pulse')
     
                     setTimeout(()=>{
-                        tileDOM.classList.remove('hint-pulse')
-                    }, 2000)
+                        // tileDOM.classList.remove('hint-pulse');
+                        setHint()
+                    }, 1000)
                 }
             }
         })
@@ -178,14 +182,10 @@ export default function App(){
                             {board.map((row, index) => (
                                 <div key = {index} className= 'board-row'>
                                     {row.map((tile) => (
-                                        <div
-                                            key = {tile.id}
-                                            className= {tile.class_List}
-                                            onClick={handleTileClick}
-                                            id = {'tile-'+tile.value}                                            
-                                            >
+                                        <div key ={tile.id} className={(hint == tile.value)? `${tile.class_List} hint-pulse`: tile.class_List} onClick={handleTileClick} id = {'tile-'+tile.value}>
                                             {tile.value}
                                         </div>
+                                        // <Tile key = {tile.id} className = {tile.class_List} hint = {hint == tile.value} onClick={handleTileClick} id = {'tile-'+tile.value}>{tile.value}</Tile>
                                     ))}
                                 </div>
                             ))}
