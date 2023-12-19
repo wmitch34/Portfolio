@@ -3,13 +3,10 @@ import io from 'socket.io-client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Chatbox from './components/ChatBox';
-import Tile from './components/Tile'
 import { submitBoard } from './api';
 import './App.css'
 
 const socket = io.connect("http://localhost:3001");
-
-const FLASHINTERVAL = 5;
 
 function initCard(){
     // track used to avoid repeats
@@ -33,7 +30,7 @@ function initCard(){
         }            
     }
     // Manually override contents of Free space
-    tempCard[2][2] = {value: 'Free', class_List: 'bingo highlight-obj', id: 12};
+    tempCard[2][2] = {value: 'Free', class_List: 'Free bingo highlight-obj', id: 12};
     return tempCard;
 }
 
@@ -72,10 +69,14 @@ export default function App(){
     // handler for tile click event
     const handleTileClick = (event) => {
         let classList = event.target.classList
+        let histTile = document.getElementById(`hist-${event.target.innerHTML}`)
+
         if(classList.contains('highlight-obj')){
             classList.remove('highlight-obj');
+            histTile.style.backgroundColor = 'grey';
         }else{
             classList.add('highlight-obj');
+            histTile.style.backgroundColor = 'white'
         }       
     };
     // handler for server saying the game is over
@@ -169,7 +170,7 @@ export default function App(){
         <div className='container'>
             <div className = 'row'>
                 <div className="col text-center">
-                    <h1 className = 'header'>Bingo</h1>
+                    <h1 className = 'title'>Bingo</h1>
                 </div>
             </div>
             <div className='row'>
@@ -180,12 +181,11 @@ export default function App(){
                     <div className='container'>
                         <div className= 'board'>
                             {board.map((row, index) => (
-                                <div key = {index} className= 'board-row'>
+                                <div key = {index} className= 'board-row  w-100'>
                                     {row.map((tile) => (
                                         <div key ={tile.id} className={(hint == tile.value)? `${tile.class_List} hint-pulse`: tile.class_List} onClick={handleTileClick} id = {'tile-'+tile.value}>
                                             {tile.value}
                                         </div>
-                                        // <Tile key = {tile.id} className = {tile.class_List} hint = {hint == tile.value} onClick={handleTileClick} id = {'tile-'+tile.value}>{tile.value}</Tile>
                                     ))}
                                 </div>
                             ))}
@@ -196,17 +196,19 @@ export default function App(){
                     </div>
                 </div>
                 <div className='col-3 align-items-center justify-content-center'>
-                    <h1>Latest Roll</h1>
+                    <h1 className='header'>Game Info</h1>
                     {!gameOver && 
                         (<>
-                            <div>Next roll in 00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
+                            <div className='timerContainer'>
+                                <div className='timer'>00:{(rollDelay - (timer%rollDelay)) < 10 ?"0"+(rollDelay - (timer%rollDelay)): (rollDelay - (timer%rollDelay)) }</div>
+                            </div>
 
                             <div className='current-roll-container w-100'>
                                 <div className='current-roll '>{roll}</div>
                             </div>
                         </>)
                     }
-                    {gameOver && <div>Next Game starting soon!</div>}
+                    {gameOver && <div className='' >Next Game starting soon!</div>}
                 </div>
             </div>
             <div className="row">

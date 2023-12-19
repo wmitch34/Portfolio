@@ -111,3 +111,23 @@
 .hint-pulse {
     animation: hintPulse 1s ease-in-out;
 }
+
+.header{
+    /* color: white; */
+    text-align: center;
+    justify-self: center;
+}
+
+.title{
+    color: white;
+    text-align: center;
+    justify-self: center;
+    font-size: 4rem;
+}
+
+.timer{
+    /* color: white; */
+    text-align: center;
+    justify-self: center;
+    font-size: 3rem;
+}

@@ -121,6 +121,7 @@ function game(io){
 
             if(gameState.second % (gameState.delay/1000) === 0){
                 // Get a random roll from the choiceList, then remove it from the choiceList
+                // then add it to the rolled list
                 let randomIndex = Math.floor(Math.random() * gameState.choiceList.length);
                 let roll = gameState.choiceList[randomIndex];
                 gameState.choiceList.splice(randomIndex, 1);
