@@ -1,0 +1,20 @@
+.snake-row{
+    display:flex;
+    width: 100%;
+
+}
+
+.custom-cell{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: grey;
+    aspect-ratio: 1 / 1;
+    border: 1px solid white;
+    
+}
+
+.active-cell{
+    background-color: #121212;
+}
