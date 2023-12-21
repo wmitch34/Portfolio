@@ -33,7 +33,7 @@ export default function Snake(){
     }
 
     const SIZE = 13;
-    // const[board, setBoard] = useState([[]])
+    const[board, setBoard] = useState([[]])
     const[currPosition, setCurrPosition]= useState({i:((SIZE - 1)/2), j:((SIZE - 1)/2)})
 
 
@@ -75,7 +75,7 @@ export default function Snake(){
 
     useEffect(()=>{
         
-        // setBoard(initBoard(((SIZE - 1)/2), ((SIZE - 1)/2)))        
+        setBoard(initBoard(((SIZE - 1)/2), ((SIZE - 1)/2)))        
         
         console.log('rerendering')
         setTimeout(()=>{
@@ -88,7 +88,7 @@ export default function Snake(){
     return (
         <>
                 <div className='custom-cell' style={{ left: currPosition.x * 2, top: '-3rem' }}></div>
-                {/*<div className = 'row'>
+                <div className = 'row'>
                     <div className="col text-center">
                         <h1 className = 'title'>Snake</h1>
                     </div>
@@ -116,7 +116,7 @@ export default function Snake(){
                     <div className="col-3 align-items-center justify-content-center">
                         <h1 className = 'title'>right</h1>
                     </div>
-                </div>*/}
+                </div>
         </>
     )
 
