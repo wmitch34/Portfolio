@@ -14,13 +14,25 @@ export default function Snake(props){
           case 'ArrowUp':
             newPosition.y -= moveStep;
             break;
+            case 'w':
+            newPosition.y -= moveStep;
+            break;
           case 'ArrowDown':
+            newPosition.y += moveStep;
+            break;
+            case 's':
             newPosition.y += moveStep;
             break;
           case 'ArrowLeft':
             newPosition.x -= moveStep;
             break;
+            case 'a':
+                newPosition.x -= moveStep;
+                break;
           case 'ArrowRight':
+            newPosition.x += moveStep;
+            break;
+            case 'd':
             newPosition.x += moveStep;
             break;
           default:
