@@ -1,20 +1,29 @@
 import { useState, useEffect } from "react";
 import BOI from "../assets/BOI.jpg";
 import BOIFRONT from "../assets/BOIFRONT.jpg";
+import APPLE from "../assets/apple.png";
 
 function TargetBlock(props) {
   const { x, y, points, size } = props;
   return (
     <div
       style={{
+        textAlign: "center",
         position: "absolute",
         top: `${y}px`,
         left: `${x}px`,
         width: `${size}px`,
         height: `${size}px`,
-        backgroundColor: "Grey",
+        color: "white",
       }}
     >
+      <img
+        src={APPLE}
+        style={{
+          width: `${size + 20}px`,
+          height: `${size - 20}px`,
+        }}
+      ></img>
       {points}
     </div>
   );
@@ -49,7 +58,7 @@ export default function Snake(props) {
     y: window_height / 2,
   });
   const [score, setScore] = useState(0);
-  const [points, setPointes] = useState(10 * getRandomNumber(0, 10));
+  const [points, setPointes] = useState(1);
   const [foodCoords, setFoodCoords] = useState(
     getSafeCoords(window_width, window_height)
   );
@@ -64,7 +73,7 @@ export default function Snake(props) {
     ) {
       setScore((prev) => prev + points);
       setFoodCoords(getSafeCoords(window_width, window_height));
-      setPointes(10 * getRandomNumber(0, 10));
+      setPointes(1);
     }
 
     return;
@@ -91,6 +100,7 @@ export default function Snake(props) {
         case "w":
           if (!(newPosition.y - moveStep < 0)) {
             newPosition.y -= moveStep;
+            setSprite(BOI);
           }
           break;
         case "ArrowDown":
@@ -149,7 +159,7 @@ export default function Snake(props) {
         x={foodCoords.x}
         y={foodCoords.y}
         points={points}
-        size={SIZE}
+        size={200}
       />
       <div
         style={{
