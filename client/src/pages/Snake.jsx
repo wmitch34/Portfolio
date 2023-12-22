@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import BOI from "../assets/BOI.jpg";
+import BOIFRONT from "../assets/BOIFRONT.jpg";
 
 function TargetBlock(props) {
   const { x, y, points, size } = props;
@@ -25,7 +26,7 @@ function getRandomNumber(min, max) {
 }
 
 export default function Snake(props) {
-  const SIZE = 100;
+  const SIZE = 200;
   const window_height = window.innerHeight;
   const window_width = window.innerWidth;
 
@@ -52,6 +53,7 @@ export default function Snake(props) {
   const [foodCoords, setFoodCoords] = useState(
     getSafeCoords(window_width, window_height)
   );
+  const [sprite, setSprite] = useState(BOIFRONT);
 
   const handleConsumeCheck = () => {
     console.log(position);
@@ -83,6 +85,7 @@ export default function Snake(props) {
         case "ArrowUp":
           if (!(newPosition.y - moveStep < 0)) {
             newPosition.y -= moveStep;
+            setSprite(BOI);
           }
           break;
         case "w":
@@ -93,31 +96,37 @@ export default function Snake(props) {
         case "ArrowDown":
           if (!(newPosition.y + moveStep + SIZE > window_height)) {
             newPosition.y += moveStep;
+            setSprite(BOIFRONT);
           }
           break;
         case "s":
           if (!(newPosition.y + moveStep + SIZE > window_height)) {
             newPosition.y += moveStep;
+            setSprite(BOIFRONT);
           }
           break;
         case "ArrowLeft":
           if (!(newPosition.x - moveStep < 0)) {
             newPosition.x -= moveStep;
+            setSprite(BOIFRONT);
           }
           break;
         case "a":
           if (!(newPosition.x - moveStep < 0)) {
             newPosition.x -= moveStep;
+            setSprite(BOIFRONT);
           }
           break;
         case "ArrowRight":
           if (!(newPosition.x + moveStep + SIZE > window_width)) {
             newPosition.x += moveStep;
+            setSprite(BOIFRONT);
             break;
           }
         case "d":
           if (!(newPosition.x + moveStep + SIZE > window_width)) {
             newPosition.x += moveStep;
+            setSprite(BOIFRONT);
             break;
           }
         default:
@@ -154,7 +163,7 @@ export default function Snake(props) {
         }}
       >
         <img
-          src={BOI}
+          src={sprite}
           style={{
             width: `${SIZE}px`,
             height: `${SIZE}px`,
