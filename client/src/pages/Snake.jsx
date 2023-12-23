@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import BOI from "../assets/BOI.jpg";
 import BOIFRONT from "../assets/BOIFRONT.jpg";
-import APPLE from "../assets/apple.png";
+import APPLE from "../assets/apple2.png";
 
 function TargetBlock(props) {
   const { x, y, points, size } = props;
