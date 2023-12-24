@@ -1,7 +1,11 @@
 import { useState, useEffect } from "react";
-import BOI from "../assets/BOI.jpg";
-import BOIFRONT from "../assets/BOIFRONT.jpg";
+import BOI from "../assets/BOIBACK.png";
+import BOIFRONT from "../assets/BOIFRONT.png";
 import APPLE from "../assets/apple2.png";
+import carpet from "../assets/carpet.png";
+import left1 from "../assets/left1.png";
+import right1 from "../assets/right1.png";
+import RUFUS from "../assets/rufus.png";
 
 function TargetBlock(props) {
   const { x, y, points, size } = props;
@@ -30,7 +34,6 @@ function TargetBlock(props) {
 }
 
 function getRandomNumber(min, max) {
-  // Calculate a random number between min (inclusive) and max (exclusive)
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -38,6 +41,8 @@ export default function Snake(props) {
   const SIZE = 200;
   const window_height = window.innerHeight;
   const window_width = window.innerWidth;
+  // const [window_height, setHeight] = useState();
+  // const [window_width, setWidth] = useState();
 
   const getSafeCoords = (window_width, window_height) => {
     let x = getRandomNumber(0, window_width);
@@ -79,13 +84,19 @@ export default function Snake(props) {
     return;
   };
 
+  // useEffect(() => {
+  //   setWidth(window.innerWidth);
+  //   setHeight(window.innerHeight);
+  // }, []);
+
   useEffect(() => {
     const handleKeyDown = (event) => {
       const moveStep = 25; // Define how many pixels the element moves with each key press
 
-      if (event.key == "e") {
+      if (event.key == "e" || event.key == "Enter") {
         console.log("Checking");
         handleConsumeCheck();
+        setSprite(BOIFRONT);
       }
 
       // Calculate new position based on current position
@@ -118,25 +129,25 @@ export default function Snake(props) {
         case "ArrowLeft":
           if (!(newPosition.x - moveStep < 0)) {
             newPosition.x -= moveStep;
-            setSprite(BOIFRONT);
+            setSprite(left1);
           }
           break;
         case "a":
           if (!(newPosition.x - moveStep < 0)) {
             newPosition.x -= moveStep;
-            setSprite(BOIFRONT);
+            setSprite(left1);
           }
           break;
         case "ArrowRight":
           if (!(newPosition.x + moveStep + SIZE > window_width)) {
             newPosition.x += moveStep;
-            setSprite(BOIFRONT);
+            setSprite(right1);
             break;
           }
         case "d":
           if (!(newPosition.x + moveStep + SIZE > window_width)) {
             newPosition.x += moveStep;
-            setSprite(BOIFRONT);
+            setSprite(right1);
             break;
           }
         default:
@@ -153,8 +164,50 @@ export default function Snake(props) {
     };
   }, [position]); // Listening to position could lead to infinite updates, better to listen only when mounting
 
+  const getRandomRotation = () => {
+    let arr = [0, 90, 180, 270];
+    let rand = getRandomNumber(0, 4);
+    return arr[rand];
+  };
+
+  let cols = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let rows = [0, 1, 2, 3, 4, 5];
+
   return (
     <>
+      <div
+        id="backdrop"
+        className="container-fluid w-100"
+        style={{ margin: "0", padding: "0px" }}
+      >
+        {rows.map((row, idx) => (
+          <div
+            key={idx}
+            className="row g-0 w-100"
+            style={{ margin: "0", padding: "0px" }}
+          >
+            {cols.map((num, index) => (
+              <div
+                key={index}
+                className={`col-${1}`}
+                style={{ width: `${window_width / 12}px` }}
+              >
+                <img
+                  src={idx == 0 && index == 0 ? RUFUS : carpet}
+                  style={{
+                    transform: `rotate(${
+                      idx == 0 && index == 0 ? 0 : getRandomRotation()
+                    }deg)`,
+                    width: `${window_width / 12}px`,
+                    height: `${window_width / 12}px`,
+                  }}
+                  alt="carpet-tile"
+                ></img>
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
       <TargetBlock
         x={foodCoords.x}
         y={foodCoords.y}
