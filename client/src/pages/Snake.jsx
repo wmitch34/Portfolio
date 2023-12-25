@@ -13,6 +13,7 @@ function GameObject(props) {
         position: "absolute",
         top: `${gameObject.top}px`,
         left: `${gameObject.left}px`,
+        // backgroundColor: "white",
       }}
     >
       <img
@@ -76,7 +77,7 @@ export default function Snake(props) {
         Math.abs(position.y - gameObject.top) < player.height
       ) {
         switch (gameObject.interaction) {
-          case "collect":
+          case "collect and move":
             let safeCoords = getSafeCoords(
               windowSize.width,
               windowSize.height,
@@ -85,8 +86,17 @@ export default function Snake(props) {
             gameObject.top = safeCoords.y;
             gameObject.left = safeCoords.x;
             break;
+          case "collect":
+            console.log("collecting");
+
+            setGameObjects(
+              gameObjects.filter((obj) => obj.id !== gameObject.id)
+            );
+
+            console.log(gameObject);
+
+            break;
           case "none":
-            alert("Nothing Interesting Happens");
             break;
           default:
             break;
@@ -218,6 +228,7 @@ export default function Snake(props) {
           position: "absolute",
           top: `${position.y}px`,
           left: `${position.x}px`,
+          // backgroundColor: "white",
         }}
       >
         <img

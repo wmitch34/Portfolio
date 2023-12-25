@@ -10,7 +10,8 @@ const apple = {
   image: APPLE,
   top: 0,
   left: 0,
-  interaction: "collect",
+  interaction: "collect and move",
+  id: 123,
 };
 
 const rufus = {
@@ -22,7 +23,8 @@ const rufus = {
   image: RUFUS,
   top: 0,
   left: 0,
-  interaction: "none",
+  interaction: "collect",
+  id: 456,
 };
 
 export { apple, rufus };
