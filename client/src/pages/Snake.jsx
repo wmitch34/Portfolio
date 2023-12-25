@@ -4,6 +4,7 @@ import BOIBACK from "../assets/BOIBACK.png";
 import BOIFRONT from "../assets/BOIFRONT.png";
 import BOILEFT1 from "../assets/left1.png";
 import BOIRIGHT1 from "../assets/right1.png";
+import CARPET from "../assets/carpet.png";
 
 function GameObject(props) {
   const { gameObject } = props;
@@ -158,51 +159,51 @@ export default function Snake(props) {
         case "ArrowUp":
           if (!(newPosition.y - moveStep < 0)) {
             newPosition.y -= moveStep;
-            setSprite(BOIBACK);
           }
+          setSprite(BOIBACK);
           break;
         case "w":
           if (!(newPosition.y - moveStep < 0)) {
             newPosition.y -= moveStep;
-            setSprite(BOIBACK);
           }
+          setSprite(BOIBACK);
           break;
         case "ArrowDown":
           if (!(newPosition.y + moveStep + player.height > windowSize.height)) {
             newPosition.y += moveStep;
-            setSprite(BOIFRONT);
           }
+          setSprite(BOIFRONT);
           break;
         case "s":
           if (!(newPosition.y + moveStep + player.height > windowSize.height)) {
             newPosition.y += moveStep;
-            setSprite(BOIFRONT);
           }
+          setSprite(BOIFRONT);
           break;
         case "ArrowLeft":
           if (!(newPosition.x - moveStep < 0)) {
             newPosition.x -= moveStep;
-            setSprite(BOILEFT1);
           }
+          setSprite(BOILEFT1);
           break;
         case "a":
           if (!(newPosition.x - moveStep < 0)) {
             newPosition.x -= moveStep;
-            setSprite(BOILEFT1);
           }
+          setSprite(BOILEFT1);
           break;
         case "ArrowRight":
           if (!(newPosition.x + moveStep + player.width > windowSize.width)) {
             newPosition.x += moveStep;
-            setSprite(BOIRIGHT1);
-            break;
           }
+          setSprite(BOIRIGHT1);
+          break;
         case "d":
           if (!(newPosition.x + moveStep + player.height > windowSize.width)) {
             newPosition.x += moveStep;
-            setSprite(BOIRIGHT1);
-            break;
           }
+          setSprite(BOIRIGHT1);
+          break;
         default:
           break;
       }
@@ -236,6 +237,21 @@ export default function Snake(props) {
           style={{
             width: `${player.width}px`,
             height: `${player.height}px`,
+          }}
+        ></img>
+      </div>
+      <div
+        id="board"
+        style={{
+          width: `${windowSize.width}px`,
+          height: `${windowSize.height}px`,
+        }}
+      >
+        <img
+          src={CARPET}
+          style={{
+            width: `${windowSize.width}px`,
+            height: `${windowSize.height}px`,
           }}
         ></img>
       </div>
