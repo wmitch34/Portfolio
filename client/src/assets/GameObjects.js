@@ -1,30 +1,31 @@
 import APPLE from "./Apple2.png";
 import RUFUS from "./RUFUS.png";
 
-const apple = {
-  points: 100,
-  size: {
-    x: 200,
-    y: 200,
-  },
-  image: APPLE,
-  top: 0,
-  left: 0,
-  interaction: "collect and move",
-  id: 123,
-};
+class GameObject {
+  genID() {
+    return 0;
+  }
+  constructor() {
+    this.size = {
+      x: 200,
+      y: 200,
+    };
+    this.top = 0;
+    this.left = 0;
+    this.id = this.genID();
+  }
+}
 
-const rufus = {
-  points: 200,
-  size: {
-    x: 200,
-    y: 200,
-  },
-  image: RUFUS,
-  top: 0,
-  left: 0,
-  interaction: "collect",
-  id: 456,
-};
+class Apple extends GameObject {
+  points = 100;
+  image = APPLE;
+  interaction = "collect and move";
+}
 
-export { apple, rufus };
+class Rufus extends GameObject {
+  points = 200;
+  image = RUFUS;
+  interaction = "collect";
+}
+
+export { Apple, Rufus };
