@@ -4,7 +4,7 @@ import BOIBACK from "../assets/BOIBACK.png";
 import BOIFRONT from "../assets/BOIFRONT.png";
 import BOILEFT1 from "../assets/left1.png";
 import BOIRIGHT1 from "../assets/right1.png";
-import CARPET from "../assets/carpet.png";
+import GRASS from "../assets/grassy.png";
 import { getRandomNumber, getRandomRotation } from "../components/tools.js";
 
 // React component for rendering a game object
@@ -243,7 +243,7 @@ export default function Snake(props) {
         }}
       >
         <img
-          src={CARPET}
+          src={GRASS}
           style={{
             width: `${windowSize.width}px`,
             height: `${windowSize.height}px`,
