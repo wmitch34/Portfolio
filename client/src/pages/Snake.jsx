@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
-import { apple, rufus } from "../assets/GameObjects.js";
+import { Apple, Rufus } from "../components/GameObjects.js";
 import BOIBACK from "../assets/BOIBACK.png";
 import BOIFRONT from "../assets/BOIFRONT.png";
 import BOILEFT1 from "../assets/left1.png";
 import BOIRIGHT1 from "../assets/right1.png";
 import CARPET from "../assets/carpet.png";
+import { getRandomNumber, getRandomRotation } from "../components/tools.js";
 
+// React component for rendering a game object
 function GameObject(props) {
   const { gameObject } = props;
   return (
@@ -14,7 +16,6 @@ function GameObject(props) {
         position: "absolute",
         top: `${gameObject.top}px`,
         left: `${gameObject.left}px`,
-        // backgroundColor: "white",
       }}
     >
       <img
@@ -26,16 +27,6 @@ function GameObject(props) {
       ></img>
     </div>
   );
-}
-
-function getRandomNumber(min, max) {
-  return Math.floor(Math.random() * (max - min)) + min;
-}
-
-function getRandomRotation() {
-  let arr = [0, 90, 180, 270];
-  let rand = getRandomNumber(0, 4);
-  return arr[rand];
 }
 
 function getSafeCoords(screen_width, screen_height, objSize) {
@@ -68,7 +59,7 @@ export default function Snake(props) {
   const [sprite, setSprite] = useState(BOIFRONT);
 
   // All active objects on board saved in array
-  const [gameObjects, setGameObjects] = useState([apple]);
+  const [gameObjects, setGameObjects] = useState([new Apple(0)]);
 
   // handler for all q based interaction types
   const handleinteract = () => {
@@ -77,6 +68,7 @@ export default function Snake(props) {
         Math.abs(position.x - gameObject.left) < player.width &&
         Math.abs(position.y - gameObject.top) < player.height
       ) {
+        console.log(gameObject.id);
         switch (gameObject.interaction) {
           case "collect and move":
             let safeCoords = getSafeCoords(
@@ -91,7 +83,7 @@ export default function Snake(props) {
             console.log("collecting");
 
             setGameObjects(
-              gameObjects.filter((obj) => obj.id !== gameObject.id)
+              gameObjects.filter((obj) => obj.id != gameObject.id)
             );
 
             console.log(gameObject);
@@ -110,6 +102,8 @@ export default function Snake(props) {
   };
 
   const handleAction = () => {
+    let rufus = new Rufus(gameObjects.length + 1);
+
     rufus.top = position.y;
     rufus.left = position.x;
 
@@ -137,6 +131,7 @@ export default function Snake(props) {
   // controls
   useEffect(() => {
     const handleKeyDown = (event) => {
+      console.log(event.key);
       // Define how many pixels the playerchar moves with each key press
       const moveStep = 25;
       // Calculate new position based on current position
@@ -224,12 +219,12 @@ export default function Snake(props) {
         <GameObject key={index} gameObject={gameObject} />
       ))}
       <div
+        id="player"
         style={{
           textAlign: "center",
           position: "absolute",
           top: `${position.y}px`,
           left: `${position.x}px`,
-          // backgroundColor: "white",
         }}
       >
         <img

@@ -1,18 +1,15 @@
-import APPLE from "./Apple2.png";
-import RUFUS from "./RUFUS.png";
+import APPLE from "../assets/Apple2.png";
+import RUFUS from "../assets/RUFUS.png";
 
 class GameObject {
-  genID() {
-    return 0;
-  }
-  constructor() {
+  constructor(number) {
     this.size = {
       x: 200,
       y: 200,
     };
     this.top = 0;
     this.left = 0;
-    this.id = this.genID();
+    this.id = number;
   }
 }
 
