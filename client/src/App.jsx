@@ -7,23 +7,22 @@ export default function App() {
   const [bingo, setBingo] = useState(false);
   const [snake, setSnake] = useState(false);
   const [menu, setMenu] = useState(true);
+  const [navOpen, setNavOpen] = useState(false);
 
   let btns = [
     {
       text: "Multiplayer Bingo",
-      on_click: (val) => {
-        setBingo(val);
-        console.log("Bingo: ", bingo);
+      on_click: () => {
+        setBingo(true);
+        setSnake(false);
       },
-      id: 0,
     },
     {
       text: "Apple Picker",
-      on_click: (val) => {
-        setSnake(val);
-        console.log("Snake: ", snake);
+      on_click: () => {
+        setBingo(false);
+        setSnake(true);
       },
-      id: 1,
     },
   ];
   return (
