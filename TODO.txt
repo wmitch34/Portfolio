@@ -1,0 +1,8 @@
+BINGO
+- fix "Reading properties of null" on tile clicks after initial game
+- broadcaast "GAME OVER" state from server to handle users joining into a session while a game is not running.
+APPLE PICKER
+- add inventory bar to right hand side
+- add tree assets
+- add seed obj created from apples
+- add walking colisions
