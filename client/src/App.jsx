@@ -6,8 +6,6 @@ import FixedNavbar from "./components/Navbar";
 export default function App() {
   const [bingo, setBingo] = useState(false);
   const [snake, setSnake] = useState(false);
-  const [menu, setMenu] = useState(true);
-  const [navOpen, setNavOpen] = useState(false);
 
   let btns = [
     {
@@ -24,12 +22,28 @@ export default function App() {
         setSnake(true);
       },
     },
+    {
+      text: "Home",
+      on_click: () => {
+        setBingo(false);
+        setSnake(false);
+      },
+    },
   ];
   return (
     <>
       <FixedNavbar btnArray={btns} />
       {bingo ? <Bingo /> : <div></div>}
       {snake ? <Snake /> : <div></div>}
+      {!bingo && !snake && (
+        <>
+          <br />
+          <br />
+          <br />
+          <br />
+          <h1 style={{ textAlign: "center" }}>TEMP LANDING PAGE</h1>
+        </>
+      )}
     </>
   );
 }

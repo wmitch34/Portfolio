@@ -34,7 +34,7 @@ export default function FixedNavbar(props) {
         id="responsive-navbar-nav"
         in={navOpen}
         style={{
-          textAlign: "center",
+          // textAlign: "center",
           backgroundColor: "#121212",
           padding: 5,
           borderRadius: 20,
