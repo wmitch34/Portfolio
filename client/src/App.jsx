@@ -2,6 +2,7 @@ import { useState } from "react";
 import Bingo from "./pages/Bingo";
 import Snake from "./pages/Snake";
 import FixedNavbar from "./components/Navbar";
+import PIZZA from "../src/assets/pizza.jpg";
 
 export default function App() {
   const [bingo, setBingo] = useState(false);
@@ -41,7 +42,10 @@ export default function App() {
           <br />
           <br />
           <br />
-          <h1 style={{ textAlign: "center" }}>TEMP LANDING PAGE</h1>
+          <div style={{ textAlign: "center" }}>
+            <h1>Pizza Time</h1>
+            <img src={PIZZA}></img>
+          </div>
         </>
       )}
     </>

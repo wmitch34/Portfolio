@@ -6,6 +6,8 @@ import Chatbox from "../components/ChatBox";
 import { submitBoard } from "../api";
 import "../App.css";
 
+import Modal from "../components/modal";
+
 const socket = io.connect("http://localhost:3001");
 
 function initCard() {
@@ -51,12 +53,21 @@ export default function Bingo() {
   const [timer, setTimer] = useState(0);
   const [roll, setRoll] = useState(0);
   const [hint, setHint] = useState();
+  const [submitModal, setSubmitModal] = useState(false);
+  const [gameOverModal, setGameOverModal] = useState(false);
+  const [winner, setWinner] = useState("");
 
   const [rollDelay, setRollDelay] = useState();
 
   // API call to check users board
-  const checkBoard = () => {
-    console.log(submitBoard(board, user));
+  const checkBoard = async () => {
+    try {
+      let temp = await submitBoard(board, user);
+      console.log(temp);
+      setSubmitModal(!temp);
+    } catch (e) {
+      console.error(e);
+    }
   };
   // handler for setting user
   const handleSetUser = (data) => {
@@ -65,6 +76,12 @@ export default function Bingo() {
   // handler for adding the curr roll to history
   const handleSetHistory = (data) => {
     setRollHist((prevArray) => [...prevArray, data]);
+  };
+  const handleCloseGameOverModal = () => {
+    setGameOverModal(false);
+  };
+  const handleCloseSubmissionHandler = () => {
+    setSubmitModal(false);
   };
   // handler for reset board btn
   const handleResetBoard = () => {
@@ -91,6 +108,8 @@ export default function Bingo() {
   // handler for server saying the game is over
   const handleGameOver = (data) => {
     console.log("Game Over!: ", data);
+    setWinner(data);
+    setGameOverModal(true);
     setGameOver(true);
     setRollHist([]);
     handleResetBoard();
@@ -175,85 +194,103 @@ export default function Bingo() {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col text-center">
-          <h1 className="title">Bingo</h1>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col-3 align-items-center justify-content-center">
-          <Chatbox user={user} setUser={handleSetUser} socket={socket} />
-        </div>
-        <div className="col-6 align-items-center justify-content-center">
-          <div className="container">
-            <div className="board">
-              {board.map((row, index) => (
-                <div key={index} className="board-row w-100">
-                  {row.map((tile) => (
-                    <div
-                      key={tile.id}
-                      className={
-                        hint == tile.value
-                          ? `${tile.class_List} hint-pulse`
-                          : tile.class_List
-                      }
-                      onClick={handleTileClick}
-                      id={"tile-" + tile.value}
-                    >
-                      {tile.value}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
-            <div className="container">
-              <button onClick={checkBoard} className="btn btn-primary">
-                Submit Board
-              </button>
-            </div>
+    <>
+      <div className="container">
+        <div className="row">
+          <div className="col text-center">
+            <h1 className="title">Bingo</h1>
           </div>
         </div>
-        <div className="col-3 align-items-center justify-content-center">
-          <h1 className="header">Game Info</h1>
-          {!gameOver && (
-            <>
-              <div className="timerContainer">
-                <div className="timer">
-                  00:
-                  {rollDelay - (timer % rollDelay) < 10
-                    ? "0" + (rollDelay - (timer % rollDelay))
-                    : rollDelay - (timer % rollDelay)}
-                </div>
+        <div className="row">
+          <div className="col-3 align-items-center justify-content-center">
+            <Chatbox user={user} setUser={handleSetUser} socket={socket} />
+          </div>
+          <div className="col-6 align-items-center justify-content-center">
+            <div className="container">
+              <div className="board">
+                {board.map((row, index) => (
+                  <div key={index} className="board-row w-100">
+                    {row.map((tile) => (
+                      <div
+                        key={tile.id}
+                        className={
+                          hint == tile.value
+                            ? `${tile.class_List} hint-pulse`
+                            : tile.class_List
+                        }
+                        onClick={handleTileClick}
+                        id={"tile-" + tile.value}
+                      >
+                        {tile.value}
+                      </div>
+                    ))}
+                  </div>
+                ))}
               </div>
-
-              <div className="current-roll-container w-100">
-                <div className="current-roll ">{roll}</div>
+              <div className="container">
+                <button
+                  onClick={checkBoard}
+                  className="btn btn-primary"
+                  disabled={gameOver}
+                >
+                  Submit Board
+                </button>
               </div>
-            </>
-          )}
-          {gameOver && <div className="">Next Game starting soon!</div>}
-        </div>
-      </div>
-      <div className="row">
-        <div className="col text-center">
-          <h1 className="header">Roll History</h1>
-        </div>
-      </div>
-      <div className="row">
-        <div className="col text-center roll-hist-container ">
-          {rollHist.map((roll, index) => (
-            <div
-              key={index}
-              className="roll-hist-bingo"
-              id={"hist-" + roll}
-              onClick={() => handleHistClick(roll)}
-            >
-              {roll}
             </div>
-          ))}
+          </div>
+          <div className="col-3 align-items-center justify-content-center">
+            <h1 className="header">Game Info</h1>
+            {!gameOver && (
+              <>
+                <div className="timerContainer">
+                  <div className="timer">
+                    00:
+                    {rollDelay - (timer % rollDelay) < 10
+                      ? "0" + (rollDelay - (timer % rollDelay))
+                      : rollDelay - (timer % rollDelay)}
+                  </div>
+                </div>
+
+                <div className="current-roll-container w-100">
+                  <div className="current-roll ">{roll}</div>
+                </div>
+              </>
+            )}
+            {gameOver && <div className="">Next Game starting soon!</div>}
+          </div>
+        </div>
+        <div className="row">
+          <div className="col text-center">
+            <h1 className="header">Roll History</h1>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col text-center roll-hist-container ">
+            {rollHist.map((roll, index) => (
+              <div
+                key={index}
+                className="roll-hist-bingo"
+                id={"hist-" + roll}
+                onClick={() => handleHistClick(roll)}
+              >
+                {roll}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+      <Modal
+        message={`${winner}`}
+        state={gameOverModal}
+        stateHandler={handleCloseGameOverModal}
+        title={"GAME OVER! WINNER: "}
+      ></Modal>
+      <Modal
+        message={`The board you submitted is not a winning configuration.`}
+        state={submitModal}
+        stateHandler={handleCloseSubmissionHandler}
+        title={"INVALID SUBMISSION"}
+      ></Modal>
+    </>
   );
 }
