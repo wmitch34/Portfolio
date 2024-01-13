@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Bingo from "./pages/Bingo";
 import Snake from "./pages/Snake";
+import TypeRacer from "./pages/TypeRacer";
 import FixedNavbar from "./components/Navbar";
 import PIZZA from "../src/assets/pizza.jpg";
 
@@ -48,7 +49,8 @@ export default function App() {
       <FixedNavbar btnArray={btns} />
       {bingo ? <Bingo /> : <div></div>}
       {snake ? <Snake /> : <div></div>}
-      {!bingo && !snake && (
+      {typeRacer ? <TypeRacer /> : <div></div>}
+      {!bingo && !snake && !typeRacer && (
         <>
           <br />
           <br />
