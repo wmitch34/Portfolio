@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link, Outlet } from "react-router-dom";
+import { Routes, Route, Link, Outlet, BrowserRouter } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -18,7 +18,7 @@ function FixedNavbar() {
   let links = [
     {
       text: "Home",
-      link: "/Home",
+      link: "/",
     },
     {
       text: "Multiplayer Bingo",
@@ -88,14 +88,15 @@ function FixedNavbar() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<FixedNavbar />}>
-        <Route index path="/Home" element={<Home />} />
-        <Route path="/Bingo" element={<Bingo />} />
-        <Route path="/ApplePicker" element={<Snake />} />
-        <Route path="/TypeRacer" element={<TypeRacer />} />
+    <>
+      <FixedNavbar />
+      <Routes>
+        <Route index path="/" element={<Home />} />
+        <Route path="Bingo" element={<Bingo />} />
+        <Route path="ApplePicker" element={<Snake />} />
+        <Route path="TypeRacer" element={<TypeRacer />} />
         <Route path="*" element={<NoMatch />} />
-      </Route>
-    </Routes>
+      </Routes>
+    </>
   );
 }
