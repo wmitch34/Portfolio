@@ -6,3 +6,9 @@ APPLE PICKER
 - add tree assets
 - add seed obj created from apples
 - add walking colisions
+Type Racer
+- style type Racer to be playable
+
+APP
+- deploy to digital ocean and test live version
+- look into github commit api

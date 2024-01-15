@@ -60,11 +60,9 @@ export default function Bingo() {
   const [rollDelay, setRollDelay] = useState();
 
   // API call to check users board
-  const checkBoard = async () => {
+  const checkBoard = () => {
     try {
-      let temp = await submitBoard(board, user);
-      console.log(temp);
-      setSubmitModal(!temp);
+      submitBoard(board, user, setSubmitModal);
     } catch (e) {
       console.error(e);
     }
@@ -152,6 +150,8 @@ export default function Bingo() {
 
     // on game over
     socket.on("game_over", (data) => {
+      console.log("Game over");
+      setGameOver(true);
       Promise.resolve(data).then((reslovedData) => {
         handleGameOver(reslovedData);
       });
@@ -169,6 +169,8 @@ export default function Bingo() {
       Promise.resolve(data).then((reslovedData) => {
         setTimer(reslovedData.second);
         setRollDelay(reslovedData.delay / 1000);
+        console.log(reslovedData.gameOver);
+        setGameOver(reslovedData.gameOver);
 
         const trimmed_hist = reslovedData.rolledList.slice(1);
         // setRoll here to avoid waiting 1s for the poll
@@ -283,13 +285,13 @@ export default function Bingo() {
         message={`${winner}`}
         state={gameOverModal}
         stateHandler={handleCloseGameOverModal}
-        title={"GAME OVER! WINNER: "}
+        title={"Game Over! Winner(s): "}
       ></Modal>
       <Modal
         message={`The board you submitted is not a winning configuration.`}
         state={submitModal}
         stateHandler={handleCloseSubmissionHandler}
-        title={"INVALID SUBMISSION"}
+        title={"Invalid Board:"}
       ></Modal>
     </>
   );

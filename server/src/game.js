@@ -11,7 +11,8 @@ function setChoiceList() {
 // Set initial Gamestate
 let gameState = {
   // How often a value rolls
-  delay: 15000,
+  delay: 1000,
+  // delay: 15000,
   // values that have been rolled
   rolledList: ["Free"],
   //State of the curr game
@@ -85,7 +86,7 @@ let gameState = {
     return false;
   },
   resetGame() {
-    this.rolledList = ["Free"];
+    // this.rolledList = ["Free"];
     this.gameOver = false;
     this.winners = [];
     this.choiceList = setChoiceList();
@@ -98,24 +99,30 @@ function game(io) {
   setTimeout(() => {
     // Base case. If gameOver is turned to true, or the choice array is empty, end the game
     if (gameState.gameOver) {
+      gameState.rolledList = ["Free"];
       io.emit("game_over", gameState.winners);
+
       setTimeout(() => {
-        gameState.resetGame();
         console.log("Restarting game....");
+        gameState.resetGame();
         game(io);
       }, gameState.gameOverTimer);
+
       return;
     } else if (gameState.choiceList.length === 0) {
-      io.emit("game_over", "Game concluded with no winning submissions");
+      gameState.gameOver = true;
+      gameState.rolledList = ["Free"];
+      gameState.winners.push("Game concluded with no winning submissions");
+      io.emit("game_over", gameState.winners);
       setTimeout(() => {
-        gameState.resetGame();
         console.log("Restarting game....");
+        gameState.resetGame();
         game(io);
       }, gameState.gameOverTimer);
+
       return;
     } else {
       if (gameState.second % (gameState.delay / 1000) === 0) {
-        //   if (gameState.second % 1 === 0) {
         // Get a random roll from the choiceList, then remove it from the choiceList
         // then add it to the rolled list
         let randomIndex = Math.floor(

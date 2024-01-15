@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export async function submitBoard(board, user) {
+export async function submitBoard(board, user, setSubmitModal) {
   let ret = 0;
 
   let reqBody = [];
@@ -18,7 +18,9 @@ export async function submitBoard(board, user) {
     data: { board: reqBody, user },
   })
     .then((response) => {
-      return ret;
+      let res = response.data.response;
+      console.log(res);
+      setSubmitModal(!res);
     })
     .catch((err) => {
       console.log(err);
