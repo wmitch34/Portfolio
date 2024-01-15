@@ -1,0 +1,7 @@
+.hoverClass {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hoverClass:hover {
+  transform: scale(1.1);
+}
