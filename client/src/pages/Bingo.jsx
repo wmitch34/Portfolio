@@ -97,15 +97,18 @@ export default function Bingo() {
 
     if (classList.contains("highlight-obj")) {
       classList.remove("highlight-obj");
-      histTile.style.backgroundColor = "grey";
+      if (histTile != null) {
+        histTile.style.backgroundColor = "grey";
+      }
     } else {
       classList.add("highlight-obj");
-      histTile.style.backgroundColor = "white";
+      if (histTile != null) {
+        histTile.style.backgroundColor = "white";
+      }
     }
   };
   // handler for server saying the game is over
   const handleGameOver = (data) => {
-    console.log("Game Over!: ", data);
     setWinner(data);
     setGameOverModal(true);
     setGameOver(true);
@@ -122,18 +125,11 @@ export default function Bingo() {
 
     board1D.forEach((tile) => {
       if (tile.value == data) {
-        let tileDOM = document.getElementById(`tile-${tile.value}`);
-        if (!tileDOM.classList.contains("highlight-obj")) {
-          setHint(tile.value);
-          document.getElementById(`hist-${data}`).style.backgroundColor =
-            "white";
-          // tileDOM.classList.add('hint-pulse')
-
-          setTimeout(() => {
-            // tileDOM.classList.remove('hint-pulse');
-            setHint();
-          }, 1000);
-        }
+        setHint(tile.value);
+        document.getElementById(`hist-${data}`).style.backgroundColor = "white";
+        setTimeout(() => {
+          setHint();
+        }, 1000);
       }
     });
   };
@@ -150,7 +146,6 @@ export default function Bingo() {
 
     // on game over
     socket.on("game_over", (data) => {
-      console.log("Game over");
       setGameOver(true);
       Promise.resolve(data).then((reslovedData) => {
         handleGameOver(reslovedData);
