@@ -44,7 +44,7 @@ export default function Home(props) {
           </div>
         </Col>
       </Row>
-      <Row>
+      <Row className="mt-4">
         <Col>
           <MyCard
             title="Multiplayer Bingo"

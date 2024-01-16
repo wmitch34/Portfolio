@@ -10,4 +10,4 @@ Type Racer
 
 APP
 - deploy to digital ocean and test live version
-- look into github commit api
+- look into github commit api for site history feature
