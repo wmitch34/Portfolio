@@ -139,6 +139,7 @@ export default function Bingo() {
     socket.on("rolled_number", (data) => {
       Promise.resolve(data).then((reslovedData) => {
         setGameOver(false);
+        setGameOverModal(false);
         setRoll(reslovedData);
         handleSetHistory(reslovedData);
       });

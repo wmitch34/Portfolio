@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
 
 function TypeRacer() {
   window.onload = () => {
@@ -56,6 +57,7 @@ function TypeRacer() {
   const handleBegin = () => {
     set_in_session(true);
     set_session_complete_flag(false);
+    set_submit_new_flag(false);
     document.getElementById("input-textbox").focus();
     set_start_time(Date.now());
   };
@@ -103,57 +105,107 @@ function TypeRacer() {
   };
 
   return (
-    <div id="app-content-contanier">
-      <div id="button-wrapper">
-        <button autoFocus id="game-start" onClick={() => handleBegin()}>
-          Begin Text Race!
-        </button>
-        <button id="game-reset" onClick={() => handleReset()}>
-          Reset Game
-        </button>
-        <button onClick={() => handleAddContentEditor()}>Add Challenge</button>
-      </div>
+    <>
+      <Container className="mt-4 ms-6 me-5">
+        <Row>
+          <Col className="ms-0">
+            <button
+              autoFocus
+              id="game-start"
+              onClick={() => handleBegin()}
+              className="btn btn-primary ms-0"
+            >
+              Begin Text Race!
+            </button>
 
-      <div id="target-wrapper">
-        <textarea id="target_textbox" value={curr_sen}></textarea>
-      </div>
+            <button onClick={() => handleReset()} className="btn btn-primary">
+              Reset Game
+            </button>
 
-      <div id="input-wrapper">
-        <textarea
-          id="input-textbox"
-          placeholder="Type Here"
-          spellCheck={false}
-          onChange={() => validate()}
-        ></textarea>
-      </div>
-
-      <div id="timer">
-        {session_complete_flag && (
-          <Timer
-            start_time={start_time}
-            end_time={end_time}
-            target={curr_sen}
-          />
+            <button
+              className="btn btn-primary"
+              onClick={() => handleAddContentEditor()}
+            >
+              Add Challenge
+            </button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <textarea
+              id="target_textbox"
+              value={curr_sen}
+              readOnly
+              className="w-100"
+            ></textarea>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <textarea
+              id="input-textbox"
+              placeholder="Type Here"
+              spellCheck={false}
+              onChange={() => validate()}
+              className="w-100 h-5"
+            ></textarea>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            {session_complete_flag && (
+              <Timer
+                start_time={start_time}
+                end_time={end_time}
+                target={curr_sen}
+              />
+            )}
+          </Col>
+        </Row>
+        {submit_new_flag && (
+          <Row>
+            <Col xs={8} sm={8} md={8} lg={8}>
+              <textarea
+                id="new_content"
+                placeholder="Enter new sentence here"
+                className="w-100"
+              ></textarea>
+            </Col>
+            <Col
+              xs={2}
+              sm={2}
+              md={2}
+              lg={2}
+              className="d-flex align-items-center justify-content-center"
+            >
+              <button
+                onClick={() => handleAddContentSubmit()}
+                className="btn btn-primary w-100"
+              >
+                Sumbit
+              </button>
+            </Col>
+            <Col
+              xs={2}
+              sm={2}
+              md={2}
+              lg={2}
+              className="d-flex align-items-center justify-content-center"
+            >
+              <button
+                className="btn btn-primary w-100 "
+                onClick={() => {
+                  // handleReset();
+                  set_submit_new_flag(false);
+                }}
+              >
+                Cancel
+              </button>
+            </Col>
+          </Row>
         )}
-      </div>
-      {submit_new_flag && (
-        <div id="edit-field-wrapper">
-          <textarea
-            id="new_content"
-            placeholder="Enter new sentence here"
-          ></textarea>
-          <button onClick={() => handleAddContentSubmit()}>Sumbit</button>
-          <button
-            onClick={() => {
-              handleReset();
-              set_submit_new_flag(false);
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-      )}
-    </div>
+      </Container>
+    </>
   );
 }
 
