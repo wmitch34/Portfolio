@@ -6,6 +6,7 @@ function Results({ start_time, end_time, target }) {
   let wpm = 0.0;
   if (time_elapsed < 0) {
     time_elapsed = 0;
+    return <></>;
   } else {
     let num_words = target.split(" ").length;
     wpm = num_words / (time_elapsed / 60);
@@ -20,11 +21,10 @@ function Results({ start_time, end_time, target }) {
 
 function TypeRacer() {
   const userInputBoxRef = useRef(null);
+  const startGameBtnRef = useRef(null);
+
   useEffect(() => {
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
-    // return () => {
-    //   userInputBoxRef.current.removeEventListener("paste", handlePaste);
-    // };
   }, []);
 
   let options = [
@@ -44,7 +44,7 @@ function TypeRacer() {
   const [curr_sen, set_curr_sentance] = useState(options[get_rand()]);
 
   // indicate if a session has been completed
-  const [session_complete_flag, set_session_complete_flag] = useState(false);
+  const [session, setSession] = useState(false);
 
   // indicate start and end times and track a 3-2-1-go timer
   const [startTimer, setStartTimer] = useState(3);
@@ -54,23 +54,25 @@ function TypeRacer() {
   // indicate adding new content state
   const [submit_new_flag, set_submit_new_flag] = useState(false);
 
-  // track state of user input
+  // Text area for primary game
   const [userInput, setUserInput] = useState("");
+
+  // Text area for user created sentence
   const [newContent, setNewContent] = useState("");
 
+  // Handle user inputting into the primary game text area, and validate the input imediatly after
   const handleSetUserInput = (event) => {
     setUserInput(event.target.value);
     validate();
   };
 
+  // Recursive function to start countdown timer thens tart game
   function startCountdown(i) {
     if (i == 0) {
-      set_session_complete_flag(true);
       setStartTimer("Go!");
-      console.log("Waiting??");
-      let inputBox = document.getElementById("input-textbox");
-      inputBox.disabled = false;
-      inputBox.focus();
+
+      userInputBoxRef.current.disabled = false;
+      userInputBoxRef.current.focus();
 
       set_start_time(Date.now());
       return;
@@ -81,26 +83,26 @@ function TypeRacer() {
   }
 
   const handleBegin = () => {
-    setUserInput("");
-    set_session_complete_flag(false);
     set_submit_new_flag(false);
+    setSession(true);
+
+    setUserInput("");
     startCountdown(4);
   };
 
   const handleEnd = () => {
     set_end_time(Date.now());
-    let inputBox = document.getElementById("input-textbox");
-    inputBox.disabled = true;
-    set_session_complete_flag(false);
+    userInputBoxRef.current.disabled = true;
+    setSession(false);
     handleReset();
   };
 
   const handleReset = () => {
-    let inputBox = document.getElementById("input-textbox");
-    inputBox.disabled = true;
+    userInputBoxRef.current.disabled = true;
+    setSession(false);
     set_curr_sentance(options[get_rand()]);
     setUserInput("");
-    document.getElementById("game-start").focus();
+    startGameBtnRef.current.focus();
   };
 
   const handleAddContentSubmit = () => {
@@ -108,8 +110,8 @@ function TypeRacer() {
     console.log(options);
     set_curr_sentance(newContent);
 
-    document.getElementById("input-textbox").value = "";
-    document.getElementById("game-start").focus();
+    userInputBoxRef.current.value = "";
+    startGameBtnRef.current.focus();
   };
 
   const handleAddContentEditor = () => {
@@ -117,7 +119,7 @@ function TypeRacer() {
   };
 
   const validate = () => {
-    const text_field = document.getElementById("input-textbox");
+    const text_field = userInputBoxRef.current;
 
     if (text_field.value == curr_sen) {
       handleEnd();
@@ -141,7 +143,7 @@ function TypeRacer() {
           <Col className="ms-0 mb-2">
             <button
               autoFocus
-              id="game-start"
+              ref={startGameBtnRef}
               onClick={() => handleBegin()}
               className="btn btn-primary ms-0 me-1"
             >
@@ -156,8 +158,8 @@ function TypeRacer() {
             </button>
 
             <button
-              className="btn btn-primary me-1"
               onClick={() => handleAddContentEditor()}
+              className="btn btn-primary me-1"
             >
               CUSTOM CHALLENGE
             </button>
@@ -165,42 +167,40 @@ function TypeRacer() {
         </Row>
         <Row>
           <Col>
-            <textarea
-              id="target_textbox"
-              value={curr_sen}
-              readOnly
-              className="w-100"
-            ></textarea>
+            <textarea readOnly value={curr_sen} className="w-100"></textarea>
           </Col>
         </Row>
         <Row>
           <Col>
             <textarea
-              id="input-textbox"
-              placeholder="Type Here"
               ref={userInputBoxRef}
-              spellCheck={false}
-              value={userInput}
-              onChange={handleSetUserInput}
-              className="w-100 h-5"
               disabled
+              value={userInput}
+              placeholder="Type Here"
+              className="w-100 h-5"
+              spellCheck={false}
+              onChange={handleSetUserInput}
             ></textarea>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <Results
-              start_time={start_time}
-              end_time={end_time}
-              target={curr_sen}
-            />
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <h1>{startTimer}</h1>
-          </Col>
-        </Row>
+        {!session && (
+          <Row>
+            <Col>
+              <Results
+                start_time={start_time}
+                end_time={end_time}
+                target={curr_sen}
+              />
+            </Col>
+          </Row>
+        )}
+        {session && (
+          <Row>
+            <Col>
+              <h1>{startTimer}</h1>
+            </Col>
+          </Row>
+        )}
 
         {submit_new_flag && (
           <Row>
