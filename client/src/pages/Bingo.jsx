@@ -46,7 +46,7 @@ function initCard() {
 }
 
 export default function Bingo() {
-  const [user, setUser] = useState("Will");
+  const [user, setUser] = useState("");
   const [rollHist, setRollHist] = useState([]);
   const [board, setBoard] = useState(initCard());
   const [gameOver, setGameOver] = useState();
@@ -193,7 +193,7 @@ export default function Bingo() {
 
   return (
     <>
-      <div className="container">
+      <div className="container" style={{ color: "#212529" }}>
         <div className="row">
           <div className="col text-center">
             <h1 className="title">Bingo</h1>

@@ -12,11 +12,11 @@ import "./Home.css";
 import { Link } from "react-router-dom";
 
 const bingoDesc =
-  "Test your Bingo skills against the world's finest players over the web. Enjoy cutting banter and commoradary over the in game chatbox!";
+  "Test your Bingo skills against the world's finest players over the web. Enjoy banter and commoradary over the in game chatbox!";
 const applePickerDesc =
   "The only thing standing between you and the end of the world as we know it-- the almighty apple. Collect apples as they fall and use the seeds to plant new trees!";
 const typeRacerDesc =
-  "Blaze through bitesized typing promps to improve your skills as a typist. Compare your score with friends to see who is the speediest typer!";
+  "Blaze through bite-sized typing promps to improve your skills as a typist. Compare your score with friends to see who is the speediest typer!";
 
 function MyCard(props) {
   const { title, desc, img, link } = props;
@@ -43,7 +43,8 @@ export default function Home(props) {
       <Row>
         <Col>
           <div style={{ textAlign: "center", fontSize: "3REM" }}>
-            Welcome! Select an Activity, or read more about THIS PAGE
+            Welcome! Select an activity, or read more about{" "}
+            <a href="#about">THIS PAGE</a>
           </div>
         </Col>
       </Row>

@@ -6,7 +6,7 @@ APPLE PICKER
 - add seed obj created from apples
 - add walking colisions
 Type Racer
-- style type Racer to be playable
+- 
 
 APP
 - deploy to digital ocean and test live version
