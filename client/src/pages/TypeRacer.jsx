@@ -1,10 +1,11 @@
 import { useEffect, useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 
-function Results({ start_time, end_time, target }) {
+function Results({ start_time, end_time, target, mistakes }) {
+  let calcMistakes = mistakes;
   let time_elapsed = (end_time - start_time) / 1000;
   let wpm = 0.0;
-  if (time_elapsed < 0) {
+  if (time_elapsed <= 0) {
     time_elapsed = 0;
     return <></>;
   } else {
@@ -12,10 +13,18 @@ function Results({ start_time, end_time, target }) {
     wpm = num_words / (time_elapsed / 60);
   }
 
+  if (Math.floor(mistakes) % 2 == 0) {
+    calcMistakes = Math.floor(mistakes) / 2;
+  } else {
+    calcMistakes = (Math.floor(mistakes) + 1) / 2;
+  }
+
   return (
-    <div>
-      {time_elapsed.toFixed(2)}s<div>Words Per minute: {wpm.toFixed(2)}</div>
-    </div>
+    <>
+      <div>{time_elapsed.toFixed(2)} seconds</div>
+      <div>{wpm.toFixed(2)} words per minute</div>
+      <div>{calcMistakes} mistakes</div>
+    </>
   );
 }
 
@@ -28,37 +37,41 @@ function TypeRacer() {
   }, []);
 
   let options = [
+    "Hello world.",
     "The quick brown fox jumps over the lazy dog.",
     "Please type out this temporary sentence.",
     "There is a one in three chance you are typing this sentence.",
     "Adding one more, for the variety.",
   ];
 
-  function get_rand() {
+  function getRand() {
     const num = Math.random() * options.length;
     const ret = Math.floor(num);
     return ret;
   }
 
-  // string value of current target
-  const [curr_sen, set_curr_sentance] = useState(options[get_rand()]);
+  // The following block of states are for setting the value of text areas.
+  // String value of current target.
+  const [curr_sen, setSentance] = useState(options[getRand()]);
+  // Text area for primary game.
+  const [userInput, setUserInput] = useState("");
+  // Text area for user created sentence.
+  const [newContent, setNewContent] = useState("");
 
-  // indicate if a session has been completed
+  // The following block of states are controllers for rendering components.
+  // Indicate if a session has been completed.
   const [session, setSession] = useState(false);
+  // Indicate if the results should show.
+  const [results, setResults] = useState(false);
+  // Indicate adding new content state.
+  const [submit_new_flag, setSubmitNewFlag] = useState(false);
 
-  // indicate start and end times and track a 3-2-1-go timer
+  // The following block of states are controllers for handling timing values
   const [startTimer, setStartTimer] = useState(3);
   const [start_time, set_start_time] = useState(Date.now());
   const [end_time, set_end_time] = useState(Date.now());
 
-  // indicate adding new content state
-  const [submit_new_flag, set_submit_new_flag] = useState(false);
-
-  // Text area for primary game
-  const [userInput, setUserInput] = useState("");
-
-  // Text area for user created sentence
-  const [newContent, setNewContent] = useState("");
+  const [mistakes, setMistakes] = useState(0);
 
   // Handle user inputting into the primary game text area, and validate the input imediatly after
   const handleSetUserInput = (event) => {
@@ -83,39 +96,40 @@ function TypeRacer() {
   }
 
   const handleBegin = () => {
-    set_submit_new_flag(false);
+    // set in session indicator to true
     setSession(true);
-
+    // close custom content box
+    setSubmitNewFlag(false);
+    // close prev results info box
+    setResults(false);
+    // clear input
     setUserInput("");
+    // clear mistakes
+    setMistakes(0);
+    // enter countdown (game also starts here)
     startCountdown(4);
   };
 
   const handleEnd = () => {
     set_end_time(Date.now());
-    userInputBoxRef.current.disabled = true;
-    setSession(false);
     handleReset();
+    setResults(true);
   };
 
   const handleReset = () => {
-    userInputBoxRef.current.disabled = true;
     setSession(false);
-    set_curr_sentance(options[get_rand()]);
     setUserInput("");
     startGameBtnRef.current.focus();
+    userInputBoxRef.current.disabled = true;
   };
 
   const handleAddContentSubmit = () => {
     options.push(newContent);
-    console.log(options);
-    set_curr_sentance(newContent);
+    setSentance(newContent);
 
-    userInputBoxRef.current.value = "";
-    startGameBtnRef.current.focus();
-  };
+    handleReset();
 
-  const handleAddContentEditor = () => {
-    set_submit_new_flag(true);
+    setSubmitNewFlag(false);
   };
 
   const validate = () => {
@@ -128,6 +142,7 @@ function TypeRacer() {
       text_field.style.color = "green";
     } else {
       text_field.style.color = "red";
+      setMistakes((prev) => prev + 1);
     }
   };
 
@@ -143,22 +158,41 @@ function TypeRacer() {
           <Col className="ms-0 mb-2">
             <button
               autoFocus
+              disabled={session}
               ref={startGameBtnRef}
-              onClick={() => handleBegin()}
+              onClick={handleBegin}
               className="btn btn-primary ms-0 me-1"
             >
               START
             </button>
 
             <button
-              onClick={() => handleReset()}
+              disabled={!session}
+              onClick={handleReset}
               className="btn btn-primary me-1"
             >
               RESET
             </button>
 
             <button
-              onClick={() => handleAddContentEditor()}
+              disabled={session}
+              onClick={() => {
+                handleReset();
+                setSentance(options[getRand()]);
+                setResults(false);
+              }}
+              className="btn btn-primary me-1"
+            >
+              NEW CHALLENGE
+            </button>
+
+            <button
+              disabled={session}
+              onClick={() => {
+                handleReset();
+                setSubmitNewFlag((prev) => !prev);
+                setResults(false);
+              }}
               className="btn btn-primary me-1"
             >
               CUSTOM CHALLENGE
@@ -173,8 +207,8 @@ function TypeRacer() {
         <Row>
           <Col>
             <textarea
-              ref={userInputBoxRef}
               disabled
+              ref={userInputBoxRef}
               value={userInput}
               placeholder="Type Here"
               className="w-100 h-5"
@@ -183,13 +217,14 @@ function TypeRacer() {
             ></textarea>
           </Col>
         </Row>
-        {!session && (
+        {results && (
           <Row>
             <Col>
               <Results
                 start_time={start_time}
                 end_time={end_time}
                 target={curr_sen}
+                mistakes={mistakes}
               />
             </Col>
           </Row>
@@ -227,7 +262,7 @@ function TypeRacer() {
                 onClick={() => handleAddContentSubmit()}
                 className="btn btn-primary w-100"
               >
-                Sumbit
+                Submit
               </button>
             </Col>
             <Col
@@ -241,7 +276,7 @@ function TypeRacer() {
                 className="btn btn-primary w-100 "
                 onClick={() => {
                   handleReset();
-                  set_submit_new_flag(false);
+                  setSubmitNewFlag(false);
                 }}
               >
                 Cancel
