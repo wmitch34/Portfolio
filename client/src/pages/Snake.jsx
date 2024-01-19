@@ -6,8 +6,10 @@ import BOILEFT1 from "../assets/left1.png";
 import BOIRIGHT1 from "../assets/right1.png";
 import GRASS from "../assets/grassy.png";
 import { getRandomNumber, getRandomRotation } from "../components/tools.js";
+import { Container, Row, Col } from "react-bootstrap";
 
 function InventoryBar() {
+  let apple = new Apple();
   return (
     <div
       style={{
@@ -21,7 +23,31 @@ function InventoryBar() {
         zIndex: 99999999,
         borderRadius: "19px",
       }}
-    ></div>
+    >
+      <Container>
+        <Row>
+          <div sx={{ position: "relative", display: "inline-block" }}>
+            <img src={apple.image} />
+            <div
+              sx={{
+                // position: "absolute",
+                top: "0",
+                right: "0",
+                backgroundColor: "#3498db",
+                borderRadius: "50%",
+                width: "30px",
+                height: "30px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              3
+            </div>
+          </div>
+        </Row>
+      </Container>
+    </div>
   );
 }
 
