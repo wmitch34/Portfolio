@@ -7,6 +7,24 @@ import BOIRIGHT1 from "../assets/right1.png";
 import GRASS from "../assets/grassy.png";
 import { getRandomNumber, getRandomRotation } from "../components/tools.js";
 
+function InventoryBar() {
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: `10%`,
+        left: `90%`,
+        minHeight: "80%",
+        minWidth: "5%",
+        backgroundColor: "#121212",
+        opacity: "80%",
+        zIndex: 99999999,
+        borderRadius: "19px",
+      }}
+    ></div>
+  );
+}
+
 // React component for rendering a game object
 function GameObject(props) {
   const { gameObject } = props;
@@ -215,6 +233,7 @@ export default function Snake(props) {
 
   return (
     <>
+      <InventoryBar />
       {gameObjects.map((gameObject, index) => (
         <GameObject key={index} gameObject={gameObject} />
       ))}

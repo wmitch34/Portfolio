@@ -37,10 +37,11 @@ function TypeRacer() {
   }, []);
 
   let initialOptions = [
-    "Hello world.",
+    "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",
+    "The desire for secrecy has meant that nations have operated codemaking departments, which were responsible for ensuring the security of communications by inventing and implementing the best possible codes.",
     "The quick brown fox jumps over the lazy dog.",
     "Please type out this temporary sentence.",
-    "There is a one in three chance you are typing this sentence.",
+    "There is a one in six chance you are typing this sentence.",
     "Adding one more, for the variety.",
   ];
 
@@ -123,15 +124,6 @@ function TypeRacer() {
     setUserInput("");
     startGameBtnRef.current.focus();
     userInputBoxRef.current.disabled = true;
-  };
-
-  const handleAddContentSubmit = () => {
-    if (newContent.trim() !== "") {
-      setOptions((prevOptions) => [...prevOptions, newContent]);
-      setSentance(newContent);
-      setSubmitNewFlag(false);
-    }
-    console.log(options);
   };
 
   const validate = () => {
