@@ -36,7 +36,7 @@ function TypeRacer() {
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
   }, []);
 
-  let options = [
+  let initialOptions = [
     "Hello world.",
     "The quick brown fox jumps over the lazy dog.",
     "Please type out this temporary sentence.",
@@ -49,6 +49,8 @@ function TypeRacer() {
     const ret = Math.floor(num);
     return ret;
   }
+
+  const [options, setOptions] = useState(initialOptions);
 
   // The following block of states are for setting the value of text areas.
   // String value of current target.
@@ -124,12 +126,12 @@ function TypeRacer() {
   };
 
   const handleAddContentSubmit = () => {
-    options.push(newContent);
-    setSentance(newContent);
-
-    handleReset();
-
-    setSubmitNewFlag(false);
+    if (newContent.trim() !== "") {
+      setOptions((prevOptions) => [...prevOptions, newContent]);
+      setSentance(newContent);
+      setSubmitNewFlag(false);
+    }
+    console.log(options);
   };
 
   const validate = () => {
@@ -259,7 +261,13 @@ function TypeRacer() {
               className="d-flex align-items-center justify-content-center"
             >
               <button
-                onClick={() => handleAddContentSubmit()}
+                onClick={() => {
+                  if (newContent.trim() !== "") {
+                    setOptions((prevOptions) => [...prevOptions, newContent]);
+                    setSentance(newContent);
+                    setSubmitNewFlag(false);
+                  }
+                }}
                 className="btn btn-primary w-100"
               >
                 Submit
