@@ -11,7 +11,7 @@ function setChoiceList() {
 // Set initial Gamestate
 let gameState = {
   // How often a value rolls
-  delay: 1000,
+  delay: 15000,
   // delay: 15000,
   // values that have been rolled
   rolledList: ["Free"],
