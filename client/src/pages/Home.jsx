@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
 import BingoThumb from "../assets/bingoThumb.png";
-import Construction from "../assets/Construction.jpg";
+import Construction from "../assets/construction.jpg";
 import "./Home.css";
 
 import { Link } from "react-router-dom";
