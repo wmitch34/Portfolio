@@ -1,5 +1,5 @@
 import APPLE from "../assets/Apple2.png";
-import RUFUS from "../assets/RUFUS.png";
+import RUFUS from "../assets/rufus.png";
 
 class GameObject {
   constructor(number) {
