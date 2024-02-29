@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
-import BingoThumb from "../assets/BingoThumb.png";
+import BingoThumb from "../assets/bingoThumb.png";
 import Construction from "../assets/Construction.jpg";
 import "./Home.css";
 
