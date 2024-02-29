@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Apple, Rufus } from "../components/GameObjects.js";
-import BOIBACK from "../assets/BOIBACK.png";
-import BOIFRONT from "../assets/BOIFRONT.png";
-import BOILEFT1 from "../assets/left1.png";
-import BOIRIGHT1 from "../assets/right1.png";
-import GRASS from "../assets/grassy.png";
+import BOIBACK from "../static/assets/BOIBACK.png";
+import BOIFRONT from "../static/assets/BOIFRONT.png";
+import BOILEFT1 from "../static/assets/left1.png";
+import BOIRIGHT1 from "../static/assets/right1.png";
+import GRASS from "../static/assets/grassy.png";
 import { getRandomNumber, getRandomRotation } from "../components/tools.js";
 import { Container, Row, Col } from "react-bootstrap";
 

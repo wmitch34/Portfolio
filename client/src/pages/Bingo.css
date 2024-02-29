@@ -1,0 +1,130 @@
+.roll-hist-bingo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  font-weight: bold;
+  border-radius: 10%;
+  background-color: grey;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #121212;
+}
+
+.roll-hist-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.board-row {
+  display: flex;
+  width: 90%;
+}
+
+.bingo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-size: larger;
+  font-weight: bold;
+  border-radius: 10%;
+  background-color: grey;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #121212;
+}
+
+.bingo:hover {
+  cursor: pointer;
+  animation: 1.5s hoverAnimation linear infinite;
+  border: 2px solid #121212;
+}
+
+.roll-hist-bingo:hover {
+  cursor: pointer;
+  animation: 1.5s hoverAnimation linear infinite;
+  border: 2px solid #121212;
+}
+
+@keyframes hoverAnimation {
+  0% {
+    transform: scale(1);
+    rotate: 0deg;
+  }
+  25% {
+    rotate: 5deg;
+  }
+  50% {
+    transform: scale(1.2);
+    rotate: 0deg;
+  }
+  75% {
+    rotate: -5deg;
+  }
+  100% {
+    transform: scale(1);
+    rotate: 0deg;
+  }
+}
+
+.highlight-obj {
+  background-color: white !important;
+}
+
+.current-roll {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  font-size: 4rem;
+  font-weight: bold;
+  border-radius: 10%;
+  background-color: white;
+  aspect-ratio: 1 / 1;
+  border: 2px solid #121212;
+  flex: 0 0 calc(20%-10px);
+}
+
+.current-roll-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Define the animation */
+@keyframes hintPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    background-color: #0d6efd;
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation to the class */
+.hint-pulse {
+  animation: hintPulse 1s ease-in-out;
+}
+
+.header {
+  /* color: white; */
+  text-align: center;
+  justify-self: center;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  justify-self: center;
+  font-size: 4rem;
+}
+
+.timer {
+  /* color: white; */
+  text-align: center;
+  justify-self: center;
+  font-size: 3rem;
+}

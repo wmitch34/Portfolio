@@ -1,10 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+const env_host = import.meta.env.VITE_CONFIG_HOST;
+const env_port = import.meta.env.VITE_CONFIG_PORT;
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
   server: {
-    port:3000,
-  }
-})
+    host: env_host,
+    port: env_port,
+  },
+  build: {
+    assetsDir: "assets",
+  },
+});
