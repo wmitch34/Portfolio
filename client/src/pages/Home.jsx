@@ -4,9 +4,9 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import ApplePickerThumb from "../static/assets/ApplePickerThumb.png";
-import BingoThumb from "../static/assets/BingoThumb.png";
-import Construction from "../static/assets/Construction.jpg";
+import ApplePickerThumb from "../assets/ApplePickerThumb.png";
+import BingoThumb from "../assets/BingoThumb.png";
+import Construction from "../assets/Construction.jpg";
 import "./Home.css";
 
 import { Link } from "react-router-dom";

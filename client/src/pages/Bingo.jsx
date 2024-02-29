@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Chatbox from "../components/ChatBox";
 import { submitBoard } from "../api";
-import "../App.css";
+import "./Bingo.css";
 
 import Modal from "../components/modal";
 
