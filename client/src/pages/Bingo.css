@@ -81,7 +81,7 @@
   background-color: white;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
-  flex: 0 0 calc(20%-10px);
+  flex: 0 0 calc(20% - 10px);
 }
 
 .current-roll-container {
