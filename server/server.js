@@ -8,6 +8,8 @@ const Game = require("./src/game.js");
 
 let PORT;
 let chatHistory = [];
+
+console.log(process.env.STATUS === "production" ? "Prod" : "Dev");
 process.env.STATUS === "production"
   ? (PORT = process.env.PROD_PORT)
   : (PORT = process.env.DEV_PORT);
@@ -52,7 +54,6 @@ const io = new Server(server, {
 
 io.on("connection", (socket) => {
   console.log(`User connected: ${socket.id}`);
-  console.log(Game.gameState.gameOver);
   if (Game.gameState.gameOver) {
     socket.emit("game_over", Game.gameState.winners);
   }
@@ -83,4 +84,7 @@ io.on("connection", (socket) => {
   });
 });
 
-setTimeout(() => Game.game(io), 5000);
+setTimeout(() => {
+  console.log("Starting Game");
+  Game.game(io);
+}, 5000);

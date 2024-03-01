@@ -8,7 +8,12 @@ import "./Bingo.css";
 
 import Modal from "../components/modal";
 
-const socket = io.connect("http://localhost:3001");
+let socket_url;
+import.meta.env.MODE === "development"
+  ? (socket_url = "http://localhost:5000")
+  : (socket_url = "http://http://162.243.173.148:5000/");
+
+const socket = io.connect(socket_url);
 
 function initCard() {
   // track used to avoid repeats
