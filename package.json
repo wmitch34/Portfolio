@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently \"cd server && npm start\" \"cd client && npm run dev -- --open\" ",
-    "prod": "concurrently \"cd server && npm start\" \"cd client && npm build && npx http-server dist -p 3000\" ",
+    "prod": "concurrently \"cd server && npm start\" \"cd client && npm run build && npx http-server dist -p 3000\" ",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
