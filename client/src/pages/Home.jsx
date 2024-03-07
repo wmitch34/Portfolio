@@ -23,8 +23,8 @@ function MyCard(props) {
   return (
     <div className="hoverClass">
       <Link to={link} style={{ textDecoration: "none" }}>
-        <Card style={{ width: "25rem" }}>
-          <Card.Img variant="top" src={img} height={400} />
+        <Card style={{}}>
+          <Card.Img variant="top" src={img} />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Text>{desc}</Card.Text>
@@ -39,7 +39,7 @@ function MyCard(props) {
 
 export default function Home(props) {
   return (
-    <Container>
+    <Container style={{ marginTop: "1rem" }}>
       <Row>
         <Col>
           <div style={{ textAlign: "center", fontSize: "3REM" }}>
@@ -49,7 +49,7 @@ export default function Home(props) {
         </Col>
       </Row>
       <Row className="mt-4">
-        <Col>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4}>
           <MyCard
             title="Multiplayer Bingo"
             link="/Bingo"
@@ -57,7 +57,7 @@ export default function Home(props) {
             img={BingoThumb}
           ></MyCard>
         </Col>
-        <Col>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4}>
           <MyCard
             title="Apple Picker"
             link="/ApplePicker"
@@ -65,7 +65,7 @@ export default function Home(props) {
             img={ApplePickerThumb}
           ></MyCard>
         </Col>
-        <Col>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4}>
           <MyCard
             title="Type Racer"
             link="/TypeRacer"
