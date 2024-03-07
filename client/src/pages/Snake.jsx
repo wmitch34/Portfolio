@@ -259,7 +259,7 @@ export default function Snake(props) {
 
   return (
     <>
-      <InventoryBar />
+      {/* <InventoryBar /> */}
       {gameObjects.map((gameObject, index) => (
         <GameObject key={index} gameObject={gameObject} />
       ))}

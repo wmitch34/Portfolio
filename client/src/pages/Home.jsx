@@ -42,9 +42,15 @@ export default function Home(props) {
     <Container style={{ marginTop: "1rem" }}>
       <Row>
         <Col>
-          <div style={{ textAlign: "center", fontSize: "3REM" }}>
-            Welcome! Select an activity, or read more about{" "}
-            <a href="#about">THIS PAGE</a>
+          <div
+            style={{
+              marginLeft: "5rem",
+            }}
+          >
+            <h1 className="text-lg">
+              Welcome! Select an activity, or read more about{" "}
+              <a href="#about">this page</a>!
+            </h1>
           </div>
         </Col>
       </Row>

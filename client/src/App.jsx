@@ -38,19 +38,18 @@ function FixedNavbar() {
 
   return (
     <Navbar
+      fixed="top"
       collapseOnSelect
       expand={false}
       variant="dark"
       style={{
-        zIndex: 9999999999,
-        position: "fixed",
-        top: 20,
-        left: 20,
+        margin: "1rem",
+        maxWidth: "fit-content",
       }}
     >
       <Navbar.Toggle
-        style={{ backgroundColor: "#121212" }}
         aria-controls="responsive-navbar-nav"
+        sty
         onClick={() => {
           setNavOpen((prev) => !prev);
         }}
@@ -59,10 +58,11 @@ function FixedNavbar() {
         id="responsive-navbar-nav"
         in={navOpen}
         style={{
+          marginTop: "1rem",
+          border: "solid white",
+          borderRadius: ".5rem",
           backgroundColor: "#121212",
-          padding: 5,
-          borderRadius: 20,
-          marginTop: 10,
+          padding: "1rem",
         }}
       >
         <div style={menuTitle}>Select A game</div>
