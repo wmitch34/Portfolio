@@ -38,13 +38,12 @@ function FixedNavbar() {
 
   return (
     <Navbar
-      fixed="top"
+      sticky="top"
       collapseOnSelect
       expand={false}
       variant="dark"
       style={{
         margin: "1rem",
-        maxWidth: "fit-content",
       }}
     >
       <Navbar.Toggle

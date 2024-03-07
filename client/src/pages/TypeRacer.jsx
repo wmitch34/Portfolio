@@ -33,6 +33,11 @@ function TypeRacer() {
   const startGameBtnRef = useRef(null);
 
   useEffect(() => {
+    const userAgent = navigator.userAgent;
+    const isMobileDevice =
+      /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
+
+    setIsMobile(isMobileDevice);
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
   }, []);
 
@@ -52,6 +57,7 @@ function TypeRacer() {
   }
 
   const [options, setOptions] = useState(initialOptions);
+  const [isMobile, setIsMobile] = useState(false);
 
   // The following block of states are for setting the value of text areas.
   // String value of current target.
@@ -144,9 +150,17 @@ function TypeRacer() {
     <>
       <Container className="mt-4 ms-5.5">
         <Row>
-          <Col>
+          <Col className="text-lg">
             <h1>Type Racer</h1>
           </Col>
+          {isMobile && (
+            <div className="text-md">
+              <p>
+                ATTENTION MOBILE USERS: When the timer countdown finishes, touch
+                the text box to open your keyboard and begin typing!
+              </p>
+            </div>
+          )}
         </Row>
         <Row>
           <Col className="ms-0 mb-2">
@@ -155,7 +169,7 @@ function TypeRacer() {
               disabled={session}
               ref={startGameBtnRef}
               onClick={handleBegin}
-              className="btn btn-primary ms-0 me-1"
+              className="btn btn-primary ms-0 me-1 mb-1"
             >
               START
             </button>
@@ -163,7 +177,7 @@ function TypeRacer() {
             <button
               disabled={!session}
               onClick={handleReset}
-              className="btn btn-primary me-1"
+              className="btn btn-primary me-1 mb-1"
             >
               RESET
             </button>
@@ -175,7 +189,7 @@ function TypeRacer() {
                 setSentance(options[getRand()]);
                 setResults(false);
               }}
-              className="btn btn-primary me-1"
+              className="btn btn-primary me-1 mb-1"
             >
               NEW CHALLENGE
             </button>
@@ -187,7 +201,7 @@ function TypeRacer() {
                 setSubmitNewFlag((prev) => !prev);
                 setResults(false);
               }}
-              className="btn btn-primary me-1"
+              className="btn btn-primary me-1 mb-1"
             >
               CUSTOM CHALLENGE
             </button>

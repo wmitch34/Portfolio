@@ -42,20 +42,19 @@ export default function Home(props) {
     <Container style={{ marginTop: "1rem" }}>
       <Row>
         <Col>
-          <div
-            style={{
-              marginLeft: "5rem",
-            }}
-          >
+          <div>
             <h1 className="text-lg">
               Welcome! Select an activity, or read more about{" "}
-              <a href="#about">this page</a>!
+              <a href="#about" style={{ textDecoration: "none" }}>
+                this page
+              </a>
+              !
             </h1>
           </div>
         </Col>
       </Row>
       <Row className="mt-4">
-        <Col xs={12} sm={6} md={4} lg={4} xl={4}>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4} className="mb-4">
           <MyCard
             title="Multiplayer Bingo"
             link="/Bingo"
@@ -63,7 +62,7 @@ export default function Home(props) {
             img={BingoThumb}
           ></MyCard>
         </Col>
-        <Col xs={12} sm={6} md={4} lg={4} xl={4}>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4} className="mb-4">
           <MyCard
             title="Apple Picker"
             link="/ApplePicker"
@@ -71,7 +70,7 @@ export default function Home(props) {
             img={ApplePickerThumb}
           ></MyCard>
         </Col>
-        <Col xs={12} sm={6} md={4} lg={4} xl={4}>
+        <Col xs={12} sm={6} md={4} lg={4} xl={4} className="mb-4">
           <MyCard
             title="Type Racer"
             link="/TypeRacer"
