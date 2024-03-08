@@ -218,14 +218,18 @@ export default function Bingo() {
             lg={3}
             xl={3}
           >
-            <h1 className="text-lg text-center">Chat</h1>
-
-            <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0">
-                <Accordion.Header className="text-lg text-center">
-                  Chat
+            <Accordion
+              defaultActiveKey="0"
+              style={{ backgroundColor: "#121212", border: "none" }}
+            >
+              <Accordion.Item eventKey="0" style={{ border: "none" }}>
+                <Accordion.Header
+                  className="text-lg text-center"
+                  style={{ backgroundColor: "#121212" }}
+                >
+                  <h1 className="text-lg text-center">Chat</h1>
                 </Accordion.Header>
-                <Accordion.Body>
+                <Accordion.Body style={{ backgroundColor: "#121212" }}>
                   <Chatbox
                     user={user}
                     setUser={handleSetUser}
