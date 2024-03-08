@@ -48,7 +48,6 @@ function FixedNavbar() {
     >
       <Navbar.Toggle
         aria-controls="responsive-navbar-nav"
-        sty
         onClick={() => {
           setNavOpen((prev) => !prev);
         }}

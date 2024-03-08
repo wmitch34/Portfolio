@@ -6,13 +6,13 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
 
-let PORT;
+let PORT = 5000;
 let chatHistory = [];
 
-console.log(process.env.STATUS === "production" ? "Prod" : "Dev");
-process.env.STATUS === "production"
-  ? (PORT = process.env.PROD_PORT)
-  : (PORT = process.env.DEV_PORT);
+// console.log(process.env.STATUS === "production" ? "Prod" : "Dev");
+// process.env.STATUS === "production"
+//   ? (PORT = process.env.PROD_PORT)
+//   : (PORT = process.env.DEV_PORT);
 
 const app = express();
 app.use(cors(), bodyParser.json());

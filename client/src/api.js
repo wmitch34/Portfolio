@@ -1,9 +1,6 @@
 import axios from "axios";
 
-let url_body;
-import.meta.env.MODE === "development"
-  ? (url_body = "http://localhost:5000")
-  : (url_body = "http://162.243.173.148:5000");
+let url_body = "http://localhost:5000";
 
 export async function submitBoard(board, user, setSubmitModal) {
   let reqBody = [];
