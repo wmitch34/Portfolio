@@ -50,10 +50,6 @@ export default function Chatbox(props) {
       <div className="row" style={{ height: "100%" }}>
         <div className="col-12 d-flex flex-column">
           <div className="row flex-grow-1">
-            <h1>Global Chat</h1>
-          </div>
-
-          <div className="row flex-grow-1">
             <div>
               <form className="text-box-container">
                 <input

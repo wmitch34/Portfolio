@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
+import Container from "react-bootstrap/Container";
+
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Accordion from "react-bootstrap/Accordion";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Chatbox from "../components/ChatBox";
@@ -198,18 +203,50 @@ export default function Bingo() {
 
   return (
     <>
-      <div className="container" style={{ color: "#212529" }}>
-        <div className="row">
-          <div className="col text-center">
+      <Container style={{ color: "#212529" }}>
+        <Row>
+          <Col className="text-xl" xs={12} sm={12} md={12} lg={12} xl={12}>
             <h1 className="title">Bingo</h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-3 align-items-center justify-content-center">
-            <Chatbox user={user} setUser={handleSetUser} socket={socket} />
-          </div>
-          <div className="col-6 align-items-center justify-content-center">
-            <div className="container">
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            className="align-items-center justify-content-center"
+            xs={12}
+            sm={12}
+            md={12}
+            lg={3}
+            xl={3}
+          >
+            <h1 className="text-lg text-center">Chat</h1>
+
+            <Accordion defaultActiveKey="0">
+              <Accordion.Item eventKey="0">
+                <Accordion.Header className="text-lg text-center">
+                  Chat
+                </Accordion.Header>
+                <Accordion.Body>
+                  <Chatbox
+                    user={user}
+                    setUser={handleSetUser}
+                    socket={socket}
+                  />
+                </Accordion.Body>
+              </Accordion.Item>
+            </Accordion>
+          </Col>
+          <Col
+            className="align-items-center justify-content-center"
+            xs={10}
+            sm={8}
+            md={6}
+            lg={6}
+            xl={6}
+          >
+            <h1 className="header">
+              <br />
+            </h1>
+            <Container>
               <div className="board">
                 {board.map((row, index) => (
                   <div key={index} className="board-row w-100">
@@ -239,10 +276,17 @@ export default function Bingo() {
                   Submit Board
                 </button>
               </div>
-            </div>
-          </div>
-          <div className="col-3 align-items-center justify-content-center">
-            <h1 className="header">Game Info</h1>
+            </Container>
+          </Col>
+          <Col
+            className="align-items-center justify-content-center"
+            xs={2}
+            sm={4}
+            md={6}
+            lg={3}
+            xl={3}
+          >
+            <h1 className="text-center text-lg">Info</h1>
             {!gameOver && (
               <>
                 <div className="timerContainer">
@@ -254,21 +298,21 @@ export default function Bingo() {
                   </div>
                 </div>
 
-                <div className="current-roll-container w-100">
-                  <div className="current-roll ">{roll}</div>
+                <div className="current-roll-container">
+                  <div className="bingo">{roll}</div>
                 </div>
               </>
             )}
             {gameOver && <div className="">Next Game starting soon!</div>}
-          </div>
-        </div>
-        <div className="row">
-          <div className="col text-center">
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-center">
             <h1 className="header">Roll History</h1>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col text-center roll-hist-container ">
+          </Col>
+        </Row>
+        <Row>
+          <Col className="text-center roll-hist-container ">
             {rollHist.map((roll, index) => (
               <div
                 key={index}
@@ -279,9 +323,9 @@ export default function Bingo() {
                 {roll}
               </div>
             ))}
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
       <Modal
         message={`${winner}`}
         state={gameOverModal}
