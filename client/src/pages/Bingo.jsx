@@ -213,47 +213,25 @@ export default function Bingo() {
   return (
     <>
       <Container style={{ color: "#212529" }}>
-        <Row>
+        {/* <Row>
           <Col className="text-xl" xs={12} sm={12} md={12} lg={12} xl={12}>
             <h1 className="title">Bingo</h1>
           </Col>
-        </Row>
+        </Row> */}
         <Row>
+          {/* Board */}
           <Col
             className="align-items-center justify-content-center"
             xs={12}
             sm={12}
-            md={12}
-            lg={3}
-            xl={3}
-          >
-            <Accordion defaultActiveKey="0">
-              <Accordion.Item eventKey="0" style={{ border: "none" }}>
-                <Accordion.Header className="text-lg text-center">
-                  <h1 className="text-lg text-center">Chat</h1>
-                </Accordion.Header>
-                <Accordion.Body style={{ backgroundColor: "#121212" }}>
-                  <Chatbox
-                    user={user}
-                    setUser={handleSetUser}
-                    socket={socket}
-                  />
-                </Accordion.Body>
-              </Accordion.Item>
-            </Accordion>
-          </Col>
-          <Col
-            className="align-items-center justify-content-center"
-            xs={10}
-            sm={8}
             md={6}
             lg={6}
             xl={6}
           >
             <h1 className="header">
-              <br />
+              Bingo
             </h1>
-            <Container>
+            <Container className="mb-4">
               <div className="board">
                 {board.map((row, index) => (
                   <div key={index} className="board-row w-100">
@@ -285,32 +263,66 @@ export default function Bingo() {
               </div>
             </Container>
           </Col>
+          {/* Info */}
           <Col
             className="align-items-center justify-content-center"
-            xs={2}
-            sm={4}
+            xs={12}
+            sm={12}
             md={6}
-            lg={3}
-            xl={3}
+            lg={6}
+            xl={6}
           >
-            <h1 className="text-center text-lg">Info</h1>
-            {!gameOver && (
-              <>
-                <div className="timerContainer">
-                  <div className="timer">
-                    00:
-                    {rollDelay - (timer % rollDelay) < 10
-                      ? "0" + (rollDelay - (timer % rollDelay))
-                      : rollDelay - (timer % rollDelay)}
-                  </div>
-                </div>
+            <Row>
+              
+              <Col className="align-items-center justify-content-center"
+              xs={4}
+              sm={4}
+              md={4}
+              lg={4}
+              xl={4}>
+                <h1 className=" header">Roll</h1>
+                {!gameOver && (
+                  <>
+                    <div className="current-roll-container">
+                      <div className="bingo">{roll}</div>
+                    </div>
+                    <div className="timerContainer">
+                      <div className="timer text-lg">
+                        00:
+                        {rollDelay - (timer % rollDelay) < 10
+                          ? "0" + (rollDelay - (timer % rollDelay))
+                          : rollDelay - (timer % rollDelay)}
+                      </div>
+                    </div>
 
-                <div className="current-roll-container">
-                  <div className="bingo">{roll}</div>
-                </div>
-              </>
-            )}
-            {gameOver && <div className="">Next Game starting soon!</div>}
+                  </>
+                )}
+                {gameOver && <div className="">Next Game starting soon!</div>}
+              </Col>
+              <Col
+              className="align-items-center justify-content-center"
+              xs={12}
+              sm={12}
+              md={8}
+              lg={8}
+              xl={8}
+              >
+                <h1 className="header">Chat</h1>
+                <Accordion defaultActiveKey="0">
+                  <Accordion.Item eventKey="0" style={{ border: "none" }}>
+                    <Accordion.Header className="text-lg text-center">Show/Hide
+                    </Accordion.Header>
+                    <Accordion.Body style={{ backgroundColor: "#121212" }}>
+                      <Chatbox
+                        user={user}
+                        setUser={handleSetUser}
+                        socket={socket}
+                      />
+                    </Accordion.Body>
+                  </Accordion.Item>
+                </Accordion>
+              </Col>
+              </Row>
           </Col>
         </Row>
         <Row>
