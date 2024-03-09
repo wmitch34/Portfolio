@@ -15,10 +15,9 @@ import Modal from "../components/modal";
 
 let socket_url;
 import.meta.env.MODE === "development"
-  ? (socket_url = "http://localhost:5000/")
-  : (socket_url = "http://162.243.173.148/api/");
+  ? (socket_url = "http://localhost:5000")
+  : (socket_url = "http://162.243.173.148");
 
-console.log(socket_url)
 const socket = io(socket_url);
 
 socket.on('connect', () => {
@@ -301,8 +300,8 @@ export default function Bingo() {
               </Col>
               <Col
               className="align-items-center justify-content-center"
-              xs={12}
-              sm={12}
+              xs={8}
+              sm={8}
               md={8}
               lg={8}
               xl={8}

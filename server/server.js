@@ -6,26 +6,17 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
 
-let PORT = process.env.PORT;
-// let url;
+let PORT = 5000;
 let chatHistory = [];
 
-// console.log(process.env.STATUS === "development" ? "Dev" : "Prod");
-// process.env.STATUS === "production"
-//   ? (url = "http://162.243.173.148")
-//   : (url = "http://localhost:3000");
-
-// console.log("Cors Allowing: ", url)
-
 const app = express();
-app.use(bodyParser.json());
-app.use(cors({ origin: "*" }));
-
+app.use(cors(), bodyParser.json());
 const server = http.createServer(app);
+
 const io = socketIO(server, {
   path: '/socket.io',
   cors: {
-    origin: "*",
+    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
     methods: ["GET", "POST"],
 },});
 
