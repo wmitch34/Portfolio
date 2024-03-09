@@ -10,13 +10,21 @@
   border: 2px solid #121212;
 }
 
+.accordion {
+  background-color:#121212;
+}
 .accordion-button {
-  background-color: #121212;
+  background-color: grey;
+  box-shadow: none;
+  border-radius: 0;
+
 }
 .accordion-button:not(.collased) {
-  color: white;
-  background-color: #121212;
+  color: #121212;
+  box-shadow: none;
+  background-color: grey;
 }
+
 
 .roll-hist-container {
   display: flex;

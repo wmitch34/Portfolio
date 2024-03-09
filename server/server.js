@@ -1,24 +1,35 @@
 require("dotenv").config();
 const express = require("express");
 const http = require("http");
-const { Server } = require("socket.io");
+const socketIO = require("socket.io");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
 
-let PORT = 5000;
+let PORT = process.env.PORT;
+// let url;
 let chatHistory = [];
 
-// console.log(process.env.STATUS === "production" ? "Prod" : "Dev");
+// console.log(process.env.STATUS === "development" ? "Dev" : "Prod");
 // process.env.STATUS === "production"
-//   ? (PORT = process.env.PROD_PORT)
-//   : (PORT = process.env.DEV_PORT);
+//   ? (url = "http://162.243.173.148")
+//   : (url = "http://localhost:3000");
+
+// console.log("Cors Allowing: ", url)
 
 const app = express();
-app.use(cors(), bodyParser.json());
-const server = http.createServer(app);
+app.use(bodyParser.json());
+app.use(cors({ origin: "*" }));
 
-app.post("/verify", (req, res) => {
+const server = http.createServer(app);
+const io = socketIO(server, {
+  path: '/socket.io',
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"],
+},});
+
+app.post("/api/verify", (req, res) => {
   try {
     if (Game.gameState.verify(req.body.board)) {
       Game.gameState.setGameOver(req.body.user);
@@ -31,25 +42,6 @@ app.post("/verify", (req, res) => {
   } catch (e) {
     console.log("Server Error: ", e);
   }
-});
-
-app.get("/getRollDelay", (req, res) => {
-  try {
-    res.status(200).send({ delay: Game.gameState.delay });
-  } catch (e) {
-    console.log("Server Error: ", e);
-  }
-});
-
-server.listen(PORT, () => {
-  console.log(`Now listening on port ${PORT}`);
-});
-
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
 });
 
 io.on("connection", (socket) => {
@@ -82,6 +74,10 @@ io.on("connection", (socket) => {
   socket.on("req_game_state", () => {
     socket.emit("send_game_state", Game.gameState);
   });
+});
+
+server.listen(PORT, () => {
+  console.log(`Now listening on port ${PORT}`);
 });
 
 setTimeout(() => {

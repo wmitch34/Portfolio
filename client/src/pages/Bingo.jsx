@@ -15,10 +15,19 @@ import Modal from "../components/modal";
 
 let socket_url;
 import.meta.env.MODE === "development"
-  ? (socket_url = "http://localhost:5000")
-  : (socket_url = "http://http://162.243.173.148:5000/");
+  ? (socket_url = "http://localhost:5000/")
+  : (socket_url = "http://162.243.173.148/api/");
 
-const socket = io.connect(socket_url);
+console.log(socket_url)
+const socket = io(socket_url);
+
+socket.on('connect', () => {
+  console.log('Connected to server');
+});
+
+socket.on('connect_error', (error) => {
+  console.error('Error connecting to server:', error);
+});
 
 function initCard() {
   // track used to avoid repeats
@@ -310,7 +319,7 @@ export default function Bingo() {
           </Col>
         </Row>
         <Row>
-          <Col className="text-center roll-hist-container ">
+          <Col className="text-center roll-hist-container mb-4">
             {rollHist.map((roll, index) => (
               <div
                 key={index}
@@ -328,13 +337,13 @@ export default function Bingo() {
         message={`${winner}`}
         state={gameOverModal}
         stateHandler={handleCloseGameOverModal}
-        title={"Game Over! Winner(s): "}
+        title={"Game Over! Winner"}
       ></Modal>
       <Modal
         message={`The board you submitted is not a winning configuration.`}
         state={submitModal}
         stateHandler={handleCloseSubmissionHandler}
-        title={"Invalid Board:"}
+        title={"Invalid Board"}
       ></Modal>
     </>
   );
