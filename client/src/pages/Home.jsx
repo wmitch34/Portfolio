@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,7 +11,7 @@ import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 
 import "./Home.css";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const bingoDesc =
   "Test your Bingo skills against the world's finest players over the web. Enjoy banter and commoradary over the in game chatbox!";
@@ -46,22 +46,34 @@ function MyCard(props) {
 }
 
 export default function Home(props) {
+  const myRef = useRef(null);
+
+  const executeScroll = () => myRef.current.scrollIntoView();
+  const history = useLocation();
+  useEffect(() => {
+    if (history.hash === "#about") {
+      executeScroll();
+    }
+  }, []);
+  console.log(history);
+
   return (
     <Container style={{ marginTop: "1rem" }}>
       <Row>
         <Col>
           <div>
             <h1 className="text-lg">
-              Welcome! Select an activity, or read more about{" "}
+              Welcome, select an activity, or read more{" "}
               <ScrollLink
                 to="about"
                 smooth={true}
                 duration={200}
-                style={{ color: "grey", cursor: "pointer" }}
+                className="test-primary"
+                style={{ cursor: "pointer", textDecoration: "none" }}
               >
-                this page
-              </ScrollLink>
-              !
+                about
+              </ScrollLink>{" "}
+              this page!
             </h1>
           </div>
         </Col>
@@ -94,7 +106,9 @@ export default function Home(props) {
       </Row>
       <Row>
         <Col>
-          <h1 id="about"> </h1>
+          <h1 ref={myRef} id="about">
+            {" "}
+          </h1>
           <h1 className="text-xl mt-4">About</h1>
         </Col>
       </Row>

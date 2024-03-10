@@ -95,6 +95,7 @@ export default function App() {
       <OffCanvas />
       <Routes>
         <Route index path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
         <Route path="Bingo" element={<Bingo />} />
         <Route path="ApplePicker" element={<Snake />} />
         <Route path="TypeRacer" element={<TypeRacer />} />
