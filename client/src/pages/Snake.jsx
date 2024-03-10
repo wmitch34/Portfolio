@@ -134,7 +134,7 @@ export default function Snake(props) {
     const userAgent = navigator.userAgent;
     const isMobileDevice =
       /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
-    handleSetIsMobile(!isMobileDevice);
+    handleSetIsMobile(isMobileDevice);
 
     const handleResize = () => {
       setWindowSize({
