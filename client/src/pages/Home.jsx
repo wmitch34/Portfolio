@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
 import BingoThumb from "../assets/bingoThumb.png";
-import TypeRacerThumb from "../assets/typeRacerThumb.PNG";
+import TypeRacerThumb from "../assets/typeRacerThumb.png";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 
 import "./Home.css";

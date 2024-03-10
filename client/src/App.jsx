@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route, Link, Outlet, BrowserRouter } from "react-router-dom";
+import { Routes, Route, Link, Outlet } from "react-router-dom";
 import { Nav, Navbar } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
