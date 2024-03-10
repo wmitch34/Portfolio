@@ -10,7 +10,7 @@ import Offcanvas from "react-bootstrap/Offcanvas";
 import Button from "react-bootstrap/Button";
 import BingoThumb from "../assets/bingoThumb.png";
 import TypeRacerThumb from "../assets/typeRacerThumb.png";
-import StocksThumb2 from "../assets/StocksThumb2.png";
+import StocksThumb2 from "../assets/stocksThumb2.png";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
