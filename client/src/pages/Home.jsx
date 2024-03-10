@@ -6,7 +6,9 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
 import BingoThumb from "../assets/bingoThumb.png";
-import Construction from "../assets/construction.jpg";
+import TypeRacerThumb from "../assets/typeRacerThumb.PNG";
+import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+
 import "./Home.css";
 
 import { Link } from "react-router-dom";
@@ -17,6 +19,12 @@ const applePickerDesc =
   "The only thing standing between you and the end of the world as we know it-- the almighty apple. Collect apples as they fall and use the seeds to plant new trees!";
 const typeRacerDesc =
   "Blaze through bite-sized typing promps to improve your skills as a typist. Compare your score with friends to see who is the speediest typer!";
+
+let aboutStyle = {
+  minHeight: "10rem",
+  maxHeight: "10rem",
+  overflow: "auto",
+};
 
 function MyCard(props) {
   const { title, desc, img, link } = props;
@@ -45,24 +53,29 @@ export default function Home(props) {
           <div>
             <h1 className="text-lg">
               Welcome! Select an activity, or read more about{" "}
-              <a href="#about" style={{ textDecoration: "none" }}>
+              <ScrollLink
+                to="about"
+                smooth={true}
+                duration={200}
+                style={{ color: "grey", cursor: "pointer" }}
+              >
                 this page
-              </a>
+              </ScrollLink>
               !
             </h1>
           </div>
         </Col>
       </Row>
       <Row className="mt-4">
-        <Col xs={12} sm={6} md={4} lg={4} xl={4} className="mb-4">
+        <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
           <MyCard
-            title="Multiplayer Bingo"
+            title="Bingo"
             link="/Bingo"
             desc={bingoDesc}
             img={BingoThumb}
           ></MyCard>
         </Col>
-        <Col xs={12} sm={6} md={4} lg={4} xl={4} className="mb-4">
+        <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
           <MyCard
             title="Apple Picker"
             link="/ApplePicker"
@@ -70,13 +83,94 @@ export default function Home(props) {
             img={ApplePickerThumb}
           ></MyCard>
         </Col>
-        <Col xs={12} sm={6} md={4} lg={4} xl={4} className="mb-4">
+        <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
           <MyCard
             title="Type Racer"
             link="/TypeRacer"
             desc={typeRacerDesc}
-            img={Construction}
+            img={TypeRacerThumb}
           ></MyCard>
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <h1 id="about"> </h1>
+          <h1 className="text-xl mt-4">About</h1>
+        </Col>
+      </Row>
+      <Row className="mt-4">
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Card className="mb-4 bg-grey">
+            <Card.Body>
+              <Card.Title>Bingo</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                Multiplayer Gaming
+              </Card.Subtitle>
+              <Card.Text style={aboutStyle}>
+                Bingo started out as an intro-to-react school project. After
+                meeting the requirements for the project, I took the opotunity
+                to learn some basic CSS animations. Eventually, the gradual
+                addition of features turned bingo into an exploration of
+                animations, rest api, and web socket utlization.
+              </Card.Text>
+              <Card.Link href="/Bingo">Play now</Card.Link>
+              {/* <Card.Link href="#">Another Link</Card.Link> */}
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>Apple Picker</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                Creative Outlet
+              </Card.Subtitle>
+              <Card.Text style={aboutStyle}>
+                Towards the end of my Bachelors degree, I developed an interest
+                in digital art. Some of my first attempts at drawing digital
+                characters reminded me of 2d video game assets. This inspired me
+                to create a place where I could see my art come to life! While
+                developing Apple Picker, I learned about 2d grid traversal,
+                image handling, catching user input, and much more.
+                Additionally, Apple Picker utilizes OOP concepts and 2d
+                collision calculations. One of my main take-aways from the dev
+                process was that you should not reinvent the wheel (in this
+                case, 2d game engine) if better, more rhobust tools are easily
+                available.
+              </Card.Text>
+              <Card.Link href="/ApplePicker">Start collecting</Card.Link>
+              {/* <Card.Link href="#">Another Link</Card.Link> */}
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+          <Card className="mb-4">
+            <Card.Body>
+              <Card.Title>Type Racer</Card.Title>
+              <Card.Subtitle className="mb-2 text-muted">
+                Offline Challenge
+              </Card.Subtitle>
+              <Card.Text style={aboutStyle}>
+                In preparation for a long flight, I downloaded an offline
+                documentation tool called{" "}
+                <a href="https://devdocs.io/offline" target="_blank">
+                  DevDocs
+                </a>
+                . I spent the flight writing a words-per-minute calculator app.
+                This exercise was meant to develop my documentation-reading
+                skills and decreses reliance on frantic googling. I am really
+                happy with what I was able to accomplish in such limited time
+                with limited resources (and lots of questions from my
+                seat-neighbor). The version available here on my portfolio is
+                much the same as my original app, althouge I have optimized it
+                for mobile viewing and replaced vanilla css with Bootstrap.
+              </Card.Text>
+              <Card.Link href="/TypeRacer">Test your speed</Card.Link>
+              <Card.Link href="https://devdocs.io/offline" target="_blank">
+                Dev Docs
+              </Card.Link>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </Container>

@@ -9,85 +9,90 @@ import Bingo from "./pages/Bingo";
 import Snake from "./pages/Snake";
 import TypeRacer from "./pages/TypeRacer";
 import NoMatch from "./pages/NoMatch";
+import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
 
-function FixedNavbar() {
-  const menuTitle = {
-    color: "white",
-  };
+let links = [
+  {
+    text: "Home",
+    link: "/",
+  },
+  {
+    text: "Multiplayer Bingo",
+    link: "/Bingo",
+  },
+  {
+    text: "Apple Picker",
+    link: "/ApplePicker",
+  },
+  {
+    text: "Type Racer",
+    link: "/TypeRacer",
+  },
+];
 
-  let links = [
-    {
-      text: "Home",
-      link: "/",
-    },
-    {
-      text: "Multiplayer Bingo",
-      link: "/Bingo",
-    },
-    {
-      text: "Apple Picker",
-      link: "/ApplePicker",
-    },
-    {
-      text: "Type Racer",
-      link: "/TypeRacer",
-    },
-  ];
+function OffCanvas() {
+  const [show, setShow] = useState(false);
 
-  const [navOpen, setNavOpen] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   return (
-    <Navbar
-      sticky="top"
-      collapseOnSelect
-      expand={false}
-      variant="dark"
-      style={{
-        margin: "1rem",
-      }}
-    >
-      <Navbar.Toggle
-        aria-controls="responsive-navbar-nav"
-        onClick={() => {
-          setNavOpen((prev) => !prev);
-        }}
-      />
-      <Navbar.Collapse
-        id="responsive-navbar-nav"
-        in={navOpen}
+    <>
+      <Navbar
+        sticky="top"
+        expand={false}
+        variant="dark"
         style={{
-          marginTop: "1rem",
-          border: "solid white",
-          borderRadius: ".5rem",
-          backgroundColor: "#121212",
-          padding: "1rem",
+          margin: "1rem",
+          maxWidth: "fit-content",
         }}
+        onClick={handleShow}
       >
-        <div style={menuTitle}>Select A game</div>
-        <Nav className="mr-auto">
-          {links.map((menuItem, index) => (
-            <Nav.Link
-              as={Link}
-              key={index}
-              to={menuItem.link}
-              onClick={() => {
-                setNavOpen(false);
-              }}
-            >
-              {menuItem.text}
-            </Nav.Link>
-          ))}
-        </Nav>
-        <Outlet />
-      </Navbar.Collapse>
-    </Navbar>
+        <Navbar.Toggle></Navbar.Toggle>
+      </Navbar>
+
+      <Offcanvas show={show} onHide={handleClose}>
+        <Offcanvas.Header
+          style={{ backgroundColor: "#121212", color: "white" }}
+        >
+          <Offcanvas.Title>
+            <h1 className="text-xl">Navigate</h1>
+          </Offcanvas.Title>
+          <Button
+            type="button"
+            className="btn-close"
+            aria-label="Close"
+            style={{ backgroundColor: "white", color: "white" }}
+            onClick={handleClose}
+          ></Button>
+        </Offcanvas.Header>
+        <Offcanvas.Body style={bg_darkgrey}>
+          <Nav className="mr-auto flex-column">
+            {links.map((menuItem, index) => (
+              <Nav.Link
+                as={Link}
+                key={index}
+                to={menuItem.link}
+                onClick={() => {
+                  handleClose();
+                }}
+              >
+                <h3>{menuItem.text}</h3>
+              </Nav.Link>
+            ))}
+          </Nav>
+          <Outlet />
+        </Offcanvas.Body>
+      </Offcanvas>
+    </>
   );
 }
 
 export default function App() {
   return (
     <>
-      <FixedNavbar />
+      <OffCanvas />
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="Bingo" element={<Bingo />} />
