@@ -20,12 +20,12 @@ import.meta.env.MODE === "development"
 
 const socket = io(socket_url);
 
-socket.on('connect', () => {
-  console.log('Connected to server');
+socket.on("connect", () => {
+  console.log("Connected to server");
 });
 
-socket.on('connect_error', (error) => {
-  console.error('Error connecting to server:', error);
+socket.on("connect_error", (error) => {
+  console.error("Error connecting to server:", error);
 });
 
 function initCard() {
@@ -74,6 +74,7 @@ export default function Bingo() {
   const [submitModal, setSubmitModal] = useState(false);
   const [gameOverModal, setGameOverModal] = useState(false);
   const [winner, setWinner] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   const [rollDelay, setRollDelay] = useState();
 
@@ -202,6 +203,11 @@ export default function Bingo() {
   }, [socket]);
 
   useEffect(() => {
+    const userAgent = navigator.userAgent;
+    const isMobileDevice =
+      /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
+
+    setIsMobile(isMobileDevice);
     socket.emit("req_game_state");
 
     return () => {
@@ -227,9 +233,7 @@ export default function Bingo() {
             lg={6}
             xl={6}
           >
-            <h1 className="header">
-              Bingo
-            </h1>
+            <h1 className="header">Bingo</h1>
             <Container className="mb-4">
               <div className="board">
                 {board.map((row, index) => (
@@ -272,13 +276,14 @@ export default function Bingo() {
             xl={6}
           >
             <Row>
-              
-              <Col className="align-items-center justify-content-center"
-              xs={4}
-              sm={4}
-              md={4}
-              lg={4}
-              xl={4}>
+              <Col
+                className="align-items-center justify-content-center"
+                xs={4}
+                sm={4}
+                md={4}
+                lg={4}
+                xl={4}
+              >
                 <h1 className=" header">Roll</h1>
                 {!gameOver && (
                   <>
@@ -293,35 +298,52 @@ export default function Bingo() {
                           : rollDelay - (timer % rollDelay)}
                       </div>
                     </div>
-
                   </>
                 )}
                 {gameOver && <div className="">Next Game starting soon!</div>}
               </Col>
               <Col
-              className="align-items-center justify-content-center"
-              xs={8}
-              sm={8}
-              md={8}
-              lg={8}
-              xl={8}
+                className="align-items-center justify-content-center"
+                xs={8}
+                sm={8}
+                md={8}
+                lg={8}
+                xl={8}
               >
                 <h1 className="header">Chat</h1>
-                <Accordion defaultActiveKey="0">
-                  <Accordion.Item eventKey="0" style={{ border: "none" }}>
-                    <Accordion.Header className="text-lg text-center">Show/Hide
-                    </Accordion.Header>
-                    <Accordion.Body style={{ backgroundColor: "#121212" }}>
-                      <Chatbox
-                        user={user}
-                        setUser={handleSetUser}
-                        socket={socket}
-                      />
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+                {isMobile ? (
+                  <Accordion>
+                    <Accordion.Item eventKey="0" style={{ border: "none" }}>
+                      <Accordion.Header className="text-lg text-center">
+                        Show/Hide
+                      </Accordion.Header>
+                      <Accordion.Body style={{ backgroundColor: "#121212" }}>
+                        <Chatbox
+                          user={user}
+                          setUser={handleSetUser}
+                          socket={socket}
+                        />
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                ) : (
+                  <Accordion defaultActiveKey="0">
+                    <Accordion.Item eventKey="0" style={{ border: "none" }}>
+                      <Accordion.Header className="text-lg text-center">
+                        Show/Hide
+                      </Accordion.Header>
+                      <Accordion.Body style={{ backgroundColor: "#121212" }}>
+                        <Chatbox
+                          user={user}
+                          setUser={handleSetUser}
+                          socket={socket}
+                        />
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                )}
               </Col>
-              </Row>
+            </Row>
           </Col>
         </Row>
         <Row>

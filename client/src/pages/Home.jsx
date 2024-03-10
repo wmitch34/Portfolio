@@ -100,7 +100,7 @@ export default function Home(props) {
       </Row>
       <Row className="mt-4">
         <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Card className="mb-4 bg-grey">
+          <Card className="mb-4">
             <Card.Body>
               <Card.Title>Bingo</Card.Title>
               <Card.Subtitle className="mb-2 text-muted">

@@ -67,7 +67,7 @@ function OffCanvas() {
             onClick={handleClose}
           ></Button>
         </Offcanvas.Header>
-        <Offcanvas.Body style={bg_darkgrey}>
+        <Offcanvas.Body style={{ backgroundColor: "#121212", color: "white" }}>
           <Nav className="mr-auto flex-column">
             {links.map((menuItem, index) => (
               <Nav.Link
