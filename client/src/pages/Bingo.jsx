@@ -290,7 +290,7 @@ export default function Bingo() {
                     <div className="current-roll-container">
                       <div className="bingo">{roll}</div>
                     </div>
-                    <div className="timerContainer">
+                    <div className="timerContainer" style={{ color: "white" }}>
                       <div className="timer text-lg">
                         00:
                         {rollDelay - (timer % rollDelay) < 10
