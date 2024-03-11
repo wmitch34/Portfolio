@@ -55,7 +55,6 @@ export default function Home(props) {
       executeScroll();
     }
   }, []);
-  console.log(history);
 
   return (
     <Container className="mt-5">

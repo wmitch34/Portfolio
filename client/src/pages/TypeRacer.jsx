@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { getSentence } from "../api";
+import { normalizeApostrophes } from "../components/tools";
 
 function Results({ start_time, end_time, target, mistakes }) {
   let calcMistakes = mistakes;
@@ -29,6 +30,16 @@ function Results({ start_time, end_time, target, mistakes }) {
   );
 }
 
+async function getRandomSentence(setter) {
+  try {
+    const sentence_from_api = await getSentence();
+    let text = normalizeApostrophes(sentence_from_api);
+    setter(text);
+  } catch (e) {
+    console.log("Client says API goofed': ", e);
+  }
+}
+
 function TypeRacer() {
   const userInputBoxRef = useRef(null);
   const startGameBtnRef = useRef(null);
@@ -39,20 +50,10 @@ function TypeRacer() {
       /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
 
     setIsMobile(isMobileDevice);
-    fetchAndSetSentence();
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
-  }, []);
 
-  const fetchAndSetSentence = async () => {
-    getSentence()
-      .then((res) => {
-        console.log(res);
-        setSentance(res);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  };
+    getRandomSentence(setSentence);
+  }, []);
 
   let initialOptions = [
     "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",
@@ -74,7 +75,7 @@ function TypeRacer() {
 
   // The following block of states are for setting the value of text areas.
   // String value of current target.
-  const [curr_sen, setSentance] = useState("");
+  const [curr_sen, setSentence] = useState("");
 
   // Text area for primary game.
   const [userInput, setUserInput] = useState("");
@@ -162,7 +163,12 @@ function TypeRacer() {
 
   return (
     <>
-      <Container className="mt-4 ms-5.5">
+      <Container className="mt-5">
+        <Row>
+          <Col className="text-lg mt-5">
+            <h1>{""}</h1>
+          </Col>
+        </Row>
         <Row>
           <Col className="text-lg">
             <h1>Type Racer</h1>
@@ -200,7 +206,7 @@ function TypeRacer() {
               disabled={session}
               onClick={() => {
                 handleReset();
-                setSentance(options[getRand()]);
+                getRandomSentence(setSentence);
                 setResults(false);
               }}
               className="btn btn-primary me-1 mb-1"
@@ -284,7 +290,7 @@ function TypeRacer() {
                 onClick={() => {
                   if (newContent.trim() !== "") {
                     setOptions((prevOptions) => [...prevOptions, newContent]);
-                    setSentance(newContent);
+                    setSentence(newContent);
                     setSubmitNewFlag(false);
                   }
                 }}
