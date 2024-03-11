@@ -21,7 +21,7 @@ import.meta.env.MODE === "development"
 const socket = io(socket_url);
 
 socket.on("connect", () => {
-  console.log("Connected to server");
+  console.log("Websocket connection success!");
 });
 
 socket.on("connect_error", (error) => {
@@ -210,7 +210,7 @@ export default function Bingo() {
 
   return (
     <>
-      <Container style={{ color: "#212529" }}>
+      <Container style={{ color: "#212529" }} className="mt-5">
         <Row>
           <Col
             className="align-items-center justify-content-center"

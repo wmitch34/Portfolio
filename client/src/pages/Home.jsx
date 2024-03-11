@@ -58,7 +58,7 @@ export default function Home(props) {
   console.log(history);
 
   return (
-    <Container style={{ marginTop: "1rem" }}>
+    <Container className="mt-5">
       <Row>
         <Col>
           <div>

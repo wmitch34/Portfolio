@@ -5,6 +5,7 @@ const socketIO = require("socket.io");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
+const sentenceService = require("./src/sentenceService.js");
 
 let PORT = 5000;
 let chatHistory = [];
@@ -14,11 +15,12 @@ app.use(cors(), bodyParser.json());
 const server = http.createServer(app);
 
 const io = socketIO(server, {
-  path: '/socket.io',
+  path: "/socket.io",
   cors: {
     origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
     methods: ["GET", "POST"],
-},});
+  },
+});
 
 app.post("/api/verify", (req, res) => {
   try {
@@ -32,6 +34,16 @@ app.post("/api/verify", (req, res) => {
     }
   } catch (e) {
     console.log("Server Error: ", e);
+  }
+});
+
+app.get("/api/getSentence", async (req, res) => {
+  try {
+    const value = await sentenceService.getSentence();
+    let myReturn = await value;
+    res.status(200).json({ data: myReturn });
+  } catch (e) {
+    console.log(e);
   }
 });
 

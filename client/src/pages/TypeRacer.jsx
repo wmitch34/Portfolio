@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { getSentence } from "../api";
 
 function Results({ start_time, end_time, target, mistakes }) {
   let calcMistakes = mistakes;
@@ -38,8 +39,20 @@ function TypeRacer() {
       /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
 
     setIsMobile(isMobileDevice);
+    fetchAndSetSentence();
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
   }, []);
+
+  const fetchAndSetSentence = async () => {
+    getSentence()
+      .then((res) => {
+        console.log(res);
+        setSentance(res);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   let initialOptions = [
     "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",
@@ -61,7 +74,8 @@ function TypeRacer() {
 
   // The following block of states are for setting the value of text areas.
   // String value of current target.
-  const [curr_sen, setSentance] = useState(options[getRand()]);
+  const [curr_sen, setSentance] = useState("");
+
   // Text area for primary game.
   const [userInput, setUserInput] = useState("");
   // Text area for user created sentence.

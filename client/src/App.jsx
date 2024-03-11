@@ -40,12 +40,14 @@ function OffCanvas() {
   return (
     <>
       <Navbar
-        sticky="top"
         expand={false}
         variant="dark"
         style={{
           margin: "1rem",
           maxWidth: "fit-content",
+          position: "fixed",
+          top: "1rem",
+          zIndex: "999",
         }}
         onClick={handleShow}
       >

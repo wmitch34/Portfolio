@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Apple, Rufus } from "../components/GameObjects.js";
-import BOIBACK from "../assets/BOIBACK.png";
-import BOIFRONT from "../assets/BOIFRONT.png";
-import BOILEFT1 from "../assets/left1.png";
-import BOIRIGHT1 from "../assets/right1.png";
+import BOIBACK from "../assets/boyBack.png";
+import BOIFRONT from "../assets/boyFront.png";
+import BOILEFT1 from "../assets/boyLeft.png";
+import BOIRIGHT1 from "../assets/boyRight.png";
 import GRASS from "../assets/grassy.png";
 import { getRandomNumber } from "../components/tools.js";
 import Offcanvas from "react-bootstrap/Offcanvas";
@@ -63,7 +63,7 @@ export default function Snake(props) {
     setShow(input);
   };
 
-  const player = { width: 100, height: 200 };
+  const player = { width: 200, height: 250 };
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -332,6 +332,7 @@ export default function Snake(props) {
         style={{
           width: `${windowSize.width}px`,
           height: `${windowSize.height}px`,
+          overflow: "hidden",
         }}
       >
         <img
