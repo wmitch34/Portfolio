@@ -54,6 +54,25 @@ function getSafeCoords(screen_width, screen_height, objSize) {
   return { x: x, y: y };
 }
 
+function OnScreenController(props) {
+  return (
+    <>
+      <Container>
+        <Row>
+          <Col>Place</Col>
+          <Col>Up</Col>
+          <Col>Interact</Col>
+        </Row>
+        <Row>
+          <Col>left</Col>
+          <Col>down</Col>
+          <Col>Right</Col>
+        </Row>
+      </Container>
+    </>
+  );
+}
+
 export default function Snake(props) {
   // This state is for controlling OffCanvas that shows when mobile opens the app
   const [show, setShow] = useState(false);
@@ -306,6 +325,8 @@ export default function Snake(props) {
           </Container>
         </Offcanvas.Body>
       </Offcanvas>
+
+      <OnScreenController />
 
       {gameObjects.map((gameObject, index) => (
         <GameObject key={index} gameObject={gameObject} />
