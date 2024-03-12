@@ -212,6 +212,11 @@ export default function Bingo() {
     <>
       <Container style={{ color: "#212529" }} className="mt-5">
         <Row>
+          <Col className="text-lg mt-5">
+            <h1>{""}</h1>
+          </Col>
+        </Row>
+        <Row>
           <Col
             className="align-items-center justify-content-center"
             xs={12}

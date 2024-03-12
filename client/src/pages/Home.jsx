@@ -59,6 +59,11 @@ export default function Home(props) {
   return (
     <Container className="mt-5">
       <Row>
+        <Col className="text-lg mt-5">
+          <h1>{""}</h1>
+        </Col>
+      </Row>
+      <Row>
         <Col>
           <div>
             <h1 className="text-lg">

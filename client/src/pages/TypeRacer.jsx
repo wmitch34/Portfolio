@@ -2,6 +2,22 @@ import { useEffect, useState, useRef } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { getSentence } from "../api";
 import { normalizeApostrophes } from "../components/tools";
+import "./TypeRacer.css";
+
+let localSentences = [
+  "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",
+  "The desire for secrecy has meant that nations have operated codemaking departments, which were responsible for ensuring the security of communications by inventing and implementing the best possible codes.",
+  "The quick brown fox jumps over the lazy dog.",
+  "Please type out this temporary sentence.",
+  "There is a one in six chance you are typing this sentence.",
+  "Adding one more, for the variety.",
+];
+
+function getRand(list) {
+  const num = Math.random() * list.length;
+  const ret = Math.floor(num);
+  return ret;
+}
 
 function Results({ start_time, end_time, target, mistakes }) {
   let calcMistakes = mistakes;
@@ -36,7 +52,10 @@ async function getRandomSentence(setter) {
     let text = normalizeApostrophes(sentence_from_api);
     setter(text);
   } catch (e) {
-    console.log("Client says API goofed': ", e);
+    console.log("Falied to set sentence from API Ninjas: ", e);
+    const localSentence = localSentences[getRand(localSentences)];
+    console.log(localSentence);
+    setter(localSentence);
   }
 }
 
@@ -52,25 +71,10 @@ function TypeRacer() {
     setIsMobile(isMobileDevice);
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
 
-    getRandomSentence(setSentence);
+    getRandomSentence(handleSetSentence);
   }, []);
 
-  let initialOptions = [
-    "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",
-    "The desire for secrecy has meant that nations have operated codemaking departments, which were responsible for ensuring the security of communications by inventing and implementing the best possible codes.",
-    "The quick brown fox jumps over the lazy dog.",
-    "Please type out this temporary sentence.",
-    "There is a one in six chance you are typing this sentence.",
-    "Adding one more, for the variety.",
-  ];
-
-  function getRand() {
-    const num = Math.random() * options.length;
-    const ret = Math.floor(num);
-    return ret;
-  }
-
-  const [options, setOptions] = useState(initialOptions);
+  const [history, setHistoy] = useState([]);
   const [isMobile, setIsMobile] = useState(false);
 
   // The following block of states are for setting the value of text areas.
@@ -161,6 +165,11 @@ function TypeRacer() {
     }
   };
 
+  const handleSetSentence = (input) => {
+    setHistoy((prev) => [input, ...prev]);
+    setSentence(input);
+  };
+
   return (
     <>
       <Container className="mt-5">
@@ -206,7 +215,7 @@ function TypeRacer() {
               disabled={session}
               onClick={() => {
                 handleReset();
-                getRandomSentence(setSentence);
+                getRandomSentence(handleSetSentence);
                 setResults(false);
               }}
               className="btn btn-primary me-1 mb-1"
@@ -289,8 +298,7 @@ function TypeRacer() {
               <button
                 onClick={() => {
                   if (newContent.trim() !== "") {
-                    setOptions((prevOptions) => [...prevOptions, newContent]);
-                    setSentence(newContent);
+                    handleSetSentence(newContent);
                     setSubmitNewFlag(false);
                   }
                 }}
@@ -318,6 +326,19 @@ function TypeRacer() {
             </Col>
           </Row>
         )}
+        <Row>
+          <h1>History</h1>
+          <Container style={{ maxHeight: "50vh", overflow: "auto" }}>
+            {history.map((value, index) => (
+              <Row
+                onClick={() => handleSetSentence(value)}
+                className="mt-2 history-row"
+              >
+                {value}
+              </Row>
+            ))}
+          </Container>
+        </Row>
       </Container>
     </>
   );
