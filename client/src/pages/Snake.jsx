@@ -16,6 +16,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
+import OnScreenController from "../components/OnscreenController.jsx";
 import "./Home.css";
 
 // React component for rendering a game object
@@ -54,25 +55,6 @@ function getSafeCoords(screen_width, screen_height, objSize) {
   return { x: x, y: y };
 }
 
-function OnScreenController(props) {
-  return (
-    <>
-      <Container>
-        <Row>
-          <Col>Place</Col>
-          <Col>Up</Col>
-          <Col>Interact</Col>
-        </Row>
-        <Row>
-          <Col>left</Col>
-          <Col>down</Col>
-          <Col>Right</Col>
-        </Row>
-      </Container>
-    </>
-  );
-}
-
 export default function Snake(props) {
   // This state is for controlling OffCanvas that shows when mobile opens the app
   const [show, setShow] = useState(false);
@@ -81,6 +63,8 @@ export default function Snake(props) {
   const handleSetIsMobile = (input) => {
     setShow(input);
   };
+
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const player = { width: 200, height: 250 };
   const [windowSize, setWindowSize] = useState({
@@ -162,91 +146,128 @@ export default function Snake(props) {
       });
     };
 
+    const handleTouchStart = () => {
+      setIsTouchDevice(true);
+      // Remove the event listener once detected
+      window.removeEventListener("touchstart", handleTouchStart);
+    };
+
+    // Attach the event listener to check for touch support
+    window.addEventListener("touchstart", handleTouchStart);
+
     // Add event listener on component mount
     window.addEventListener("resize", handleResize);
 
     // Clean up the event listener on component unmount
     return () => {
       window.removeEventListener("resize", handleResize);
+      window.removeEventListener("touchstart", handleTouchStart);
     };
   }, []);
 
+  const Controller = {
+    // Define how many pixels the playerchar moves with each key press
+
+    moveStep: 25,
+    // Calculate new position based on current position
+    newPosition: { ...position },
+
+    up() {
+      if (!(this.newPosition.y - this.moveStep < 0)) {
+        this.newPosition.y -= this.moveStep;
+      }
+      setSprite(BOIBACK);
+      setPosition(this.newPosition);
+    },
+    down() {
+      if (
+        !(
+          this.newPosition.y + this.moveStep + player.height >
+          windowSize.height
+        )
+      ) {
+        this.newPosition.y += this.moveStep;
+      }
+      setSprite(BOIFRONT);
+      setPosition(this.newPosition);
+    },
+    left() {
+      if (!(this.newPosition.x - this.moveStep < 0)) {
+        this.newPosition.x -= this.moveStep;
+      }
+      setSprite(BOILEFT1);
+      setPosition(this.newPosition);
+    },
+    right() {
+      if (
+        !(this.newPosition.x + this.moveStep + player.width > windowSize.width)
+      ) {
+        this.newPosition.x += this.moveStep;
+      }
+      setSprite(BOIRIGHT1);
+      setPosition(this.newPosition);
+    },
+    place() {
+      handleAction();
+      if (
+        !(
+          this.newPosition.y + this.moveStep + player.height >
+          windowSize.height
+        )
+      ) {
+        this.newPosition.y += this.moveStep;
+        setSprite(BOIFRONT);
+      }
+      setPosition(this.newPosition);
+    },
+    interact() {
+      handleinteract();
+      setSprite(BOIFRONT);
+    },
+  };
   // controls
   useEffect(() => {
     const handleKeyDown = (event) => {
       console.log(event.key);
-      // Define how many pixels the playerchar moves with each key press
-      const moveStep = 25;
-      // Calculate new position based on current position
-      let newPosition = { ...position };
 
       if (event.key == "e" || event.key == "Enter") {
-        handleinteract();
-        setSprite(BOIFRONT);
+        Controller.interact();
       }
 
       if (event.key == "q") {
-        handleAction();
-        if (!(newPosition.y + moveStep + player.height > windowSize.height)) {
-          newPosition.y += moveStep;
-          setSprite(BOIFRONT);
-        }
+        Controller.place();
       }
 
       switch (event.key) {
         case "ArrowUp":
-          if (!(newPosition.y - moveStep < 0)) {
-            newPosition.y -= moveStep;
-          }
-          setSprite(BOIBACK);
+          Controller.up();
           break;
         case "w":
-          if (!(newPosition.y - moveStep < 0)) {
-            newPosition.y -= moveStep;
-          }
-          setSprite(BOIBACK);
+          Controller.up();
+
           break;
         case "ArrowDown":
-          if (!(newPosition.y + moveStep + player.height > windowSize.height)) {
-            newPosition.y += moveStep;
-          }
-          setSprite(BOIFRONT);
+          Controller.down();
           break;
         case "s":
-          if (!(newPosition.y + moveStep + player.height > windowSize.height)) {
-            newPosition.y += moveStep;
-          }
-          setSprite(BOIFRONT);
+          Controller.down();
           break;
         case "ArrowLeft":
-          if (!(newPosition.x - moveStep < 0)) {
-            newPosition.x -= moveStep;
-          }
-          setSprite(BOILEFT1);
+          Controller.left();
           break;
         case "a":
-          if (!(newPosition.x - moveStep < 0)) {
-            newPosition.x -= moveStep;
-          }
-          setSprite(BOILEFT1);
+          Controller.left();
           break;
         case "ArrowRight":
-          if (!(newPosition.x + moveStep + player.width > windowSize.width)) {
-            newPosition.x += moveStep;
-          }
-          setSprite(BOIRIGHT1);
+          Controller.right();
           break;
         case "d":
-          if (!(newPosition.x + moveStep + player.height > windowSize.width)) {
-            newPosition.x += moveStep;
-          }
-          setSprite(BOIRIGHT1);
+          Controller.right();
+
           break;
         default:
           break;
       }
-
-      setPosition(newPosition);
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -326,7 +347,7 @@ export default function Snake(props) {
         </Offcanvas.Body>
       </Offcanvas>
 
-      <OnScreenController />
+      <OnScreenController controller={Controller} touchScreen={isTouchDevice} />
 
       {gameObjects.map((gameObject, index) => (
         <GameObject key={index} gameObject={gameObject} />
