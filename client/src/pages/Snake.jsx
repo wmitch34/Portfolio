@@ -280,7 +280,7 @@ export default function Snake(props) {
   return (
     <>
       <Offcanvas
-        show={show}
+        show={false}
         onHide={handleClose}
         placement="top"
         style={{

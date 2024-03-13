@@ -7,7 +7,9 @@ import Card from "react-bootstrap/Card";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
 import BingoThumb from "../assets/bingoThumb.png";
 import TypeRacerThumb from "../assets/typeRacerThumb.png";
+import Contstruction from "../assets/construction.jpg";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
+import Image from "react-bootstrap/Image";
 
 import "./Home.css";
 
@@ -27,12 +29,12 @@ let aboutStyle = {
 };
 
 function MyCard(props) {
-  const { title, desc, img, link } = props;
+  const { title, desc, img, link, alt } = props;
   return (
     <div className="hoverClass">
       <Link to={link} style={{ textDecoration: "none" }}>
         <Card style={{}}>
-          <Card.Img variant="top" src={img} />
+          <Card.Img variant="top" src={img} alt={alt} />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
             <Card.Text>{desc}</Card.Text>
@@ -89,6 +91,7 @@ export default function Home(props) {
             link="/Bingo"
             desc={bingoDesc}
             img={BingoThumb}
+            alt={"Bingo thumbnail"}
           ></MyCard>
         </Col>
         <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
@@ -97,6 +100,7 @@ export default function Home(props) {
             link="/ApplePicker"
             desc={applePickerDesc}
             img={ApplePickerThumb}
+            alt={"Apple Picker thumbnail"}
           ></MyCard>
         </Col>
         <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
@@ -105,6 +109,7 @@ export default function Home(props) {
             link="/TypeRacer"
             desc={typeRacerDesc}
             img={TypeRacerThumb}
+            alt={"Type Racer thumbnail"}
           ></MyCard>
         </Col>
       </Row>
@@ -116,7 +121,18 @@ export default function Home(props) {
           <h1 className="text-xl mt-4">About</h1>
         </Col>
       </Row>
-      <Row className="mt-4">
+      <Row>
+        <Col>
+          <p>This section is currently under construction!</p>
+          <Image
+            style={{ maxHeight: "30rem" }}
+            src={Contstruction}
+            alt="Description of your image"
+            fluid // Use fluid to make the image responsive
+          />
+        </Col>
+      </Row>
+      {/* <Row className="mt-4">
         <Col xs={12} sm={12} md={12} lg={12} xl={12}>
           <Card className="mb-4">
             <Card.Body>
@@ -132,7 +148,7 @@ export default function Home(props) {
                 animations, rest api, and web socket utlization.
               </Card.Text>
               <Card.Link href="/Bingo">Play now</Card.Link>
-              {/* <Card.Link href="#">Another Link</Card.Link> */}
+              <Card.Link href="#">Another Link</Card.Link>
             </Card.Body>
           </Card>
         </Col>
@@ -157,7 +173,7 @@ export default function Home(props) {
                 available.
               </Card.Text>
               <Card.Link href="/ApplePicker">Start collecting</Card.Link>
-              {/* <Card.Link href="#">Another Link</Card.Link> */}
+              <Card.Link href="#">Another Link</Card.Link>
             </Card.Body>
           </Card>
         </Col>
@@ -190,7 +206,7 @@ export default function Home(props) {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
+      </Row> */}
     </Container>
   );
 }

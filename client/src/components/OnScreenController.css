@@ -1,6 +1,7 @@
 .controls {
   display: grid;
   place-items: center;
+  height: 10rem;
   aspect-ratio: 1 / 1;
   border-radius: 1rem;
   border-color: grey;
@@ -8,7 +9,7 @@
   background-color: rgba(169, 169, 169, 0.5);
 }
 
-button {
+.my-button {
   border: 5px solid black;
   border-radius: 1rem;
   width: 80%;

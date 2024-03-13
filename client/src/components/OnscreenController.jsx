@@ -11,18 +11,23 @@ export default function OnScreenController(props) {
   return (
     <>
       <Container
-        style={{ position: "absolute", bottom: "1rem", zIndex: "999" }}
+        style={{
+          position: "absolute",
+          bottom: "1rem",
+          zIndex: "999",
+        }}
+        ß
       >
         <Row>
           <Col xs={12} sm={12} md={8} lg={6} xl={6}>
             <Container>
-              <Row>
+              <Row className="mb-4">
                 <Col>
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.place()}
-                      className="button-override"
+                      className="my-button"
                     >
                       {touchScreen ? "DROP" : "Q"}
                     </button>
@@ -33,7 +38,7 @@ export default function OnScreenController(props) {
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.up()}
-                      className="button-override"
+                      className="my-button"
                     >
                       {touchScreen ? "UP" : "W"}
                     </button>
@@ -44,7 +49,7 @@ export default function OnScreenController(props) {
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.interact()}
-                      className="button-override"
+                      className="my-button"
                     >
                       {touchScreen ? "INTERACT" : "E / ENTER"}
                     </button>
@@ -57,7 +62,7 @@ export default function OnScreenController(props) {
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.left()}
-                      className="button-override"
+                      className="my-button"
                     >
                       {touchScreen ? "LEFT" : "A"}
                     </button>
@@ -68,6 +73,7 @@ export default function OnScreenController(props) {
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.down()}
+                      className="my-button"
                     >
                       {touchScreen ? "DOWN" : "S"}
                     </button>
@@ -78,6 +84,7 @@ export default function OnScreenController(props) {
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.right()}
+                      className="my-button"
                     >
                       {touchScreen ? "RIGHT" : "D"}
                     </button>
