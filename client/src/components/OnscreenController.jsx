@@ -19,7 +19,7 @@ export default function OnScreenController(props) {
         ß
       >
         <Row>
-          <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+          <Col xs={10} sm={10} md={4} lg={4} xl={4}>
             <Container>
               <Row className="mb-4">
                 <Col>
@@ -93,7 +93,7 @@ export default function OnScreenController(props) {
               </Row>
             </Container>
           </Col>
-          <Col xs={0} sm={0} md={4} lg={6} xl={6}></Col>
+          <Col xs={2} sm={2} md={8} lg={8} xl={8}></Col>
         </Row>
       </Container>
     </>
