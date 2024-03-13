@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
 
 function MyModal(props) {
-  const { message, state, stateHandler, title } = props;
+  const { message, state, stateHandler, title, children, closeMSG } = props;
   //   const [show, setShow] = useState(state);
   //   const handleClose = () => setShow(false);
 
@@ -14,10 +14,11 @@ function MyModal(props) {
         </Modal.Header>
         <Modal.Body>
           <p>{message}</p>
+          {children}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => stateHandler()}>
-            Close
+          <Button variant="primary" onClick={() => stateHandler()}>
+            {closeMSG ? closeMSG : "Close"}
           </Button>
         </Modal.Footer>
       </Modal>

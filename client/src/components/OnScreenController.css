@@ -2,22 +2,22 @@
   display: grid;
   place-items: center;
   aspect-ratio: 1 / 1;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   border-color: grey;
   color: black;
+  margin: 0px;
+  padding: 0px;
 
   background-color: rgba(169, 169, 169, 0.5);
 }
 
 .my-button {
-  border: 5px solid black;
-  border-radius: 1rem;
-  width: 80%;
-  height: 80%;
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  width: 90%;
+  height: 90%;
   margin: 0;
   padding: 0;
   background: none;
   cursor: pointer;
-  font-weight: 600;
-  font-style: large;
 }

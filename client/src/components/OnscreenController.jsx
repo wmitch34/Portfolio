@@ -19,10 +19,10 @@ export default function OnScreenController(props) {
         ß
       >
         <Row>
-          <Col xs={10} sm={10} md={4} lg={4} xl={4}>
+          <Col xs={8} sm={8} md={4} lg={4} xl={4}>
             <Container>
-              <Row className="mb-4">
-                <Col>
+              <Row className="mb-1">
+                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -33,7 +33,7 @@ export default function OnScreenController(props) {
                     </button>
                   </div>
                 </Col>
-                <Col>
+                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -44,20 +44,20 @@ export default function OnScreenController(props) {
                     </button>
                   </div>
                 </Col>
-                <Col>
+                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
                       onClick={() => controller.interact()}
                       className="my-button"
                     >
-                      {touchScreen ? "INTERACT" : "E / ENTER"}
+                      {touchScreen ? "PICKUP" : "E"}
                     </button>
                   </div>
                 </Col>
               </Row>
               <Row>
-                <Col>
+                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -68,7 +68,7 @@ export default function OnScreenController(props) {
                     </button>
                   </div>
                 </Col>
-                <Col>
+                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -79,7 +79,7 @@ export default function OnScreenController(props) {
                     </button>
                   </div>
                 </Col>
-                <Col>
+                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -93,7 +93,7 @@ export default function OnScreenController(props) {
               </Row>
             </Container>
           </Col>
-          <Col xs={2} sm={2} md={8} lg={8} xl={8}></Col>
+          <Col xs={4} sm={4} md={8} lg={8} xl={8}></Col>
         </Row>
       </Container>
     </>

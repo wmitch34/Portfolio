@@ -64,6 +64,8 @@ function initCard() {
 }
 
 export default function Bingo() {
+  const [isMobile, setIsMobile] = useState(true);
+  const [showAccordion, setShowAccordion] = useState(false);
   const [user, setUser] = useState("");
   const [rollHist, setRollHist] = useState([]);
   const [board, setBoard] = useState(initCard());
@@ -73,12 +75,18 @@ export default function Bingo() {
   const [hint, setHint] = useState();
   const [submitModal, setSubmitModal] = useState(false);
   const [gameOverModal, setGameOverModal] = useState(false);
+  const [missingUsernameModal, setMissingUsernamemodal] = useState(false);
+  const [welcomeModal, setWelcomeModal] = useState(true);
   const [winner, setWinner] = useState("");
 
   const [rollDelay, setRollDelay] = useState();
 
   // API call to check users board
   const checkBoard = () => {
+    if (user === "") {
+      setMissingUsernamemodal(true);
+      return;
+    }
     try {
       submitBoard(board, user, setSubmitModal);
     } catch (e) {
@@ -98,6 +106,10 @@ export default function Bingo() {
   };
   const handleCloseSubmissionHandler = () => {
     setSubmitModal(false);
+  };
+
+  const handleCloseMissingUsername = () => {
+    setMissingUsernamemodal(false);
   };
   // handler for reset board btn
   const handleResetBoard = () => {
@@ -202,6 +214,12 @@ export default function Bingo() {
 
   useEffect(() => {
     socket.emit("req_game_state");
+    const userAgent = navigator.userAgent;
+    const isMobileDevice =
+      /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
+    console.log(isMobileDevice);
+    setIsMobile(isMobileDevice);
+    setShowAccordion(true);
 
     return () => {
       socket.off("req_game_state");
@@ -303,20 +321,22 @@ export default function Bingo() {
                 xl={8}
               >
                 <h1 className="header">Chat</h1>
-                <Accordion>
-                  <Accordion.Item eventKey="0" style={{ border: "none" }}>
-                    <Accordion.Header className="text-lg text-center">
-                      Show/Hide
-                    </Accordion.Header>
-                    <Accordion.Body style={{ backgroundColor: "#121212" }}>
-                      <Chatbox
-                        user={user}
-                        setUser={handleSetUser}
-                        socket={socket}
-                      />
-                    </Accordion.Body>
-                  </Accordion.Item>
-                </Accordion>
+                {showAccordion && (
+                  <Accordion defaultActiveKey={isMobile ? null : "0"}>
+                    <Accordion.Item eventKey={"0"} style={{ border: "none" }}>
+                      <Accordion.Header className="text-lg text-center">
+                        Show/Hide
+                      </Accordion.Header>
+                      <Accordion.Body style={{ backgroundColor: "#121212" }}>
+                        <Chatbox
+                          user={user}
+                          setUser={handleSetUser}
+                          socket={socket}
+                        />
+                      </Accordion.Body>
+                    </Accordion.Item>
+                  </Accordion>
+                )}
               </Col>
             </Row>
           </Col>
@@ -352,6 +372,32 @@ export default function Bingo() {
         state={submitModal}
         stateHandler={handleCloseSubmissionHandler}
         title={"Invalid Board"}
+      ></Modal>
+      <Modal
+        state={welcomeModal}
+        stateHandler={setWelcomeModal}
+        title={"Welcome to Bingo"}
+        message={"Set a username"}
+        closeMSG={"Submit"}
+      >
+        <form>
+          <input
+            type="text"
+            placeholder="Your user name..."
+            value={user}
+            onChange={(event) => {
+              setUser(event.target.value);
+            }}
+          />
+        </form>
+      </Modal>
+      <Modal
+        state={missingUsernameModal}
+        stateHandler={setMissingUsernamemodal}
+        title={"You dont have a username!"}
+        message={
+          "Enter a username into the chatbox before you submit your board."
+        }
       ></Modal>
     </>
   );
