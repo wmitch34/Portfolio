@@ -108,6 +108,11 @@ export default function Bingo() {
     setSubmitModal(false);
   };
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission logic here
+  };
+
   const handleCloseMissingUsername = () => {
     setMissingUsernamemodal(false);
   };
@@ -380,7 +385,7 @@ export default function Bingo() {
         message={"Set a username"}
         closeMSG={"Submit"}
       >
-        <form>
+        <form onSubmit={handleSubmit}>
           <input
             type="text"
             placeholder="Your user name..."
