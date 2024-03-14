@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Accordion from "react-bootstrap/Accordion";
+import NavOffCanvas from "../components/NavOffCanvas.jsx";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Chatbox from "../components/ChatBox";
@@ -317,32 +317,6 @@ export default function Bingo() {
                 )}
                 {gameOver && <div className="">Next Game starting soon!</div>}
               </Col>
-              <Col
-                className="align-items-center justify-content-center"
-                xs={8}
-                sm={8}
-                md={8}
-                lg={8}
-                xl={8}
-              >
-                <h1 className="header">Chat</h1>
-                {showAccordion && (
-                  <Accordion defaultActiveKey={isMobile ? null : "0"}>
-                    <Accordion.Item eventKey={"0"} style={{ border: "none" }}>
-                      <Accordion.Header className="text-lg text-center">
-                        Show/Hide
-                      </Accordion.Header>
-                      <Accordion.Body style={{ backgroundColor: "#121212" }}>
-                        <Chatbox
-                          user={user}
-                          setUser={handleSetUser}
-                          socket={socket}
-                        />
-                      </Accordion.Body>
-                    </Accordion.Item>
-                  </Accordion>
-                )}
-              </Col>
             </Row>
           </Col>
         </Row>
@@ -387,6 +361,7 @@ export default function Bingo() {
       >
         <form onSubmit={handleSubmit}>
           <input
+            className="input-text-field"
             type="text"
             placeholder="Your user name..."
             value={user}
@@ -404,6 +379,9 @@ export default function Bingo() {
           "Enter a username into the chatbox before you submit your board."
         }
       ></Modal>
+      <NavOffCanvas header={"Chatbox"}>
+        <Chatbox user={user} setUser={handleSetUser} socket={socket} />
+      </NavOffCanvas>
     </>
   );
 }

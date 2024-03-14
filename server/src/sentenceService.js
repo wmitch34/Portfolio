@@ -77,7 +77,7 @@ async function getRiddle() {
 }
 
 async function getSentence() {
-  const arr = [getDadJoke, getFact, getHistoricalEvent, getRiddle];
+  const arr = [getDadJoke, getFact, getHistoricalEvent];
   const randomIndex = Math.floor(Math.random() * arr.length);
   const funky_function = arr[randomIndex];
   const ret = await funky_function();

@@ -166,7 +166,9 @@ function TypeRacer() {
   };
 
   const handleSetSentence = (input) => {
-    setHistoy((prev) => [input, ...prev]);
+    if (!history.includes(input)) {
+      setHistoy((prev) => [input, ...prev]);
+    }
     setSentence(input);
   };
 
@@ -184,9 +186,10 @@ function TypeRacer() {
           </Col>
           {isMobile && (
             <div className="text-md">
-              <p>
+              <p className="p-3">
                 ATTENTION MOBILE USERS: When the timer countdown finishes, touch
-                the text box to open your keyboard and begin typing!
+                the text box to open your keyboard and begin typing! It may also
+                be helpful to adjust the siz of the text box as needed.
               </p>
             </div>
           )}
@@ -238,7 +241,16 @@ function TypeRacer() {
         </Row>
         <Row>
           <Col>
-            <textarea readOnly value={curr_sen} className="w-100"></textarea>
+            <div
+              className="w-100 p-1 mb-2"
+              style={{
+                backgroundColor: "white",
+                color: "black",
+                minHeight: "5rem",
+              }}
+            >
+              {curr_sen}
+            </div>
           </Col>
         </Row>
         <Row>
@@ -248,7 +260,7 @@ function TypeRacer() {
               ref={userInputBoxRef}
               value={userInput}
               placeholder="Type Here"
-              className="w-100 h-5"
+              className="w-100 mb-3"
               spellCheck={false}
               onChange={handleSetUserInput}
             ></textarea>
@@ -327,12 +339,13 @@ function TypeRacer() {
           </Row>
         )}
         <Row>
-          <h1>History</h1>
+          <h2>Sentence History</h2>
           <Container style={{ maxHeight: "50vh", overflow: "auto" }}>
             {history.map((value, index) => (
               <Row
                 onClick={() => handleSetSentence(value)}
                 className="mt-2 history-row"
+                key={{ index }}
               >
                 {value}
               </Row>

@@ -11,20 +11,18 @@
 }
 
 .accordion {
-  background-color:#121212;
+  background-color: #121212;
 }
 .accordion-button {
   background-color: grey;
   box-shadow: none;
   border-radius: 0;
-
 }
 .accordion-button:not(.collased) {
   color: #121212;
   box-shadow: none;
   background-color: grey;
 }
-
 
 .roll-hist-container {
   display: flex;
@@ -127,10 +125,9 @@
 
 .header {
   color: white;
-  
 }
 
-.accordion-body{
+.accordion-body {
   padding: 1rem 0 0 0;
 }
 
@@ -144,4 +141,17 @@
   /* color: white; */
   text-align: center;
   justify-self: center;
+}
+
+.input-text-field {
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background-color: #121212 !important;
+  border: 2px solid white;
+  color: white !important;
+}
+
+.input-text-field:hover {
+  outline: "none";
+  box-shadow: none;
 }
