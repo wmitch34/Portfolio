@@ -8,7 +8,7 @@ export default function Chatbox(props) {
   const scrollRef = useRef(null);
   const [inputVal, setInputVal] = useState("");
   const [chatHistory, setChathistory] = useState([]);
-  const { user, setUser, socket, notificationMOD } = props;
+  const { user, setUser, socket, badgeSetter } = props;
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -22,6 +22,9 @@ export default function Chatbox(props) {
 
   useEffect(() => {
     socket.on("recieve_message", (data) => {
+      console.log("recieved Message");
+      badgeSetter(1);
+
       setChathistory(data);
     });
 

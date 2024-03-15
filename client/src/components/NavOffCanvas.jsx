@@ -4,16 +4,19 @@ import chatBoxIcon from "../assets/chatBoxIcon.png";
 import Image from "react-bootstrap/Image";
 
 export default function OffCanvas(props) {
-  const { children, header } = props;
+  const { children, header, badge, badgeSetter } = props;
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
+    badgeSetter(0);
+
     setShow(false);
   };
   const handleShow = () => {
+    badgeSetter(0);
+
     setShow(true);
-    setNotif(0);
   };
 
   return (
@@ -43,22 +46,24 @@ export default function OffCanvas(props) {
             position: "relative",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: "-10px",
-              right: "-10px",
-              background: "red",
-              borderRadius: "50%",
-              width: "50%",
-              height: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            {"0"}
-          </div>
+          {badge !== 0 && (
+            <div
+              style={{
+                position: "absolute",
+                top: "-10px",
+                right: "-10px",
+                background: "red",
+                borderRadius: "50%",
+                width: "50%",
+                height: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              {badge}
+            </div>
+          )}
 
           <Image
             style={{ maxHeight: "2rem" }}

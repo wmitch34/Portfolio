@@ -76,7 +76,7 @@ export default function Bingo() {
   const [missingUsernameModal, setMissingUsernamemodal] = useState(false);
   const [welcomeModal, setWelcomeModal] = useState(true);
   const [winner, setWinner] = useState("");
-  const [notification, setNotification] = useState(0);
+  const [badge, setBadge] = useState(0);
 
   const [rollDelay, setRollDelay] = useState();
 
@@ -373,16 +373,12 @@ export default function Bingo() {
           "Enter a username into the chatbox before you submit your board."
         }
       ></Modal>
-      <NavOffCanvas
-        header={"Chatbox"}
-        notification={notification}
-        notificationMOD={() => setNotification}
-      >
+      <NavOffCanvas header={"Chatbox"} badge={badge} badgeSetter={setBadge}>
         <Chatbox
           user={user}
           setUser={handleSetUser}
           socket={socket}
-          notificationMOD={() => setNotification}
+          badgeSetter={setBadge}
         />
       </NavOffCanvas>
     </>
