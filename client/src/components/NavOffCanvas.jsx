@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Offcanvas, Navbar, Button } from "react-bootstrap/";
 import chatBoxIcon from "../assets/chatBoxIcon.png";
 import Image from "react-bootstrap/Image";
 
 export default function OffCanvas(props) {
-  const { children, header } = props;
-  const [show, setShow] = useState(false);
+  const { children, header, notification, notificationMOD } = props;
 
-  const handleClose = () => setShow(false);
+  const [show, setShow] = useState(true);
+
+  const handleClose = () => setShow(true);
   const handleShow = () => setShow(true);
+
+  useEffect(() => {
+    if (show) {
+      notificationMOD(null);
+    }
+  }, [show, notificationMOD]);
 
   return (
     <>
@@ -37,22 +44,26 @@ export default function OffCanvas(props) {
             position: "relative",
           }}
         >
-          <div
-            style={{
-              position: "absolute",
-              top: "-10px",
-              right: "-10px",
-              background: "red",
-              borderRadius: "50%",
-              width: "50%",
-              height: "50%",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            1
-          </div>
+          {notification ? (
+            <div
+              style={{
+                position: "absolute",
+                top: "-10px",
+                right: "-10px",
+                background: "red",
+                borderRadius: "50%",
+                width: "50%",
+                height: "50%",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              1
+            </div>
+          ) : (
+            <></>
+          )}
           <Image
             style={{ maxHeight: "2rem" }}
             src={chatBoxIcon}
