@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Collapse } from "react-bootstrap";
 import { getSentence } from "../api";
 import { normalizeApostrophes } from "../components/tools";
 import "./TypeRacer.css";
@@ -64,11 +64,15 @@ function TypeRacer() {
   const startGameBtnRef = useRef(null);
 
   useEffect(() => {
-    const userAgent = navigator.userAgent;
-    const isMobileDevice =
-      /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
+    const handleTouchStart = () => {
+      setIsMobile(true);
+      // Remove the event listener once detected
+      window.removeEventListener("touchstart", handleTouchStart);
+    };
 
-    setIsMobile(isMobileDevice);
+    // Attach the event listener to check for touch support
+    window.addEventListener("touchstart", handleTouchStart);
+
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
 
     getRandomSentence(handleSetSentence);
@@ -184,15 +188,14 @@ function TypeRacer() {
           <Col className="text-lg">
             <h1>Type Racer</h1>
           </Col>
-          {isMobile && (
+          <Collapse in={isMobile}>
             <div className="text-md">
               <p className="p-3">
-                ATTENTION MOBILE USERS: When the timer countdown finishes, touch
-                the text box to open your keyboard and begin typing! It may also
-                be helpful to adjust the siz of the text box as needed.
+                Touch screen users! When the timer countdown finishes, touch the
+                text box to open your keyboard.
               </p>
             </div>
-          )}
+          </Collapse>
         </Row>
         <Row>
           <Col className="ms-0 mb-2">

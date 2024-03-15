@@ -34,8 +34,25 @@ export default function OffCanvas(props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            position: "relative",
           }}
         >
+          <div
+            style={{
+              position: "absolute",
+              top: "-10px",
+              right: "-10px",
+              background: "red",
+              borderRadius: "50%",
+              width: "50%",
+              height: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            1
+          </div>
           <Image
             style={{ maxHeight: "2rem" }}
             src={chatBoxIcon}
