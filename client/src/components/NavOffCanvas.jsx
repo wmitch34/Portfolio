@@ -14,8 +14,6 @@ export default function OffCanvas(props) {
     setShow(false);
   };
   const handleShow = () => {
-    badgeSetter(0);
-
     setShow(true);
   };
 

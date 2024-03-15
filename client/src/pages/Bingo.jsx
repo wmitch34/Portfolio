@@ -77,6 +77,7 @@ export default function Bingo() {
   const [welcomeModal, setWelcomeModal] = useState(true);
   const [winner, setWinner] = useState("");
   const [badge, setBadge] = useState(0);
+  const [chatHistory, setChatHistory] = useState([]);
 
   const [rollDelay, setRollDelay] = useState();
 
@@ -112,9 +113,6 @@ export default function Bingo() {
     // Handle form submission logic here
   };
 
-  const handleCloseMissingUsername = () => {
-    setMissingUsernamemodal(false);
-  };
   // handler for reset board btn
   const handleResetBoard = () => {
     const elements = document.querySelectorAll("*");
@@ -208,18 +206,34 @@ export default function Bingo() {
       });
     });
 
+    socket.on("recieve_message", (data) => {
+      console.log("recieved Message");
+      setBadge((prev) => prev + 1);
+
+      setChatHistory(data);
+    });
+
+    socket.on("recieve_board_history", (data) => {
+      setBoardHistory(data);
+    });
+
     return () => {
       socket.off("rolled_number");
       socket.off("game_over");
       socket.off("send_curr_time");
       socket.off("send_game_state");
+      socket.off("recieve_message");
+      socket.off("recieve_board_history");
     };
   }, [socket]);
 
   useEffect(() => {
+    socket.emit("req_chat_history");
     socket.emit("req_game_state");
 
     return () => {
+      socket.off("req_chat_history");
+
       socket.off("req_game_state");
     };
   }, []);
@@ -377,8 +391,9 @@ export default function Bingo() {
         <Chatbox
           user={user}
           setUser={handleSetUser}
+          chatHistory={chatHistory}
+          setChatHistory={setChatHistory}
           socket={socket}
-          badgeSetter={setBadge}
         />
       </NavOffCanvas>
     </>

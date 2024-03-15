@@ -7,8 +7,7 @@ export default function Chatbox(props) {
   const inputRef = useRef(null);
   const scrollRef = useRef(null);
   const [inputVal, setInputVal] = useState("");
-  const [chatHistory, setChathistory] = useState([]);
-  const { user, setUser, socket, badgeSetter } = props;
+  const { user, setUser, chatHistory, setChatHistory, socket } = props;
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -16,25 +15,8 @@ export default function Chatbox(props) {
     }
   }, [chatHistory]);
 
-  useEffect(() => {
-    socket.emit("req_chat_history");
-  }, []);
-
-  useEffect(() => {
-    socket.on("recieve_message", (data) => {
-      console.log("recieved Message");
-      badgeSetter(1);
-
-      setChathistory(data);
-    });
-
-    socket.on("recieve_board_history", (data) => {
-      setBoardHistory(data);
-    });
-  }, [socket]);
-
   const sendMessage = () => {
-    setChathistory([...chatHistory, { message: inputVal, user: user }]);
+    setChatHistory([...chatHistory, { message: inputVal, user: user }]);
     socket.emit("send_message", { message: inputVal, user: user });
   };
 
