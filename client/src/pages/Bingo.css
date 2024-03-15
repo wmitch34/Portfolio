@@ -2,7 +2,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 3rem;
+  max-width: 4rem;
+  width: 3rem;
   min-width: 2rem;
   font-weight: bold;
   border-radius: 10%;
@@ -12,6 +13,7 @@
 }
 
 .roll-hist-container {
+  max-height: 100%;
   display: flex;
   flex-wrap: wrap;
 }

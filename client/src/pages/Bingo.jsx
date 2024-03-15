@@ -246,8 +246,8 @@ export default function Bingo() {
             xs={3}
             sm={3}
             md={3}
-            lg={3}
-            xl={3}
+            lg={2}
+            xl={2}
             style={{
               display: "flex",
               alignItems: "center",
@@ -287,7 +287,7 @@ export default function Bingo() {
               </Row>
             </Container>
           </Col>
-          <Col xs={9} sm={9} md={9} lg={5} xl={5}>
+          <Col xs={9} sm={9} md={9} lg={6} xl={6}>
             <Container className="mb-4" fluid>
               <Row>
                 <h2 className="text-lg text-primary">Bingo</h2>
