@@ -233,110 +233,111 @@ export default function Bingo() {
 
   return (
     <>
-      <Container style={{ color: "#212529" }} className="mt-5">
-        <Row>
-          <Col className="text-lg mt-5">
-            <h1>{""}</h1>
-          </Col>
-        </Row>
+      <Container style={{ color: "#212529", marginTop: "5rem" }}>
         <Row>
           <Col
-            className="align-items-center justify-content-center"
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
+            xs={3}
+            sm={3}
+            md={3}
+            lg={3}
+            xl={3}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
           >
-            <h1 className="header">Bingo</h1>
-            <Container className="mb-4">
-              <div className="board">
-                {board.map((row, index) => (
-                  <div key={index} className="board-row w-100">
-                    {row.map((tile) => (
+            <Container style={{ height: "100%" }}>
+              <Row>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <h2 className="text-lg text-primary"> Latest Roll</h2>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <>
+                    {!gameOver && (
                       <div
-                        key={tile.id}
-                        className={
-                          hint == tile.value
-                            ? `${tile.class_List} hint-pulse`
-                            : tile.class_List
-                        }
-                        onClick={handleTileClick}
-                        id={"tile-" + tile.value}
+                        style={{ maxWidth: "fit-content", textAlign: "center" }}
                       >
-                        {tile.value}
+                        <div className="current-roll">{roll}</div>
+
+                        <div style={{ color: "white" }}>
+                          00:
+                          {rollDelay - (timer % rollDelay) < 10
+                            ? "0" + (rollDelay - (timer % rollDelay))
+                            : rollDelay - (timer % rollDelay)}
+                        </div>
                       </div>
-                    ))}
-                  </div>
-                ))}
-              </div>
-              <div className="container">
-                <button
-                  onClick={checkBoard}
-                  className="btn btn-primary"
-                  disabled={gameOver}
-                >
-                  Submit Board
-                </button>
-              </div>
+                    )}
+                    {gameOver && (
+                      <div className="text-xl" style={{ color: "white" }}>
+                        Next Game starting soon!
+                      </div>
+                    )}
+                  </>
+                </Col>
+              </Row>
             </Container>
           </Col>
-          {/* Info */}
-          <Col
-            className="align-items-center justify-content-center"
-            xs={12}
-            sm={12}
-            md={6}
-            lg={6}
-            xl={6}
-          >
-            <Row>
-              <Col
-                className="align-items-center justify-content-center"
-                xs={4}
-                sm={4}
-                md={4}
-                lg={4}
-                xl={4}
-              >
-                <h1 className=" header">Roll</h1>
-                {!gameOver && (
-                  <>
-                    <div className="current-roll-container">
-                      <div className="bingo">{roll}</div>
+          <Col xs={9} sm={9} md={9} lg={5} xl={5}>
+            <Container className="mb-4" fluid>
+              <Row>
+                <h2 className="text-lg text-primary">Bingo</h2>
+              </Row>
+              <Row>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <div>
+                    <div>
+                      {board.map((row, index) => (
+                        <div key={index} className="board-row w-100">
+                          {row.map((tile) => (
+                            <div
+                              key={tile.id}
+                              className={
+                                hint == tile.value
+                                  ? `${tile.class_List} hint-pulse`
+                                  : tile.class_List
+                              }
+                              onClick={handleTileClick}
+                              id={"tile-" + tile.value}
+                            >
+                              {tile.value}
+                            </div>
+                          ))}
+                        </div>
+                      ))}
                     </div>
-                    <div className="timerContainer" style={{ color: "white" }}>
-                      <div className="timer text-lg">
-                        00:
-                        {rollDelay - (timer % rollDelay) < 10
-                          ? "0" + (rollDelay - (timer % rollDelay))
-                          : rollDelay - (timer % rollDelay)}
-                      </div>
-                    </div>
-                  </>
-                )}
-                {gameOver && <div className="">Next Game starting soon!</div>}
-              </Col>
-            </Row>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                  <button
+                    onClick={checkBoard}
+                    className="btn btn-primary"
+                    disabled={gameOver}
+                  >
+                    Submit Board
+                  </button>
+                </Col>
+              </Row>
+            </Container>
           </Col>
-        </Row>
-        <Row>
-          <Col className="text-center">
-            <h1 className="header">Roll History</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center roll-hist-container mb-4">
-            {rollHist.map((roll, index) => (
-              <div
-                key={index}
-                className="roll-hist-bingo"
-                id={"hist-" + roll}
-                onClick={() => handleHistClick(roll)}
-              >
-                {roll}
-              </div>
-            ))}
+          <Col xs={12} sm={12} md={12} lg={4} xl={4}>
+            <h2 className="text-lg text-primary">Roll History</h2>
+            <div className="roll-hist-container mb-4">
+              {rollHist.map((roll, index) => (
+                <div
+                  key={index}
+                  className="roll-hist-bingo"
+                  id={"hist-" + roll}
+                  onClick={() => handleHistClick(roll)}
+                >
+                  {roll}
+                </div>
+              ))}
+            </div>
           </Col>
         </Row>
       </Container>

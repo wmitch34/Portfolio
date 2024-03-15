@@ -43,7 +43,7 @@ function OffCanvas() {
         expand={false}
         variant="dark"
         style={{
-          margin: "1rem",
+          margin: ".5rem",
           maxWidth: "fit-content",
           position: "fixed",
           top: "1rem",

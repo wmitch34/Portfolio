@@ -16,21 +16,33 @@ export default function OffCanvas(props) {
         expand={false}
         variant="dark"
         style={{
-          margin: "1rem",
+          margin: ".5rem",
           maxWidth: "fit-content",
           position: "fixed",
-          top: "1rem",
-          right: "1rem",
+          top: ".5rem",
+          right: ".5rem",
           zIndex: "999",
         }}
         onClick={handleShow}
       >
-        <Image
-          style={{ maxHeight: "2rem" }}
-          src={chatBoxIcon}
-          alt="Description of your image"
-          fluid // Use fluid to make the image responsive
-        />
+        <div
+          style={{
+            backgroundColor: "rgba(169, 169, 169, 0.5)",
+            borderRadius: "10%",
+            height: "3rem",
+            width: "3rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          }}
+        >
+          <Image
+            style={{ maxHeight: "2rem" }}
+            src={chatBoxIcon}
+            alt="Description of your image"
+            fluid // Use fluid to make the image responsive
+          />
+        </div>
       </Navbar>
 
       <Offcanvas show={show} onHide={handleClose} placement="end">
@@ -44,7 +56,11 @@ export default function OffCanvas(props) {
             type="button"
             className="btn-close"
             aria-label="Close"
-            style={{ backgroundColor: "white", color: "white" }}
+            style={{
+              backgroundColor: "white",
+              color: "white",
+              marginRight: "1.5rem",
+            }}
             onClick={handleClose}
           ></Button>
         </Offcanvas.Header>

@@ -2,26 +2,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
+  max-width: 3rem;
+  min-width: 2rem;
   font-weight: bold;
   border-radius: 10%;
   background-color: grey;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
-}
-
-.accordion {
-  background-color: #121212;
-}
-.accordion-button {
-  background-color: grey;
-  box-shadow: none;
-  border-radius: 0;
-}
-.accordion-button:not(.collased) {
-  color: #121212;
-  box-shadow: none;
-  background-color: grey;
 }
 
 .roll-hist-container {
@@ -30,8 +17,8 @@
 }
 
 .board-row {
+  max-width: 30rem;
   display: flex;
-  width: 90%;
 }
 
 .bingo {
@@ -88,20 +75,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60%;
-  font-size: 4rem;
+  width: 5rem;
+  min-width: fit-content;
   font-weight: bold;
   border-radius: 10%;
   background-color: white;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
-  flex: 0 0 calc(20% - 10px);
-}
-
-.current-roll-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 /* Define the animation */
@@ -124,17 +104,9 @@
 }
 
 .header {
-  color: white;
-}
-
-.accordion-body {
-  padding: 1rem 0 0 0;
-}
-
-.title {
-  color: white;
   text-align: center;
-  justify-self: center;
+  justify-content: center;
+  color: white;
 }
 
 .timer {
