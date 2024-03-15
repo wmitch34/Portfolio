@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route, Link, Outlet } from "react-router-dom";
-import { Nav, Navbar } from "react-bootstrap";
+import { Nav, Navbar, Image } from "react-bootstrap";
 import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -11,6 +11,8 @@ import TypeRacer from "./pages/TypeRacer";
 import NoMatch from "./pages/NoMatch";
 import Button from "react-bootstrap/Button";
 import Offcanvas from "react-bootstrap/Offcanvas";
+
+import HamburgerIcon from "./assets/hamburger.png";
 
 let links = [
   {
@@ -46,12 +48,31 @@ function OffCanvas() {
           margin: ".5rem",
           maxWidth: "fit-content",
           position: "fixed",
-          top: "1rem",
+          top: ".5rem",
+          left: ".5rem",
           zIndex: "999",
         }}
         onClick={handleShow}
       >
-        <Navbar.Toggle></Navbar.Toggle>
+        <div
+          style={{
+            backgroundColor: "rgba(169, 169, 169, 0.5)",
+            borderRadius: "10%",
+            height: "3rem",
+            width: "3rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            position: "relative",
+          }}
+        >
+          <Image
+            style={{ maxHeight: "2rem" }}
+            src={HamburgerIcon}
+            alt="Description of your image"
+            fluid
+          />
+        </div>
       </Navbar>
 
       <Offcanvas show={show} onHide={handleClose}>

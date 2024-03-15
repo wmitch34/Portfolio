@@ -17,6 +17,10 @@ class Apple extends GameObject {
   points = 100;
   image = APPLE;
   interaction = "collect and move";
+  size = {
+    x: 100,
+    y: 100,
+  };
 }
 
 class Rufus extends GameObject {
