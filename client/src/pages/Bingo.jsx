@@ -64,8 +64,6 @@ function initCard() {
 }
 
 export default function Bingo() {
-  const [isMobile, setIsMobile] = useState(true);
-  const [showAccordion, setShowAccordion] = useState(false);
   const [user, setUser] = useState("");
   const [rollHist, setRollHist] = useState([]);
   const [board, setBoard] = useState(initCard());
@@ -220,12 +218,6 @@ export default function Bingo() {
 
   useEffect(() => {
     socket.emit("req_game_state");
-    const userAgent = navigator.userAgent;
-    const isMobileDevice =
-      /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
-    console.log(isMobileDevice);
-    setIsMobile(isMobileDevice);
-    setShowAccordion(true);
 
     return () => {
       socket.off("req_game_state");
@@ -390,7 +382,7 @@ export default function Bingo() {
           user={user}
           setUser={handleSetUser}
           socket={socket}
-          notificationMOd={() => setNotification}
+          notificationMOD={() => setNotification}
         />
       </NavOffCanvas>
     </>

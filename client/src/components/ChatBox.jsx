@@ -22,7 +22,6 @@ export default function Chatbox(props) {
 
   useEffect(() => {
     socket.on("recieve_message", (data) => {
-      notificationMOD((prev) => prev + 1);
       setChathistory(data);
     });
 

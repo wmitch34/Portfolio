@@ -4,18 +4,17 @@ import chatBoxIcon from "../assets/chatBoxIcon.png";
 import Image from "react-bootstrap/Image";
 
 export default function OffCanvas(props) {
-  const { children, header, notification, notificationMOD } = props;
+  const { children, header } = props;
 
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(true);
-  const handleShow = () => setShow(true);
-
-  useEffect(() => {
-    if (show) {
-      notificationMOD(null);
-    }
-  }, [show, notificationMOD]);
+  const handleClose = () => {
+    setShow(false);
+  };
+  const handleShow = () => {
+    setShow(true);
+    setNotif(0);
+  };
 
   return (
     <>
@@ -44,31 +43,28 @@ export default function OffCanvas(props) {
             position: "relative",
           }}
         >
-          {notification ? (
-            <div
-              style={{
-                position: "absolute",
-                top: "-10px",
-                right: "-10px",
-                background: "red",
-                borderRadius: "50%",
-                width: "50%",
-                height: "50%",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              1
-            </div>
-          ) : (
-            <></>
-          )}
+          <div
+            style={{
+              position: "absolute",
+              top: "-10px",
+              right: "-10px",
+              background: "red",
+              borderRadius: "50%",
+              width: "50%",
+              height: "50%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {"0"}
+          </div>
+
           <Image
             style={{ maxHeight: "2rem" }}
             src={chatBoxIcon}
             alt="Description of your image"
-            fluid // Use fluid to make the image responsive
+            fluid
           />
         </div>
       </Navbar>
