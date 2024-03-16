@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
-import BingoThumb from "../assets/bingoThumb.png";
+import BingoThumb from "../assets/bingoThumb2.jpg";
 import TypeRacerThumb from "../assets/typeRacerThumb.png";
 import Contstruction from "../assets/construction.jpg";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
