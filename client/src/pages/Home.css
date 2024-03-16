@@ -8,13 +8,15 @@
 
 @media (max-width: 576px) {
   .sm-col-margin {
-    padding-top: 5rem;
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    /* margin-bottom: 1rem; */
   }
   .sm-justify-left {
     text-align: start;
+  }
+  .sm-padding-top {
+    padding-top: 4rem;
   }
 }
 
@@ -24,5 +26,9 @@
   }
   .lg-center {
     text-align: center;
+  }
+
+  .lg-padding-top {
+    padding-top: 2rem;
   }
 }

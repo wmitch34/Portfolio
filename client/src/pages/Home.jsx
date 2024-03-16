@@ -68,12 +68,15 @@ export default function Home(props) {
 
   return (
     <Container className="pageContainter">
-      <Row className="lg-screen-100vh align-items-center sm-col-margin ">
+      <Row className="lg-screen-100vh align-items-center">
         <Container>
-          <Row>
+          <Row
+            style={{ marginBottom: "2rem" }}
+            className="sm-padding-top lg-padding-top "
+          >
             <Col>
               <div>
-                <h1 className="text-lg sm-justify-left lg-center">
+                <h2 className="sm-justify-left lg-center">
                   Welcome, select an activity, or read more{" "}
                   <ScrollLink
                     to="about"
@@ -85,13 +88,13 @@ export default function Home(props) {
                     about
                   </ScrollLink>{" "}
                   this page!
-                </h1>
+                </h2>
               </div>
             </Col>
           </Row>
 
-          <Row className="mt-4">
-            <Col xs={12} sm={12} md={6} lg={4} xl={4} className="mb-4 ">
+          <Row className="sm-col-margin">
+            <Col xs={12} sm={6} md={6} lg={4} xl={4} className="mb-4 ">
               <MyCard
                 title="Bingo"
                 link="/Bingo"
@@ -100,7 +103,7 @@ export default function Home(props) {
                 alt={"Bingo thumbnail"}
               ></MyCard>
             </Col>
-            <Col xs={12} sm={12} md={6} lg={4} xl={4} className="mb-4">
+            <Col xs={12} sm={6} md={6} lg={4} xl={4} className="mb-4">
               <MyCard
                 title="Apple Picker"
                 link="/ApplePicker"
@@ -109,7 +112,7 @@ export default function Home(props) {
                 alt={"Apple Picker thumbnail"}
               ></MyCard>
             </Col>
-            <Col xs={12} sm={12} md={6} lg={4} xl={4} className="mb-4">
+            <Col xs={12} sm={6} md={6} lg={4} xl={4} className="mb-4">
               <MyCard
                 title="Type Racer"
                 link="/TypeRacer"

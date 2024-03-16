@@ -58,8 +58,8 @@ function OffCanvas() {
           style={{
             backgroundColor: "rgba(169, 169, 169, 0.5)",
             borderRadius: "10%",
-            height: "3rem",
-            width: "3rem",
+            height: "2.5rem",
+            width: "2.5rem",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -67,7 +67,7 @@ function OffCanvas() {
           }}
         >
           <Image
-            style={{ maxHeight: "2rem" }}
+            style={{ maxHeight: "1.75rem" }}
             src={HamburgerIcon}
             alt="Description of your image"
             fluid
