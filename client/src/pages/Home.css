@@ -5,3 +5,24 @@
 .hoverClass:hover {
   transform: scale(1.05);
 }
+
+@media (max-width: 576px) {
+  .sm-col-margin {
+    padding-top: 5rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-bottom: 1rem;
+  }
+  .sm-justify-left {
+    text-align: start;
+  }
+}
+
+@media (min-width: 576px) {
+  .lg-screen-100vh {
+    height: 100vh;
+  }
+  .lg-center {
+    text-align: center;
+  }
+}

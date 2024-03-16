@@ -14,13 +14,14 @@ import Image from "react-bootstrap/Image";
 import "./Home.css";
 
 import { Link, useLocation } from "react-router-dom";
+import { alignPropType } from "react-bootstrap/esm/types";
 
 const bingoDesc =
-  "Test your Bingo skills against the world's finest players over the web. Enjoy banter and commoradary over the in game chatbox!";
+  "Test your Bingo skills against the world's finest players over the web.";
 const applePickerDesc =
-  "The only thing standing between you and the end of the world as we know it-- the almighty apple. Collect apples as they fall and use the seeds to plant new trees!";
+  "Collect apples as they fall and use the seeds to plant new trees!";
 const typeRacerDesc =
-  "Blaze through bite-sized typing promps to improve your skills as a typist. Compare your score with friends to see who is the speediest typer!";
+  "Blaze through bite-sized typing promps to improve your skills as a typist.";
 
 let aboutStyle = {
   minHeight: "10rem",
@@ -31,15 +32,22 @@ let aboutStyle = {
 function MyCard(props) {
   const { title, desc, img, link, alt } = props;
   return (
-    <div className="hoverClass">
+    <div className="my-col hoverClass">
       <Link to={link} style={{ textDecoration: "none" }}>
-        <Card style={{}}>
-          <Card.Img variant="top" src={img} alt={alt} />
+        <Card>
+          <Card.Img variant="top" src={img} alt={alt} fluid />
           <Card.Body>
             <Card.Title>{title}</Card.Title>
-            <Card.Text>{desc}</Card.Text>
+            <Card.Text
+              style={{
+                height: 100,
+                overflow: "auto",
+              }}
+            >
+              {desc}
+            </Card.Text>
 
-            <Button variant="primary">Explore!</Button>
+            {/* <Button variant="primary">Explore!</Button> */}
           </Card.Body>
         </Card>
       </Link>
@@ -59,76 +67,74 @@ export default function Home(props) {
   }, []);
 
   return (
-    <Container className="mt-5">
-      <Row>
-        <Col className="text-lg mt-5">
-          <h1>{""}</h1>
-        </Col>
+    <Container className="pageContainter">
+      <Row className="lg-screen-100vh align-items-center sm-col-margin ">
+        <Container>
+          <Row>
+            <Col>
+              <div>
+                <h1 className="text-lg sm-justify-left lg-center">
+                  Welcome, select an activity, or read more{" "}
+                  <ScrollLink
+                    to="about"
+                    smooth={true}
+                    duration={300}
+                    className="test-primary"
+                    style={{ cursor: "pointer", textDecoration: "none" }}
+                  >
+                    about
+                  </ScrollLink>{" "}
+                  this page!
+                </h1>
+              </div>
+            </Col>
+          </Row>
+
+          <Row className="mt-4">
+            <Col xs={12} sm={12} md={6} lg={4} xl={4} className="mb-4 ">
+              <MyCard
+                title="Bingo"
+                link="/Bingo"
+                desc={bingoDesc}
+                img={BingoThumb}
+                alt={"Bingo thumbnail"}
+              ></MyCard>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={4} xl={4} className="mb-4">
+              <MyCard
+                title="Apple Picker"
+                link="/ApplePicker"
+                desc={applePickerDesc}
+                img={ApplePickerThumb}
+                alt={"Apple Picker thumbnail"}
+              ></MyCard>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={4} xl={4} className="mb-4">
+              <MyCard
+                title="Type Racer"
+                link="/TypeRacer"
+                desc={typeRacerDesc}
+                img={TypeRacerThumb}
+                alt={"Type Racer thumbnail"}
+              ></MyCard>
+            </Col>
+          </Row>
+        </Container>
       </Row>
-      <Row>
-        <Col>
-          <div>
-            <h1 className="text-lg">
-              Welcome, select an activity, or read more{" "}
-              <ScrollLink
-                to="about"
-                smooth={true}
-                duration={200}
-                className="test-primary"
-                style={{ cursor: "pointer", textDecoration: "none" }}
-              >
-                about
-              </ScrollLink>{" "}
-              this page!
-            </h1>
-          </div>
-        </Col>
-      </Row>
-      <Row className="mt-4">
-        <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
-          <MyCard
-            title="Bingo"
-            link="/Bingo"
-            desc={bingoDesc}
-            img={BingoThumb}
-            alt={"Bingo thumbnail"}
-          ></MyCard>
-        </Col>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
-          <MyCard
-            title="Apple Picker"
-            link="/ApplePicker"
-            desc={applePickerDesc}
-            img={ApplePickerThumb}
-            alt={"Apple Picker thumbnail"}
-          ></MyCard>
-        </Col>
-        <Col xs={12} sm={12} md={4} lg={4} xl={4} className="mb-4">
-          <MyCard
-            title="Type Racer"
-            link="/TypeRacer"
-            desc={typeRacerDesc}
-            img={TypeRacerThumb}
-            alt={"Type Racer thumbnail"}
-          ></MyCard>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
+      <Row className="lg-screen-100vh">
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
           <h1 ref={myRef} id="about">
             {" "}
           </h1>
           <h1 className="text-xl mt-4">About</h1>
         </Col>
-      </Row>
-      <Row>
-        <Col>
+        <Col xs={12} sm={12} md={12} lg={12} xl={12}>
           <p>This section is currently under construction!</p>
           <Image
             style={{ maxHeight: "30rem" }}
             src={Contstruction}
             alt="Description of your image"
-            fluid // Use fluid to make the image responsive
+            fluid
           />
         </Col>
       </Row>
