@@ -208,7 +208,9 @@ export default function Bingo() {
 
     socket.on("recieve_message", (data) => {
       console.log("recieved Message");
-      setBadge((prev) => prev + 1);
+      if (data.length > 0) {
+        setBadge((prev) => prev + 1);
+      }
 
       setChatHistory(data);
     });

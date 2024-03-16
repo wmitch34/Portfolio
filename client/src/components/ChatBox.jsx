@@ -81,6 +81,7 @@ export default function Chatbox(props) {
             <div className="w-100 overFlow-auto " style={{ display: "inline" }}>
               <form className="text-box-container">
                 <input
+                  autoFocus
                   value={inputVal}
                   placeholder="Message..."
                   onChange={(event) => {
