@@ -1,5 +1,7 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
+import UCFLogo from "../assets/UCFLogo.png";
+import "./Home.css";
 
 export default function Resume() {
   return (
@@ -7,13 +9,24 @@ export default function Resume() {
       style={{
         backgroundColor: "white",
         color: "black",
-        padding: "2rem",
+        padding: "3rem 2rem 2rem 3rem",
       }}
     >
       <Container>
-        <Row>
+        <Row className="mb-4">
+          <Col xl={2}>
+            <Image
+              src={UCFLogo}
+              alt={"UCF Logo"}
+              style={{ maxHeight: 100 }}
+              className="sm-photo-height"
+              rounded
+            ></Image>
+          </Col>
           <Col style={{ textAlign: "center" }}>
-            <h1>Will Mitchell</h1>
+            <h1 style={{ fontWeight: "bold" }}>
+              <i>Will Mitchell</i>
+            </h1>
             <p>
               wmitch34@gmail.com |{" "}
               <a href={"https://github.com/wmitch34"} target={"_blank"}>
@@ -22,11 +35,12 @@ export default function Resume() {
               | (407) 790-0679
             </p>
           </Col>
+          <Col xl={2}>{""}</Col>
         </Row>
 
         <Row>
           <Col>
-            <h2>Profile</h2>
+            <h2 style={{ fontWeight: "bold" }}>Profile</h2>
             <p>
               Experienced college graduate pursuing a software engineering
               position where I can leverage my technical expertise and
@@ -39,7 +53,7 @@ export default function Resume() {
         </Row>
         <Row>
           <Col>
-            <h2>Skills</h2>
+            <h2 style={{ fontWeight: "bold" }}>Skills</h2>
             <Container>
               <Row>
                 <Col>JavaScript / TypeScript</Col>
@@ -58,9 +72,9 @@ export default function Resume() {
         </Row>
         <Row>
           <Col>
-            <h2>Project Highlights</h2>
-            <p>
-              “Tanknicians” Management Portal – Web Application, Front-end
+            <h2 style={{ fontWeight: "bold" }}>Project Highlights</h2>
+            <p style={{ fontWeight: "bold" }}>
+              “Tanknicians” Management Portal - Web Application, Front-end
               Developer
             </p>
             <ul>
@@ -85,8 +99,8 @@ export default function Resume() {
                 inception to deployment.
               </li>
             </ul>
-            <p>
-              “My Game List” Online Game Library – Web Application, Back-end
+            <p style={{ fontWeight: "bold" }}>
+              “My Game List” Online Game Library - Web Application, Back-end
               Developer
             </p>
             <ul>
@@ -107,60 +121,59 @@ export default function Resume() {
         </Row>
         <Row>
           <Col>
-            <h2>Experience</h2>
-            <p>
-              <Container>
-                <Row>
-                  <Col>
-                    <p>Deloitte Consulting</p>
-                  </Col>
-                  <Col>
-                    <p>Summer Solutions Scholar (Software Developer)</p>
-                  </Col>
-                  <Col>
-                    <p>June 2023 - Aug 2023</p>
-                  </Col>
-                </Row>
-              </Container>
-            </p>
+            <h2 style={{ fontWeight: "bold" }}>Experience</h2>
+
+            <Container>
+              <Row style={{ fontWeight: "bold" }}>
+                <Col>
+                  <p>Deloitte Consulting</p>
+                </Col>
+                <Col>
+                  <p>Summer Solutions Scholar (Software Developer)</p>
+                </Col>
+                <Col>
+                  <p>June 2023 - Aug 2023</p>
+                </Col>
+              </Row>
+            </Container>
+
             <ul>
               <li>
                 Participated in a 10-week internship program as a software
-                developer on a ‘Government and Public Services’ project.
+                developer on a 'Government and Public Services' project.
               </li>
               <li>
                 Analyzed an Enterprise Java web application and addressed
                 documented defects with a Confluence-Jira workflow.
               </li>
               <li>
-                Tested software changes through front-end demos and ‘SQL
-                Developer’ database interface.
+                Tested software changes through front-end demos and 'SQL
+                Developer' database interface.
               </li>
               <li>
                 Collaborated with development, testing, and functional teams to
                 push code changes to a remote repository.
               </li>
               <li>
-                Honed interpersonal skills through ‘Communication Gyms’ and
-                ‘Diversity, Equity, and Inclusivity’ seminars for professional
+                Honed interpersonal skills through 'Communication Gyms' and
+                'Diversity, Equity, and Inclusivity' seminars for professional
                 development.
               </li>
             </ul>
-            <p>
-              <Container>
-                <Row>
-                  <Col>
-                    <p>University of Central Florida</p>
-                  </Col>
-                  <Col>
-                    <p>Undergraduate Learning Assistant (TA)</p>
-                  </Col>
-                  <Col>
-                    <p>Sept 2022 - Dec 2022</p>
-                  </Col>
-                </Row>
-              </Container>
-            </p>
+
+            <Container>
+              <Row style={{ fontWeight: "bold" }}>
+                <Col>
+                  <p>University of Central Florida</p>
+                </Col>
+                <Col>
+                  <p>Undergraduate Learning Assistant (TA)</p>
+                </Col>
+                <Col>
+                  <p>Sept 2022 - Dec 2022</p>
+                </Col>
+              </Row>
+            </Container>
             <ul>
               <li>
                 Worked with Computer Science I students to help them grasp
@@ -178,21 +191,19 @@ export default function Resume() {
                 testing environment for a full lecture hall.
               </li>
             </ul>
-            <p>
-              <Container>
-                <Row>
-                  <Col>
-                    <p>Marlow's Tavern</p>
-                  </Col>
-                  <Col>
-                    <p>Bartender | Trainer</p>
-                  </Col>
-                  <Col>
-                    <p>Feb 2021 - Present</p>
-                  </Col>
-                </Row>
-              </Container>
-            </p>
+            <Container>
+              <Row style={{ fontWeight: "bold" }}>
+                <Col>
+                  <p>Marlow's Tavern</p>
+                </Col>
+                <Col>
+                  <p>Bartender | Trainer</p>
+                </Col>
+                <Col>
+                  <p>Feb 2021 - Present</p>
+                </Col>
+              </Row>
+            </Container>
             <ul>
               <li>
                 Developed interpersonal communication skills while working with
@@ -215,7 +226,7 @@ export default function Resume() {
         </Row>
         <Row>
           <Col>
-            <h2>Eeducation</h2>
+            <h2 style={{ fontWeight: "bold" }}>Eeducation</h2>
             <Container>
               <Row>
                 <Col>Bachelor of Science, Computer Science</Col>

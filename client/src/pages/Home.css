@@ -18,12 +18,18 @@
   .sm-padding-top {
     padding-top: 4rem;
   }
+  .sm-photo-height {
+    height: 25;
+  }
+}
+
+@media (min-width: 992px) {
+  .xl-screen-100vh {
+    height: 100vh;
+  }
 }
 
 @media (min-width: 576px) {
-  .lg-screen-100vh {
-    height: 100vh;
-  }
   .lg-center {
     text-align: center;
   }

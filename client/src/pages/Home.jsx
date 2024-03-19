@@ -64,7 +64,7 @@ export default function Home(props) {
 
   return (
     <Container className="pageContainter">
-      <Row className="lg-screen-100vh align-items-center">
+      <Row className="xl-screen-100vh align-items-center">
         <Container>
           <Row
             style={{ marginBottom: "2rem" }}
