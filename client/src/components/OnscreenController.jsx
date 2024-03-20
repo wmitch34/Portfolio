@@ -16,7 +16,6 @@ export default function OnScreenController(props) {
           bottom: "1rem",
           zIndex: "999",
         }}
-        ß
       >
         <Row>
           <Col xs={8} sm={8} md={4} lg={4} xl={4}>

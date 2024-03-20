@@ -1,5 +1,4 @@
 import APPLE from "../assets/Apple2.png";
-import RUFUS from "../assets/rufus.png";
 
 class GameObject {
   constructor(number) {
@@ -25,7 +24,7 @@ class Apple extends GameObject {
 
 class Rufus extends GameObject {
   points = 200;
-  image = RUFUS;
+  image = APPLE;
   interaction = "collect";
 }
 

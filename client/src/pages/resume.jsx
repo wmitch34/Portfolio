@@ -230,8 +230,10 @@ export default function Resume() {
             <Container>
               <Row>
                 <Col>Bachelor of Science, Computer Science</Col>
-                <Col>University of Central Florida</Col>
-                <Col>December 2023</Col>
+                <Col style={{ textAlign: "center" }}>
+                  University of Central Florida
+                </Col>
+                <Col style={{ textAlign: "right" }}>December 2023</Col>
               </Row>
             </Container>
           </Col>

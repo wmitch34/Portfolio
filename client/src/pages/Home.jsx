@@ -1,11 +1,9 @@
 import React, { useEffect, useRef } from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
+import { Container, Row, Col, Card, Image } from "react-bootstrap";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
 import BingoThumb from "../assets/bingoThumb2.jpg";
 import TypeRacerThumb from "../assets/typeRacerThumb.png";
+import Portrait from "../assets/portrait.png";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import "./Home.css";
 import Resume from "./resume.jsx";
@@ -18,12 +16,6 @@ const applePickerDesc =
   "Collect apples as they fall and use the seeds to plant new trees!";
 const typeRacerDesc =
   "Blaze through bite-sized typing promps to improve your skills as a typist.";
-
-let aboutStyle = {
-  minHeight: "10rem",
-  maxHeight: "10rem",
-  overflow: "auto",
-};
 
 function MyCard(props) {
   const { title, desc, img, link, alt } = props;
@@ -64,6 +56,7 @@ export default function Home(props) {
 
   return (
     <Container className="pageContainter">
+      <Image href={Portrait} alt={"Portraint of Will M"}></Image>
       <Row className="xl-screen-100vh align-items-center">
         <Container>
           <Row
@@ -133,7 +126,7 @@ export default function Home(props) {
           md={12}
           lg={12}
           xl={12}
-          className="lg-screen-100vh sm-screen-60vh"
+          className="lg-screen-100vh"
         >
           <Resume />
         </Col>

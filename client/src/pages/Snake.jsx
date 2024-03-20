@@ -6,16 +6,6 @@ import BOILEFT1 from "../assets/boyLeft.png";
 import BOIRIGHT1 from "../assets/boyRight.png";
 import GRASS from "../assets/grassy.png";
 import { getRandomNumber } from "../components/tools.js";
-import Offcanvas from "react-bootstrap/Offcanvas";
-import Button from "react-bootstrap/Button";
-import BingoThumb from "../assets/bingoThumb.png";
-import TypeRacerThumb from "../assets/typeRacerThumb.png";
-import StocksThumb2 from "../assets/stocksThumb2.png";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Card from "react-bootstrap/Card";
-import { Link } from "react-router-dom";
 import OnScreenController from "../components/OnscreenController.jsx";
 import "./Home.css";
 
@@ -56,14 +46,6 @@ function getSafeCoords(screen_width, screen_height, objSize) {
 }
 
 export default function Snake(props) {
-  // This state is for controlling OffCanvas that shows when mobile opens the app
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-  const handleSetIsMobile = (input) => {
-    setShow(input);
-  };
-
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   const player = { width: 200, height: 250 };
@@ -134,11 +116,6 @@ export default function Snake(props) {
 
   // on load, handle page size and check if mobile
   useEffect(() => {
-    const userAgent = navigator.userAgent;
-    const isMobileDevice =
-      /Mobi/i.test(userAgent) || /Android/i.test(userAgent);
-    handleSetIsMobile(isMobileDevice);
-
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
@@ -279,74 +256,6 @@ export default function Snake(props) {
 
   return (
     <>
-      <Offcanvas
-        show={false}
-        onHide={handleClose}
-        placement="top"
-        style={{
-          backgroundColor: "#121212",
-          color: "white",
-          height: "fit-content",
-        }}
-      >
-        <Offcanvas.Header>
-          <Offcanvas.Title>Attention Mobile Users</Offcanvas.Title>{" "}
-          <Button
-            type="button"
-            className="btn-close"
-            aria-label="Close"
-            style={{ backgroundColor: "white", color: "white" }}
-            onClick={handleClose}
-          ></Button>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          This application reads inputs from a keyboard to control the
-          character. A touch based version is in the pipeline. Until then you're
-          welcome to appreciate my amazing art!
-          <Container>
-            <Row className="mt-4">
-              <Col xs={10} sm={6} md={4} lg={3} xl={3} className="mb-4">
-                <div className="hoverClass">
-                  <Link to={"/Bingo"} style={{ textDecoration: "none" }}>
-                    <Card style={{}}>
-                      <Card.Img variant="top" src={BingoThumb} />
-                      <Card.Body>
-                        <Card.Title>{"Bingo"}</Card.Title>
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                </div>
-              </Col>
-
-              <Col xs={10} sm={6} md={4} lg={3} xl={3} className="mb-4">
-                <div className="hoverClass">
-                  <Link to={"/TypeRacer"} style={{ textDecoration: "none" }}>
-                    <Card style={{}}>
-                      <Card.Img variant="top" src={TypeRacerThumb} />
-                      <Card.Body>
-                        <Card.Title>{"TypeRacer"}</Card.Title>
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                </div>
-              </Col>
-              <Col xs={10} sm={6} md={4} lg={3} xl={3} className="mb-4">
-                <div className="hoverClass">
-                  <Link to={"/Home#about"} style={{ textDecoration: "none" }}>
-                    <Card style={{}}>
-                      <Card.Img variant="top" src={StocksThumb2} />
-                      <Card.Body>
-                        <Card.Title>{"About"}</Card.Title>
-                      </Card.Body>
-                    </Card>
-                  </Link>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </Offcanvas.Body>
-      </Offcanvas>
-
       <OnScreenController controller={Controller} touchScreen={isTouchDevice} />
 
       {gameObjects.map((gameObject, index) => (
