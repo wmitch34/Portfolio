@@ -56,7 +56,26 @@ export default function Home(props) {
 
   return (
     <Container className="pageContainter">
-      <Image href={Portrait} alt={"Portraint of Will M"}></Image>
+      <div
+        id="hero"
+        style={{ display: "flex" }}
+        className="xl-screen-100vh align-items-center"
+      >
+        <Image
+          src={Portrait}
+          alt={"Portait of Will M"}
+          style={{ height: 300 }}
+          rounded
+        ></Image>
+        <div style={{}} className="p-4">
+          <h1>
+            <i>WILL MITCHELL</i>
+          </h1>
+          <h2>Software Developer</h2>
+          <h2>Computer Science, UCF 2023 </h2>
+        </div>
+      </div>
+
       <Row className="xl-screen-100vh align-items-center">
         <Container>
           <Row
