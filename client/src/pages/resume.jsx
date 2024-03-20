@@ -125,14 +125,14 @@ export default function Resume() {
 
             <Container>
               <Row style={{ fontWeight: "bold" }}>
-                <Col>
+                <Col style={{ maxWidth: "fit-content" }}>
                   <p>Deloitte Consulting</p>
                 </Col>
-                <Col>
+                <Col style={{ textAlign: "center" }}>
                   <p>Summer Solutions Scholar (Software Developer)</p>
                 </Col>
-                <Col>
-                  <p>June 2023 - Aug 2023</p>
+                <Col style={{ maxWidth: "fit-content" }}>
+                  <p style={{ textAlign: "right" }}>June 2023 - Aug 2023</p>
                 </Col>
               </Row>
             </Container>
@@ -163,14 +163,14 @@ export default function Resume() {
 
             <Container>
               <Row style={{ fontWeight: "bold" }}>
-                <Col>
+                <Col style={{ maxWidth: "fit-content" }}>
                   <p>University of Central Florida</p>
                 </Col>
-                <Col>
+                <Col style={{ textAlign: "center" }}>
                   <p>Undergraduate Learning Assistant (TA)</p>
                 </Col>
-                <Col>
-                  <p>Sept 2022 - Dec 2022</p>
+                <Col style={{ maxWidth: "fit-content" }}>
+                  <p style={{ textAlign: "right" }}>Sept 2022 - Dec 2022</p>
                 </Col>
               </Row>
             </Container>
@@ -193,14 +193,14 @@ export default function Resume() {
             </ul>
             <Container>
               <Row style={{ fontWeight: "bold" }}>
-                <Col>
+                <Col style={{ maxWidth: "fit-content" }}>
                   <p>Marlow's Tavern</p>
                 </Col>
-                <Col>
+                <Col style={{ textAlign: "center" }}>
                   <p>Bartender | Trainer</p>
                 </Col>
-                <Col>
-                  <p>Feb 2021 - Present</p>
+                <Col style={{ maxWidth: "fit-content" }}>
+                  <p style={{ textAlign: "right" }}>Feb 2021 - Present</p>
                 </Col>
               </Row>
             </Container>
