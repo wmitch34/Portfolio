@@ -12,6 +12,17 @@
   justify-content: center;
 }
 
+.scroll-parent {
+  height: 100vh; /* Set container height to full viewport height */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+}
+
+.scroll-child {
+  height: 100vh; /* Set each row to take up full viewport height */
+  scroll-snap-align: start; /* Snap each row to the start of the container */
+}
+
 @media (max-width: 576px) {
   .sm-col-margin {
     margin-left: 0.5rem;
@@ -52,15 +63,4 @@
   .sm-padding-top {
     padding-top: 50%;
   }
-}
-
-.scroll-container {
-  height: 100vh; /* Set container height to full viewport height */
-  overflow-y: scroll; /* Enable vertical scrolling */
-  scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
-}
-
-.scroll-child {
-  height: 100vh; /* Set each row to take up full viewport height */
-  scroll-snap-align: start; /* Snap each row to the start of the container */
 }
