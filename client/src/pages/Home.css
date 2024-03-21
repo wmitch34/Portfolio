@@ -6,11 +6,16 @@
   transform: scale(1.05);
 }
 
+.center-both {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 576px) {
   .sm-col-margin {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-    /* margin-bottom: 1rem; */
   }
   .sm-justify-left {
     text-align: start;
@@ -18,8 +23,14 @@
   .sm-padding-top {
     padding-top: 4rem;
   }
-  .sm-photo-height {
-    height: 25;
+}
+
+@media (max-width: 992px) {
+  .sm-screen-top-padding {
+    padding-top: 2rem;
+  }
+  .sm-50 {
+    height: 50%;
   }
 }
 
@@ -27,14 +38,29 @@
   .xl-screen-100vh {
     height: 100vh;
   }
+  .lg-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lg-100 {
+    height: 100%;
+  }
 }
 
-@media (min-width: 576px) {
-  .lg-center {
-    text-align: center;
+@media (max-width: 766px) {
+  .sm-padding-top {
+    padding-top: 50%;
   }
+}
 
-  .lg-padding-top {
-    padding-top: 2rem;
-  }
+.scroll-container {
+  height: 100vh; /* Set container height to full viewport height */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  scroll-snap-type: y mandatory; /* Enable vertical scroll snapping */
+}
+
+.scroll-child {
+  height: 100vh; /* Set each row to take up full viewport height */
+  scroll-snap-align: start; /* Snap each row to the start of the container */
 }

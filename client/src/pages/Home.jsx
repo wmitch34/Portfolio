@@ -1,12 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import { Container, Row, Col, Card, Image } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import ApplePickerThumb from "../assets/applePickerThumb.png";
 import BingoThumb from "../assets/bingoThumb2.jpg";
 import TypeRacerThumb from "../assets/typeRacerThumb.png";
-import Portrait from "../assets/portrait.png";
 import { Link as ScrollLink, animateScroll as scroll } from "react-scroll";
 import "./Home.css";
 import Resume from "./resume.jsx";
+import Hero from "../components/Hero.jsx";
 
 import { Link, useLocation } from "react-router-dom";
 
@@ -55,28 +55,15 @@ export default function Home(props) {
   }, []);
 
   return (
-    <Container className="pageContainter">
-      <div
-        id="hero"
-        style={{ display: "flex" }}
-        className="xl-screen-100vh align-items-center"
-      >
-        <Image
-          src={Portrait}
-          alt={"Portait of Will M"}
-          style={{ height: 300 }}
-          rounded
-        ></Image>
-        <div style={{}} className="p-4">
-          <h1>
-            <i>WILL MITCHELL</i>
-          </h1>
-          <h2>Software Developer</h2>
-          <h2>Computer Science, UCF 2023 </h2>
-        </div>
-      </div>
+    <Container>
+      <Row id="hero" style={{ height: "100vh" }}>
+        <Hero />
+      </Row>
 
-      <Row className="xl-screen-100vh align-items-center">
+      {/* <Row id="bio"></Row>
+      <Row id="Experience"></Row> */}
+
+      <Row className="xl-screen-100vh align-items-center ">
         <Container>
           <Row
             style={{ marginBottom: "2rem" }}
