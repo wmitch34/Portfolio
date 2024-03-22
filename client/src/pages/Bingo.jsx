@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import Container from "react-bootstrap/Container";
-
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import NavOffCanvas from "../components/NavOffCanvas.jsx";
-import "bootstrap/dist/css/bootstrap.min.css";
-
-import Chatbox from "../components/ChatBox";
 import { submitBoard } from "../api";
-import "./Bingo.css";
-
+import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
+import "./Bingo.css";
 
 let socket_url;
 import.meta.env.MODE === "development"
@@ -129,12 +121,12 @@ export default function Bingo() {
     if (classList.contains("highlight-obj")) {
       classList.remove("highlight-obj");
       if (histTile != null) {
-        histTile.style.backgroundColor = "grey";
+        histTile.style.backgrounddivor = "grey";
       }
     } else {
       classList.add("highlight-obj");
       if (histTile != null) {
-        histTile.style.backgroundColor = "white";
+        histTile.style.backgrounddivor = "white";
       }
     }
   };
@@ -157,7 +149,7 @@ export default function Bingo() {
     board1D.forEach((tile) => {
       if (tile.value == data) {
         setHint(tile.value);
-        document.getElementById(`hist-${data}`).style.backgroundColor = "white";
+        document.getElementById(`hist-${data}`).style.backgrounddivor = "white";
         setTimeout(() => {
           setHint();
         }, 1000);
@@ -241,9 +233,9 @@ export default function Bingo() {
 
   return (
     <>
-      <Container>
-        <Row>
-          <Col
+      <div>
+        <div>
+          <div
             xs={3}
             sm={3}
             md={3}
@@ -255,14 +247,14 @@ export default function Bingo() {
               justifyContent: "center",
             }}
           >
-            <Container>
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+            <div>
+              <div>
+                <div xs={12} sm={12} md={12} lg={12} xl={12}>
                   <h2 className="text-lg text-primary"> Latest Roll</h2>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                </div>
+              </div>
+              <div>
+                <div xs={12} sm={12} md={12} lg={12} xl={12}>
                   <>
                     {!gameOver && (
                       <div
@@ -284,17 +276,17 @@ export default function Bingo() {
                       </div>
                     )}
                   </>
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-          <Col xs={9} sm={9} md={9} lg={6} xl={6}>
-            <Container className="mb-4" fluid>
-              <Row>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div xs={9} sm={9} md={9} lg={6} xl={6}>
+            <div className="mb-4" fluid>
+              <div>
                 <h2 className="">Bingo</h2>
-              </Row>
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+              </div>
+              <div>
+                <div xs={12} sm={12} md={12} lg={12} xl={12}>
                   <div>
                     <div>
                       {board.map((row, index) => (
@@ -317,18 +309,18 @@ export default function Bingo() {
                       ))}
                     </div>
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={12} sm={12} md={12} lg={12} xl={12}>
+                </div>
+              </div>
+              <div>
+                <div xs={12} sm={12} md={12} lg={12} xl={12}>
                   <button onClick={checkBoard} className="" disabled={gameOver}>
                     Submit Board
                   </button>
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-          <Col xs={12} sm={12} md={12} lg={4} xl={4}>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div xs={12} sm={12} md={12} lg={4} xl={4}>
             <h2 className="">Roll History</h2>
             <div className="roll-hist-container mb-4">
               {rollHist.map((roll, index) => (
@@ -342,9 +334,9 @@ export default function Bingo() {
                 </div>
               ))}
             </div>
-          </Col>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
       <Modal
         message={`${winner}`}
         state={gameOverModal}

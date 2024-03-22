@@ -1,5 +1,4 @@
 import { useEffect, useState, useRef } from "react";
-import { Container, Row, Col, Collapse } from "react-bootstrap";
 import { getSentence } from "../api";
 import { normalizeApostrophes } from "../components/tools";
 
@@ -177,27 +176,27 @@ function TypeRacer() {
 
   return (
     <>
-      <Container className="mt-5">
-        <Row>
-          <Col className="text-lg mt-5">
+      <div className="mt-5">
+        <div>
+          <div className="text-lg mt-5">
             <h1>{""}</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-lg">
+          </div>
+        </div>
+        <div>
+          <div className="text-lg">
             <h1>Type Racer</h1>
-          </Col>
-          <Collapse in={isMobile}>
+          </div>
+          <divlapse in={isMobile}>
             <div className="text-md">
               <p className="p-3">
                 Touch screen users! When the timer countdown finishes, touch the
                 text box to open your keyboard.
               </p>
             </div>
-          </Collapse>
-        </Row>
-        <Row>
-          <Col className="ms-0 mb-2">
+          </divlapse>
+        </div>
+        <div>
+          <div className="ms-0 mb-2">
             <button
               autoFocus
               disabled={session}
@@ -239,24 +238,24 @@ function TypeRacer() {
             >
               CUSTOM CHALLENGE
             </button>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div>
+          <div>
             <div
               className="w-100 p-1 mb-2"
               style={{
-                backgroundColor: "white",
+                backgrounddivor: "white",
                 color: "black",
                 minHeight: "5rem",
               }}
             >
               {curr_sen}
             </div>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div>
+          <div>
             <textarea
               disabled
               ref={userInputBoxRef}
@@ -266,31 +265,31 @@ function TypeRacer() {
               spellCheck={false}
               onChange={handleSetUserInput}
             ></textarea>
-          </Col>
-        </Row>
+          </div>
+        </div>
         {results && (
-          <Row>
-            <Col>
+          <div>
+            <div>
               <Results
                 start_time={start_time}
                 end_time={end_time}
                 target={curr_sen}
                 mistakes={mistakes}
               />
-            </Col>
-          </Row>
+            </div>
+          </div>
         )}
         {session && (
-          <Row>
-            <Col>
+          <div>
+            <div>
               <h1>{startTimer}</h1>
-            </Col>
-          </Row>
+            </div>
+          </div>
         )}
 
         {submit_new_flag && (
-          <Row>
-            <Col xs={8} sm={8} md={8} lg={8}>
+          <div>
+            <div xs={8} sm={8} md={8} lg={8}>
               <textarea
                 id="new_content"
                 placeholder="Enter new sentence here"
@@ -301,8 +300,8 @@ function TypeRacer() {
                   setNewContent(val);
                 }}
               ></textarea>
-            </Col>
-            <Col
+            </div>
+            <div
               xs={2}
               sm={2}
               md={2}
@@ -320,8 +319,8 @@ function TypeRacer() {
               >
                 Submit
               </button>
-            </Col>
-            <Col
+            </div>
+            <div
               xs={2}
               sm={2}
               md={2}
@@ -337,24 +336,24 @@ function TypeRacer() {
               >
                 Cancel
               </button>
-            </Col>
-          </Row>
+            </div>
+          </div>
         )}
-        <Row>
+        <div>
           <h2>Sentence History</h2>
-          <Container style={{ maxHeight: "50vh", overflow: "auto" }}>
+          <div style={{ maxHeight: "50vh", overflow: "auto" }}>
             {history.map((value, index) => (
-              <Row
+              <div
                 onClick={() => handleSetSentence(value)}
                 className="mt-2 history-row"
                 key={{ index }}
               >
                 {value}
-              </Row>
+              </div>
             ))}
-          </Container>
-        </Row>
-      </Container>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

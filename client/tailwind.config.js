@@ -8,6 +8,7 @@ export default {
       },
       textColor: {
         primary: "white",
+        secondary: "13, 110, 253;",
       },
       fontFamily: {
         sans: ["Calibri", "sans-serif"],

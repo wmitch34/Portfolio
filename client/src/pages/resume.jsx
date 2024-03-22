@@ -1,5 +1,4 @@
 import React from "react";
-import { Container, Row, Col, Image } from "react-bootstrap";
 import UCFLogo from "../assets/UCFLogo.png";
 import "./Home.css";
 
@@ -7,23 +6,23 @@ export default function Resume() {
   return (
     <div
       style={{
-        backgroundColor: "white",
+        backgrounddivor: "white",
         color: "black",
         padding: "3rem 2rem 2rem 3rem",
       }}
     >
-      <Container>
-        <Row className="mb-4">
-          <Col xl={2}>
-            <Image
+      <div>
+        <div className="mb-4">
+          <div xl={2}>
+            <img
               src={UCFLogo}
               alt={"UCF Logo"}
               style={{ maxHeight: 100 }}
               className="sm-photo-height"
               rounded
-            ></Image>
-          </Col>
-          <Col style={{ textAlign: "center" }}>
+            ></img>
+          </div>
+          <div style={{ textAlign: "center" }}>
             <h1 style={{ fontWeight: "bold" }}>
               <i>Will Mitchell</i>
             </h1>
@@ -34,12 +33,12 @@ export default function Resume() {
               </a>{" "}
               | (407) 790-0679
             </p>
-          </Col>
-          <Col xl={2}>{""}</Col>
-        </Row>
+          </div>
+          <div xl={2}>{""}</div>
+        </div>
 
-        <Row>
-          <Col>
+        <div>
+          <div>
             <h2 style={{ fontWeight: "bold" }}>Profile</h2>
             <p>
               Experienced college graduate pursuing a software engineering
@@ -49,29 +48,29 @@ export default function Resume() {
               creative solutions while continuously expanding my knowledge base,
               skill set, and functional experience.
             </p>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div>
+          <div>
             <h2 style={{ fontWeight: "bold" }}>Skills</h2>
-            <Container>
-              <Row>
-                <Col>JavaScript / TypeScript</Col>
-                <Col>CSS</Col>
-                <Col>Java</Col>
-                <Col>UX / UI Design</Col>
-              </Row>
-              <Row>
-                <Col>React JS</Col>
-                <Col>HTML</Col>
-                <Col>SQL</Col>
-                <Col>Teaching / Instruction</Col>
-              </Row>
-            </Container>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+            <div>
+              <div>
+                <div>JavaScript / TypeScript</div>
+                <div>CSS</div>
+                <div>Java</div>
+                <div>UX / UI Design</div>
+              </div>
+              <div>
+                <div>React JS</div>
+                <div>HTML</div>
+                <div>SQL</div>
+                <div>Teaching / Instruction</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
             <h2 style={{ fontWeight: "bold" }}>Project Highlights</h2>
             <p style={{ fontWeight: "bold" }}>
               “Tanknicians” Management Portal - Web Application, Front-end
@@ -79,7 +78,7 @@ export default function Resume() {
             </p>
             <ul>
               <li>
-                Collaborated with a team of five to develop a full stack web
+                divlaborated with a team of five to develop a full stack web
                 application with a cross-platform mobile app.
               </li>
               <li>
@@ -113,29 +112,29 @@ export default function Resume() {
                 Web Token.
               </li>
               <li>
-                Collaborated with a seven-member team to implement the API into
+                divlaborated with a seven-member team to implement the API into
                 a MERN stack application with mobile app.
               </li>
             </ul>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div>
+          <div>
             <h2 style={{ fontWeight: "bold" }}>Experience</h2>
 
-            <Container>
-              <Row style={{ fontWeight: "bold" }}>
-                <Col style={{ maxWidth: "fit-content" }}>
+            <div>
+              <div style={{ fontWeight: "bold" }}>
+                <div style={{ maxWidth: "fit-content" }}>
                   <p>Deloitte Consulting</p>
-                </Col>
-                <Col style={{ textAlign: "center" }}>
+                </div>
+                <div style={{ textAlign: "center" }}>
                   <p>Summer Solutions Scholar (Software Developer)</p>
-                </Col>
-                <Col style={{ maxWidth: "fit-content" }}>
+                </div>
+                <div style={{ maxWidth: "fit-content" }}>
                   <p style={{ textAlign: "right" }}>June 2023 - Aug 2023</p>
-                </Col>
-              </Row>
-            </Container>
+                </div>
+              </div>
+            </div>
 
             <ul>
               <li>
@@ -151,7 +150,7 @@ export default function Resume() {
                 Developer' database interface.
               </li>
               <li>
-                Collaborated with development, testing, and functional teams to
+                divlaborated with development, testing, and functional teams to
                 push code changes to a remote repository.
               </li>
               <li>
@@ -161,19 +160,19 @@ export default function Resume() {
               </li>
             </ul>
 
-            <Container>
-              <Row style={{ fontWeight: "bold" }}>
-                <Col style={{ maxWidth: "fit-content" }}>
+            <div>
+              <div style={{ fontWeight: "bold" }}>
+                <div style={{ maxWidth: "fit-content" }}>
                   <p>University of Central Florida</p>
-                </Col>
-                <Col style={{ textAlign: "center" }}>
+                </div>
+                <div style={{ textAlign: "center" }}>
                   <p>Undergraduate Learning Assistant (TA)</p>
-                </Col>
-                <Col style={{ maxWidth: "fit-content" }}>
+                </div>
+                <div style={{ maxWidth: "fit-content" }}>
                   <p style={{ textAlign: "right" }}>Sept 2022 - Dec 2022</p>
-                </Col>
-              </Row>
-            </Container>
+                </div>
+              </div>
+            </div>
             <ul>
               <li>
                 Worked with Computer Science I students to help them grasp
@@ -191,19 +190,19 @@ export default function Resume() {
                 testing environment for a full lecture hall.
               </li>
             </ul>
-            <Container>
-              <Row style={{ fontWeight: "bold" }}>
-                <Col style={{ maxWidth: "fit-content" }}>
+            <div>
+              <div style={{ fontWeight: "bold" }}>
+                <div style={{ maxWidth: "fit-content" }}>
                   <p>Marlow's Tavern</p>
-                </Col>
-                <Col style={{ textAlign: "center" }}>
+                </div>
+                <div style={{ textAlign: "center" }}>
                   <p>Bartender | Trainer</p>
-                </Col>
-                <Col style={{ maxWidth: "fit-content" }}>
+                </div>
+                <div style={{ maxWidth: "fit-content" }}>
                   <p style={{ textAlign: "right" }}>Feb 2021 - Present</p>
-                </Col>
-              </Row>
-            </Container>
+                </div>
+              </div>
+            </div>
             <ul>
               <li>
                 Developed interpersonal communication skills while working with
@@ -222,23 +221,23 @@ export default function Resume() {
                 health and safety of each guest that visits the tavern.
               </li>
             </ul>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
+          </div>
+        </div>
+        <div>
+          <div>
             <h2 style={{ fontWeight: "bold" }}>Eeducation</h2>
-            <Container>
-              <Row>
-                <Col>Bachelor of Science, Computer Science</Col>
-                <Col style={{ textAlign: "center" }}>
+            <div>
+              <div>
+                <div>Bachelor of Science, Computer Science</div>
+                <div style={{ textAlign: "center" }}>
                   University of Central Florida
-                </Col>
-                <Col style={{ textAlign: "right" }}>December 2023</Col>
-              </Row>
-            </Container>
-          </Col>
-        </Row>
-      </Container>
+                </div>
+                <div style={{ textAlign: "right" }}>December 2023</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

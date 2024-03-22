@@ -1,25 +1,21 @@
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-
 export default function OnScreenController(props) {
   const { controller, touchScreen } = props;
   console.log(touchScreen);
 
   return (
     <>
-      <Container
+      <div
         style={{
           position: "absolute",
           bottom: "1rem",
           zIndex: "999",
         }}
       >
-        <Row>
-          <Col xs={8} sm={8} md={4} lg={4} xl={4}>
-            <Container>
-              <Row className="mb-1">
-                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
+        <div>
+          <div xs={8} sm={8} md={4} lg={4} xl={4}>
+            <div>
+              <div className="mb-1">
+                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -29,8 +25,8 @@ export default function OnScreenController(props) {
                       {touchScreen ? "DROP" : "Q"}
                     </button>
                   </div>
-                </Col>
-                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
+                </div>
+                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -40,8 +36,8 @@ export default function OnScreenController(props) {
                       {touchScreen ? "UP" : "W"}
                     </button>
                   </div>
-                </Col>
-                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
+                </div>
+                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -51,10 +47,10 @@ export default function OnScreenController(props) {
                       {touchScreen ? "PICKUP" : "E"}
                     </button>
                   </div>
-                </Col>
-              </Row>
-              <Row>
-                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
+                </div>
+              </div>
+              <div>
+                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -64,8 +60,8 @@ export default function OnScreenController(props) {
                       {touchScreen ? "LEFT" : "A"}
                     </button>
                   </div>
-                </Col>
-                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
+                </div>
+                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -75,8 +71,8 @@ export default function OnScreenController(props) {
                       {touchScreen ? "DOWN" : "S"}
                     </button>
                   </div>
-                </Col>
-                <Col xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
+                </div>
+                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
                   <div className="controls">
                     <button
                       disabled={!touchScreen}
@@ -86,13 +82,13 @@ export default function OnScreenController(props) {
                       {touchScreen ? "RIGHT" : "D"}
                     </button>
                   </div>
-                </Col>
-              </Row>
-            </Container>
-          </Col>
-          <Col xs={4} sm={4} md={8} lg={8} xl={8}></Col>
-        </Row>
-      </Container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div xs={4} sm={4} md={8} lg={8} xl={8}></div>
+        </div>
+      </div>
     </>
   );
 }

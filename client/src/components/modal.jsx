@@ -1,17 +1,12 @@
 import React from "react";
-import { Modal, Button } from "react-bootstrap";
-
-const bootstrapSucks = {
-  backgroundColor: "grey",
-  color: "#121212",
-};
 
 function MyModal(props) {
   const { message, state, stateHandler, title, children, closeMSG } = props;
 
   return (
-    <>
-      <Modal show={state} onHide={() => stateHandler()}>
+    <h1>
+      Modal
+      {/* <Modal show={state} onHide={() => stateHandler()}>
         <Modal.Header
           closeButton
           style={{ ...bootstrapSucks, borderColor: "#121212" }}
@@ -27,8 +22,8 @@ function MyModal(props) {
             {closeMSG ? closeMSG : "Close"}
           </Button>
         </Modal.Footer>
-      </Modal>
-    </>
+      </Modal> */}
+    </h1>
   );
 }
 
