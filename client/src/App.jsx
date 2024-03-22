@@ -7,8 +7,6 @@ import Snake from "./pages/Snake";
 import TypeRacer from "./pages/TypeRacer";
 import NoMatch from "./pages/NoMatch";
 
-import HamburgerIcon from "./assets/hamburger.png";
-
 let links = [
   {
     text: "Home",
