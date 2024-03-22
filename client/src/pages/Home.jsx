@@ -1,9 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Hero from "../components/home/Hero.jsx";
 import Cards from "../components/home/Cards.jsx";
-
-import "./Home.css";
-
 import { useLocation } from "react-router-dom";
 
 export default function Home(props) {
@@ -18,12 +15,12 @@ export default function Home(props) {
   }, []);
 
   return (
-    <div className="scroll-parent">
-      <div className="scroll-child">
+    <div className="h-screen overflow-y-scroll scroll-snap-type-y-mandatory">
+      <div className="h-screen scroll-snap-align-start">
         <Hero />
       </div>
-      <div className="scroll-child">
-        <Cards className="scroll-child" />
+      <div className="h-screen scroll-snap-align-start">
+        <Cards />
       </div>
     </div>
   );

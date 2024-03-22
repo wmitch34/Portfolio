@@ -1,7 +1,4 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./ChatBox.css";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 export default function Chatbox(props) {
   const inputRef = useRef(null);
@@ -32,7 +29,7 @@ export default function Chatbox(props) {
 
   return (
     <div className="container-fluid">
-      <div className="row" style={{ height: "100%" }}>
+      <div className="row">
         <div className="col-12 d-flex flex-column">
           <div className="row flex-grow-1">
             <div>
@@ -51,25 +48,12 @@ export default function Chatbox(props) {
 
           <div className="row flex-grow-3">
             <div className="message-window-container">
-              <div
-                className="w-100 message-window"
-                style={{ height: "282px", overflowY: "auto" }}
-                ref={scrollRef}
-              >
+              <div className="w-100 message-window" ref={scrollRef}>
                 {chatHistory.map((message, index) => (
                   <div key={index}>
-                    <div style={{ color: "#121212" }}>{message.user}</div>
-                    <div
-                      style={{
-                        backgroundColor: "#121212",
-                        padding: "5px",
-                        borderRadius: "10px",
-                        marginBottom: "5px 5px 5px 5px",
-                      }}
-                    >
-                      <div style={{ padding: "5px" }} key={index}>
-                        {message.message}
-                      </div>
+                    <div>{message.user}</div>
+                    <div style={{}}>
+                      <div key={index}>{message.message}</div>
                     </div>
                   </div>
                 ))}

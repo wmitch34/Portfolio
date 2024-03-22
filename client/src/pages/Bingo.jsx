@@ -110,7 +110,6 @@ export default function Bingo() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Handle form submission logic here
   };
 
   // handler for reset board btn
@@ -242,7 +241,7 @@ export default function Bingo() {
 
   return (
     <>
-      <Container style={{ color: "#212529", marginTop: "5rem" }}>
+      <Container>
         <Row>
           <Col
             xs={3}
@@ -256,7 +255,7 @@ export default function Bingo() {
               justifyContent: "center",
             }}
           >
-            <Container style={{ height: "100%" }}>
+            <Container>
               <Row>
                 <Col xs={12} sm={12} md={12} lg={12} xl={12}>
                   <h2 className="text-lg text-primary"> Latest Roll</h2>
@@ -292,7 +291,7 @@ export default function Bingo() {
           <Col xs={9} sm={9} md={9} lg={6} xl={6}>
             <Container className="mb-4" fluid>
               <Row>
-                <h2 className="text-lg text-primary">Bingo</h2>
+                <h2 className="">Bingo</h2>
               </Row>
               <Row>
                 <Col xs={12} sm={12} md={12} lg={12} xl={12}>
@@ -322,11 +321,7 @@ export default function Bingo() {
               </Row>
               <Row>
                 <Col xs={12} sm={12} md={12} lg={12} xl={12}>
-                  <button
-                    onClick={checkBoard}
-                    className="btn btn-primary"
-                    disabled={gameOver}
-                  >
+                  <button onClick={checkBoard} className="" disabled={gameOver}>
                     Submit Board
                   </button>
                 </Col>
@@ -334,7 +329,7 @@ export default function Bingo() {
             </Container>
           </Col>
           <Col xs={12} sm={12} md={12} lg={4} xl={4}>
-            <h2 className="text-lg text-primary">Roll History</h2>
+            <h2 className="">Roll History</h2>
             <div className="roll-hist-container mb-4">
               {rollHist.map((roll, index) => (
                 <div

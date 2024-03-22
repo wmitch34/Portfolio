@@ -2,7 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { Container, Row, Col, Collapse } from "react-bootstrap";
 import { getSentence } from "../api";
 import { normalizeApostrophes } from "../components/tools";
-import "./TypeRacer.css";
 
 let localSentences = [
   "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",

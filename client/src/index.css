@@ -2,18 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  background-color: #121212;
-  color: white;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.scroll-snap-type-y-mandatory {
+  scroll-snap-type: y mandatory;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+.scroll-snap-align-start {
+  scroll-snap-align: start;
+}
+
+.controls {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.5rem;
+  border-color: grey;
+  color: black;
+  margin: 0px;
+  padding: 0px;
+
+  background-color: rgba(169, 169, 169, 0.5);
+}
+
+.my-button {
+  border: 3px solid black;
+  border-radius: 0.5rem;
+  width: 90%;
+  height: 90%;
+  margin: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.history-row:hover {
+  background-color: #0d6efd;
+  cursor: pointer;
+  border-color: #0d6efd;
+  border-radius: 1rem;
+}
+
+.history-row {
+  padding: 1rem;
+  border-color: grey;
+  border-bottom: solid;
+}
+
+.message-window {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-box-container {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  margin-bottom: 3px;
 }

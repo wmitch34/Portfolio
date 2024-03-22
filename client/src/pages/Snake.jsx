@@ -7,7 +7,6 @@ import BOIRIGHT1 from "../assets/boyRight.png";
 import GRASS from "../assets/grassy.png";
 import { getRandomNumber } from "../components/tools.js";
 import OnScreenController from "../components/OnscreenController.jsx";
-import "./Home.css";
 
 // React component for rendering a game object
 function GameObject(props) {

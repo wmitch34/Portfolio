@@ -7,7 +7,6 @@
   min-width: 2rem;
   font-weight: bold;
   border-radius: 10%;
-  background-color: grey;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
 }
@@ -31,7 +30,6 @@
   font-size: larger;
   font-weight: bold;
   border-radius: 10%;
-  background-color: grey;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
 }
@@ -70,7 +68,7 @@
 }
 
 .highlight-obj {
-  background-color: white !important;
+  background-color: grey;
 }
 
 .current-roll {
