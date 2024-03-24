@@ -1,4 +1,4 @@
-import APPLE from "../assets/Apple2.png";
+import APPLE from "../assets/gameAssets/apple2.png";
 
 class GameObject {
   constructor(number) {

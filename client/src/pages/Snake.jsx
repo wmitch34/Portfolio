@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import { Apple, Rufus } from "../components/GameObjects.js";
-import BOIBACK from "../assets/boyBack.png";
-import BOIFRONT from "../assets/boyFront.png";
-import BOILEFT1 from "../assets/boyLeft.png";
-import BOIRIGHT1 from "../assets/boyRight.png";
-import GRASS from "../assets/grassy.png";
+import BOIBACK from "../assets/gameAssets/boyBack.png";
+import BOIFRONT from "../assets/gameAssets/boyFront.png";
+import BOILEFT1 from "../assets/gameAssets/boyLeft.png";
+import BOIRIGHT1 from "../assets/gameAssets/boyRight.png";
+import GRASS from "../assets/gameAssets/grassy.png";
 import { getRandomNumber } from "../components/tools.js";
 import OnScreenController from "../components/OnscreenController.jsx";
 

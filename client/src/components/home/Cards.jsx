@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import ApplePickerThumb from "../../assets/applePickerThumb.png";
-import BingoThumb from "../../assets/bingoThumb2.jpg";
-import TypeRacerThumb from "../../assets/typeRacerThumb.png";
+import ApplePickerThumb from "../../assets/thumbnails/applePickerThumb.png";
+import BingoThumb from "../../assets/thumbnails/bingoThumb2.jpg";
+import TypeRacerThumb from "../../assets/thumbnails/typeRacerThumb.png";
 
 const bingoDesc =
   "Test your Bingo skills against the world's finest players over the web.";
