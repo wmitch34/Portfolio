@@ -34,7 +34,7 @@ export default function Projects() {
               <div className="">
                 <div id="tank-text">
                   <h2 className="text-xl py-2">Business Management Platform</h2>
-                  <div className="ml-4 text-xl">
+                  <div className="ml-4">
                     <ul className="list-disc">
                       <li>UCF BS, CS Capstone Project, 5 member team</li>
                       <li>React App with MUI</li>
@@ -45,7 +45,7 @@ export default function Projects() {
                     </ul>
                   </div>
                   <h2 className="text-xl py-2">My Role</h2>
-                  <div className="ml-4 text-xl">
+                  <div className="ml-4">
                     <ul className="list-disc">
                       <li>Client advocate</li>
                       <li>Web App UX/UI designer</li>
@@ -100,7 +100,7 @@ export default function Projects() {
               <div className="">
                 <div id="game-text">
                   <h2 className="text-xl py-2">Video Game stat-tracker</h2>
-                  <div className="ml-4 text-xl">
+                  <div className="ml-4">
                     <ul className="list-disc">
                       <li>MERN Stack Web Application, 7 member team</li>
                       <li>React App with Bootstrap</li>
@@ -110,7 +110,7 @@ export default function Projects() {
                   </div>
 
                   <h2 className="text-xl py-2">My Role</h2>
-                  <div className="ml-4 text-xl">
+                  <div className="ml-4">
                     <ul className="list-disc">
                       <li>Software developer</li>
                       <li>API architect</li>
