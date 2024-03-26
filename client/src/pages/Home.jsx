@@ -32,7 +32,7 @@ export default function Home(props) {
       <div className="h-screen scroll-snap-align-start overflow-y-scroll">
         <Experience />
       </div>
-      <div className="h-screen scroll-snap-align-start">
+      <div className="h-screen scroll-snap-align-start overflow-y-scroll">
         <Cards />
       </div>
     </div>
