@@ -7,7 +7,7 @@ export default function Experience() {
   return (
     <div id="projects-container" className="flex flex-col w-full h-full">
       <div>
-        <h1 className="h-fit p-4 w-full text-5xl md:text-7xl">Experience</h1>
+        <h1 className="h-fit p-4 pt-28 w-full text-5xl">Experience</h1>
       </div>
       <div id="col-wrapper" className="flex flex-col flex-grow">
         <div id="deloitte-container">
@@ -26,16 +26,14 @@ export default function Experience() {
                   Summer Solutions Intern
                 </h3>
                 <p className="lg:text-lg ">
-                  I accepted a positon as a Solutions Analyst Intern (Software
-                  Developer) for Deloitte Consulting, Summer 2023. I was a full
-                  stack software developer on a Government and Public Services
-                  project. It was code-focused, and I got hands on experience
-                  with a large, legacy web application. I analyzed and addressed
-                  defects in an upcoming software update. I used java, MySQL and
-                  the Windows suite. I met many great people and learned alot
-                  about prefessional software development workflow and life
-                  cycle. My preformance was excellent, and I recieved an offer
-                  to come back and work full time as a software developer.
+                  During Summer 2023, I was a Solutions Analyst Intern (Software
+                  Developer) for Deloitte Consulting. I did full stack software
+                  development on a large, legacy Government project. I analyzed
+                  and addressed defects in an upcoming software update using
+                  java, MySQL and the Windows suite. I met many great people and
+                  learned about the professional software development workflow
+                  and life cycle. It was a productive summer, and I recieved an
+                  offer to come back and work full time as a software developer.
                 </p>
               </div>
             </div>
@@ -61,14 +59,13 @@ export default function Experience() {
                 <p className="lg:text-lg ">
                   For the Fall 2022 semester, I was invited to work as a TA for
                   my Computer Science 1 (CS1) professor. My primary role was to
-                  hold tutoring sessions for CS1 students. I offered one-on-one
-                  and group-study sessions 3 times a week. During my office
-                  hours I helped students grasp fundamental concepts of
-                  programming such as runtime analysis, data storage, sorting,
-                  and retrieval algorithms. At UCF, CS1 is the prerequisite and
-                  basis for the CS program's entrance exam. I am most proud of
-                  my students who went from struggling with basic programming to
-                  passing their entrance exam on the first try!
+                  hold one-on-one and group-study tutoring sessions for CS1
+                  Students 3 times a week. During my office hours I helped
+                  students grasp fundamental concepts of programming such as
+                  runtime analysis, data storage, and data sorting algorithms. I
+                  am proud that many of my students went from struggling with
+                  programming concepts to passing their CS program entrance exam
+                  on the first try!
                 </p>
               </div>
             </div>

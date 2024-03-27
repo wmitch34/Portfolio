@@ -3,7 +3,7 @@ import Portrait from "../../assets/portrait.png";
 
 export default function Hero() {
   return (
-    <div className="flex flex-wrap w-full h-full">
+    <div className="flex flex-wrap w-full h-screen">
       <div
         className="w-full h-1/2 justify-center md:w-1/2 md:h-full flex items-end md:items-center md:justify-end"
         id="image-container"

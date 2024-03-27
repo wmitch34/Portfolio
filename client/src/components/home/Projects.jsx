@@ -17,26 +17,24 @@ import vite from "../../assets/icons/vite.svg";
 
 export default function Projects() {
   return (
-    <div id="projects-container" className="flex flex-col w-full h-full">
+    <div id="projects-container" className="flex flex-col w-full">
       <div>
-        <h1 className="h-fit w-full p-8 lg:pl-18 xl:pl-36 pt-32 pb-10 text-5xl md:text-7xl">
-          Project Highlights
-        </h1>
+        <h1 className="h-fit w-full p-8 lg:pl-18 text-5xl ">Projects</h1>
       </div>
       <div className="flex-grow">
         <div
           id="col-container"
           className="h-full flex flex-wrap flex-grow w-full justify-start xl:justify-center "
         >
-          <div id="tank-container" className="w-full max-w-lg flex p-8">
+          <div id="tank-container" className="w-full lg:w-1/2 flex p-8">
             <div id="tank-wrapper" className="w-full">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl">Tanknicians</h1>
-              <div className="">
-                <div id="tank-text">
-                  <h2 className="text-xl py-2">Business Management Platform</h2>
+              <h1 className="text-3xl md:text-4xl">Tanknicians</h1>
+              <div className="flex md:flex-col">
+                <div id="tank-text" className="p-2">
+                  <h2 className="text-xl ">Business Management Platform</h2>
                   <div className="ml-4">
                     <ul className="list-disc">
-                      <li>UCF BS, CS Capstone Project, 5 member team</li>
+                      <li>UCF BS, CS Capstone Project</li>
                       <li>React App with MUI</li>
                       <li>React Native cross-platform Mobile App</li>
                       <li>Node.js server with Express</li>
@@ -58,33 +56,36 @@ export default function Projects() {
                     <a>Gallery</a>
                   </h2>
                 </div>
-                <div id="tank-icons-container" className="flex">
-                  <div id="tank-ions-wrapper" className="flex flex-wrap">
-                    <a title="TypeScript" className="w-12 m-2">
+                <div id="tank-icons-container" className="flex-grow">
+                  <div
+                    id="tank-ions-wrapper"
+                    className="flex flex-col flex-end md:flex-row"
+                  >
+                    <a
+                      title="TypeScript"
+                      className="w-12 m-2 p-1 bg-white rounded"
+                    >
                       <img src={typescript} alt="TypeScript icon" />
                     </a>
-                    <a title="Vite" className="w-12 m-2">
-                      <img src={vite} alt="Vite Icon" />
-                    </a>
-                    <a title="React" className="w-12 m-2">
+
+                    <a title="React" className="w-12 m-2 p-1 bg-white rounded">
                       <img src={react} alt="React icon" />
                     </a>
-                    <a title="Material UI" className="w-12 m-2">
+                    <a
+                      title="Material UI"
+                      className="w-12 m-2 p-1 bg-white rounded"
+                    >
                       <img src={material_ui} alt="MUI icon" />
                     </a>
-                    <a title="MySQL" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={mysql} alt="MySQL icon" />
-                    </a>
+
                     <a title="Prisma" className="w-12 m-2 p-1 bg-white rounded">
                       <img src={prisma} alt="Prisma icon" />
                     </a>
-                    <a title="Jira" className="w-12 m-2">
+                    <a title="Jira" className="w-12 m-2 p-1 bg-white rounded">
                       <img src={jira} alt="Jira icon" />
                     </a>
-                    <a title="Confluence" className="w-12 m-2">
-                      <img src={confluence} alt="Confluence icon" />
-                    </a>
-                    <a title="Figma" className="w-12 m-2">
+
+                    <a title="Figma" className="w-12 m-2 p-1 bg-white rounded">
                       <img src={figma} alt="Figma icon" />
                     </a>
                   </div>
@@ -92,17 +93,15 @@ export default function Projects() {
               </div>
             </div>
           </div>
-          <div id="games-container" className="w-full max-w-lg p-8 flex">
+          <div id="games-container" className="w-full  lg:w-1/2 p-8 flex">
             <div id="games-wrapper" className="w-full">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl">
-                My Games List
-              </h1>
-              <div className="">
-                <div id="game-text">
+              <h1 className="text-3xl md:text-4xl">My Games List</h1>
+              <div className="flex md:flex-col">
+                <div id="game-text" className="p-2">
                   <h2 className="text-xl py-2">Video Game stat-tracker</h2>
                   <div className="ml-4">
                     <ul className="list-disc">
-                      <li>MERN Stack Web Application, 7 member team</li>
+                      <li>MERN Stack Web Application</li>
                       <li>React App with Bootstrap</li>
                       <li>Node.js server with Express</li>
                       <li>MongoDB NoSQL database</li>
@@ -122,17 +121,23 @@ export default function Projects() {
                     <a>Gallery</a>
                   </h2>
                 </div>
-                <div id="game-icons-container" className="flex">
-                  <div id="game-ions-wrapper" className="flex  flex-wrap">
-                    <a title="JavaScript" className="w-12 m-2">
+                <div id="game-icons-container" className="flex-grow">
+                  <div
+                    id="game-ions-wrapper"
+                    className="flex flex-col md:flex-row"
+                  >
+                    <a
+                      title="JavaScript"
+                      className="w-12 m-2 p-1 flex-end bg-white rounded"
+                    >
                       <img src={javascript} alt="JavaScript icon" />
                     </a>
-                    <a title="React" className="w-12 m-2">
+                    <a title="React" className="w-12 m-2 p-1 bg-white rounded">
                       <img src={react} alt="React icon" />
                     </a>
                     <a
                       title="Bootstrap"
-                      className="w-12 m-2 p-1 bg-white rounded"
+                      className="w-12 m-2 p-1 bg-white rounded p-1 bg-white rounded"
                     >
                       <img src={bootstrap} alt="Bootstrap icon" />
                     </a>
@@ -143,10 +148,13 @@ export default function Projects() {
                       <img src={mongodb} alt="MongoDB icon" />
                     </a>
 
-                    <a title="Steam" className="w-12 m-2">
+                    <a title="Steam" className="w-12 m-2 p-1 bg-white rounded">
                       <img src={steam} alt="Steam Icon" />
                     </a>
-                    <a title="Canva" className="w-12 m-2 p-1 bg-white rounded">
+                    <a
+                      title="Canva"
+                      className="w-12 m-2 p-1 bg-white rounded p-1 bg-white rounded"
+                    >
                       <img src={canva} alt="Canva icon" />
                     </a>
                   </div>
