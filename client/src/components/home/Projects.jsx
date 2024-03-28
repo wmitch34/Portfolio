@@ -24,7 +24,7 @@ export default function Projects() {
       <div className="flex-grow">
         <div
           id="col-container"
-          className="h-full flex flex-wrap flex-grow w-full justify-start xl:justify-center "
+          className="h-full flex flex-wrap flex-grow w-full justify-start xl:justify-center"
         >
           <div id="tank-container" className="w-full lg:w-1/2 flex p-8">
             <div id="tank-wrapper" className="w-full">
