@@ -19,7 +19,7 @@ export default function About() {
                 alt="Page Splash image"
               />
               <div className="my-auto">
-                <p className="p-2 h-fit text-2xl align-middle">
+                <p className="p-2 h-fit lg:text-2xl align-middle">
                   Hello! I am a software developer with a Computer Science
                   degree From UCF. I love writing code and problem solving. I am
                   most experienced in web development, and I have strong
@@ -43,7 +43,7 @@ export default function About() {
                 alt="Page Splash image"
               />
               <div className="my-auto">
-                <p className="p-2 h-fit text-2xl align-middle">
+                <p className="p-2 h-fit lg:text-2xl align-middle">
                   Thank you for visiting my web page! The purpose of this page
                   is to showcase my professional and technical skills and to act
                   as a personal creative outlet. If you do not like smooth
