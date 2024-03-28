@@ -56,10 +56,10 @@ export default function Projects() {
                     <a>Gallery</a>
                   </h2>
                 </div>
-                <div id="tank-icons-container" className="flex-grow">
+                <div id="tank-icons-container" className="">
                   <div
                     id="tank-ions-wrapper"
-                    className="flex flex-col flex-end md:flex-row"
+                    className="flex flex-col md:flex-row"
                   >
                     <a
                       title="TypeScript"
@@ -107,7 +107,6 @@ export default function Projects() {
                       <li>MongoDB NoSQL database</li>
                     </ul>
                   </div>
-
                   <h2 className="text-xl py-2">My Role</h2>
                   <div className="ml-4">
                     <ul className="list-disc">
@@ -117,18 +116,19 @@ export default function Projects() {
                       <li>Json Web Token integration</li>
                     </ul>
                   </div>
+                  cs
                   <h2 className="text-lg py-2">
                     <a>Gallery</a>
                   </h2>
                 </div>
-                <div id="game-icons-container" className="flex-grow">
+                <div id="game-icons-container" className="">
                   <div
                     id="game-ions-wrapper"
                     className="flex flex-col md:flex-row"
                   >
                     <a
                       title="JavaScript"
-                      className="w-12 m-2 p-1 flex-end bg-white rounded"
+                      className="w-12 m-2 p-1 bg-white rounded"
                     >
                       <img src={javascript} alt="JavaScript icon" />
                     </a>

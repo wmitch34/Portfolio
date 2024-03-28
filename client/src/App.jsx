@@ -28,10 +28,7 @@ let links = [
 
 export default function App() {
   return (
-    <div
-      id="app-container"
-      className="bg-primary text-primary md:px-20 lg:px-30 xl:px-40"
-    >
+    <div id="app-container" className="bg-primary text-primary">
       <Routes>
         <Route index path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />

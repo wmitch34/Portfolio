@@ -14,5 +14,9 @@ const typeRacerDesc =
 
 export default function MyCard(props) {
   const { title, desc, img, link, alt } = props;
-  return <h1 className="text-secondary">Cards</h1>;
+  return (
+    <div className="h-full">
+      <h1 className="text-secondary ">Cards</h1>
+    </div>
+  );
 }

@@ -18,21 +18,21 @@ export default function Home(props) {
   }, []);
 
   return (
-    <div className="md:h-screen md:overflow-y-scroll md:snap-y snap-mandatory">
-      <div className="md:h-screen overflow-y-scroll md:snap-center ">
+    <div className="lg:h-screen lg:overflow-y-scroll lg:snap-y lg:snap-mandatory md:px-20 lg:px-30 xl:px-40 min-w-44 overflow-x-scroll">
+      <div className="h-screen overflow-y-scroll lg:snap-center ">
         <Hero />
       </div>
-      <div className="md:h-screen overflow-y-scroll md:snap-center ">
+      <div className="lg:h-screen lg:overflow-y-scroll lg:snap-center ">
         <About />
       </div>
-      <div className="md:h-screen overflow-y-scroll md:snap-center ">
+      <div className="lg:h-screen lg:overflow-y-scroll lg:snap-center ">
+        <Experience />
+      </div>
+      <div className="lg:h-screen lg:overflow-y-scroll lg:snap-center ">
         <Projects />
       </div>
 
-      <div className="md:h-screen overflow-y-scroll md:snap-center ">
-        <Experience />
-      </div>
-      <div className="md:h-screen overflow-y-scrollmd:snap-center ">
+      <div className="lg:h-screen lg:overflow-y-scroll lg:snap-center ">
         <Cards />
       </div>
     </div>

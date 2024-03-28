@@ -15,12 +15,16 @@ export default function Experience() {
             <div id="deloitte-content" className="lg:flex w-full">
               <div
                 id="deloitte-image-container"
-                className="flex items-center justify-center w-full h-full md:h-1/6 md:w-1/6 rounded-xl p-2"
+                className="flex items-center justify-center w-fit h-fit rounded-xl p-2"
               >
-                <img src={Deloitte} alt="Deloitte leaders pic" />
+                <img
+                  className="rounded-3xl w-80 h-80"
+                  src={Deloitte}
+                  alt="Deloitte leaders pic"
+                />
               </div>
 
-              <div id="deloitte-text" className="p-4 w-full md:w-5/6">
+              <div id="deloitte-text" className="p-4">
                 <h2 className="text-xl md:text-3xl">Deloitte</h2>
                 <h3 className="text-md md:text-xl py-2">
                   Summer Solutions Intern
@@ -39,14 +43,14 @@ export default function Experience() {
             </div>
           </div>
         </div>
-        <div id="marlows-container">
+        <div id="ucf-container">
           <div id="ucf-wrapper flex">
             <div id="ucf-content" className="lg:flex w-full">
               <div
                 id="grad-image-container"
                 className="flex items-center justify-center w-full h-full md:h-1/6 md:w-1/6 rounded-xl p-2"
               >
-                <img src={Grad} alt="Will Grad pic" />
+                <img className="rounded-3xl" src={Grad} alt="Will Grad pic" />
               </div>
 
               <div id="ucf-text" className="p-4 w-full md:w-5/6">
@@ -78,7 +82,11 @@ export default function Experience() {
                 id="marlows-image-container"
                 className="flex items-center justify-center w-full h-full md:h-1/6 md:w-1/6 rounded-xl p-2"
               >
-                <img src={Marlows} alt="Marlow's Logo" />
+                <img
+                  className="rounded-3xl"
+                  src={Marlows}
+                  alt="Marlow's Logo"
+                />
               </div>
 
               <div id="marlows-text" className="p-4 w-full md:w-5/6">
