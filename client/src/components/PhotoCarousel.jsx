@@ -22,12 +22,9 @@ export default function PhotoCarousel(props) {
       <button onClick={() => scroll(-containerRef.current.offsetWidth)}>
         prev
       </button>
-      <div
-        className="w-80 flex overflow-x-scroll snap snap-x"
-        ref={containerRef}
-      >
+      <div className="flex overflow-x-scroll snap snap-x " ref={containerRef}>
         {photos.map((photo, index) => (
-          <img src={photo} className="w-80 p-4 snap-center" key={index} />
+          <img src={photo} className="p-4 snap-center" key={index} />
         ))}
       </div>
       <button onClick={() => scroll(containerRef.current.offsetWidth)}>
