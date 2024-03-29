@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Hero from "../components/home/Hero.jsx";
 import About from "../components/home/About.jsx";
-import Projects from "../components/home/Projects.jsx";
+import Projects2 from "../components/home/Projects2.jsx";
 import Experience from "../components/home/Experience.jsx";
 import Cards from "../components/home/Cards.jsx";
 import { useLocation } from "react-router-dom";
@@ -29,7 +29,7 @@ export default function Home(props) {
         <Experience />
       </div>
       <div className="lg:h-screen lg:overflow-y-scroll lg:snap-center ">
-        <Projects />
+        <Projects2 />
       </div>
 
       <div className="lg:h-screen lg:overflow-y-scroll lg:snap-center ">

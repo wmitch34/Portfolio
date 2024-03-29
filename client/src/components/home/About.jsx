@@ -10,7 +10,7 @@ export default function About() {
     >
       <div id="col-wrapper" className="flex flex-col md:flex-col p-8 h-full">
         <div id="about-me-container" className="lg:h-1/2 py-8">
-          <div id="about-me-wrapper" className="h-full flex flex-wrap">
+          <div id="about-me-wrapper" className="h-full">
             <h2 className="text-5xl px-2 w-full text-center md:text-start">
               About Me
             </h2>
