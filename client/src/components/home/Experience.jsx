@@ -26,13 +26,12 @@ export default function Experience() {
               </h3>
               <p className="lg:text-lg ">
                 During Summer 2023, I was a Solutions Analyst Intern (Software
-                Developer) for Deloitte Consulting. I did full stack software
-                development on a large, legacy Government project. I analyzed
-                and addressed defects in an upcoming software update using java,
-                MySQL and the Windows suite. I met many great people and learned
-                about the professional software development workflow and life
-                cycle. It was a productive summer, and I recieved an offer to
-                come back and work full time as a software developer.
+                Developer) for Deloitte Consulting. I worked on a large, legacy
+                web application. I analyzed and resolved defects in an upcoming
+                software update using java, MySQL and the Windows suite. I
+                learned about the professional software development workflow and
+                life cycle. It was a productive summer, and I recieved an offer
+                to come back and work full time as a software developer.
               </p>
             </div>
           </div>
@@ -79,16 +78,15 @@ export default function Experience() {
                 Server | Bartender | Trainer
               </h3>
               <p className="lg:text-lg ">
-                Throughout my Undergradute degree, I worked part time at
-                Marlow's Tavern, a sit-down restaurant and bar. I started as a
-                server and eventually was promoted to barteneder and certified
-                trainer. During my time in the service industry, I learned how
-                to manage a high-stress environment, make decisions, accept and
-                learn from failure, and collaborate with all types of
-                personalities. I worked with a large staff and hundreds of
-                guests. I learned how to anticipate the needs of my coworkers
-                and my guests to provide excellent service and make every shift
-                a better experience.
+                I work part time at Marlow's Tavern, a sit-down restaurant and
+                bar. I started as a server and eventually was promoted to
+                barteneder and trainer. During my time in the service industry,
+                I learned how to manage a high-stress environment, make
+                decisions, and collaborate with all types of personalities. I
+                work with a large staff and hundreds of guests. I've learned how
+                to anticipate the needs of those guests and my coworkers to
+                provide excellent service and make all my shifts a great
+                experience.
               </p>
             </div>
           </div>
