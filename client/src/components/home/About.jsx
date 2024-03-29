@@ -11,10 +11,10 @@ export default function About() {
       <div id="col-wrapper" className="flex flex-col md:flex-col p-8 h-full">
         <div id="about-me-container" className="lg:h-1/2 py-8">
           <div id="about-me-wrapper" className="h-full">
-            <h2 className="text-5xl px-2 w-full text-center md:text-start">
+            <h2 className="text-5xl px-2 w-full text-center text-secondary md:text-start">
               About Me
             </h2>
-            <div className="md:flex justify-center">
+            <div className="md:flex">
               <div className="flex md:flex-none items-center justify-center md:order-last">
                 <img
                   className="rounded-full h-60 w-60 py-2"
@@ -39,10 +39,10 @@ export default function About() {
 
         <div id="about-site-container" className="lg:h-1/2 py-8">
           <div id="about-site-wrapper" className="h-full">
-            <h2 className="text-5xl px-2 w-full text-center md:text-end">
+            <h2 className="text-5xl px-2 w-full text-center text-secondary md:text-end">
               About This Website
             </h2>
-            <div className="md:flex justify-center">
+            <div className="md:flex">
               <div className="flex md:flex-none items-center justify-center">
                 <img
                   className="rounded-full h-60 py-2"

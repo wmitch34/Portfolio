@@ -6,9 +6,10 @@ export default {
       backgroundColor: {
         primary: "#121212",
       },
+      textColor: (theme) => theme("colors"),
       textColor: {
         primary: "white",
-        secondary: "13, 110, 253;",
+        secondary: "rgb(13, 110, 253)",
       },
       fontFamily: {
         sans: ["Calibri", "sans-serif"],

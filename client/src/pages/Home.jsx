@@ -18,7 +18,7 @@ export default function Home(props) {
   }, []);
 
   return (
-    <div className="lg:h-screen lg:overflow-y-scroll lg:snap-y lg:snap-mandatory md:px-20 lg:px-30 xl:px-40 min-w-44 overflow-x-scroll">
+    <div className="lg:h-screen lg:overflow-y-scroll lg:snap-y lg:snap-mandatory md:px-20">
       <div className="h-screen overflow-y-scroll lg:snap-center ">
         <Hero />
       </div>
