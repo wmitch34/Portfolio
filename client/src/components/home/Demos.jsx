@@ -12,11 +12,17 @@ const applePickerDesc =
 const typeRacerDesc =
   "Blaze through bite-sized typing promps to improve your skills as a typist.";
 
-export default function MyCard(props) {
+export default function Demo(props) {
   const { title, desc, img, link, alt } = props;
   return (
     <div className="h-full">
-      <h1 className="text-secondary ">Cards</h1>
+      <div id="Demos-title-container">
+        <h1>Demos</h1>
+      </div>
+      <div id="Demo-card-container"></div>
+      <div id="Bingo-card-container" className=""></div>
+      <div id="ApplePicker-card-container" className=""></div>
+      <div id="TypeRacer-card-container" className=""></div>
     </div>
   );
 }
