@@ -5,6 +5,7 @@ import Projects2 from "../components/home/Projects2.jsx";
 import Experience from "../components/home/Experience.jsx";
 import Demo from "../components/home/Demos.jsx";
 import { useLocation } from "react-router-dom";
+import Hamburger from "../assets/icons/hamburger.png";
 
 export default function Home(props) {
   const homeRef = useRef(null);
@@ -38,8 +39,20 @@ export default function Home(props) {
         smoothScroll ? " lg:snap-y lg:snap-mandatory" : ""
       }`}
     >
-      <div className="w-full sticky top-0 flex">
-        <nav className=" w-full flex flex-center space-x-4 justify-center h-8 bg-primary">
+      <label
+        id="hamburger-menu"
+        className="h-full flex-start flex flex-col gap-2 absolute top-4 left-2 md:left-20 z-50"
+      >
+        <input
+          type="checkbox"
+          className="appearance-none m-0 p-0 outline-none pointer-events-none"
+        />
+      </label>
+      <div
+        id="nav-list"
+        className="hidden md:flex w-full sticky top-0 h-16 bg-primary text-xl"
+      >
+        <nav className="w-full flex flex-center space-x-4 justify-center ">
           <button
             onClick={() =>
               homeRef.current.scrollIntoView({
@@ -86,7 +99,7 @@ export default function Home(props) {
             Demos
           </button>
         </nav>
-        <div className="flex flex-end justify-center">
+        {/* <div id="scroll-controll" className="flex flex-end justify-center">
           <button onClick={handleSetSmoothScroll} className="w-36">
             Smooth Scroll
           </button>
@@ -95,7 +108,7 @@ export default function Home(props) {
             checked={smoothScroll}
             onClick={handleSetSmoothScroll}
           />
-        </div>
+        </div> */}
       </div>
 
       <div
@@ -108,21 +121,27 @@ export default function Home(props) {
       <div
         id="About"
         ref={aboutRef}
-        className="lg:h-screen lg:overflow-y-scroll lg:snap-center "
+        className={`${
+          smoothScroll ? "lg:h-screen" : ""
+        }lg:overflow-y-scroll lg:snap-center `}
       >
         <About />
       </div>
       <div
         id="Experience"
         ref={experienceRef}
-        className="lg:h-screen lg:overflow-y-scroll lg:snap-center "
+        className={`${
+          smoothScroll ? "lg:h-screen" : ""
+        }lg:overflow-y-scroll lg:snap-center `}
       >
         <Experience />
       </div>
       <div
         id="Projects"
         ref={projectsRef}
-        className="lg:h-screen lg:overflow-y-scroll lg:snap-center "
+        className={`${
+          smoothScroll ? "lg:h-screen" : ""
+        }lg:overflow-y-scroll lg:snap-center `}
       >
         <Projects2 />
       </div>
@@ -130,7 +149,9 @@ export default function Home(props) {
       <div
         id="Demo"
         ref={demoRef}
-        className="lg:h-screen lg:overflow-y-scroll lg:snap-center "
+        className={`${
+          smoothScroll ? "lg:h-screen" : ""
+        } lg:overflow-y-scroll lg:snap-center `}
       >
         <Demo />
       </div>

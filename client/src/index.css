@@ -10,6 +10,20 @@
   scroll-snap-align: start;
 }
 
+#hamburger-menu::before,
+#hamburger-menu::after,
+#hamburger-menu input {
+  content: "";
+  width: 40px;
+  height: 4px;
+  background-color: white;
+  border-radius: 9999px;
+}
+
+#hamburger-menu input:checked {
+  background-color: red;
+}
+
 .controls {
   display: grid;
   place-items: center;
