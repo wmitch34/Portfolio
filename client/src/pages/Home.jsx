@@ -86,14 +86,16 @@ export default function Home(props) {
             Demos
           </button>
         </nav>
-        <span className="flex flex-end align-middle">
-          Smooth
+        <div className="flex flex-end justify-center">
+          <button onClick={handleSetSmoothScroll} className="w-36">
+            Smooth Scroll
+          </button>
           <input
             type="checkbox"
-            defaultChecked
+            checked={smoothScroll}
             onClick={handleSetSmoothScroll}
           />
-        </span>
+        </div>
       </div>
 
       <div

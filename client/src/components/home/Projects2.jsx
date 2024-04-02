@@ -52,7 +52,7 @@ export default function Projects() {
                   id="tank-text-body"
                   className="w-full flex flex-col sm:flex-row p-2"
                 >
-                  <div id="tank-block-1" className="p-2 ">
+                  <div id="tank-block-1" className="p-2 lg:w-1/2">
                     <h2 className="text-xl">Business Management App</h2>
                     <ul className="p-4 list-disc">
                       <li>React, React Native, MUI</li>
@@ -61,7 +61,7 @@ export default function Projects() {
                       <li>Atlassian suit, Agile</li>
                     </ul>
                   </div>
-                  <div id="tank-block-2" className="p-2 ">
+                  <div id="tank-block-2" className="p-2 lg:w-1/2">
                     <h2 className="text-xl">My Role</h2>
                     <ul className="p-4 list-disc">
                       <li>Client advocate</li>
@@ -75,10 +75,10 @@ export default function Projects() {
               </div>
             </div>
           </div>
-          <div id="games-container" className=" lg:w-full flex lg:h-1/2 p-2">
+          <div id="game-container" className=" lg:w-full flex lg:h-1/2 p-2">
             <div
               id="game-text-container"
-              className="flex flex-col lg:flex-row w-full lg:w-2/3"
+              className="flex flex-col lg:flex-row w-full"
             >
               <div id="game-text-wrapper" className="w-full flex flex-col">
                 <div id="game-text-heading">
@@ -88,7 +88,7 @@ export default function Projects() {
                   id="game-text-body"
                   className="w-full flex flex-col sm:flex-row p-2"
                 >
-                  <div className="p-2">
+                  <div id="game-block-1" className="p-2 lg:w-1/2">
                     <h2 className="text-xl">Video Game stat-tracker</h2>
                     <ul className="p-4 list-disc">
                       <li>MERN Stack Web Application</li>
@@ -97,7 +97,7 @@ export default function Projects() {
                       <li>MongoDB NoSQL database</li>
                     </ul>
                   </div>
-                  <div className="p-2">
+                  <div id="game-block-2" className="p-2 lg:w-1/2">
                     <h2 className="text-xl">My Role</h2>
                     <ul className="p-4 list-disc">
                       <li>Software developer</li>

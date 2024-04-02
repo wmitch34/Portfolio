@@ -43,7 +43,6 @@ export default function Experience() {
               src={Grad}
               alt="Will Grad pic"
             />
-
             <div id="ucf-text" className="p-4 w-full md:w-5/6">
               <h2 className="text-xl md:text-3xl">
                 University of Central Florida
@@ -71,7 +70,6 @@ export default function Experience() {
               src={Marlows}
               alt="Marlow's Logo"
             />
-
             <div id="marlows-text" className="p-4 w-full md:w-5/6">
               <h2 className="text-xl md:text-3xl">Marlow's Tavern</h2>
               <h3 className="text-md md:text-xl py-2">
