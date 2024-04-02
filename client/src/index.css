@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --bar-height: 4px;
+  --bar-width: 36px;
+  --bar-gap: 6px;
+  --hamburger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
+  --animation-timing: 200ms ease-in-out;
+}
+
 .scroll-snap-type-y-mandatory {
   scroll-snap-type: y mandatory;
 }
@@ -10,18 +18,48 @@
   scroll-snap-align: start;
 }
 
+#hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+  gap: var(--bar-gap);
+}
+
 #hamburger-menu::before,
 #hamburger-menu::after,
 #hamburger-menu input {
   content: "";
-  width: 40px;
-  height: 4px;
+  width: var(--bar-width);
+  height: var(--bar-height);
   background-color: white;
   border-radius: 9999px;
+  transform-origin: left center;
 }
 
 #hamburger-menu input:checked {
-  background-color: red;
+  width: 0;
+  opacity: 0;
+}
+
+#hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+#hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+#sidebar {
+  transition: translate var(--animation-timing);
+  translate: -200%;
+  padding-top: calc(var(--hamburger-height) + 3rem);
+  max-width: 80%;
+}
+
+#hamburger-menu:has(input:checked) + #sidebar {
+  translate: 0;
 }
 
 .controls {

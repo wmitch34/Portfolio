@@ -41,13 +41,63 @@ export default function Home(props) {
     >
       <label
         id="hamburger-menu"
-        className="h-full flex-start flex flex-col gap-2 absolute top-4 left-2 md:left-20 z-50"
+        className="flex-start flex flex-col absolute top-4 left-2 md:left-20 z-50 cursor-pointer"
       >
         <input
           type="checkbox"
           className="appearance-none m-0 p-0 outline-none pointer-events-none"
         />
       </label>
+      <div
+        id="sidebar"
+        className="flex flex-col justify-start absolute min-h-screen"
+      >
+        <button
+          onClick={() =>
+            homeRef.current.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          Home
+        </button>
+        <button
+          onClick={() =>
+            aboutRef.current.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          About
+        </button>
+        <button
+          onClick={() =>
+            experienceRef.current.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          Experience
+        </button>
+        <button
+          onClick={() =>
+            projectsRef.current.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          Projects
+        </button>
+        <button
+          onClick={() =>
+            demoRef.current.scrollIntoView({
+              behavior: "smooth",
+            })
+          }
+        >
+          Demos
+        </button>
+      </div>
       <div
         id="nav-list"
         className="hidden md:flex w-full sticky top-0 h-16 bg-primary text-xl"
