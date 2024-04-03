@@ -13,7 +13,6 @@ import prisma from "../../assets/icons/prisma.svg";
 import react from "../../assets/icons/react.svg";
 import steam from "../../assets/icons/steam.svg";
 import typescript from "../../assets/icons/typescript.svg";
-import vite from "../../assets/icons/vite.svg";
 
 export default function Projects() {
   return (

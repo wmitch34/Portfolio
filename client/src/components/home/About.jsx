@@ -1,6 +1,6 @@
 import React from "react";
-import AboutWeb from "../../assets/about_will.png";
-import AboutWill from "../../assets/about_will.jpg";
+import AboutWeb from "../../assets/about/about_web.png";
+import AboutWill from "../../assets/about/about_will.jpg";
 
 export default function About() {
   return (

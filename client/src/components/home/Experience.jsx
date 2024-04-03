@@ -1,7 +1,7 @@
 import React from "react";
-import Deloitte from "../../assets/Deloitte.png";
-import Grad from "../../assets/Grad.png";
-import Marlows from "../../assets/marlows.png";
+import Deloitte from "../../assets/experience/Deloitte.png";
+import Grad from "../../assets/experience/Grad.png";
+import Marlows from "../../assets/experience/marlows.png";
 
 export default function Experience() {
   return (
