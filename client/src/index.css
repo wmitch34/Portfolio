@@ -32,6 +32,11 @@
   background-color: white;
   border-radius: 9999px;
   transform-origin: left center;
+  transition:
+    opacity var(--animation-timing),
+    width var(--animation-timing),
+    rotate var(--animation-timing),
+    translate var(--animation-timing);
 }
 
 #hamburger-menu input:checked {
@@ -55,7 +60,6 @@
   transition: translate var(--animation-timing);
   translate: -200%;
   padding-top: calc(var(--hamburger-height) + 3rem);
-  max-width: 80%;
 }
 
 #hamburger-menu:has(input:checked) + #sidebar {

@@ -5,7 +5,6 @@ import Projects2 from "../components/home/Projects2.jsx";
 import Experience from "../components/home/Experience.jsx";
 import Demo from "../components/home/Demos.jsx";
 import { useLocation } from "react-router-dom";
-import Hamburger from "../assets/icons/hamburger.png";
 
 export default function Home(props) {
   const homeRef = useRef(null);
@@ -41,7 +40,7 @@ export default function Home(props) {
     >
       <label
         id="hamburger-menu"
-        className="flex-start flex flex-col absolute top-4 left-2 md:left-20 z-50 cursor-pointer"
+        className="flex flex-col absolute top-4 left-2 md:left-20 z-50 cursor-pointer"
       >
         <input
           type="checkbox"
@@ -50,9 +49,10 @@ export default function Home(props) {
       </label>
       <div
         id="sidebar"
-        className="flex flex-col justify-start absolute min-h-screen"
+        className="flex flex-col justify-start absolute p-4 bg-primary w-90 rounded-xl text-xl"
       >
         <button
+          className="text-left w-full"
           onClick={() =>
             homeRef.current.scrollIntoView({
               behavior: "smooth",
@@ -62,6 +62,7 @@ export default function Home(props) {
           Home
         </button>
         <button
+          className="text-left w-full"
           onClick={() =>
             aboutRef.current.scrollIntoView({
               behavior: "smooth",
@@ -71,6 +72,7 @@ export default function Home(props) {
           About
         </button>
         <button
+          className="text-left w-full"
           onClick={() =>
             experienceRef.current.scrollIntoView({
               behavior: "smooth",
@@ -80,6 +82,7 @@ export default function Home(props) {
           Experience
         </button>
         <button
+          className="text-left w-full"
           onClick={() =>
             projectsRef.current.scrollIntoView({
               behavior: "smooth",
@@ -89,6 +92,7 @@ export default function Home(props) {
           Projects
         </button>
         <button
+          className="text-left w-full"
           onClick={() =>
             demoRef.current.scrollIntoView({
               behavior: "smooth",
@@ -97,6 +101,14 @@ export default function Home(props) {
         >
           Demos
         </button>
+        <label id="scroll-controll" className="text-left">
+          Smooth Scroll{" "}
+          <input
+            type="checkbox"
+            checked={smoothScroll}
+            onClick={handleSetSmoothScroll}
+          />
+        </label>
       </div>
       <div
         id="nav-list"
@@ -149,16 +161,6 @@ export default function Home(props) {
             Demos
           </button>
         </nav>
-        {/* <div id="scroll-controll" className="flex flex-end justify-center">
-          <button onClick={handleSetSmoothScroll} className="w-36">
-            Smooth Scroll
-          </button>
-          <input
-            type="checkbox"
-            checked={smoothScroll}
-            onClick={handleSetSmoothScroll}
-          />
-        </div> */}
       </div>
 
       <div
