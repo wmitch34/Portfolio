@@ -1,49 +1,56 @@
 import React from "react";
-import bootstrap from "../../assets/icons/bootstrap.svg";
-import canva from "../../assets/icons/canva.svg";
-import confluence from "../../assets/icons/confluence.svg";
-import figma from "../../assets/icons/figma.svg";
-import javascript from "../../assets/icons/javascript.svg";
-import jira from "../../assets/icons/jira.svg";
-import material_ui from "../../assets/icons/material-ui.svg";
-import mongodb from "../../assets/icons/mongodb.svg";
-import mysql from "../../assets/icons/mysql.svg";
-import nodejs from "../../assets/icons/nodejs.svg";
-import prisma from "../../assets/icons/prisma.svg";
-import react from "../../assets/icons/react.svg";
-import steam from "../../assets/icons/steam.svg";
-import typescript from "../../assets/icons/typescript.svg";
+import PhotoCarousel from "../PhotoCarousel";
+import tank1 from "../../assets/photocarousel/tank-login.png";
+import tank2 from "../../assets/photocarousel/tank-clients.png";
+import tank3 from "../../assets/photocarousel/tank-form.png";
+import tank4 from "../../assets/photocarousel/tank-analytics.png";
+import game1 from "../../assets/photocarousel/gameslisthome.png";
+import game2 from "../../assets/photocarousel/mygamelist.png";
+
+const photos = [tank1, tank2, tank3, tank4, game1, game2];
 
 export default function Projects() {
   return (
-    <div id="projects-container" className="flex flex-col w-full">
-      <div>
-        <h1 className="h-fit w-full p-8 lg:pl-18 text-5xl ">Projects</h1>
+    <div
+      id="projects-container"
+      className="flex flex-col w-full h-full min-h-screen"
+    >
+      <div id="projects-header">
+        <h1 className="p-4 pt-28 w-full text-5xl text-secondary">Projects</h1>
       </div>
-      <div className="flex-grow">
+      <div
+        id="projects-content"
+        className="mx-auto lg:mx-0 flex flex-col lg:flex-row"
+      >
         <div
-          id="col-container"
-          className="h-full flex flex-wrap flex-grow w-full justify-start xl:justify-center"
+          id="all-text-container"
+          className="flex flex-col mx-auto w-full lg:w-1/2"
         >
-          <div id="tank-container" className="w-full lg:w-1/2 flex p-8">
-            <div id="tank-wrapper" className="w-full">
-              <h1 className="text-3xl md:text-4xl">Tanknicians</h1>
-              <div className="flex md:flex-col">
-                <div id="tank-text" className="p-2">
-                  <h2 className="text-xl ">Business Management Platform</h2>
-                  <div className="ml-4">
-                    <ul className="list-disc">
-                      <li>UCF BS, CS Capstone Project</li>
-                      <li>React App with MUI</li>
-                      <li>React Native cross-platform Mobile App</li>
-                      <li>Node.js server with Express</li>
+          <div id="tank-container" className=" lg:w-full flex lg:h-1/2 p-2">
+            <div
+              id="tank-text-container"
+              className="flex flex-col lg:flex-row w-full"
+            >
+              <div id="tank-text-wrapper" className="w-full flex flex-col">
+                <div id="tank-text-heading">
+                  <h1 className="w-full text-3xl p-2">Tanknicians, LLC</h1>
+                </div>
+                <div
+                  id="tank-text-body"
+                  className="w-full flex flex-col sm:flex-row p-2"
+                >
+                  <div id="tank-block-1" className="p-2 lg:w-1/2">
+                    <h2 className="text-xl">Business Management App</h2>
+                    <ul className="p-4 list-disc">
+                      <li>React, React Native, MUI</li>
+                      <li>Node.js with Express</li>
                       <li>SQL database with Prisma</li>
-                      <li>Atlassian suit, Agile Methodology</li>
+                      <li>Atlassian suit, Agile</li>
                     </ul>
                   </div>
-                  <h2 className="text-xl py-2">My Role</h2>
-                  <div className="ml-4">
-                    <ul className="list-disc">
+                  <div id="tank-block-2" className="p-2 lg:w-1/2">
+                    <h2 className="text-xl">My Role</h2>
+                    <ul className="p-4 list-disc">
                       <li>Client advocate</li>
                       <li>Web App UX/UI designer</li>
                       <li>Web App routing and layout architect</li>
@@ -51,115 +58,49 @@ export default function Projects() {
                       <li>Stand-up and sprint planner</li>
                     </ul>
                   </div>
-                  <h2 className="text-xl py-2">
-                    <a>Gallery</a>
-                  </h2>
-                </div>
-                <div id="tank-icons-container" className="">
-                  <div
-                    id="tank-ions-wrapper"
-                    className="flex flex-col md:flex-row"
-                  >
-                    <a
-                      title="TypeScript"
-                      className="w-12 m-2 p-1 bg-white rounded"
-                    >
-                      <img src={typescript} alt="TypeScript icon" />
-                    </a>
-
-                    <a title="React" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={react} alt="React icon" />
-                    </a>
-                    <a
-                      title="Material UI"
-                      className="w-12 m-2 p-1 bg-white rounded"
-                    >
-                      <img src={material_ui} alt="MUI icon" />
-                    </a>
-
-                    <a title="Prisma" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={prisma} alt="Prisma icon" />
-                    </a>
-                    <a title="Jira" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={jira} alt="Jira icon" />
-                    </a>
-
-                    <a title="Figma" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={figma} alt="Figma icon" />
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
-          <div id="games-container" className="w-full  lg:w-1/2 p-8 flex">
-            <div id="games-wrapper" className="w-full">
-              <h1 className="text-3xl md:text-4xl">My Games List</h1>
-              <div className="flex md:flex-col">
-                <div id="game-text" className="p-2">
-                  <h2 className="text-xl py-2">Video Game stat-tracker</h2>
-                  <div className="ml-4">
-                    <ul className="list-disc">
+          <div id="game-container" className=" lg:w-full flex lg:h-1/2 p-2">
+            <div
+              id="game-text-container"
+              className="flex flex-col lg:flex-row w-full"
+            >
+              <div id="game-text-wrapper" className="w-full flex flex-col">
+                <div id="game-text-heading">
+                  <h1 className="w-full text-3xl p-2">My Games List</h1>
+                </div>
+                <div
+                  id="game-text-body"
+                  className="w-full flex flex-col sm:flex-row p-2"
+                >
+                  <div id="game-block-1" className="p-2 lg:w-1/2">
+                    <h2 className="text-xl">Video Game stat-tracker</h2>
+                    <ul className="p-4 list-disc">
                       <li>MERN Stack Web Application</li>
                       <li>React App with Bootstrap</li>
                       <li>Node.js server with Express</li>
                       <li>MongoDB NoSQL database</li>
                     </ul>
                   </div>
-                  <h2 className="text-xl py-2">My Role</h2>
-                  <div className="ml-4">
-                    <ul className="list-disc">
+                  <div id="game-block-2" className="p-2 lg:w-1/2">
+                    <h2 className="text-xl">My Role</h2>
+                    <ul className="p-4 list-disc">
                       <li>Software developer</li>
                       <li>API architect</li>
                       <li>Steam API integrator</li>
                       <li>Json Web Token integration</li>
                     </ul>
                   </div>
-                  cs
-                  <h2 className="text-lg py-2">
-                    <a>Gallery</a>
-                  </h2>
-                </div>
-                <div id="game-icons-container" className="">
-                  <div
-                    id="game-ions-wrapper"
-                    className="flex flex-col md:flex-row"
-                  >
-                    <a
-                      title="JavaScript"
-                      className="w-12 m-2 p-1 bg-white rounded"
-                    >
-                      <img src={javascript} alt="JavaScript icon" />
-                    </a>
-                    <a title="React" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={react} alt="React icon" />
-                    </a>
-                    <a
-                      title="Bootstrap"
-                      className="w-12 m-2 p-1 bg-white rounded p-1 bg-white rounded"
-                    >
-                      <img src={bootstrap} alt="Bootstrap icon" />
-                    </a>
-                    <a
-                      title="MongoDB"
-                      className="w-12  m-2 p-1 bg-white rounded"
-                    >
-                      <img src={mongodb} alt="MongoDB icon" />
-                    </a>
-
-                    <a title="Steam" className="w-12 m-2 p-1 bg-white rounded">
-                      <img src={steam} alt="Steam Icon" />
-                    </a>
-                    <a
-                      title="Canva"
-                      className="w-12 m-2 p-1 bg-white rounded p-1 bg-white rounded"
-                    >
-                      <img src={canva} alt="Canva icon" />
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div id="photo-car-container" className="flex w-full lg:w-1/2">
+          <div className="w-auto h-fit p-2">
+            <PhotoCarousel photos={photos} />
           </div>
         </div>
       </div>

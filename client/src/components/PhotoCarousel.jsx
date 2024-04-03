@@ -24,17 +24,17 @@ export default function PhotoCarousel(props) {
         onClick={() => scroll(-containerRef.current.offsetWidth)}
       >
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="w-9 h-1 bg-white rotate-45 rounded-xl origin-left translate-y-px">
+          <div className="w-8 h-1 bg-white rotate-45 rounded-xl origin-left translate-y-px">
             {""}
           </div>
-          <div className="w-9 h-1 bg-white -rotate-45 rounded-xl origin-left -translate-y-px">
+          <div className="w-8 h-1 bg-white -rotate-45 rounded-xl origin-left -translate-y-px">
             {""}
           </div>
         </div>
       </label>
-      <div className="flex overflow-x-scroll snap snap-x " ref={containerRef}>
+      <div className="flex overflow-x-scroll snap snap-x" ref={containerRef}>
         {photos.map((photo, index) => (
-          <img src={photo} className="snap-center" key={index} />
+          <img src={photo} className="snap-center object-contain" key={index} />
         ))}
       </div>
       <label
@@ -42,10 +42,10 @@ export default function PhotoCarousel(props) {
         onClick={() => scroll(containerRef.current.offsetWidth)}
       >
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="w-9 h-1 bg-white -rotate-45 rounded-xl origin-right translate-y-px">
+          <div className="w-8 h-1 bg-white -rotate-45 rounded-xl origin-right translate-y-px">
             {""}
           </div>
-          <div className="w-9 h-1 bg-white rotate-45 rounded-xl origin-right -translate-y-px">
+          <div className="w-8 h-1 bg-white rotate-45 rounded-xl origin-right -translate-y-px">
             {""}
           </div>
         </div>
