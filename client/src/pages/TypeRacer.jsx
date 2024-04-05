@@ -176,19 +176,12 @@ function TypeRacer() {
 
   return (
     <>
-      <div className="mt-5">
+      <div className="">
         <div>
-          <div className="text-lg mt-5">
-            <h1>{""}</h1>
-          </div>
-        </div>
-        <div>
-          <div className="text-lg">
-            <h1>Type Racer</h1>
-          </div>
+          <h1>Type Racer</h1>
           <divlapse in={isMobile}>
-            <div className="text-md">
-              <p className="p-3">
+            <div className="">
+              <p className="">
                 Touch screen users! When the timer countdown finishes, touch the
                 text box to open your keyboard.
               </p>
@@ -196,22 +189,18 @@ function TypeRacer() {
           </divlapse>
         </div>
         <div>
-          <div className="ms-0 mb-2">
+          <div className="">
             <button
               autoFocus
               disabled={session}
               ref={startGameBtnRef}
               onClick={handleBegin}
-              className="btn btn-primary ms-0 me-1 mb-1"
+              className=""
             >
               START
             </button>
 
-            <button
-              disabled={!session}
-              onClick={handleReset}
-              className="btn btn-primary me-1 mb-1"
-            >
+            <button disabled={!session} onClick={handleReset} className="">
               RESET
             </button>
 
@@ -222,7 +211,7 @@ function TypeRacer() {
                 getRandomSentence(handleSetSentence);
                 setResults(false);
               }}
-              className="btn btn-primary me-1 mb-1"
+              className="1"
             >
               NEW CHALLENGE
             </button>
@@ -234,26 +223,13 @@ function TypeRacer() {
                 setSubmitNewFlag((prev) => !prev);
                 setResults(false);
               }}
-              className="btn btn-primary me-1 mb-1"
+              className=""
             >
               CUSTOM CHALLENGE
             </button>
           </div>
         </div>
-        <div>
-          <div>
-            <div
-              className="w-100 p-1 mb-2"
-              style={{
-                backgrounddivor: "white",
-                color: "black",
-                minHeight: "5rem",
-              }}
-            >
-              {curr_sen}
-            </div>
-          </div>
-        </div>
+        <div>{curr_sen}</div>
         <div>
           <div>
             <textarea
@@ -261,7 +237,7 @@ function TypeRacer() {
               ref={userInputBoxRef}
               value={userInput}
               placeholder="Type Here"
-              className="w-100 mb-3"
+              className=""
               spellCheck={false}
               onChange={handleSetUserInput}
             ></textarea>
@@ -279,35 +255,21 @@ function TypeRacer() {
             </div>
           </div>
         )}
-        {session && (
-          <div>
-            <div>
-              <h1>{startTimer}</h1>
-            </div>
-          </div>
-        )}
+        {session && <h1>{startTimer}</h1>}
 
         {submit_new_flag && (
           <div>
-            <div xs={8} sm={8} md={8} lg={8}>
-              <textarea
-                id="new_content"
-                placeholder="Enter new sentence here"
-                className="w-100"
-                value={newContent}
-                onChange={(event) => {
-                  let val = event.target.value;
-                  setNewContent(val);
-                }}
-              ></textarea>
-            </div>
-            <div
-              xs={2}
-              sm={2}
-              md={2}
-              lg={2}
-              className="d-flex align-items-center justify-content-center"
-            >
+            <textarea
+              id="new_content"
+              placeholder="Enter new sentence here"
+              className=""
+              value={newContent}
+              onChange={(event) => {
+                let val = event.target.value;
+                setNewContent(val);
+              }}
+            ></textarea>
+            <div>
               <button
                 onClick={() => {
                   if (newContent.trim() !== "") {
@@ -315,20 +277,14 @@ function TypeRacer() {
                     setSubmitNewFlag(false);
                   }
                 }}
-                className="btn btn-primary w-100"
+                className=""
               >
                 Submit
               </button>
             </div>
-            <div
-              xs={2}
-              sm={2}
-              md={2}
-              lg={2}
-              className="d-flex align-items-center justify-content-center"
-            >
+            <div className="">
               <button
-                className="btn btn-primary w-100 "
+                className=""
                 onClick={() => {
                   handleReset();
                   setSubmitNewFlag(false);
@@ -341,17 +297,15 @@ function TypeRacer() {
         )}
         <div>
           <h2>Sentence History</h2>
-          <div style={{ maxHeight: "50vh", overflow: "auto" }}>
-            {history.map((value, index) => (
-              <div
-                onClick={() => handleSetSentence(value)}
-                className="mt-2 history-row"
-                key={{ index }}
-              >
-                {value}
-              </div>
-            ))}
-          </div>
+          {history.map((value, index) => (
+            <div
+              onClick={() => handleSetSentence(value)}
+              className=""
+              key={{ index }}
+            >
+              {value}
+            </div>
+          ))}
         </div>
       </div>
     </>
