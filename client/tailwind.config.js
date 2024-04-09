@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundColor: {
         primary: "#121212",
+        secondary: "rgb(13, 110, 253)",
       },
       textColor: (theme) => theme("colors"),
       textColor: {
