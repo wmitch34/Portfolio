@@ -39,80 +39,6 @@ export default function Home(props) {
       }`}
     >
       <div className="sticky top-0">
-        <label
-          id="hamburger-menu"
-          className="flex flex-col absolute top-4 left-2 z-50 cursor-pointer"
-        >
-          <input
-            type="checkbox"
-            defaultValue={false}
-            className="appearance-none m-0 p-0 outline-none pointer-events-none"
-          />
-        </label>
-        <div
-          id="sidebar"
-          className="flex flex-col justify-start absolute p-4 bg-primary w-90 rounded-xl text-xl"
-        >
-          <button
-            className="text-left w-full"
-            onClick={() =>
-              homeRef.current.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            Home
-          </button>
-          <button
-            className="text-left w-full"
-            onClick={() =>
-              aboutRef.current.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            About
-          </button>
-          <button
-            className="text-left w-full"
-            onClick={() =>
-              experienceRef.current.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            Experience
-          </button>
-          <button
-            className="text-left w-full"
-            onClick={() =>
-              projectsRef.current.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            Projects
-          </button>
-          <button
-            className="text-left w-full"
-            onClick={() =>
-              demoRef.current.scrollIntoView({
-                behavior: "smooth",
-              })
-            }
-          >
-            Demos
-          </button>
-          <label id="scroll-controll" className="text-left hidden md:flex">
-            Smooth Scroll{" "}
-            <input
-              type="checkbox"
-              checked={smoothScroll}
-              onClick={handleSetSmoothScroll}
-            />
-          </label>
-        </div>
-
         <div
           id="nav-list"
           className="hidden md:flex w-full sticky top-0 h-16 bg-primary text-xl"
@@ -164,6 +90,14 @@ export default function Home(props) {
               Demos
             </button>
           </nav>
+          <label id="scroll-controll" className="hidden md:flex w-fit">
+            Scroll{" "}
+            <input
+              type="checkbox"
+              checked={smoothScroll}
+              onClick={handleSetSmoothScroll}
+            />
+          </label>
         </div>
       </div>
 

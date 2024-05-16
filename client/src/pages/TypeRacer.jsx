@@ -239,7 +239,7 @@ function TypeRacer() {
               ref={userInputBoxRef}
               value={userInput}
               placeholder="Type Here"
-              className="w-full md:w-2/3 md:h-16"
+              className="w-full p-2 md:w-2/3 h-24"
               spellCheck={false}
               onChange={handleSetUserInput}
             ></textarea>
@@ -264,7 +264,7 @@ function TypeRacer() {
             <textarea
               id="new_content"
               placeholder="Enter new sentence here"
-              className="w-full md:w-2/3 md:h-16"
+              className="w-full md:w-2/3 h-36"
               value={newContent}
               onChange={(event) => {
                 let val = event.target.value;
@@ -296,13 +296,13 @@ function TypeRacer() {
             </div>
           </div>
         )}
-        <div>
-          <h2>Sentence History</h2>
+        <div className="md:w-2/3">
+          <h2 className="text-secondary text-2xl mb-4">Sentence History</h2>
           {history.map((value, index) => (
             <div
               onClick={() => handleSetSentence(value)}
-              className=""
-              key={{ index }}
+              className="border-2 border-t-0 p-6 rounded-xl border-white cursor-pointer"
+              key={index}
             >
               {value}
             </div>
