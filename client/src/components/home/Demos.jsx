@@ -56,8 +56,7 @@ export default function Demo(props) {
                 <h1 className="text-secondary py-4 text-xl">Apple Picker</h1>
                 <p>
                   Two-deminsional grid traversal game with object-oriented
-                  arcitectire with object collision detection. OOP, grad
-                  traversal demo.
+                  arcitectire and object collision detection.
                 </p>
               </div>
             </div>
@@ -78,11 +77,7 @@ export default function Demo(props) {
               />
               <div>
                 <h1 className="text-secondary py-4 text-xl">Type Racer</h1>
-                <p>
-                  Two-deminsional grid traversal game with object-oriented
-                  arcitectire with object collision detection. OOP, grad
-                  traversal demo.
-                </p>
+                <p>Placeholder text</p>
               </div>
             </div>
           </Link>

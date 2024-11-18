@@ -1,5 +1,13 @@
 import React from "react";
-import { Routes, Route, Link, Outlet } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Link,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+import { useState, useRef } from "react";
 
 import Home from "./pages/Home";
 import Bingo from "./pages/Bingo";
@@ -8,10 +16,6 @@ import TypeRacer from "./pages/TypeRacer";
 import NoMatch from "./pages/NoMatch";
 
 let links = [
-  {
-    text: "Home",
-    link: "/",
-  },
   {
     text: "Multiplayer Bingo",
     link: "/Bingo",
@@ -27,6 +31,21 @@ let links = [
 ];
 
 export default function App() {
+  const checkboxRef = useRef(null);
+  const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(true);
+
+  const handleClick = (page, section) => {
+    if (checkboxRef.current) {
+      checkboxRef.current.checked = false;
+    }
+    if (section === undefined) {
+      navigate(page);
+    } else {
+      navigate(page, { state: { scrollTo: section } });
+    }
+  };
+
   return (
     <div id="app-container" className="bg-primary text-primary font-sans">
       <label
@@ -34,6 +53,7 @@ export default function App() {
         className="flex flex-col absolute top-4 left-2 z-50 cursor-pointer"
       >
         <input
+          ref={checkboxRef}
           type="checkbox"
           defaultValue={false}
           className="appearance-none m-0 p-0 outline-none pointer-events-none"
@@ -41,62 +61,66 @@ export default function App() {
       </label>
       <div
         id="sidebar"
-        className="flex flex-col justify-start absolute p-4 bg-primary w-90 rounded-xl text-xl"
+        className="flex flex-col justify-start absolute p-4 bg-primary rounded-xl text-xl"
       >
-        <button
-          className="text-left w-full"
-          onClick={() =>
-            homeRef.current.scrollIntoView({
-              behavior: "smooth",
-            })
-          }
+        <div
+          // onMouseEnter={() => setIsHovered(true)}
+          // onMouseLeave={() => setIsHovered(false)}
+          style={{ transition: "height 0.3s ease" }}
         >
-          Home
-        </button>
-        <button
-          className="text-left w-full"
-          onClick={() =>
-            aboutRef.current.scrollIntoView({
-              behavior: "smooth",
-            })
-          }
-        >
-          About
-        </button>
-        <button
-          className="text-left w-full"
-          onClick={() =>
-            experienceRef.current.scrollIntoView({
-              behavior: "smooth",
-            })
-          }
-        >
-          Experience
-        </button>
-        <button
-          className="text-left w-full"
-          onClick={() =>
-            projectsRef.current.scrollIntoView({
-              behavior: "smooth",
-            })
-          }
-        >
-          Projects
-        </button>
-        <button
-          className="text-left w-full"
-          onClick={() =>
-            demoRef.current.scrollIntoView({
-              behavior: "smooth",
-            })
-          }
-        >
-          Demos
-        </button>
+          <button
+            className="text-left w-full"
+            onClick={() => handleClick("/Home")}
+          >
+            Home
+          </button>
+          <div
+            style={{
+              height: isHovered ? "auto" : "0px",
+              opacity: isHovered ? 1 : 0,
+              transform: isHovered ? "scaleY(1)" : "scaleY(0)",
+              transition:
+                "height 0.5s ease, opacity 0.3s ease, transform 0.3s ease",
+            }}
+          >
+            <button
+              className="text-left w-full ml-4"
+              onClick={() => handleClick("/Home", "About")}
+            >
+              About
+            </button>
+            <button
+              className="text-left w-full ml-4"
+              onClick={() => handleClick("/Home", "Experience")}
+            >
+              Experience
+            </button>
+            <button
+              className="text-left w-full ml-4"
+              onClick={() => handleClick("/Home", "Projects")}
+            >
+              Projects
+            </button>
+            <button
+              className="text-left w-full ml-4"
+              onClick={() => handleClick("/Home", "Demos")}
+            >
+              Demos
+            </button>
+          </div>
+        </div>
+        {links.map((link) => (
+          <button
+            className="text-left w-full"
+            onClick={() => handleClick(link.link)}
+          >
+            {link.text}
+          </button>
+        ))}
       </div>
       <Routes>
         <Route index path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
+        <Route path="Home" element={<Home />} />
         <Route path="Bingo" element={<Bingo />} />
         <Route path="ApplePicker" element={<Snake />} />
         <Route path="TypeRacer" element={<TypeRacer />} />

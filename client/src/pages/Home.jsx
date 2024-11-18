@@ -6,6 +6,8 @@ import Experience from "../components/home/Experience.jsx";
 import Demo from "../components/home/Demos.jsx";
 import { useLocation } from "react-router-dom";
 
+import { scroller } from "react-scroll";
+
 export default function Home(props) {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
@@ -19,18 +21,16 @@ export default function Home(props) {
     setSmoothScroll((prev) => !prev);
   };
 
-  const executeScroll = () => myRef.current.scrollIntoView();
-  const history = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
-    if (history.hash === "#About") {
-      aboutRef.current.scrollIntoView({
-        behavior: "smooth",
-        block: "end",
-        inline: "nearest",
-      });
+    if (location.state?.scrollTo) {
+      const element = document.getElementById(location.state.scrollTo);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
-  }, []);
+  }, [location.state]);
 
   return (
     <div
@@ -137,7 +137,7 @@ export default function Home(props) {
       </div>
 
       <div
-        id="Demo"
+        id="Demos"
         ref={demoRef}
         className={`${
           smoothScroll ? "lg:h-screen" : ""
