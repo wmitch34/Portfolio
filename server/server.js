@@ -11,7 +11,12 @@ let PORT = 5000;
 let chatHistory = [];
 
 const app = express();
-app.use(cors(), bodyParser.json());
+app.use(bodyParser.json());
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+  })
+);
 const server = http.createServer(app);
 
 const io = socketIO(server, {

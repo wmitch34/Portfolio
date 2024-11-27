@@ -109,10 +109,11 @@ export default function App() {
             </button>
           </div>
         </div>
-        {links.map((link) => (
+        {links.map((link, index) => (
           <button
             className="text-left w-full"
             onClick={() => handleClick(link.link)}
+            key={index}
           >
             {link.text}
           </button>

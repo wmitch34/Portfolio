@@ -3,15 +3,12 @@ const axios = require("axios");
 // Make a GET request
 async function getDadJoke() {
   try {
-    const response = await axios.get(
-      "https://api.api-ninjas.com/v1/dadjokes?limit=1",
-      {
-        headers: {
-          "X-Api-Key": process.env.API_KEY,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.get("https://api.api-ninjas.com/v1/dadjokes", {
+      headers: {
+        "X-Api-Key": process.env.API_KEY,
+        "Content-Type": "application/json",
+      },
+    });
 
     let ret = response.data[0].joke;
     return ret;
@@ -22,15 +19,12 @@ async function getDadJoke() {
 
 async function getFact() {
   try {
-    const response = await axios.get(
-      "https://api.api-ninjas.com/v1/facts?limit=1",
-      {
-        headers: {
-          "X-Api-Key": process.env.API_KEY,
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const response = await axios.get("https://api.api-ninjas.com/v1/facts", {
+      headers: {
+        "X-Api-Key": process.env.API_KEY,
+        "Content-Type": "application/json",
+      },
+    });
 
     let ret = response.data[0].fact;
     return ret;
@@ -41,8 +35,7 @@ async function getFact() {
 
 async function getHistoricalEvent() {
   try {
-    const date = new Date();
-    const day = date.getDate();
+    const day = Math.floor(Math.random() * 31) + 1;
     const response = await axios.get(
       "https://api.api-ninjas.com/v1/historicalevents?day=" + day,
       {
@@ -54,22 +47,6 @@ async function getHistoricalEvent() {
     );
 
     let ret = response.data[0].event;
-    return ret;
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-async function getRiddle() {
-  try {
-    const response = await axios.get("https://api.api-ninjas.com/v1/riddles", {
-      headers: {
-        "X-Api-Key": process.env.API_KEY,
-        "Content-Type": "application/json",
-      },
-    });
-
-    let ret = response.data[0].question;
     return ret;
   } catch (e) {
     console.log(e);

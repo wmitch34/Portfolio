@@ -90,8 +90,11 @@ export default function Home(props) {
               Demos
             </button>
           </nav>
-          <label id="scroll-controll" className="hidden md:flex w-fit">
-            Scroll{" "}
+          <label
+            id="scroll-controll"
+            className="hidden md:flex w-fit items-center"
+          >
+            Scroll&nbsp;
             <input
               type="checkbox"
               checked={smoothScroll}

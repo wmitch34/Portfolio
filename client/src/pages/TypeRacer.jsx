@@ -7,8 +7,9 @@ let localSentences = [
   "The desire for secrecy has meant that nations have operated codemaking departments, which were responsible for ensuring the security of communications by inventing and implementing the best possible codes.",
   "The quick brown fox jumps over the lazy dog.",
   "Please type out this temporary sentence.",
-  "There is a one in six chance you are typing this sentence.",
+  "There is a one in x chance you are typing this sentence.",
   "Adding one more, for the variety.",
+  "My dog's name is Birdy, and yes, she is a good girl. Always has been.",
 ];
 
 function getRand(list) {
@@ -52,7 +53,6 @@ async function getRandomSentence(setter) {
   } catch (e) {
     console.log("Falied to set sentence from API Ninjas: ", e);
     const localSentence = localSentences[getRand(localSentences)];
-    console.log(localSentence);
     setter(localSentence);
   }
 }
@@ -64,15 +64,11 @@ function TypeRacer() {
   useEffect(() => {
     const handleTouchStart = () => {
       setIsMobile(true);
-      // Remove the event listener once detected
       window.removeEventListener("touchstart", handleTouchStart);
     };
 
-    // Attach the event listener to check for touch support
     window.addEventListener("touchstart", handleTouchStart);
-
     userInputBoxRef.current.onpaste = (e) => e.preventDefault();
-
     getRandomSentence(handleSetSentence);
   }, []);
 
