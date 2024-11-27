@@ -53,6 +53,15 @@ export default function Snake(props) {
     height: window.innerHeight,
   });
 
+  const apple = new Apple(0, 0);
+
+  // apple position
+  const randomX = Math.random() * (windowSize.width - apple.size.x);
+  const randomY = Math.random() * (windowSize.height - apple.size.y);
+
+  apple.top = randomX;
+  apple.left = randomY;
+
   //player position
   const [position, setPosition] = useState({
     x: windowSize.width / 2,
@@ -62,7 +71,7 @@ export default function Snake(props) {
   const [sprite, setSprite] = useState(BOIFRONT);
 
   // All active objects on board saved in array
-  const [gameObjects, setGameObjects] = useState([new Apple(0)]);
+  const [gameObjects, setGameObjects] = useState([apple]);
 
   // handler for all q based interaction types
   const handleinteract = () => {

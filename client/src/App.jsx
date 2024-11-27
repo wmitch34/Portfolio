@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  Routes,
-  Route,
-  Link,
-  Outlet,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import { useState, useRef } from "react";
 
 import Home from "./pages/Home";

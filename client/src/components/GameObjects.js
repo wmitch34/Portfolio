@@ -1,15 +1,23 @@
 import APPLE from "../assets/gameAssets/apple2.png";
 
+function getRandomId() {
+  return 0;
+}
+
 class GameObject {
-  constructor(number) {
+  constructor(x, y) {
     this.size = {
       x: 200,
       y: 200,
     };
-    this.top = 0;
-    this.left = 0;
-    this.id = number;
+    this.top = x;
+    this.left = y;
+    this.id = getRandomId();
   }
+  top = 0;
+  left = 0;
+  id = 0;
+  size = {};
 }
 
 class Apple extends GameObject {
