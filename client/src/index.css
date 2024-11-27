@@ -80,10 +80,11 @@
 }
 
 .my-button {
+  color: black;
   border: 3px solid black;
   border-radius: 0.5rem;
-  width: 90%;
-  height: 90%;
+  width: 3rem;
+  height: 3rem;
   margin: 0;
   padding: 0;
   background: none;

@@ -5,88 +5,64 @@ export default function OnScreenController(props) {
   return (
     <>
       <div
+        className="flex flex-col space-y-4 p-4 bg-opacity-50 bg-white"
         style={{
           position: "absolute",
           bottom: "1rem",
+          left: "1rem",
           zIndex: "999",
+          border: "3px solid black",
+          borderRadius: "0.5rem",
         }}
       >
-        <div>
-          <div xs={8} sm={8} md={4} lg={4} xl={4}>
-            <div>
-              <div className="mb-1">
-                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
-                  <div className="controls">
-                    <button
-                      disabled={!touchScreen}
-                      onClick={() => controller.place()}
-                      className="my-button"
-                    >
-                      {touchScreen ? "DROP" : "Q"}
-                    </button>
-                  </div>
-                </div>
-                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
-                  <div className="controls">
-                    <button
-                      disabled={!touchScreen}
-                      onClick={() => controller.up()}
-                      className="my-button"
-                    >
-                      {touchScreen ? "UP" : "W"}
-                    </button>
-                  </div>
-                </div>
-                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
-                  <div className="controls">
-                    <button
-                      disabled={!touchScreen}
-                      onClick={() => controller.interact()}
-                      className="my-button"
-                    >
-                      {touchScreen ? "PICKUP" : "E"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
-                  <div className="controls">
-                    <button
-                      disabled={!touchScreen}
-                      onClick={() => controller.left()}
-                      className="my-button"
-                    >
-                      {touchScreen ? "LEFT" : "A"}
-                    </button>
-                  </div>
-                </div>
-                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
-                  <div className="controls">
-                    <button
-                      disabled={!touchScreen}
-                      onClick={() => controller.down()}
-                      className="my-button"
-                    >
-                      {touchScreen ? "DOWN" : "S"}
-                    </button>
-                  </div>
-                </div>
-                <div xs={4} sm={4} md={4} lg={4} xl={4} className="p-0">
-                  <div className="controls">
-                    <button
-                      disabled={!touchScreen}
-                      onClick={() => controller.right()}
-                      className="my-button"
-                    >
-                      {touchScreen ? "RIGHT" : "D"}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div xs={4} sm={4} md={8} lg={8} xl={8}></div>
+        <div id="button-row-top" className="flex space-x-4 justify-center">
+          <button
+            disabled={!touchScreen}
+            onClick={() => controller.place()}
+            className="my-button"
+          >
+            {touchScreen ? "DROP" : "Q"}
+          </button>
+
+          <button
+            disabled={!touchScreen}
+            onClick={() => controller.up()}
+            className="my-button"
+          >
+            {touchScreen ? "UP" : "W"}
+          </button>
+
+          <button
+            disabled={!touchScreen}
+            onClick={() => controller.interact()}
+            className="my-button"
+          >
+            {touchScreen ? "USE" : "E"}
+          </button>
+        </div>
+        <div id="button-row-bottom" className="flex space-x-4 justify-center">
+          <button
+            disabled={!touchScreen}
+            onClick={() => controller.left()}
+            className="my-button"
+          >
+            {touchScreen ? "LEFT" : "A"}
+          </button>
+          <button
+            disabled={!touchScreen}
+            onClick={() => controller.down()}
+            className="my-button"
+          >
+            {touchScreen ? "DOWN" : "S"}
+          </button>
+
+          <button
+            disabled={!touchScreen}
+            onClick={() => controller.right()}
+            className="my-button"
+          >
+            {touchScreen ? "RIGHT" : "D"}
+          </button>
         </div>
       </div>
     </>
