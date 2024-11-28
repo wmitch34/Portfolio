@@ -30,10 +30,14 @@ class Apple extends GameObject {
   };
 }
 
-class Rufus extends GameObject {
+class Drop extends GameObject {
   points = 200;
   image = APPLE;
   interaction = "collect";
+  size = {
+    x: 100,
+    y: 100,
+  };
 }
 
-export { Apple, Rufus };
+export { Apple, Drop };

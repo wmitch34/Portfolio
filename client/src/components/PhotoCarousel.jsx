@@ -1,4 +1,3 @@
-import react from "react";
 import { useRef } from "react";
 
 export default function PhotoCarousel(props) {

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Apple, Rufus } from "../components/GameObjects.js";
+import { Apple, Drop } from "../components/GameObjects.js";
 import BOIBACK from "../assets/gameAssets/boyBack.png";
 import BOIFRONT from "../assets/gameAssets/boyFront.png";
 import BOILEFT1 from "../assets/gameAssets/boyLeft.png";
@@ -114,12 +114,12 @@ export default function Snake(props) {
   };
 
   const handleAction = () => {
-    let rufus = new Rufus(gameObjects.length + 1);
+    let drop = new Drop(gameObjects.length + 1);
 
-    rufus.top = position.y;
-    rufus.left = position.x;
+    drop.top = position.y;
+    drop.left = position.x;
 
-    setGameObjects([...gameObjects, rufus]);
+    setGameObjects([...gameObjects, drop]);
   };
 
   // on load, handle page size and check if mobile

@@ -56,11 +56,7 @@ export default function App() {
         id="sidebar"
         className="flex flex-col justify-start absolute p-4 bg-primary rounded-xl text-xl"
       >
-        <div
-          // onMouseEnter={() => setIsHovered(true)}
-          // onMouseLeave={() => setIsHovered(false)}
-          style={{ transition: "height 0.3s ease" }}
-        >
+        <div style={{ transition: "height 0.3s ease" }}>
           <button
             className="text-left w-full"
             onClick={() => handleClick("/Home")}
@@ -68,6 +64,7 @@ export default function App() {
             Home
           </button>
           <div
+            className="flex flex-col"
             style={{
               height: isHovered ? "auto" : "0px",
               opacity: isHovered ? 1 : 0,
@@ -77,25 +74,25 @@ export default function App() {
             }}
           >
             <button
-              className="text-left w-full ml-4"
+              className="text-left ml-4"
               onClick={() => handleClick("/Home", "About")}
             >
               About
             </button>
             <button
-              className="text-left w-full ml-4"
+              className="text-left ml-4"
               onClick={() => handleClick("/Home", "Experience")}
             >
               Experience
             </button>
             <button
-              className="text-left w-full ml-4"
+              className="text-left ml-4"
               onClick={() => handleClick("/Home", "Projects")}
             >
               Projects
             </button>
             <button
-              className="text-left w-full ml-4"
+              className="text-left ml-4"
               onClick={() => handleClick("/Home", "Demos")}
             >
               Demos

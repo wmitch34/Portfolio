@@ -40,7 +40,7 @@ export default function Chatbox(props) {
                   onChange={(event) => {
                     setUser(event.target.value);
                   }}
-                  className="form-control chat-text-field"
+                  className="text-black"
                 />
               </form>
             </div>
@@ -74,15 +74,8 @@ export default function Chatbox(props) {
                   ref={inputRef}
                   className="form-control chat-text-field"
                 />
-                <button
-                  type="submit"
-                  onClick={handlSendMessage}
-                  className="rounded-circle"
-                >
-                  <i
-                    className="bi bi-arrow-up-circle-fill fs-3"
-                    style={{ color: "#0d6efd" }}
-                  ></i>
+                <button type="submit" onClick={handlSendMessage} className="">
+                  <i className=""></i>
                 </button>
               </form>
             </div>

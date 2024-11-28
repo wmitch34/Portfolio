@@ -6,8 +6,6 @@ import Experience from "../components/home/Experience.jsx";
 import Demo from "../components/home/Demos.jsx";
 import { useLocation } from "react-router-dom";
 
-import { scroller } from "react-scroll";
-
 export default function Home(props) {
   const homeRef = useRef(null);
   const aboutRef = useRef(null);
@@ -98,7 +96,7 @@ export default function Home(props) {
             <input
               type="checkbox"
               checked={smoothScroll}
-              onClick={handleSetSmoothScroll}
+              onChange={handleSetSmoothScroll}
             />
           </label>
         </div>

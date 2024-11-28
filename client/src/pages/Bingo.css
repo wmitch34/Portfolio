@@ -9,6 +9,8 @@
   border-radius: 10%;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
+  background-color: white;
+  color: #121212;
 }
 
 .roll-hist-container {
@@ -32,6 +34,8 @@
   border-radius: 10%;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
+  background-color: white;
+  color: #121212;
 }
 
 .bingo:hover {
@@ -79,7 +83,7 @@
   min-width: fit-content;
   font-weight: bold;
   border-radius: 10%;
-  background-color: white;
+  /* background-color: white; */
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
 }
@@ -98,32 +102,6 @@
   }
 }
 
-/* Apply the animation to the class */
 .hint-pulse {
   animation: hintPulse 1s ease-in-out;
-}
-
-.header {
-  text-align: center;
-  justify-content: center;
-  color: white;
-}
-
-.timer {
-  /* color: white; */
-  text-align: center;
-  justify-self: center;
-}
-
-.input-text-field {
-  padding: 0.5rem;
-  border-radius: 0.5rem;
-  background-color: #121212 !important;
-  border: 2px solid white;
-  color: white !important;
-}
-
-.input-text-field:hover {
-  outline: "none";
-  box-shadow: none;
 }

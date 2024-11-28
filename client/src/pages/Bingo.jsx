@@ -235,26 +235,15 @@ export default function Bingo() {
     <>
       <div>
         <div>
-          <div
-            xs={3}
-            sm={3}
-            md={3}
-            lg={2}
-            xl={2}
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+          <div>
             <div>
               <div>
-                <div xs={12} sm={12} md={12} lg={12} xl={12}>
+                <div>
                   <h2 className="text-lg text-primary"> Latest Roll</h2>
                 </div>
               </div>
               <div>
-                <div xs={12} sm={12} md={12} lg={12} xl={12}>
+                <div>
                   <>
                     {!gameOver && (
                       <div
@@ -280,13 +269,13 @@ export default function Bingo() {
               </div>
             </div>
           </div>
-          <div xs={9} sm={9} md={9} lg={6} xl={6}>
+          <div>
             <div className="mb-4" fluid>
               <div>
                 <h2 className="">Bingo</h2>
               </div>
               <div>
-                <div xs={12} sm={12} md={12} lg={12} xl={12}>
+                <div>
                   <div>
                     <div>
                       {board.map((row, index) => (
@@ -312,7 +301,7 @@ export default function Bingo() {
                 </div>
               </div>
               <div>
-                <div xs={12} sm={12} md={12} lg={12} xl={12}>
+                <div>
                   <button onClick={checkBoard} className="" disabled={gameOver}>
                     Submit Board
                   </button>
@@ -320,8 +309,8 @@ export default function Bingo() {
               </div>
             </div>
           </div>
-          <div xs={12} sm={12} md={12} lg={4} xl={4}>
-            <h2 className="">Roll History</h2>
+          <div>
+            <h2>Roll History</h2>
             <div className="roll-hist-container mb-4">
               {rollHist.map((roll, index) => (
                 <div
@@ -376,15 +365,13 @@ export default function Bingo() {
           "Enter a username into the chatbox before you submit your board."
         }
       ></Modal>
-      <NavOffCanvas header={"Chatbox"} badge={badge} badgeSetter={setBadge}>
-        <Chatbox
-          user={user}
-          setUser={handleSetUser}
-          chatHistory={chatHistory}
-          setChatHistory={setChatHistory}
-          socket={socket}
-        />
-      </NavOffCanvas>
+      <Chatbox
+        user={user}
+        setUser={handleSetUser}
+        chatHistory={chatHistory}
+        setChatHistory={setChatHistory}
+        socket={socket}
+      />
     </>
   );
 }
