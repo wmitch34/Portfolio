@@ -233,98 +233,8 @@ export default function Bingo() {
 
   return (
     <>
-      <div>
-        <div>
-          <div>
-            <div>
-              <div>
-                <div>
-                  <h2 className="text-lg text-primary"> Latest Roll</h2>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <>
-                    {!gameOver && (
-                      <div
-                        style={{ maxWidth: "fit-content", textAlign: "center" }}
-                      >
-                        <div className="current-roll">{roll}</div>
-
-                        <div style={{ color: "white" }}>
-                          00:
-                          {rollDelay - (timer % rollDelay) < 10
-                            ? "0" + (rollDelay - (timer % rollDelay))
-                            : rollDelay - (timer % rollDelay)}
-                        </div>
-                      </div>
-                    )}
-                    {gameOver && (
-                      <div className="text-xl" style={{ color: "white" }}>
-                        Next Game starting soon!
-                      </div>
-                    )}
-                  </>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <div className="mb-4" fluid>
-              <div>
-                <h2 className="">Bingo</h2>
-              </div>
-              <div>
-                <div>
-                  <div>
-                    <div>
-                      {board.map((row, index) => (
-                        <div key={index} className="board-row w-100">
-                          {row.map((tile) => (
-                            <div
-                              key={tile.id}
-                              className={
-                                hint == tile.value
-                                  ? `${tile.class_List} hint-pulse`
-                                  : tile.class_List
-                              }
-                              onClick={handleTileClick}
-                              id={"tile-" + tile.value}
-                            >
-                              {tile.value}
-                            </div>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div>
-                <div>
-                  <button onClick={checkBoard} className="" disabled={gameOver}>
-                    Submit Board
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div>
-            <h2>Roll History</h2>
-            <div className="roll-hist-container mb-4">
-              {rollHist.map((roll, index) => (
-                <div
-                  key={index}
-                  className="roll-hist-bingo"
-                  id={"hist-" + roll}
-                  onClick={() => handleHistClick(roll)}
-                >
-                  {roll}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+      <div className="w-full flex items-center justify-center p-4">
+        <h1 className="text-4xl">Bingo</h1>
       </div>
       <Modal
         message={`${winner}`}
@@ -345,7 +255,12 @@ export default function Bingo() {
         message={"Set a username"}
         closeMSG={"Submit"}
       >
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleSubmit();
+          }}
+        >
           <input
             className="input-text-field"
             type="text"
@@ -365,6 +280,69 @@ export default function Bingo() {
           "Enter a username into the chatbox before you submit your board."
         }
       ></Modal>
+      <div className="flex flex-wrap">
+        <div id="lastes-roll">
+          <h2 className="text-lg text-primary"> Latest Roll</h2>
+          <>
+            {!gameOver && (
+              <div>
+                <div className="current-roll">{roll}</div>
+
+                <div style={{ color: "white" }}>
+                  00:
+                  {rollDelay - (timer % rollDelay) < 10
+                    ? "0" + (rollDelay - (timer % rollDelay))
+                    : rollDelay - (timer % rollDelay)}
+                </div>
+              </div>
+            )}
+            {gameOver && (
+              <div className="text-xl" style={{ color: "white" }}>
+                Next Game starting soon!
+              </div>
+            )}
+          </>
+        </div>
+        <div id="board">
+          {board.map((row, index) => (
+            <div key={index} className="board-row w-100">
+              {row.map((tile) => (
+                <div
+                  key={tile.id}
+                  className={
+                    hint == tile.value
+                      ? `${tile.class_List} hint-pulse`
+                      : tile.class_List
+                  }
+                  onClick={handleTileClick}
+                  id={"tile-" + tile.value}
+                >
+                  {tile.value}
+                </div>
+              ))}
+            </div>
+          ))}
+          <button onClick={checkBoard} className="" disabled={gameOver}>
+            Submit Board
+          </button>
+        </div>
+      </div>
+
+      <div>
+        <h2>Roll History</h2>
+        <div className="roll-hist-container mb-4">
+          {rollHist.map((roll, index) => (
+            <div
+              key={index}
+              className="roll-hist-bingo"
+              id={"hist-" + roll}
+              onClick={() => handleHistClick(roll)}
+            >
+              {roll}
+            </div>
+          ))}
+        </div>
+      </div>
       <Chatbox
         user={user}
         setUser={handleSetUser}
