@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import io from "socket.io-client";
 import { submitBoard } from "../api";
 import Chatbox from "../components/ChatBox";
@@ -232,9 +232,22 @@ export default function Bingo() {
   }, []);
 
   return (
-    <>
-      <div className="w-full flex items-center justify-center p-4">
-        <h1 className="text-4xl">Bingo</h1>
+    <div id="bingo">
+      <div className="w-full flex items-center justify-between p-4">
+        <h1 className="text-4xl mx-auto">Bingo</h1>
+
+        <label className="chevron-menu">
+          <input type="checkbox" />
+        </label>
+        <div id="chatbox-sidebar" className="p-3">
+          <Chatbox
+            user={user}
+            setUser={handleSetUser}
+            chatHistory={chatHistory}
+            setChatHistory={setChatHistory}
+            socket={socket}
+          />
+        </div>
       </div>
       <Modal
         message={`${winner}`}
@@ -281,7 +294,7 @@ export default function Bingo() {
         }
       ></Modal>
       <div className="flex flex-wrap">
-        <div id="lastes-roll">
+        <div id="lastes-roll" className="w-full md:w-1/4 p-7 md:p-0">
           <h2 className="text-lg text-primary"> Latest Roll</h2>
           <>
             {!gameOver && (
@@ -303,7 +316,7 @@ export default function Bingo() {
             )}
           </>
         </div>
-        <div id="board">
+        <div id="board" className="w-full md:w-1/4 p-7 md:p-0">
           {board.map((row, index) => (
             <div key={index} className="board-row w-100">
               {row.map((tile) => (
@@ -343,13 +356,6 @@ export default function Bingo() {
           ))}
         </div>
       </div>
-      <Chatbox
-        user={user}
-        setUser={handleSetUser}
-        chatHistory={chatHistory}
-        setChatHistory={setChatHistory}
-        socket={socket}
-      />
-    </>
+    </div>
   );
 }

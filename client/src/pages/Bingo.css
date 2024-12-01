@@ -20,7 +20,6 @@
 }
 
 .board-row {
-  /* max-width: 30rem; */
   display: flex;
 }
 
@@ -105,4 +104,80 @@
 
 .hint-pulse {
   animation: hintPulse 1s ease-in-out;
+}
+
+#bingo {
+  --bar-height: 4px;
+  --bar-width: 24px;
+  --animation-timing: 200ms ease-in-out;
+}
+
+body {
+  margin: 0px;
+}
+
+.chevron-menu {
+  display: flex;
+  padding: 1rem;
+  z-index: 50;
+  margin-left: auto;
+}
+
+.chevron-menu::before,
+.chevron-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  background-color: white;
+  border-radius: 9999px;
+  transition:
+    opacity var(--animation-timing),
+    width var(--animation-timing),
+    rotate var(--animation-timing),
+    translate var(--animation-timing);
+}
+
+.chevron-menu input {
+  appearance: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  pointer-events: none;
+  transform-origin: center;
+  transform: rotate(45deg);
+  translate: calc(var(--bar-width) / -5);
+}
+
+.chevron-menu::before {
+  transform-origin: center;
+  transform: rotate(-45deg);
+  translate: calc(var(--bar-width) / 5);
+}
+
+.chevron-menu:has(input:checked)::before {
+  transform-origin: center;
+  rotate: 90deg;
+}
+
+.chevron-menu:has(input:checked) input {
+  transform-origin: center;
+  rotate: -90deg;
+}
+
+.chevron-menu:has(input:checked) + #chatbox-sidebar {
+  transform: translateY(0%);
+}
+
+#navbar {
+  display: flex;
+}
+
+#chatbox-sidebar {
+  transition: transform var(--animation-timing);
+  padding-top: calc(var(--bar-height) + 2rem);
+  transform: translateY(-100%);
+  background-color: blue;
+  position: absolute;
+  right: 0;
+  top: 0;
 }

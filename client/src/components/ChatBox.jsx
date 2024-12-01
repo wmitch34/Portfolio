@@ -28,61 +28,45 @@ export default function Chatbox(props) {
   };
 
   return (
-    <div className="container-fluid">
-      <div className="row">
-        <div className="col-12 d-flex flex-column">
-          <div className="row flex-grow-1">
-            <div>
-              <form
-                className="text-box-container"
-                onSubmit={(e) => e.preventDefault()}
-              >
-                <input
-                  placeholder="Enter user name..."
-                  value={user}
-                  onChange={(event) => {
-                    setUser(event.target.value);
-                  }}
-                  className="text-black"
-                />
-              </form>
-            </div>
-          </div>
+    <div className="w-full pt-5 flex flex-col">
+      <h2 className="p-2">Chat Box</h2>
+      <form className="text-box-container" onSubmit={(e) => e.preventDefault()}>
+        <input
+          placeholder="Enter user name..."
+          value={user}
+          onChange={(event) => {
+            setUser(event.target.value);
+          }}
+          className="text-black"
+        />
+      </form>
 
-          <div className="row flex-grow-3">
-            <div className="message-window-container">
-              <div className="w-100 message-window" ref={scrollRef}>
-                {chatHistory.map((message, index) => (
-                  <div key={index}>
-                    <div>{message.user}</div>
-                    <div style={{}}>
-                      <div key={index}>{message.message}</div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+      <div className="message-window min-h-[70px] break-words" ref={scrollRef}>
+        {chatHistory.map((message, index) => (
+          <div key={index}>
+            <div>{message.user}</div>
+            <div key={index}>{message.message}</div>
           </div>
+        ))}
+      </div>
 
-          <div className="row flex-grow-1">
-            <div className="w-100 overFlow-auto " style={{ display: "inline" }}>
-              <form className="text-box-container">
-                <input
-                  autoFocus
-                  value={inputVal}
-                  placeholder="Message..."
-                  onChange={(event) => {
-                    setInputVal(event.target.value);
-                  }}
-                  ref={inputRef}
-                  className="form-control chat-text-field"
-                />
-                <button type="submit" onClick={handlSendMessage} className="">
-                  <i className=""></i>
-                </button>
-              </form>
-            </div>
-          </div>
+      <div className="row flex-grow-1">
+        <div className="overFlow-auto " style={{ display: "inline" }}>
+          <form className="text-box-container">
+            <input
+              autoFocus
+              value={inputVal}
+              placeholder="Message..."
+              onChange={(event) => {
+                setInputVal(event.target.value);
+              }}
+              ref={inputRef}
+              className="text-black"
+            />
+            <button type="submit" onClick={handlSendMessage} className="">
+              <i className=""></i>
+            </button>
+          </form>
         </div>
       </div>
     </div>
