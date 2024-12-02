@@ -176,7 +176,6 @@ body {
   transition: transform var(--animation-timing);
   padding-top: calc(var(--bar-height) + 2rem);
   transform: translateY(-100%);
-  background-color: blue;
   position: absolute;
   right: 0;
   top: 0;

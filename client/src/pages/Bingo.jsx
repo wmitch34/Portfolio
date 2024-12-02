@@ -66,7 +66,7 @@ export default function Bingo() {
   const [submitModal, setSubmitModal] = useState(false);
   const [gameOverModal, setGameOverModal] = useState(false);
   const [missingUsernameModal, setMissingUsernamemodal] = useState(false);
-  const [welcomeModal, setWelcomeModal] = useState(true);
+  const [welcomeModal, setWelcomeModal] = useState(false);
   const [winner, setWinner] = useState("");
   const [badge, setBadge] = useState(0);
   const [chatHistory, setChatHistory] = useState([]);
@@ -87,6 +87,8 @@ export default function Bingo() {
   };
   // handler for setting user
   const handleSetUser = (data) => {
+    console.log("setting Cookie");
+    document.cookie = `username=${data}; max-age=3600`;
     setUser(data);
   };
   // handler for adding the curr roll to history
@@ -157,6 +159,14 @@ export default function Bingo() {
     });
   };
 
+  function parseCookies() {
+    return document.cookie.split("; ").reduce((acc, cookie) => {
+      const [key, value] = cookie.split("=");
+      acc[key] = decodeURIComponent(value); // Decode URI-encoded values
+      return acc;
+    }, {});
+  }
+
   useEffect(() => {
     // on rolled number
     socket.on("rolled_number", (data) => {
@@ -224,9 +234,21 @@ export default function Bingo() {
     socket.emit("req_chat_history");
     socket.emit("req_game_state");
 
+    const cookie = parseCookies();
+
+    if (
+      cookie.username != null &&
+      cookie.username != undefined &&
+      cookie.username != ""
+    ) {
+      setUser(cookie.username);
+      setWelcomeModal(false);
+    } else {
+      setWelcomeModal(true);
+    }
+
     return () => {
       socket.off("req_chat_history");
-
       socket.off("req_game_state");
     };
   }, []);
@@ -242,9 +264,9 @@ export default function Bingo() {
         <div id="chatbox-sidebar" className="p-3">
           <Chatbox
             user={user}
-            setUser={handleSetUser}
+            handleSetUser={handleSetUser}
             chatHistory={chatHistory}
-            setChatHistory={setChatHistory}
+            handleSetChatHistory={setChatHistory}
             socket={socket}
           />
         </div>
@@ -280,7 +302,7 @@ export default function Bingo() {
             placeholder="Your user name..."
             value={user}
             onChange={(event) => {
-              setUser(event.target.value);
+              handleSetUser(event.target.value);
             }}
           />
         </form>

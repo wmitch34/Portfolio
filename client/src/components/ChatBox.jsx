@@ -4,7 +4,8 @@ export default function Chatbox(props) {
   const inputRef = useRef(null);
   const scrollRef = useRef(null);
   const [inputVal, setInputVal] = useState("");
-  const { user, setUser, chatHistory, setChatHistory, socket } = props;
+  const { user, handleSetUser, chatHistory, handleSetChatHistory, socket } =
+    props;
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -13,7 +14,7 @@ export default function Chatbox(props) {
   }, [chatHistory]);
 
   const sendMessage = () => {
-    setChatHistory([...chatHistory, { message: inputVal, user: user }]);
+    handleSetChatHistory([...chatHistory, { message: inputVal, user: user }]);
     socket.emit("send_message", { message: inputVal, user: user });
   };
 
@@ -35,7 +36,7 @@ export default function Chatbox(props) {
           placeholder="Enter user name..."
           value={user}
           onChange={(event) => {
-            setUser(event.target.value);
+            handleSetUser(event.target.value);
           }}
           className="text-black"
         />
