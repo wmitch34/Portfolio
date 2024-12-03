@@ -1,3 +1,4 @@
+import { parse } from "dotenv";
 import React, { useRef, useState, useEffect } from "react";
 
 export default function Chatbox(props) {
@@ -28,6 +29,14 @@ export default function Chatbox(props) {
     inputRef.current.focus();
   };
 
+  function parseCookies() {
+    return document.cookie.split("; ").reduce((acc, cookie) => {
+      const [key, value] = cookie.split("=");
+      acc[key] = decodeURIComponent(value); // Decode URI-encoded values
+      return acc;
+    }, {});
+  }
+
   return (
     <div className="w-full pt-5 flex flex-col">
       <h2 className="p-2">Chat Box</h2>
@@ -38,15 +47,30 @@ export default function Chatbox(props) {
           onChange={(event) => {
             handleSetUser(event.target.value);
           }}
-          className="text-black"
+          className="text-black p-1 w-full rounded-sm"
         />
       </form>
 
-      <div className="message-window min-h-[70px] break-words" ref={scrollRef}>
+      <div
+        className="py-6 h-80 m-0 overflow-y-auto w-64 max-w-64"
+        ref={scrollRef}
+      >
         {chatHistory.map((message, index) => (
-          <div key={index}>
-            <div>{message.user}</div>
-            <div key={index}>{message.message}</div>
+          <div key={index} className="">
+            <div className="text-sm">{message.user}</div>
+            {message.user == parseCookies().username ? (
+              <div key={index} className="bg-secondary w-fit rounded-md p-1">
+                {message.message}
+              </div>
+            ) : (
+              <div
+                key={index}
+                className="w-fit rounded-md p-1 text-black"
+                style={{ backgroundColor: "grey" }}
+              >
+                {message.message}
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -62,7 +86,7 @@ export default function Chatbox(props) {
                 setInputVal(event.target.value);
               }}
               ref={inputRef}
-              className="text-black"
+              className="text-black p-1 w-full rounded-sm"
             />
             <button type="submit" onClick={handlSendMessage} className="">
               <i className=""></i>

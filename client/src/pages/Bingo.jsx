@@ -255,22 +255,25 @@ export default function Bingo() {
 
   return (
     <div id="bingo">
-      <div className="w-full flex items-center justify-between p-4">
+      <div className="w-full flex items-center p-4">
         <h1 className="text-4xl mx-auto">Bingo</h1>
-
-        <label className="chevron-menu">
-          <input type="checkbox" />
-        </label>
-        <div id="chatbox-sidebar" className="p-3">
-          <Chatbox
-            user={user}
-            handleSetUser={handleSetUser}
-            chatHistory={chatHistory}
-            handleSetChatHistory={setChatHistory}
-            socket={socket}
-          />
-        </div>
       </div>
+      <label className="chevron-menu absolute top-3 right-0">
+        <input type="checkbox" />
+      </label>
+      <div
+        id="chatbox-sidebar"
+        className="flex flex-col justify-start absolute p-4 bg-primary rounded-xl text-xl"
+      >
+        <Chatbox
+          user={user}
+          handleSetUser={handleSetUser}
+          chatHistory={chatHistory}
+          handleSetChatHistory={setChatHistory}
+          socket={socket}
+        />
+      </div>
+
       <Modal
         message={`${winner}`}
         state={gameOverModal}
@@ -316,12 +319,15 @@ export default function Bingo() {
         }
       ></Modal>
       <div className="flex flex-wrap">
-        <div id="lastes-roll" className="w-full md:w-1/4 p-7 md:p-0">
+        <div
+          id="lastes-roll"
+          className="flex flex-col w-full md:w-1/2 p-7 md:p-0 justify-center text-center items-center"
+        >
           <h2 className="text-lg text-primary"> Latest Roll</h2>
-          <>
+          <div className="">
             {!gameOver && (
               <div>
-                <div className="current-roll">{roll}</div>
+                <div className="current-roll w-20 md:w-40">{roll}</div>
 
                 <div style={{ color: "white" }}>
                   00:
@@ -336,9 +342,9 @@ export default function Bingo() {
                 Next Game starting soon!
               </div>
             )}
-          </>
+          </div>
         </div>
-        <div id="board" className="w-full md:w-1/4 p-7 md:p-0">
+        <div id="board" className="w-full md:w-1/3 p-7 md:p-0">
           {board.map((row, index) => (
             <div key={index} className="board-row w-100">
               {row.map((tile) => (

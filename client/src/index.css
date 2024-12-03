@@ -8,6 +8,7 @@
   --bar-gap: 6px;
   --hamburger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
   --animation-timing: 200ms ease-in-out;
+  background-color: #121212;
 }
 
 .scroll-snap-type-y-mandatory {
@@ -100,13 +101,6 @@
   padding: 1rem;
   border-color: grey;
   border-bottom: solid;
-}
-
-.message-window {
-  margin-top: 12px;
-  margin-bottom: 12px;
-  padding-right: 0px;
-  margin-right: 0px;
 }
 
 .row-container {
