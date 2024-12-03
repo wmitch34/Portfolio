@@ -1,4 +1,3 @@
-require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const socketIO = require("socket.io");
@@ -6,15 +5,23 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
 const sentenceService = require("./src/sentenceService.js");
+const path = require("path");
 
 let PORT = 5000;
 let chatHistory = [];
 
 const app = express();
+// Serve static files from the client/dist directory
+app.use(express.static(path.join(__dirname, "client", "dist")));
+
+// Catch-all route to serve the frontend's index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
+});
 app.use(bodyParser.json());
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "http://localhost:5000",
   })
 );
 const server = http.createServer(app);
@@ -22,7 +29,7 @@ const server = http.createServer(app);
 const io = socketIO(server, {
   path: "/socket.io",
   cors: {
-    origin: ["http://localhost:3000", "http://127.0.0.1:3000"],
+    origin: ["http://localhost:5000", "http://127.0.0.1:5000"],
     methods: ["GET", "POST"],
   },
 });

@@ -13,7 +13,7 @@ export default function Home(props) {
   const projectsRef = useRef(null);
   const demoRef = useRef(null);
 
-  const [smoothScroll, setSmoothScroll] = useState(true);
+  const [smoothScroll, setSmoothScroll] = useState(false);
 
   const handleSetSmoothScroll = () => {
     setSmoothScroll((prev) => !prev);
@@ -88,7 +88,7 @@ export default function Home(props) {
               Demos
             </button>
           </nav>
-          <label
+          {/* <label
             id="scroll-controll"
             className="hidden md:flex w-fit items-center"
           >
@@ -98,7 +98,7 @@ export default function Home(props) {
               checked={smoothScroll}
               onChange={handleSetSmoothScroll}
             />
-          </label>
+          </label> */}
         </div>
       </div>
 
@@ -146,6 +146,11 @@ export default function Home(props) {
       >
         <Demo />
       </div>
+      <footer className="flex space-x-4 justify-center p-6">
+        <button className="text-secondary hover:text-white">Contact</button>
+        <button className="text-secondary hover:text-white">Resume</button>
+        <button className="text-secondary hover:text-white">github</button>
+      </footer>
     </div>
   );
 }

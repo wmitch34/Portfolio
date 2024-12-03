@@ -1,13 +1,13 @@
 import axios from "axios";
 
-let url_body;
-if (import.meta.env.MODE === "development") {
-  url_body = "http://localhost:5000";
-} else if (import.meta.env.MODE === "production") {
-  url_body = "http://162.243.173.148";
-} else {
-  console.log("Running in some other mode");
-}
+// let url_body;
+// if (import.meta.env.MODE === "development") {
+//   url_body = "http://localhost:5000";
+// } else if (import.meta.env.MODE === "production") {
+//   url_body = "http://162.243.173.148";
+// } else {
+//   console.log("Running in some other mode");
+// }
 
 export async function submitBoard(board, user, setSubmitModal) {
   let reqBody = [];
@@ -21,7 +21,7 @@ export async function submitBoard(board, user, setSubmitModal) {
 
   await axios({
     method: "post",
-    url: `${url_body}/api/verify`,
+    url: `http://localhost:5000/api/verify`,
     data: { board: reqBody, user },
   })
     .then((response) => {
@@ -36,7 +36,7 @@ export async function submitBoard(board, user, setSubmitModal) {
 
 export async function getSentence() {
   try {
-    const response = await axios.get(`${url_body}/api/getSentence`);
+    const response = await axios.get(`http://localhost:5000/api/getSentence`);
 
     const ret = response.data.data;
     return ret;

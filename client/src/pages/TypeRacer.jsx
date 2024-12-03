@@ -173,7 +173,9 @@ function TypeRacer() {
   return (
     <>
       <div className="min-h-screen p-4 md:p-20">
-        <h1 className="text-secondary text-4xl mb-4">Type Racer</h1>
+        <h1 className="text-secondary text-4xl mb-4 mx-auto md:ml-0 w-fit">
+          Type Racer
+        </h1>
         {isMobile && (
           <div in={isMobile}>
             <p className="text-lg mb-4">
@@ -297,8 +299,9 @@ function TypeRacer() {
           {history.map((value, index) => (
             <div
               onClick={() => handleSetSentence(value)}
-              className="border-2 border-t-0 p-6 rounded-xl border-white cursor-pointer"
+              className="border-2 border-t-0 p-6 rounded-xl cursor-pointer"
               key={index}
+              style={{ borderColor: "grey" }}
             >
               {value}
             </div>

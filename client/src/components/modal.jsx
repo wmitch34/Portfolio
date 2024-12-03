@@ -25,6 +25,7 @@ function Modal(props) {
               onClick={() => {
                 stateHandler();
               }}
+              className="my-bingo-button"
             >
               {closeMSG ? closeMSG : "Close"}
             </button>

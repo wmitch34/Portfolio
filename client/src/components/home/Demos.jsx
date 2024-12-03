@@ -16,7 +16,7 @@ export default function Demo(props) {
   return (
     <div id="projects-container" className="flex flex-col w-full h-full">
       <div>
-        <h1 className="h-fit   pt-28 w-full text-5xl text-secondary">Demos</h1>
+        <h1 className="h-fit w-full text-5xl text-secondary">Demos</h1>
       </div>
       <div id="Demo-card-container" className="flex w-full flex-wrap h-full">
         <div id="Bingo-card-container" className="w-full p-4 md:w-1/3 h-full">
@@ -62,14 +62,11 @@ export default function Demo(props) {
             </div>
           </Link>
         </div>
-        <div
-          id="TypeRacer-card-container"
-          className="w-full p-4 md:w-1/3 h-full"
-        >
+        <div className="w-full p-4 md:w-1/3 min-h-full">
           <Link to={"/TypeRacer"}>
             <div
-              id="type-racer-card"
-              className="w-full mx-auto border-2 rounded-xl min-h-fit p-4  md:h-5/6"
+              id="apple-picker-card"
+              className="w-full mx-auto border-2 rounded-xl min-h-fit p-4  md:min-h-full"
             >
               <img
                 src={TypeRacerThumb}
@@ -77,7 +74,7 @@ export default function Demo(props) {
               />
               <div>
                 <h1 className="text-secondary py-4 text-xl">Type Racer</h1>
-                <p>Placeholder text</p>
+                <p>placeholder text</p>
               </div>
             </div>
           </Link>

@@ -5,10 +5,10 @@ import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
 import "./Bingo.css";
 
-let socket_url;
-import.meta.env.MODE === "development"
-  ? (socket_url = "http://localhost:5000")
-  : (socket_url = "http://162.243.173.148");
+let socket_url = "http://localhost:5000";
+// import.meta.env.MODE === "development"
+//   ? (socket_url = "http://localhost:5000")
+//   : (socket_url = "http://162.243.173.148");
 
 const socket = io(socket_url);
 
@@ -363,7 +363,11 @@ export default function Bingo() {
               ))}
             </div>
           ))}
-          <button onClick={checkBoard} className="" disabled={gameOver}>
+          <button
+            onClick={checkBoard}
+            className="my-bingo-button mt-1"
+            disabled={gameOver}
+          >
             Submit Board
           </button>
         </div>

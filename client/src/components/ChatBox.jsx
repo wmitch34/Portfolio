@@ -1,4 +1,3 @@
-import { parse } from "dotenv";
 import React, { useRef, useState, useEffect } from "react";
 
 export default function Chatbox(props) {
