@@ -5,10 +5,17 @@ import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
 import "./Bingo.css";
 
-let socket_url = "http://localhost:5000";
-// import.meta.env.MODE === "development"
-//   ? (socket_url = "http://localhost:5000")
-//   : (socket_url = "http://162.243.173.148");
+let socket_url;
+
+if (import.meta.env.VITE_ENVIRONMENT === "DEV") {
+  socket_url = import.meta.env.VITE_DEV_URL;
+} else if (import.meta.env.VITE_MODE === "PROD") {
+  socket_url = import.meta.env.VITE_PROD_URL;
+} else {
+  console.log(
+    "Running in some other mode: " + import.meta.env.VITE_ENVIRONMENT
+  );
+}
 
 const socket = io(socket_url);
 

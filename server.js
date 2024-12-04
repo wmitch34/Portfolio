@@ -6,32 +6,57 @@ const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
 const sentenceService = require("./src/sentenceService.js");
 const path = require("path");
+require("dotenv").config();
 
-let PORT = 5000;
+let url_body;
+let PORT;
+
+if (process.env.ENVIRONMENT === "DEV") {
+  url_body = process.env.DEV_URL;
+  PORT = process.env.DEV_PORT;
+} else if (process.env.ENVIRONMENT === "PROD") {
+  url_body = process.env.PROD_URL;
+  PORT = process.env.PROD_PORT;
+} else {
+  console.log("Running in some other mode: " + process.env.ENVIRONMENT);
+}
+
 let chatHistory = [];
 
 const app = express();
 // Serve static files from the client/dist directory
 app.use(express.static(path.join(__dirname, "client", "dist")));
 
-// Catch-all route to serve the frontend's index.html
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
-});
 app.use(bodyParser.json());
-app.use(
-  cors({
-    origin: "http://localhost:5000",
-  })
-);
+
+if (process.env.ENVIRONMENT === "DEV") {
+  app.use(
+    cors({
+      origin: url_body,
+      methods: ["GET", "POST"],
+      allowedHeaders: ["Content-Type"],
+    })
+  );
+}
 const server = http.createServer(app);
 
 const io = socketIO(server, {
   path: "/socket.io",
   cors: {
-    origin: ["http://localhost:5000", "http://127.0.0.1:5000"],
+    origin: [url_body],
     methods: ["GET", "POST"],
   },
+});
+
+app.post("/api/getSentence", async (req, res) => {
+  console.log("got it");
+  try {
+    const value = await sentenceService.getSentence();
+    let myReturn = await value;
+    res.status(200).json({ data: myReturn });
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 app.post("/api/verify", (req, res) => {
@@ -49,18 +74,13 @@ app.post("/api/verify", (req, res) => {
   }
 });
 
-app.get("/api/getSentence", async (req, res) => {
-  try {
-    const value = await sentenceService.getSentence();
-    let myReturn = await value;
-    res.status(200).json({ data: myReturn });
-  } catch (e) {
-    console.log(e);
-  }
+// Catch-all route to serve the frontend's index.html
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 io.on("connection", (socket) => {
-  console.log(`User connected: ${socket.id}`);
+  // console.log(`User connected: ${socket.id}`);
   if (Game.gameState.gameOver) {
     socket.emit("game_over", Game.gameState.winners);
   }

@@ -1,13 +1,16 @@
 import axios from "axios";
 
-// let url_body;
-// if (import.meta.env.MODE === "development") {
-//   url_body = "http://localhost:5000";
-// } else if (import.meta.env.MODE === "production") {
-//   url_body = "http://162.243.173.148";
-// } else {
-//   console.log("Running in some other mode");
-// }
+let url_body;
+if (import.meta.env.VITE_ENVIRONMENT === "DEV") {
+  url_body = import.meta.env.VITE_DEV_URL;
+} else if (import.meta.env.VITE_MODE === "PROD") {
+  url_body = import.meta.env.VITE_PROD_URL;
+} else {
+  console.log(
+    "Running in some other mode: " + import.meta.env.VITE_ENVIRONMENT
+  );
+}
+console.log(url_body);
 
 export async function submitBoard(board, user, setSubmitModal) {
   let reqBody = [];
@@ -21,7 +24,7 @@ export async function submitBoard(board, user, setSubmitModal) {
 
   await axios({
     method: "post",
-    url: `http://localhost:5000/api/verify`,
+    url: `${url_body}/api/verify`,
     data: { board: reqBody, user },
   })
     .then((response) => {
@@ -36,11 +39,12 @@ export async function submitBoard(board, user, setSubmitModal) {
 
 export async function getSentence() {
   try {
-    const response = await axios.get(`http://localhost:5000/api/getSentence`);
-
-    const ret = response.data.data;
-    return ret;
-  } catch (err) {
-    console.log(err);
+    const response = await axios.post(`${url_body}/api/getSentence`, {
+      data: "Hi there",
+    });
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+    throw error;
   }
 }
