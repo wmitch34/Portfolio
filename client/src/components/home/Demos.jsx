@@ -85,7 +85,7 @@ export default function Demo(props) {
           <a className="text-secondary hover:text-white">Contact</a>
           <a
             className="text-secondary hover:text-white"
-            href="Will Mitchell.pdf"
+            href="WillMitchell.pdf"
             target="_blank"
             rel="noopener noreferrer"
           >
