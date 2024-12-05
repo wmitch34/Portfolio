@@ -140,17 +140,12 @@ export default function Home(props) {
       <div
         id="Demos"
         ref={demoRef}
-        className={`${
+        className={`h-screen${
           smoothScroll ? "lg:h-screen" : ""
         } lg:overflow-y-scroll lg:snap-center `}
       >
         <Demo />
       </div>
-      <footer className="flex space-x-4 justify-center p-6">
-        <button className="text-secondary hover:text-white">Contact</button>
-        <button className="text-secondary hover:text-white">Resume</button>
-        <button className="text-secondary hover:text-white">github</button>
-      </footer>
     </div>
   );
 }
