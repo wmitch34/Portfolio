@@ -32,7 +32,7 @@ app.use(bodyParser.json());
 
 app.use(
   cors({
-    origin: url_body,
+    origin: "*",
     methods: ["GET", "POST"],
     allowedHeaders: ["Content-Type"],
   })

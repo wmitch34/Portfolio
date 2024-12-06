@@ -62,7 +62,7 @@ export default function Demo(props) {
           </Link>
         </div>
         <div id="ApplePicker-card-container" className="w-full p-4 md:w-1/3">
-          <Link to={"/TypeRaacer"}>
+          <Link to={"/TypeRacer"}>
             <div
               id="typeracer-picker-card"
               className="w-full mx-auto border-2 rounded-xl min-h-fit p-4  md:h-5/6"
