@@ -26,6 +26,7 @@ let chatHistory = [];
 const app = express();
 // Serve static files from the client/dist directory
 app.use(express.static(path.join(__dirname, "client", "dist")));
+app.use("/public", express.static(path.join(__dirname, "client/public")));
 
 app.use(bodyParser.json());
 
