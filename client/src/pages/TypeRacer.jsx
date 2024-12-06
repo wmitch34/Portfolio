@@ -262,7 +262,7 @@ function TypeRacer() {
             <textarea
               id="new_content"
               placeholder="Enter new sentence here"
-              className="w-full md:w-2/3 h-36"
+              className="w-full md:w-2/3 h-36 text-black"
               value={newContent}
               onChange={(event) => {
                 let val = event.target.value;

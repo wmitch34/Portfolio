@@ -4,6 +4,7 @@ import About from "../components/home/About.jsx";
 import Projects from "../components/home/Projects.jsx";
 import Experience from "../components/home/Experience.jsx";
 import Demo from "../components/home/Demos.jsx";
+import Modal from "../components/modal.jsx";
 import { useLocation } from "react-router-dom";
 
 export default function Home(props) {
@@ -12,6 +13,7 @@ export default function Home(props) {
   const experienceRef = useRef(null);
   const projectsRef = useRef(null);
   const demoRef = useRef(null);
+  const [contactModal, setContactModal] = useState(false);
 
   const [smoothScroll, setSmoothScroll] = useState(false);
 
@@ -144,8 +146,14 @@ export default function Home(props) {
           smoothScroll ? "lg:h-screen" : ""
         } lg:overflow-y-scroll lg:snap-center `}
       >
-        <Demo />
+        <Demo stateHandler={setContactModal} />
       </div>
+      <Modal
+        message={`I'll make a form soon.`}
+        state={contactModal}
+        stateHandler={setContactModal}
+        title={"Send me a message!"}
+      ></Modal>
     </div>
   );
 }
