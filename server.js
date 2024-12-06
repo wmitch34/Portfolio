@@ -48,7 +48,6 @@ const io = socketIO(server, {
 });
 
 app.post("/api/getSentence", async (req, res) => {
-  console.log("got it");
   try {
     const value = await sentenceService.getSentence();
     let myReturn = await value;

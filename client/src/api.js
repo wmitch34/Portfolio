@@ -3,7 +3,7 @@ import axios from "axios";
 let url_body;
 if (import.meta.env.VITE_ENVIRONMENT === "DEV") {
   url_body = import.meta.env.VITE_DEV_URL;
-} else if (import.meta.env.VITE_MODE === "PROD") {
+} else if (import.meta.env.VITE_ENVIRONMENT === "PROD") {
   url_body = import.meta.env.VITE_PROD_URL;
 } else {
   console.log(
