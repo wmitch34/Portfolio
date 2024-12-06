@@ -30,15 +30,13 @@ app.use("/public", express.static(path.join(__dirname, "client/public")));
 
 app.use(bodyParser.json());
 
-if (process.env.ENVIRONMENT === "DEV") {
-  app.use(
-    cors({
-      origin: url_body,
-      methods: ["GET", "POST"],
-      allowedHeaders: ["Content-Type"],
-    })
-  );
-}
+app.use(
+  cors({
+    origin: url_body,
+    methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+  })
+);
 const server = http.createServer(app);
 
 const io = socketIO(server, {
