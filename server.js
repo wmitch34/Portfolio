@@ -57,6 +57,14 @@ app.post("/api/getSentence", async (req, res) => {
   }
 });
 
+app.post("/api/sendMessage", async (req, res) => {
+  try {
+    console.log(req.body.data);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 app.post("/api/verify", (req, res) => {
   try {
     if (Game.gameState.verify(req.body.board)) {

@@ -15,11 +15,17 @@ function Modal(props) {
             height: "100vh",
             backgroundColor: "rgba(0, 0, 0, 0.5)",
             zIndex: 1000,
+            display: "flex", // Flexbox for centering
+            justifyContent: "center", // Horizontal centering
+            alignItems: "center", // Vertical centering
           }}
         >
-          <dialog open={state} className="inset-0 z-50 p-5 rounded-lg">
-            <h1>{title}</h1>
-            <p>{message}</p>
+          <dialog
+            open={state}
+            className="inset-0 z-50 p-5 rounded-lg bg-primary mx-auto"
+          >
+            <h1 className="text-secondary  text-5xl">{title}</h1>
+            <p className="text-white p-4">{message}</p>
             {children}
             <button
               onClick={() => {

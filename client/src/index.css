@@ -33,11 +33,8 @@
   background-color: white;
   border-radius: 9999px;
   transform-origin: left center;
-  transition:
-    opacity var(--animation-timing),
-    width var(--animation-timing),
-    rotate var(--animation-timing),
-    translate var(--animation-timing);
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing);
 }
 
 #hamburger-menu input:checked {
@@ -113,4 +110,13 @@
   align-items: center;
   background-color: transparent;
   margin-bottom: 3px;
+}
+
+.my-bingo-button {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 1rem;
+  background-color: #0d6efd;
+  border-radius: 0.5rem;
+  color: white;
 }

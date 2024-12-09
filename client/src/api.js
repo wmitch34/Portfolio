@@ -48,3 +48,14 @@ export async function getSentence() {
     throw error;
   }
 }
+
+export async function sendMessage(message) {
+  try {
+    const response = await axios.post(`${url_body}/api/sendMessage`, {
+      data: message,
+    });
+  } catch (error) {
+    console.error("Error sending email:", error);
+    throw error;
+  }
+}

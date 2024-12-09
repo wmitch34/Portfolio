@@ -6,6 +6,7 @@ import Experience from "../components/home/Experience.jsx";
 import Demo from "../components/home/Demos.jsx";
 import Modal from "../components/modal.jsx";
 import { useLocation } from "react-router-dom";
+import { sendMessage } from "../api.js";
 
 export default function Home(props) {
   const homeRef = useRef(null);
@@ -13,12 +14,20 @@ export default function Home(props) {
   const experienceRef = useRef(null);
   const projectsRef = useRef(null);
   const demoRef = useRef(null);
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [message, setMessage] = useState("");
   const [contactModal, setContactModal] = useState(false);
 
-  const [smoothScroll, setSmoothScroll] = useState(false);
-
-  const handleSetSmoothScroll = () => {
-    setSmoothScroll((prev) => !prev);
+  const handleSendMessafe = () => {
+    let payload = {
+      email,
+      phone,
+      message,
+    };
+    console.log(payload);
+    sendMessage(payload);
+    return;
   };
 
   const location = useLocation();
@@ -33,11 +42,7 @@ export default function Home(props) {
   }, [location.state]);
 
   return (
-    <div
-      className={`lg:h-screen lg:overflow-y-scroll  md:px-20 ${
-        smoothScroll ? " lg:snap-y lg:snap-mandatory" : ""
-      }`}
-    >
+    <div>
       <div className="sticky top-0">
         <div
           id="nav-list"
@@ -90,70 +95,78 @@ export default function Home(props) {
               Demos
             </button>
           </nav>
-          {/* <label
-            id="scroll-controll"
-            className="hidden md:flex w-fit items-center"
-          >
-            Scroll&nbsp;
-            <input
-              type="checkbox"
-              checked={smoothScroll}
-              onChange={handleSetSmoothScroll}
-            />
-          </label> */}
         </div>
       </div>
 
-      <div
-        id="Hero"
-        ref={homeRef}
-        className="h-screen overflow-y-scroll lg:snap-center "
-      >
+      <div id="Hero" ref={homeRef} className="h-screen">
         <Hero />
       </div>
-      <div
-        id="About"
-        ref={aboutRef}
-        className={`${
-          smoothScroll ? "lg:h-screen" : ""
-        }lg:overflow-y-scroll lg:snap-center `}
-      >
+      <div id="About" ref={aboutRef} className="min-h-screen">
         <About />
       </div>
-      <div
-        id="Experience"
-        ref={experienceRef}
-        className={`${
-          smoothScroll ? "lg:h-screen" : ""
-        }lg:overflow-y-scroll lg:snap-center `}
-      >
+      <div id="Experience" ref={experienceRef} className="min-h-screen">
         <Experience />
       </div>
-      <div
-        id="Projects"
-        ref={projectsRef}
-        className={`${
-          smoothScroll ? "lg:h-screen" : ""
-        }lg:overflow-y-scroll lg:snap-center `}
-      >
+      <div id="Projects" ref={projectsRef} className="min-h-screen">
         <Projects />
       </div>
-
-      <div
-        id="Demos"
-        ref={demoRef}
-        className={`h-screen${
-          smoothScroll ? "lg:h-screen" : ""
-        } lg:overflow-y-scroll lg:snap-center `}
-      >
+      <div id="Demos" ref={demoRef} className="min-h-screen">
         <Demo stateHandler={setContactModal} />
       </div>
       <Modal
-        message={`I'll make a form soon.`}
+        message={`Send me an email. I appreciate feedback, networking, etc. If you want me to get back to you, leave your email or phone number.`}
         state={contactModal}
         stateHandler={setContactModal}
-        title={"Send me a message!"}
-      ></Modal>
+        title={"Contact"}
+        closeMSG="Cancel"
+      >
+        <form
+          className="flex flex-col pt-4"
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <label htmlFor="emailInput" className="text-white p-2">
+            Email Address
+          </label>
+          <input
+            id="emailInput"
+            className="p-2 rounded-md"
+            type="email"
+            placeholder="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="phoneInput" className="text-white p-2">
+            Phone Number
+          </label>
+          <input
+            id="phoneInput"
+            className="p-2 rounded-md"
+            type="tel"
+            placeholder="phone number"
+            onChange={(e) => setPhone(e.target.value)}
+          />
+          <label htmlFor="messageInput" className="text-white p-2">
+            Message
+          </label>
+          <textarea
+            id="messageInput"
+            className="w-full min-h-32 p-2 rounded-md"
+            placeholder="message"
+            onChange={(e) => setMessage(e.target.value)}
+          />
+          <button
+            className="my-bingo-button my-4"
+            type="submit"
+            onClick={() => {
+              handleSendMessafe();
+              setContactModal(false);
+            }}
+          >
+            Send
+          </button>
+        </form>
+      </Modal>
     </div>
   );
 }
