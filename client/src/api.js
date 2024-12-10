@@ -50,6 +50,7 @@ export async function getSentence() {
 }
 
 export async function sendMessage(message) {
+  console.log(message);
   try {
     const response = await axios.post(`${url_body}/api/sendMessage`, {
       data: message,

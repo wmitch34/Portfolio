@@ -4,6 +4,7 @@ const socketIO = require("socket.io");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const Game = require("./src/game.js");
+const sendMail = require("./src/emailService.js");
 const sentenceService = require("./src/sentenceService.js");
 const path = require("path");
 require("dotenv").config();
@@ -24,7 +25,6 @@ if (process.env.ENVIRONMENT === "DEV") {
 let chatHistory = [];
 
 const app = express();
-// Serve static files from the client/dist directory
 app.use(express.static(path.join(__dirname, "client", "dist")));
 app.use("/public", express.static(path.join(__dirname, "client/public")));
 
@@ -59,7 +59,12 @@ app.post("/api/getSentence", async (req, res) => {
 
 app.post("/api/sendMessage", async (req, res) => {
   try {
-    console.log(req.body.data);
+    let payload = {
+      message: req.body.data.message,
+      email: req.body.data.email,
+      phone: req.body.data.phone,
+    };
+    sendMail(payload);
   } catch (e) {
     console.log(e);
   }
@@ -80,13 +85,11 @@ app.post("/api/verify", (req, res) => {
   }
 });
 
-// Catch-all route to serve the frontend's index.html
 app.get("*", (req, res) => {
   res.sendFile(path.join(__dirname, "client", "dist", "index.html"));
 });
 
 io.on("connection", (socket) => {
-  // console.log(`User connected: ${socket.id}`);
   if (Game.gameState.gameOver) {
     socket.emit("game_over", Game.gameState.winners);
   }

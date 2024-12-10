@@ -19,7 +19,7 @@ export default function Home(props) {
   const [message, setMessage] = useState("");
   const [contactModal, setContactModal] = useState(false);
 
-  const handleSendMessafe = () => {
+  const handleSendMessage = () => {
     let payload = {
       email,
       phone,
@@ -159,7 +159,7 @@ export default function Home(props) {
             className="my-bingo-button my-4"
             type="submit"
             onClick={() => {
-              handleSendMessafe();
+              handleSendMessage();
               setContactModal(false);
             }}
           >
