@@ -83,13 +83,13 @@ export default function Demo(props) {
         </div>
         <footer className="flex space-x-4 justify-center p-6 w-full">
           <button
-            className="text-secondary hover:text-white self-start"
+            className="text-white hover:text-secondary self-start"
             onClick={() => props.stateHandler(true)}
           >
             Contact
           </button>
           <a
-            className="text-secondary hover:text-white"
+            className="text-white hover:text-secondary"
             href="/public/WILLMITCHELL.pdf"
             target="_blank"
             rel="noopener noreferrer"
@@ -97,7 +97,7 @@ export default function Demo(props) {
             Resume
           </a>
           <a
-            className="text-secondary hover:text-white"
+            className="text-white hover:text-secondary"
             href="https://github.com/wmitch34"
             target="_blank"
           >

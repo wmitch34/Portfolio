@@ -114,7 +114,7 @@ export default function Home(props) {
         <Demo stateHandler={setContactModal} />
       </div>
       <Modal
-        message={`Send me an email. I appreciate feedback, networking, etc. If you want me to get back to you, leave your email or phone number.`}
+        message={`Ask me a question, send me feedback, or just say 'Hi'. If you want me to get back to you, leave your email.`}
         state={contactModal}
         stateHandler={setContactModal}
         title={"Contact"}
@@ -136,12 +136,12 @@ export default function Home(props) {
             placeholder="email"
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="phoneInput" className="text-white p-2">
+          <label htmlFor="phoneInput" className="text-white p-2 hidden">
             Phone Number
           </label>
           <input
             id="phoneInput"
-            className="p-2 rounded-md"
+            className="p-2 rounded-md hidden"
             type="tel"
             placeholder="phone number"
             onChange={(e) => setPhone(e.target.value)}
