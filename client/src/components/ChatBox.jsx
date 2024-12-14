@@ -37,7 +37,7 @@ export default function Chatbox(props) {
   }
 
   return (
-    <div className="w-full pt-5 flex flex-col">
+    <div className="w-full pt-5 flex flex-col" id="chatBox">
       <h2 className="p-2">Chat Box</h2>
       <form className="text-box-container" onSubmit={(e) => e.preventDefault()}>
         <input
@@ -75,8 +75,11 @@ export default function Chatbox(props) {
       </div>
 
       <div className="row flex-grow-1">
-        <div className="overFlow-auto " style={{ display: "inline" }}>
-          <form className="text-box-container">
+        <div className="overFlow-auto" style={{ display: "inline" }}>
+          <form
+            className="text-box-container items-center"
+            onSubmit={(e) => e.preventDefault()}
+          >
             <input
               autoFocus
               value={inputVal}
@@ -87,8 +90,12 @@ export default function Chatbox(props) {
               ref={inputRef}
               className="text-black p-1 w-full rounded-sm"
             />
-            <button type="submit" onClick={handlSendMessage} className="">
-              <i className=""></i>
+            <button
+              type="submit"
+              onClick={handlSendMessage}
+              className="bg-secondary rounded-sm p-2 ml-2 h-10"
+            >
+              Send
             </button>
           </form>
         </div>

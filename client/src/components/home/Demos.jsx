@@ -20,7 +20,10 @@ export default function Demo(props) {
           Demos
         </h1>
       </div>
-      <div id="Demo-card-container" className="flex w-full flex-wrap h-full">
+      <div
+        id="Demo-card-container"
+        className="flex w-full flex-wrap h-full justify-center"
+      >
         <div id="Bingo-card-container" className="w-full p-4 md:w-1/3">
           <Link to={"/Bingo"}>
             <div
@@ -41,7 +44,7 @@ export default function Demo(props) {
             </div>
           </Link>
         </div>
-        <div id="ApplePicker-card-container" className="w-full p-4 md:w-1/3">
+        {/* <div id="ApplePicker-card-container" className="w-full p-4 md:w-1/3">
           <Link to={"/ApplePicker"}>
             <div
               id="apple-picker-card"
@@ -60,7 +63,7 @@ export default function Demo(props) {
               </div>
             </div>
           </Link>
-        </div>
+        </div> */}
         <div id="ApplePicker-card-container" className="w-full p-4 md:w-1/3">
           <Link to={"/TypeRacer"}>
             <div
@@ -81,29 +84,6 @@ export default function Demo(props) {
             </div>
           </Link>
         </div>
-        <footer className="flex space-x-4 justify-center p-6 w-full">
-          <button
-            className="text-white hover:text-secondary self-start"
-            onClick={() => props.stateHandler(true)}
-          >
-            Contact
-          </button>
-          <a
-            className="text-white hover:text-secondary"
-            href="/public/WILLMITCHELL.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Resume
-          </a>
-          <a
-            className="text-white hover:text-secondary"
-            href="https://github.com/wmitch34"
-            target="_blank"
-          >
-            github
-          </a>
-        </footer>
       </div>
     </div>
   );

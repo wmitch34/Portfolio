@@ -120,7 +120,7 @@ export default function Home(props) {
       <div id="Hero" ref={homeRef} className="h-screen">
         <Hero />
       </div>
-      <div id="About" ref={aboutRef} className="min-h-screen">
+      <div id="About" ref={aboutRef} className="">
         <About />
       </div>
       <div id="Experience" ref={experienceRef} className="min-h-screen">
@@ -130,7 +130,30 @@ export default function Home(props) {
         <Projects />
       </div>
       <div id="Demos" ref={demoRef} className="min-h-screen">
-        <Demo stateHandler={setContactModal} />
+        <Demo />
+        <footer className="flex space-x-4 justify-center p-6 w-full bottom-0">
+          <button
+            className="text-white hover:text-secondary self-start"
+            onClick={() => setContactModal(true)}
+          >
+            Contact
+          </button>
+          <a
+            className="text-white hover:text-secondary"
+            href="/public/WILLMITCHELL.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
+          <a
+            className="text-white hover:text-secondary"
+            href="https://github.com/wmitch34"
+            target="_blank"
+          >
+            github
+          </a>
+        </footer>
       </div>
       <Modal
         message={`Ask me a question, send me feedback, or just say 'Hi'. If you want me to get back to you, leave your email.`}

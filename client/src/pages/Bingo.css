@@ -138,11 +138,8 @@ body {
   height: var(--bar-height);
   background-color: white;
   border-radius: 9999px;
-  transition:
-    opacity var(--animation-timing),
-    width var(--animation-timing),
-    rotate var(--animation-timing),
-    translate var(--animation-timing);
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing);
 }
 
 .chevron-menu input {

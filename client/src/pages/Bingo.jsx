@@ -307,7 +307,7 @@ export default function Bingo() {
           }}
         >
           <input
-            className="input-text-field"
+            className="p-2 rounded-md mb-2"
             type="text"
             placeholder="Your user name..."
             value={user}
@@ -328,7 +328,7 @@ export default function Bingo() {
       <div className="flex flex-wrap">
         <div
           id="lastes-roll"
-          className="flex flex-col w-full md:w-1/2 p-7 md:p-0 justify-center text-center items-center"
+          className="flex flex-col w-full md:w-1/3 p-7 md:p-0 justify-center text-center items-center"
         >
           <h2 className="text-lg text-primary"> Latest Roll</h2>
           <div className="">
