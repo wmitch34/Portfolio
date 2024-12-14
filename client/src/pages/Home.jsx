@@ -14,20 +14,39 @@ export default function Home(props) {
   const experienceRef = useRef(null);
   const projectsRef = useRef(null);
   const demoRef = useRef(null);
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [message, setMessage] = useState("");
   const [contactModal, setContactModal] = useState(false);
+  const [emailError, setEmailError] = useState(false);
+  const [messageError, setMessageError] = useState(false);
 
-  const handleSendMessage = () => {
-    let payload = {
-      email,
-      phone,
-      message,
-    };
-    console.log(payload);
-    sendMessage(payload);
-    return;
+  const handleSendMessage = (e) => {
+    e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const email = e.target.email.value;
+    const message = e.target.message.value;
+
+    let validEmail = true;
+    let validMessage = true;
+
+    if (email != "" && email != null && !emailRegex.test(email)) {
+      validEmail = false;
+      setEmailError(true);
+    } else {
+      setEmailError(false);
+    }
+
+    if (message === "" || message == null) {
+      validMessage = false;
+      setMessageError(true);
+    } else {
+      setMessageError(false);
+    }
+
+    if (validEmail && validMessage) {
+      sendMessage({ message, email });
+      setContactModal(false);
+    }
   };
 
   const location = useLocation();
@@ -122,47 +141,32 @@ export default function Home(props) {
       >
         <form
           className="flex flex-col pt-4"
-          onSubmit={(e) => {
-            e.preventDefault();
-          }}
+          onSubmit={(e) => handleSendMessage(e)}
         >
-          <label htmlFor="emailInput" className="text-white p-2">
+          <label htmlFor="email" className="text-white p-2">
             Email Address
           </label>
+          {emailError && <p className="text-red-500"> Invaild email.</p>}
           <input
-            id="emailInput"
+            id="email"
             className="p-2 rounded-md"
             type="email"
             placeholder="email"
-            onChange={(e) => setEmail(e.target.value)}
           />
-          <label htmlFor="phoneInput" className="text-white p-2 hidden">
-            Phone Number
-          </label>
-          <input
-            id="phoneInput"
-            className="p-2 rounded-md hidden"
-            type="tel"
-            placeholder="phone number"
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <label htmlFor="messageInput" className="text-white p-2">
+          <label htmlFor="message" className="text-white p-2">
             Message
           </label>
+          {messageError && (
+            <p className="text-red-500">
+              Please enter a message before sending.
+            </p>
+          )}
           <textarea
-            id="messageInput"
+            id="message"
             className="w-full min-h-32 p-2 rounded-md"
             placeholder="message"
-            onChange={(e) => setMessage(e.target.value)}
           />
-          <button
-            className="my-bingo-button my-4"
-            type="submit"
-            onClick={() => {
-              handleSendMessage();
-              setContactModal(false);
-            }}
-          >
+          <button className="my-bingo-button my-4" type="submit">
             Send
           </button>
         </form>

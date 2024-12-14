@@ -16,7 +16,7 @@ function sendMail(payload) {
     from: "wmitchportfolio@zohomail.com",
     to: "wmitch34@gmail.com",
     subject: "Message from Portfolio app",
-    text: `${payload.message}\n${payload.email}\n${payload.phone}`,
+    text: `${payload.message}\n${payload.email}`,
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
