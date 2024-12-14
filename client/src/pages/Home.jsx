@@ -151,7 +151,14 @@ export default function Home(props) {
             href="https://github.com/wmitch34"
             target="_blank"
           >
-            github
+            Github
+          </a>
+          <a
+            className="text-white hover:text-secondary"
+            href="https://www.linkedin.com/in/will-mitchell-connect/"
+            target="_blank"
+          >
+            Linkedin
           </a>
         </footer>
       </div>
