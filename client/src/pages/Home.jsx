@@ -74,6 +74,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
+              className="hover:text-secondary"
             >
               Home
             </button>
@@ -83,6 +84,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
+              className="hover:text-secondary"
             >
               About
             </button>
@@ -92,6 +94,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
+              className="hover:text-secondary"
             >
               Experience
             </button>
@@ -101,6 +104,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
+              className="hover:text-secondary"
             >
               Projects
             </button>
@@ -110,6 +114,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
+              className="hover:text-secondary"
             >
               Demos
             </button>

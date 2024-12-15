@@ -266,7 +266,7 @@ export default function Bingo() {
         <h1 className="text-4xl mx-auto">Bingo</h1>
       </div>
       <label className="chevron-menu absolute top-3 right-0">
-        <input type="checkbox" />
+        <input type="checkbox" defaultChecked={true} />
       </label>
       <div
         id="chatbox-sidebar"

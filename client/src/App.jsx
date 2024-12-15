@@ -80,7 +80,7 @@ export default function App() {
       >
         <div style={{ transition: "height 0.3s ease" }}>
           <button
-            className="text-left w-full"
+            className="text-left w-full hover:text-secondary"
             onClick={() => handleClick("/Home")}
           >
             Home
@@ -96,25 +96,25 @@ export default function App() {
             }}
           >
             <button
-              className="text-left ml-4"
+              className="text-left ml-4 hover:text-secondary"
               onClick={() => handleClick("/Home", "About")}
             >
               About
             </button>
             <button
-              className="text-left ml-4"
+              className="text-left ml-4 hover:text-secondary"
               onClick={() => handleClick("/Home", "Experience")}
             >
               Experience
             </button>
             <button
-              className="text-left ml-4"
+              className="text-left ml-4 hover:text-secondary"
               onClick={() => handleClick("/Home", "Projects")}
             >
               Projects
             </button>
             <button
-              className="text-left ml-4"
+              className="text-left ml-4 hover:text-secondary"
               onClick={() => handleClick("/Home", "Demos")}
             >
               Demos
@@ -123,7 +123,7 @@ export default function App() {
         </div>
         {links.map((link, index) => (
           <button
-            className="text-left w-full"
+            className="text-left w-full hover:text-secondary"
             onClick={() => handleClick(link.link)}
             key={index}
           >
