@@ -115,9 +115,9 @@ export default function App() {
             </button>
             <button
               className="text-left ml-4 hover:text-secondary"
-              onClick={() => handleClick("/Home", "Demos")}
+              onClick={() => handleClick("/Home", "Links")}
             >
-              Demos
+              Links
             </button>
           </div>
         </div>

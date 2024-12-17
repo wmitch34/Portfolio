@@ -3,7 +3,7 @@ import Hero from "../components/home/Hero.jsx";
 import About from "../components/home/About.jsx";
 import Projects from "../components/home/Projects.jsx";
 import Experience from "../components/home/Experience.jsx";
-import Demo from "../components/home/Demos.jsx";
+import Links from "../components/home/Links.jsx";
 import Modal from "../components/modal.jsx";
 import { useLocation } from "react-router-dom";
 import { sendMessage } from "../api.js";
@@ -13,7 +13,7 @@ export default function Home(props) {
   const aboutRef = useRef(null);
   const experienceRef = useRef(null);
   const projectsRef = useRef(null);
-  const demoRef = useRef(null);
+  const linkRef = useRef(null);
   const [contactModal, setContactModal] = useState(false);
   const [emailError, setEmailError] = useState(false);
   const [messageError, setMessageError] = useState(false);
@@ -110,13 +110,13 @@ export default function Home(props) {
             </button>
             <button
               onClick={() =>
-                demoRef.current.scrollIntoView({
+                linkRef.current.scrollIntoView({
                   behavior: "smooth",
                 })
               }
               className="hover:text-secondary"
             >
-              Demos
+              Links
             </button>
           </nav>
         </div>
@@ -134,8 +134,8 @@ export default function Home(props) {
       <div id="Projects" ref={projectsRef} className="min-h-screen">
         <Projects />
       </div>
-      <div id="Demos" ref={demoRef} className="min-h-screen">
-        <Demo />
+      <div id="Links" ref={linkRef} className="min-h-screen">
+        <Links />
         <footer className="flex space-x-4 justify-center p-6 w-full bottom-0">
           <button
             className="text-white hover:text-secondary self-start"
