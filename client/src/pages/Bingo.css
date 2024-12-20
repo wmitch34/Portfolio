@@ -1,3 +1,24 @@
+.light {
+  --text-primary: black;
+  --text-secondary: blue;
+  --bg-primary: white;
+  --bg-secondary: black;
+}
+
+.dark {
+  --text-primary: white;
+  --text-secondary: blue;
+  --bg-primary: black;
+  --bg-secondary: white;
+}
+
+.red {
+  --text-primary: black;
+  --text-secondary: white;
+  --bg-primary: pink;
+  --bg-secondary: red;
+}
+
 .roll-hist-bingo {
   display: flex;
   align-items: center;
@@ -8,9 +29,7 @@
   font-weight: bold;
   border-radius: 10%;
   aspect-ratio: 1 / 1;
-  border: 2px solid #121212;
-  background-color: white;
-  color: #121212;
+  border: 2px solid red;
 }
 
 .roll-hist-container {
@@ -33,20 +52,19 @@
   border-radius: 10%;
   aspect-ratio: 1 / 1;
   border: 2px solid #121212;
-  background-color: white;
   color: #121212;
 }
 
 .bingo:hover {
   cursor: pointer;
   animation: 1.5s hoverAnimation linear infinite;
-  border: 2px solid #121212;
+  border: 2px solid red;
 }
 
 .roll-hist-bingo:hover {
   cursor: pointer;
   animation: 1.5s hoverAnimation linear infinite;
-  border: 2px solid #121212;
+  border: 2px solid red;
 }
 
 @keyframes hoverAnimation {
@@ -71,7 +89,6 @@
 }
 
 .highlight-obj {
-  background-color: grey;
 }
 
 .current-roll {
@@ -81,19 +98,15 @@
   min-width: fit-content;
   font-weight: bold;
   border-radius: 10%;
-  background-color: #0d6efd;
   aspect-ratio: 1 / 1;
-  border: 2px solid #121212;
-  color: white;
+  border: 2px solid red;
 }
 
 .my-bingo-button {
   padding: 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 1rem;
-  background-color: #0d6efd;
   border-radius: 0.5rem;
-  color: white;
 }
 
 /* Define the animation */
@@ -102,7 +115,7 @@
     transform: scale(1);
   }
   50% {
-    background-color: #0d6efd;
+    background-color: red;
     transform: scale(1.2);
   }
   100% {
@@ -136,7 +149,7 @@ body {
   content: "";
   width: var(--bar-width);
   height: var(--bar-height);
-  background-color: white;
+  @apply bg-textSecondary;
   border-radius: 9999px;
   transition: opacity var(--animation-timing), width var(--animation-timing),
     rotate var(--animation-timing), translate var(--animation-timing);

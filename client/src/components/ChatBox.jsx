@@ -46,7 +46,7 @@ export default function Chatbox(props) {
           onChange={(event) => {
             handleSetUser(event.target.value);
           }}
-          className="text-black p-1 w-full rounded-sm"
+          className="p-1 w-full rounded-sm"
         />
       </form>
 
@@ -58,15 +58,11 @@ export default function Chatbox(props) {
           <div key={index} className="">
             <div className="text-sm">{message.user}</div>
             {message.user == parseCookies().username ? (
-              <div key={index} className="bg-secondary w-fit rounded-md p-1">
+              <div key={index} className="w-fit rounded-md p-1">
                 {message.message}
               </div>
             ) : (
-              <div
-                key={index}
-                className="w-fit rounded-md p-1 text-black"
-                style={{ backgroundColor: "grey" }}
-              >
+              <div key={index} className="w-fit rounded-md p-1">
                 {message.message}
               </div>
             )}
@@ -93,7 +89,7 @@ export default function Chatbox(props) {
             <button
               type="submit"
               onClick={handlSendMessage}
-              className="bg-secondary rounded-sm p-2 ml-2 h-10"
+              className="rounded-sm p-2 ml-2 h-10"
             >
               Send
             </button>

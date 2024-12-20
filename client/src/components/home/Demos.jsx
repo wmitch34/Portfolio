@@ -16,9 +16,7 @@ export default function Demo(props) {
   return (
     <div id="projects-container" className="flex flex-col w-full h-full">
       <div>
-        <h1 className="h-fit p-4 pt-28 w-full text-5xl text-secondary">
-          Demos
-        </h1>
+        <h1 className="h-fit p-4 pt-28 w-full text-5xl">Demos</h1>
       </div>
       <div
         id="Demo-card-container"
@@ -35,7 +33,7 @@ export default function Demo(props) {
                 className="object-container mx-auto rounded-xl w-full"
               />
               <div>
-                <h1 className="text-secondary py-4 text-xl">Bingo</h1>
+                <h1 className="py-4 text-xl">Bingo</h1>
                 <p>
                   Multiplayer single instance bingo game with in-game chat. Rest
                   API, React, websocket demo.
@@ -44,26 +42,6 @@ export default function Demo(props) {
             </div>
           </Link>
         </div>
-        {/* <div id="ApplePicker-card-container" className="w-full p-4 md:w-1/3">
-          <Link to={"/ApplePicker"}>
-            <div
-              id="apple-picker-card"
-              className="w-full mx-auto border-2 rounded-xl min-h-fit p-4  md:h-5/6"
-            >
-              <img
-                src={ApplePickerThumb}
-                className="object-container mx-auto rounded-xl w-full"
-              />
-              <div>
-                <h1 className="text-secondary py-4 text-xl">Apple Picker</h1>
-                <p>
-                  Two-deminsional grid traversal game with object-oriented
-                  arcitectire and object collision detection.
-                </p>
-              </div>
-            </div>
-          </Link>
-        </div> */}
         <div id="ApplePicker-card-container" className="w-full p-4 md:w-1/3">
           <Link to={"/TypeRacer"}>
             <div

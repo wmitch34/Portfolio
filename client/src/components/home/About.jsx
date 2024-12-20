@@ -1,6 +1,4 @@
 import React from "react";
-import AboutWeb from "../../assets/about/about_web.png";
-import AboutWill from "../../assets/about/about_will.jpg";
 
 export default function About() {
   return (
@@ -11,9 +9,7 @@ export default function About() {
       <div id="col-wrapper" className="flex flex-col md:flex-col p-8 h-full">
         <div id="about-me-container" className="lg:h-1/2 py-8">
           <div id="about-me-wrapper" className="h-full">
-            <h2 className="text-5xl px-2 w-full text-center text-secondary md:text-start">
-              About Me
-            </h2>
+            <h2 className="text-5xl px-2 w-full md:text-start">About Me</h2>
             <div className="md:flex">
               {/* <div className="flex md:flex-none items-center justify-center md:order-last">
                 <img
@@ -40,7 +36,7 @@ export default function About() {
 
         <div id="about-site-container" className="lg:h-1/2 py-8">
           <div id="about-site-wrapper" className="h-full">
-            <h2 className="text-5xl px-2 w-full text-center text-secondary md:text-start">
+            <h2 className="text-5xl px-2 w-full text-center md:text-start">
               About This Web Page
             </h2>
             <div className="md:flex">

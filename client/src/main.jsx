@@ -5,6 +5,12 @@ import { BrowserRouter } from "react-router-dom";
 
 import "./index.css";
 
+document.documentElement.classList.add(
+  "dessert",
+  "bg-bgPrimary",
+  "text-textPrimary"
+);
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>

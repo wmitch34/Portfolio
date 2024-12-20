@@ -16,7 +16,7 @@ export default function Projects() {
       className="flex flex-col w-full h-full min-h-screen"
     >
       <div id="projects-header">
-        <h1 className="p-4 pt-28 w-full text-5xl text-secondary">Projects</h1>
+        <h1 className="p-4 pt-28 w-full text-5xl">Projects</h1>
       </div>
       <div
         id="projects-content"

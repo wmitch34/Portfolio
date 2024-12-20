@@ -261,7 +261,7 @@ export default function Bingo() {
   }, []);
 
   return (
-    <div id="bingo">
+    <div id="bingo" className="dark text-textPrimary bg-bgPrimary">
       <div className="w-full flex items-center p-4">
         <h1 className="text-4xl mx-auto">Bingo</h1>
       </div>
@@ -270,7 +270,7 @@ export default function Bingo() {
       </label>
       <div
         id="chatbox-sidebar"
-        className="flex flex-col justify-start absolute p-4 bg-primary rounded-xl text-xl"
+        className="flex flex-col justify-start absolute p-4 rounded-xl text-xl"
       >
         <Chatbox
           user={user}
@@ -330,7 +330,7 @@ export default function Bingo() {
           id="lastes-roll"
           className="flex flex-col w-full md:w-1/3 p-7 md:p-0 justify-center text-center items-center"
         >
-          <h2 className="text-lg text-primary"> Latest Roll</h2>
+          <h2 className="text-lg"> Latest Roll</h2>
           <div className="">
             {!gameOver && (
               <div>

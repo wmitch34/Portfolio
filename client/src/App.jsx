@@ -14,10 +14,6 @@ let links = [
     link: "/Bingo",
   },
   {
-    text: "Apple Picker",
-    link: "/ApplePicker",
-  },
-  {
     text: "Type Racer",
     link: "/TypeRacer",
   },
@@ -62,7 +58,7 @@ export default function App() {
   }
 
   return (
-    <div id="app-container" className="bg-primary text-primary font-sans">
+    <div id="app-container" className="">
       <label
         id="hamburger-menu"
         className="flex flex-col absolute top-4 left-2 z-50 cursor-pointer"
@@ -71,16 +67,16 @@ export default function App() {
           ref={checkboxRef}
           type="checkbox"
           defaultValue={false}
-          className="appearance-none m-0 p-0 outline-none pointer-events-none"
+          className="appearance-none m-0 p-0 outline-none pointer-events-none bg-bgSecondary before:bg-bgSecondary after:bg-bgSecondary"
         />
       </label>
       <div
         id="sidebar"
-        className="flex flex-col justify-start absolute p-4 bg-primary rounded-xl text-xl"
+        className="flex flex-col z-40 justify-start absolute p-4 rounded-xl text-xl text-textPrimary bg-bgPrimary"
       >
         <div style={{ transition: "height 0.3s ease" }}>
           <button
-            className="text-left w-full hover:text-secondary"
+            className="text-left w-full hover:text-textSecondary"
             onClick={() => handleClick("/Home")}
           >
             Home
@@ -96,25 +92,25 @@ export default function App() {
             }}
           >
             <button
-              className="text-left ml-4 hover:text-secondary"
+              className="text-left ml-4 hover:text-textSecondary"
               onClick={() => handleClick("/Home", "About")}
             >
               About
             </button>
             <button
-              className="text-left ml-4 hover:text-secondary"
+              className="text-left ml-4 hover:text-textSecondary"
               onClick={() => handleClick("/Home", "Experience")}
             >
               Experience
             </button>
             <button
-              className="text-left ml-4 hover:text-secondary"
+              className="text-left ml-4 hover:text-textSecondary"
               onClick={() => handleClick("/Home", "Projects")}
             >
               Projects
             </button>
             <button
-              className="text-left ml-4 hover:text-secondary"
+              className="text-left ml-4 hover:text-textSecondary"
               onClick={() => handleClick("/Home", "Links")}
             >
               Links
@@ -123,7 +119,7 @@ export default function App() {
         </div>
         {links.map((link, index) => (
           <button
-            className="text-left w-full hover:text-secondary"
+            className="text-left w-full hover:text-textSecondary"
             onClick={() => handleClick(link.link)}
             key={index}
           >

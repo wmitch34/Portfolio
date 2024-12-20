@@ -8,7 +8,34 @@
   --bar-gap: 6px;
   --hamburger-height: calc(var(--bar-height) * 3 + var(--bar-gap) * 2);
   --animation-timing: 200ms ease-in-out;
-  background-color: #121212;
+}
+
+.light {
+  --text-primary: black;
+  --text-secondary: blue;
+  --bg-primary: white;
+  --bg-secondary: black;
+}
+
+.dark {
+  --text-primary: white;
+  --text-secondary: blue;
+  --bg-primary: black;
+  --bg-secondary: white;
+}
+
+.red {
+  --text-primary: black;
+  --text-secondary: white;
+  --bg-primary: pink;
+  --bg-secondary: red;
+}
+
+.dessert {
+  --text-primary: rgb(43, 45, 66);
+  --text-secondary: rgb(169, 206, 244);
+  --bg-primary: rgb(242, 226, 186);
+  --bg-secondary: rgb(43, 45, 66);
 }
 
 .scroll-snap-type-y-mandatory {
@@ -30,11 +57,16 @@
   content: "";
   width: var(--bar-width);
   height: var(--bar-height);
-  background-color: white;
   border-radius: 9999px;
   transform-origin: left center;
   transition: opacity var(--animation-timing), width var(--animation-timing),
     rotate var(--animation-timing), translate var(--animation-timing);
+}
+
+/* Add custom Tailwind classes using @apply */
+#hamburger-menu::before,
+#hamburger-menu::after {
+  @apply bg-bgSecondary; /* Apply the bg color from Tailwind theme */
 }
 
 #hamburger-menu input:checked {
@@ -69,17 +101,11 @@
   place-items: center;
   aspect-ratio: 1 / 1;
   border-radius: 0.5rem;
-  border-color: grey;
-  color: black;
   margin: 0px;
   padding: 0px;
-
-  background-color: rgba(169, 169, 169, 0.5);
 }
 
 .my-button {
-  color: black;
-  border: 3px solid black;
   border-radius: 0.5rem;
   width: 3rem;
   height: 3rem;
@@ -88,15 +114,12 @@
 }
 
 .history-row:hover {
-  background-color: #0d6efd;
   cursor: pointer;
-  border-color: #0d6efd;
   border-radius: 1rem;
 }
 
 .history-row {
   padding: 1rem;
-  border-color: grey;
   border-bottom: solid;
 }
 
@@ -116,7 +139,5 @@
   padding: 0.5rem;
   margin-right: 0.5rem;
   margin-bottom: 1rem;
-  background-color: #0d6efd;
   border-radius: 0.5rem;
-  color: white;
 }

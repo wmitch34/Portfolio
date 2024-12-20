@@ -1,17 +1,15 @@
-/** @type {import('tailwindcss').Config} */
+/**\ @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      backgroundColor: {
-        primary: "#121212",
-        secondary: "rgb(13, 110, 253)",
+      colors: {
+        textPrimary: "var(--text-primary)",
+        textSecondary: "var(--text-secondary)",
+        bgPrimary: "var(--bg-primary)",
+        bgSecondary: "var(--bg-secondary)",
       },
-      textColor: (theme) => theme("colors"),
-      textColor: {
-        primary: "white",
-        secondary: "rgb(13, 110, 253)",
-      },
+
       fontFamily: {
         sans: ["Calibri", "sans-serif"],
       },

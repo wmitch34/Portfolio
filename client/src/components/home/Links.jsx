@@ -37,9 +37,7 @@ export default function Demo(props) {
   return (
     <div id="links-container" className="flex flex-col w-full h-full">
       <div>
-        <h1 className="h-fit p-4 pt-28 w-full text-5xl text-secondary">
-          Links
-        </h1>
+        <h1 className="h-fit p-4 pt-28 w-full text-5xl">Links</h1>
       </div>
       <div
         id="Link-card-container"
@@ -47,11 +45,12 @@ export default function Demo(props) {
       >
         {items.map((item, index) => (
           <Link
+            key={index}
             to={item.link}
-            className="w-60 h-60 border-white border-2 m-2 rounded-xl flex flex-col items-center hover:text-secondary"
+            className="w-60 h-60 border-2 m-2 rounded-xl flex flex-col items-center"
           >
             <p className="text-center">{item.name}</p>
-            <img src={Logo} alt="Logo" className="w-48" />
+            <img src={item.Logo} alt={item.name + " Logo"} className="w-48" />
           </Link>
         ))}
       </div>

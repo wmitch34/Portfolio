@@ -23,10 +23,10 @@ export default function PhotoCarousel(props) {
         onClick={() => scroll(-containerRef.current.offsetWidth)}
       >
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="w-8 h-1 bg-white rotate-45 rounded-xl origin-left translate-y-px">
+          <div className="w-8 h-1 bg-bgSecondary rotate-45 rounded-xl origin-left translate-y-px">
             {""}
           </div>
-          <div className="w-8 h-1 bg-white -rotate-45 rounded-xl origin-left -translate-y-px">
+          <div className="w-8 h-1 bg-bgSecondary -rotate-45 rounded-xl origin-left -translate-y-px">
             {""}
           </div>
         </div>
@@ -41,10 +41,10 @@ export default function PhotoCarousel(props) {
         onClick={() => scroll(containerRef.current.offsetWidth)}
       >
         <div className="flex flex-col justify-center items-center h-full">
-          <div className="w-8 h-1 bg-white -rotate-45 rounded-xl origin-right translate-y-px">
+          <div className="w-8 h-1 bg-bgSecondary -rotate-45 rounded-xl origin-right translate-y-px">
             {""}
           </div>
-          <div className="w-8 h-1 bg-white rotate-45 rounded-xl origin-right -translate-y-px">
+          <div className="w-8 h-1 bg-bgSecondary rotate-45 rounded-xl origin-right -translate-y-px">
             {""}
           </div>
         </div>

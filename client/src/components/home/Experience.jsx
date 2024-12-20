@@ -7,9 +7,7 @@ export default function Experience() {
   return (
     <div id="projects-container" className="flex flex-col w-full h-full">
       <div>
-        <h1 className="h-fit p-4 pt-28 w-full text-5xl text-secondary">
-          Experience
-        </h1>
+        <h1 className="h-fit p-4 pt-28 w-full text-5xl">Experience</h1>
       </div>
       <div id="col-wrapper" className="flex flex-col">
         <div id="deloitte-container">

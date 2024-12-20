@@ -62,10 +62,10 @@ export default function Home(props) {
 
   return (
     <div>
-      <div className="sticky top-0">
+      <div className="sticky top-0 ">
         <div
           id="nav-list"
-          className="hidden md:flex w-full sticky top-0 h-16 bg-primary text-xl"
+          className="hidden md:flex w-full sticky top-0 h-16 bg-bgPrimary text-xl"
         >
           <nav className="w-full flex flex-center space-x-4 justify-center ">
             <button
@@ -74,7 +74,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
-              className="hover:text-secondary"
+              className="hover:text-textSecondary"
             >
               Home
             </button>
@@ -84,7 +84,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
-              className="hover:text-secondary"
+              className="hover:text-textSecondary"
             >
               About
             </button>
@@ -94,7 +94,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
-              className="hover:text-secondary"
+              className="hover:text-textSecondary"
             >
               Experience
             </button>
@@ -104,7 +104,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
-              className="hover:text-secondary"
+              className="hover:text-textSecondary"
             >
               Projects
             </button>
@@ -114,7 +114,7 @@ export default function Home(props) {
                   behavior: "smooth",
                 })
               }
-              className="hover:text-secondary"
+              className="hover:text-textSecondary"
             >
               Links
             </button>
@@ -136,36 +136,7 @@ export default function Home(props) {
       </div>
       <div id="Links" ref={linkRef} className="min-h-screen">
         <Links />
-        <footer className="flex space-x-4 justify-center p-6 w-full bottom-0">
-          <button
-            className="text-white hover:text-secondary self-start"
-            onClick={() => setContactModal(true)}
-          >
-            Contact
-          </button>
-          <a
-            className="text-white hover:text-secondary"
-            href="/public/WILLMITCHELL.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Resume
-          </a>
-          <a
-            className="text-white hover:text-secondary"
-            href="https://github.com/wmitch34"
-            target="_blank"
-          >
-            Github
-          </a>
-          <a
-            className="text-white hover:text-secondary"
-            href="https://www.linkedin.com/in/will-mitchell-connect/"
-            target="_blank"
-          >
-            Linkedin
-          </a>
-        </footer>
+        <footer className="flex space-x-4 justify-center p-6 w-full bottom-0"></footer>
       </div>
       <Modal
         message={`Ask me a question, send me feedback, or just say 'Hi'. If you want me to get back to you, leave your email.`}
@@ -178,7 +149,7 @@ export default function Home(props) {
           className="flex flex-col pt-4"
           onSubmit={(e) => handleSendMessage(e)}
         >
-          <label htmlFor="email" className="text-white p-2">
+          <label htmlFor="email" className="p-2">
             Email Address
           </label>
           {emailError && <p className="text-red-500"> Invaild email.</p>}
@@ -188,7 +159,7 @@ export default function Home(props) {
             type="email"
             placeholder="email"
           />
-          <label htmlFor="message" className="text-white p-2">
+          <label htmlFor="message" className="p-2">
             Message
           </label>
           {messageError && (
