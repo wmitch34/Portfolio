@@ -14,14 +14,9 @@ export default function Demo(props) {
       link: "/Typeracer",
     },
     {
-      name: "Contact",
-      //   icon: contactIcon,
-      link: "/Home",
-    },
-    {
       name: "Resume",
       //   icon: resumeIcon,
-      link: "/public/WILLMITCHELL.pdf",
+      link: "/WILLMITCHELL.pdf",
     },
     {
       name: "Github",
@@ -43,6 +38,13 @@ export default function Demo(props) {
         id="Link-card-container"
         className="flex w-full flex-wrap h-full justify-center"
       >
+        <button
+          className="w-60 h-60 border-2 m-2 rounded-xl flex flex-col items-center"
+          onClick={props.handleOpenModal}
+        >
+          <p className="text-center">Contact</p>
+          <img src={Logo} alt="Contact-logo" className="w-48" />
+        </button>
         {items.map((item, index) => (
           <Link
             key={index}

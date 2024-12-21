@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import "./index.css";
 
 document.documentElement.classList.add(
-  "dessert",
+  "dark",
   "bg-bgPrimary",
   "text-textPrimary"
 );

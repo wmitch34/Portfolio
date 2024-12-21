@@ -17,17 +17,18 @@ function Modal(props) {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            background: "rgba(0, 0, 0, 0.5)",
           }}
         >
-          <dialog open={state} className="inset-0 z-50 p-5 rounded-lg mx-auto">
-            <h1 className="text-5xl">{title}</h1>
+          <dialog open={state} className="inset-0 z-50 p-5 rounded-xl mx-auto">
+            <h1 className="text-5xl text-textSecondary">{title}</h1>
             <p className="p-4">{message}</p>
             {children}
             <button
               onClick={() => {
                 stateHandler();
               }}
-              className="my-bingo-button"
+              className="my-button"
             >
               {closeMSG ? closeMSG : "Close"}
             </button>

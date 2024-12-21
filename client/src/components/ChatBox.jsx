@@ -39,14 +39,14 @@ export default function Chatbox(props) {
   return (
     <div className="w-full pt-5 flex flex-col" id="chatBox">
       <h2 className="p-2">Chat Box</h2>
-      <form className="text-box-container" onSubmit={(e) => e.preventDefault()}>
+      <form className="flex " onSubmit={(e) => e.preventDefault()}>
         <input
           placeholder="Enter user name..."
           value={user}
           onChange={(event) => {
             handleSetUser(event.target.value);
           }}
-          className="p-1 w-full rounded-sm"
+          className="p-1 w-full rounded-sm border-2 border-textSecondary"
         />
       </form>
 
@@ -58,11 +58,14 @@ export default function Chatbox(props) {
           <div key={index} className="">
             <div className="text-sm">{message.user}</div>
             {message.user == parseCookies().username ? (
-              <div key={index} className="w-fit rounded-md p-1">
+              <div
+                key={index}
+                className="w-fit rounded-xl p-2 bg-bgSecondary text-textSecondary"
+              >
                 {message.message}
               </div>
             ) : (
-              <div key={index} className="w-fit rounded-md p-1">
+              <div key={index} className="w-fit rounded-xl p-2">
                 {message.message}
               </div>
             )}
@@ -73,7 +76,7 @@ export default function Chatbox(props) {
       <div className="row flex-grow-1">
         <div className="overFlow-auto" style={{ display: "inline" }}>
           <form
-            className="text-box-container items-center"
+            className="flex bg-transparent mb-1 items-center"
             onSubmit={(e) => e.preventDefault()}
           >
             <input
@@ -84,12 +87,12 @@ export default function Chatbox(props) {
                 setInputVal(event.target.value);
               }}
               ref={inputRef}
-              className="text-black p-1 w-full rounded-sm"
+              className="p-1 w-full rounded-sm border-2 border-textSecondary"
             />
             <button
               type="submit"
               onClick={handlSendMessage}
-              className="rounded-sm p-2 ml-2 h-10"
+              className="my-button text-md mx-1"
             >
               Send
             </button>

@@ -22,9 +22,9 @@ export default function Hero() {
         id="bio-container"
       >
         <div id="bio-wrapper">
-          <h1 className="text-3xl">
+          <h2 className="text-3xl">
             <i>WILL MITCHELL</i>
-          </h1>
+          </h2>
           <h2 className="text-2xl">Software Developer</h2>
           <h2 className="text-2xl">Computer Science, UCF 2023 </h2>
         </div>

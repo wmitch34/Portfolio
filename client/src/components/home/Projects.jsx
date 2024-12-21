@@ -33,7 +33,7 @@ export default function Projects() {
             >
               <div id="tank-text-wrapper" className="w-full flex flex-col">
                 <div id="tank-text-heading">
-                  <h1 className="w-full text-3xl p-2">Tanknicians, LLC</h1>
+                  <h2 className="w-full text-3xl p-2">Tanknicians, LLC</h2>
                 </div>
                 <div
                   id="tank-text-body"
@@ -69,7 +69,7 @@ export default function Projects() {
             >
               <div id="game-text-wrapper" className="w-full flex flex-col">
                 <div id="game-text-heading">
-                  <h1 className="w-full text-3xl p-2">My Games List</h1>
+                  <h2 className="w-full text-3xl p-2">My Games List</h2>
                 </div>
                 <div
                   id="game-text-body"

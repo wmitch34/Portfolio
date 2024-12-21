@@ -135,11 +135,10 @@ export default function Home(props) {
         <Projects />
       </div>
       <div id="Links" ref={linkRef} className="min-h-screen">
-        <Links />
-        <footer className="flex space-x-4 justify-center p-6 w-full bottom-0"></footer>
+        <Links handleOpenModal={setContactModal} />
       </div>
       <Modal
-        message={`Ask me a question, send me feedback, or just say 'Hi'. If you want me to get back to you, leave your email.`}
+        message={`Ask a question, send feedback, or just say 'Hi'. If you want me to get back to you, leave your email.`}
         state={contactModal}
         stateHandler={setContactModal}
         title={"Contact"}
@@ -155,7 +154,7 @@ export default function Home(props) {
           {emailError && <p className="text-red-500"> Invaild email.</p>}
           <input
             id="email"
-            className="p-2 rounded-md"
+            className="p-2 rounded-md border-2 border-textSecondary"
             type="email"
             placeholder="email"
           />
@@ -169,10 +168,10 @@ export default function Home(props) {
           )}
           <textarea
             id="message"
-            className="w-full min-h-32 p-2 rounded-md"
+            className="w-full min-h-32 p-2 rounded-md border-2 border-textSecondary"
             placeholder="message"
           />
-          <button className="my-bingo-button my-4" type="submit">
+          <button className="my-button my-4" type="submit">
             Send
           </button>
         </form>

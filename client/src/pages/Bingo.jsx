@@ -3,7 +3,6 @@ import io from "socket.io-client";
 import { submitBoard } from "../api";
 import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
-import "./Bingo.css";
 
 let socket_url;
 
@@ -261,7 +260,7 @@ export default function Bingo() {
   }, []);
 
   return (
-    <div id="bingo" className="dark text-textPrimary bg-bgPrimary">
+    <div id="bingo" className="">
       <div className="w-full flex items-center p-4">
         <h1 className="text-4xl mx-auto">Bingo</h1>
       </div>
