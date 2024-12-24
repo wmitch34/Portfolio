@@ -5,6 +5,7 @@ import Projects from "../components/home/Projects.jsx";
 import Experience from "../components/home/Experience.jsx";
 import Links from "../components/home/Links.jsx";
 import Modal from "../components/modal.jsx";
+import NavBar from "../components/NavBar.jsx";
 import { useLocation } from "react-router-dom";
 import { sendMessage } from "../api.js";
 
@@ -61,80 +62,19 @@ export default function Home(props) {
   }, [location.state]);
 
   return (
-    <div>
-      <div className="sticky top-0 ">
-        <div
-          id="nav-list"
-          className="hidden md:flex w-full sticky top-0 h-16 bg-bgPrimary text-xl"
-        >
-          <nav className="w-full flex flex-center space-x-4 justify-center ">
-            <button
-              onClick={() =>
-                homeRef.current.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="hover:text-textSecondary"
-            >
-              Home
-            </button>
-            <button
-              onClick={() =>
-                aboutRef.current.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="hover:text-textSecondary"
-            >
-              About
-            </button>
-            <button
-              onClick={() =>
-                experienceRef.current.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="hover:text-textSecondary"
-            >
-              Experience
-            </button>
-            <button
-              onClick={() =>
-                projectsRef.current.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="hover:text-textSecondary"
-            >
-              Projects
-            </button>
-            <button
-              onClick={() =>
-                linkRef.current.scrollIntoView({
-                  behavior: "smooth",
-                })
-              }
-              className="hover:text-textSecondary"
-            >
-              Links
-            </button>
-          </nav>
+    <div className="max-w-screen-md mx-auto">
+      <div className="flex flex-col h-screen">
+        <NavBar
+          refs={{ homeRef, aboutRef, experienceRef, projectsRef, linkRef }}
+        />
+        <div id="Hero" ref={homeRef} className="h-full">
+          <Hero />
         </div>
-      </div>
-
-      <div id="Hero" ref={homeRef} className="h-screen">
-        <Hero />
       </div>
       <div id="About" ref={aboutRef} className="">
         <About />
       </div>
-      <div id="Experience" ref={experienceRef} className="min-h-screen">
-        <Experience />
-      </div>
-      <div id="Projects" ref={projectsRef} className="min-h-screen">
-        <Projects />
-      </div>
-      <div id="Links" ref={linkRef} className="min-h-screen">
+      <div id="Links" ref={linkRef} className="">
         <Links handleOpenModal={setContactModal} />
       </div>
       <Modal

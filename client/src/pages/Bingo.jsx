@@ -3,6 +3,8 @@ import io from "socket.io-client";
 import { submitBoard } from "../api";
 import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
+import NavBar from "../components/NavBar";
+import NavHamburger from "../components/NavHamburger";
 
 let socket_url;
 
@@ -261,6 +263,7 @@ export default function Bingo() {
 
   return (
     <div id="bingo" className="">
+      <NavHamburger />
       <div className="w-full flex items-center p-4">
         <h1 className="text-4xl mx-auto">Bingo</h1>
       </div>

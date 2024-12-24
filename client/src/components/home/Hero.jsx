@@ -1,5 +1,5 @@
 import React from "react";
-import Portrait from "../../assets/portrait.png";
+import Portrait from "../../assets/portrait2.png";
 
 export default function Hero() {
   return (

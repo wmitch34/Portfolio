@@ -31,13 +31,13 @@ export default function Chatbox(props) {
   function parseCookies() {
     return document.cookie.split("; ").reduce((acc, cookie) => {
       const [key, value] = cookie.split("=");
-      acc[key] = decodeURIComponent(value); // Decode URI-encoded values
+      acc[key] = decodeURIComponent(value);
       return acc;
     }, {});
   }
 
   return (
-    <div className="w-full pt-5 flex flex-col" id="chatBox">
+    <div className="w-full pt-5 flex flex-col " id="chatBox">
       <h2 className="p-2">Chat Box</h2>
       <form className="flex " onSubmit={(e) => e.preventDefault()}>
         <input
@@ -51,21 +51,24 @@ export default function Chatbox(props) {
       </form>
 
       <div
-        className="py-6 h-80 m-0 overflow-y-auto w-64 max-w-64"
+        className="py-6 h-80 m-0 overflow-y-auto max-w-full w-full bg-bgSecondary"
         ref={scrollRef}
       >
         {chatHistory.map((message, index) => (
-          <div key={index} className="">
-            <div className="text-sm">{message.user}</div>
+          <div key={index} className="bg-bgSecondary">
+            <div className="text-sm mx-2">{message.user}</div>
             {message.user == parseCookies().username ? (
               <div
                 key={index}
-                className="w-fit rounded-xl p-2 bg-bgSecondary text-textSecondary"
+                className="w-fit rounded-xl p-2 mx-2 bg-bgChatBoxMe text-textChatBoxMe"
               >
                 {message.message}
               </div>
             ) : (
-              <div key={index} className="w-fit rounded-xl p-2">
+              <div
+                key={index}
+                className="w-fit rounded-xl p-2 mx-2 bg-bgChatBoxNotMe text-textChatBoxNotMe"
+              >
                 {message.message}
               </div>
             )}

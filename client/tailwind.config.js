@@ -8,6 +8,11 @@ export default {
         textSecondary: "var(--text-secondary)",
         bgPrimary: "var(--bg-primary)",
         bgSecondary: "var(--bg-secondary)",
+        bgPrimaryLight: "var(--bg-primary-light)",
+        bgChatBoxMe: "var(--bg-chatBox-me)",
+        textChatBoxMe: "var(--text-chatBox-me)",
+        bgChatBoxNotMe: "var(--bg-chatBox-notMe)",
+        textChatBoxNotMe: "var(--text-chatBox-notMe)",
       },
 
       fontFamily: {
