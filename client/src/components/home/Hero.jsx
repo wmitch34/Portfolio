@@ -10,7 +10,7 @@ export default function Hero() {
       >
         <div className="mx-auto md:mr-0">
           <img
-            className="rounded-3xl h-60 w-60 md:h-80 md:w-80 lg:h-96 lg:w-96"
+            className="rounded-3xl h-60 w-60 md:h-80 md:w-80 lg:h-96 lg:w-96 shadow-lg"
             src={Portrait}
             alt={"Portait of Will"}
           />

@@ -12,9 +12,9 @@
 
 .light {
   --text-primary: black;
-  --text-secondary: blue;
+  --text-secondary: #454ade;
   --bg-primary: white;
-  --bg-secondary: darkgrey;
+  --bg-secondary: #dcdcdc;
   --bg-chatBox-me: #454ade;
   --text-chatBox-me: white;
   --bg-chatBox-notMe: darkgrey;
@@ -24,8 +24,8 @@
 .dark {
   --text-primary: #ffffff;
   --text-secondary: #454ade;
-  --bg-primary: #202124;
-  --bg-secondary: #28292a;
+  --bg-secondary: #202124;
+  --bg-primary: #28292a;
   --bg-chatBox-me: #454ade;
   --text-chatBox-me: white;
   --bg-chatBox-notMe: darkgrey;
@@ -34,9 +34,9 @@
 
 .red {
   --text-primary: black;
-  --text-secondary: white;
-  --bg-primary: pink;
-  --bg-secondary: red;
+  --text-secondary: #cf4f84;
+  --bg-primary: #ffc0cb;
+  --bg-secondary: #cf4f84;
   --bg-chatBox-me: #454ade;
   --text-chatBox-me: white;
   --bg-chatBox-notMe: #a9a9a9;
@@ -242,10 +242,8 @@ textarea {
 
 .chevron-menu {
   display: flex;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  z-index: 50;
   margin-left: auto;
+  padding-top: 2rem;
 }
 
 .chevron-menu::before,
@@ -304,6 +302,7 @@ textarea {
 
 .chevron-menu:has(input:checked) + #theme-sidebar {
   transform: translateY(0%);
+  @apply shadow-lg;
 }
 
 #theme-sidebar {

@@ -4,7 +4,6 @@ import { submitBoard } from "../api";
 import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
 import NavBar from "../components/NavBar";
-import NavHamburger from "../components/NavHamburger";
 
 let socket_url;
 
@@ -88,9 +87,11 @@ export default function Bingo() {
       return;
     }
     try {
+      console.log("Trying");
       submitBoard(board, user, setSubmitModal);
     } catch (e) {
-      console.error(e);
+      alert("API Call error");
+      // console.error(e);
     }
   };
   // handler for setting user
@@ -263,9 +264,13 @@ export default function Bingo() {
 
   return (
     <div id="bingo" className="">
-      <NavHamburger />
+      <NavBar>
+        <div className="w-full text-center">
+          <h1 className="text-3xl pt-2">Bingo</h1>
+        </div>
+      </NavBar>
       <div className="w-full flex items-center p-4">
-        <h1 className="text-4xl mx-auto">Bingo</h1>
+        <h1 className="text-4xl mx-auto"></h1>
       </div>
       <label className="chevron-menu absolute top-3 right-0">
         <input type="checkbox" defaultChecked={true} />
@@ -374,7 +379,7 @@ export default function Bingo() {
           ))}
           <button
             onClick={checkBoard}
-            className="my-bingo-button mt-1"
+            className="my-button mt-1"
             disabled={gameOver}
           >
             Submit Board

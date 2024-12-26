@@ -35,7 +35,7 @@ function Modal(props) {
               <h1 className="text-5xl text-textSecondary">{title}</h1>
               <p className="p-4">{message}</p>
               {children}
-              <button className="my-button">
+              <button className="my-button" onClick={() => stateHandler()}>
                 {closeMSG ? closeMSG : "Close"}
               </button>
             </dialog>

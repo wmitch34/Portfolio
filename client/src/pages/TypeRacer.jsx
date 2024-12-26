@@ -1,6 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 import { getSentence } from "../api";
 import { normalizeApostrophes } from "../components/tools";
+import NavHamburger from "../components/NavHamburger";
+import NavBar from "../components/NavBar";
 
 let localSentences = [
   "At the same time, enemy codebreakers have attempted to break these codes and steal secrets.",
@@ -172,13 +174,18 @@ function TypeRacer() {
 
   return (
     <>
-      <div className="min-h-screen p-4 md:p-20">
-        <h1 className="text-4xl mb-4 mx-auto md:ml-0 w-fit">Type Racer</h1>
+      <div className="min-h-screen max-w-screen-md mx-auto">
+        <NavBar>
+          <div className="w-full text-center">
+            <h1 className="text-xl pt-2">Type Racer</h1>
+          </div>
+        </NavBar>
+
         {isMobile && (
           <div in={isMobile}>
             <p className="text-lg mb-4">
-              Touch screen users! When the timer countdown finishes, touch the
-              text box to open your keyboard.
+              Mobile users! When the timer countdown finishes, touch the text
+              box to open your keyboard.
             </p>
           </div>
         )}
@@ -235,7 +242,7 @@ function TypeRacer() {
               ref={userInputBoxRef}
               value={userInput}
               placeholder="Type Here"
-              className="w-full p-2 md:w-2/3 h-24"
+              className="w-full p-2 h-24"
               spellCheck={false}
               onChange={handleSetUserInput}
             ></textarea>
@@ -260,7 +267,7 @@ function TypeRacer() {
             <textarea
               id="new_content"
               placeholder="Enter new sentence here"
-              className="w-full md:w-2/3 h-36"
+              className="w-full h-36"
               value={newContent}
               onChange={(event) => {
                 let val = event.target.value;
@@ -281,7 +288,7 @@ function TypeRacer() {
               </button>
 
               <button
-                className="p-2 mr-2 mb-4 rounded-lg"
+                className="my-button"
                 onClick={() => {
                   handleReset();
                   setSubmitNewFlag(false);
@@ -292,14 +299,13 @@ function TypeRacer() {
             </div>
           </div>
         )}
-        <div className="md:w-2/3">
+        <div className="">
           <h2 className="text-2xl mb-4">Sentence History</h2>
           {history.map((value, index) => (
             <div
               onClick={() => handleSetSentence(value)}
-              className="border-2 border-t-0 p-6 rounded-xl cursor-pointer"
+              className="border-2 border-t-0 p-6 rounded-xl cursor-pointer border-bgSecondary"
               key={index}
-              style={{ borderColor: "grey" }}
             >
               {value}
             </div>

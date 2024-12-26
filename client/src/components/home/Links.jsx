@@ -32,7 +32,9 @@ export default function Demo(props) {
   return (
     <div id="links-container" className="flex flex-col w-full h-full">
       <div>
-        <h1 className="h-fit p-4 pt-28 w-full text-5xl">Links</h1>
+        <h2 className="text-5xl px-2 w-full text-center md:text-start text-textSecondary">
+          Links
+        </h2>
       </div>
       <div
         id="Link-card-container"

@@ -33,6 +33,7 @@ export async function submitBoard(board, user, setSubmitModal) {
       setSubmitModal(!res);
     })
     .catch((err) => {
+      alert("Somthing went wrong!");
       console.log(err);
     });
 }

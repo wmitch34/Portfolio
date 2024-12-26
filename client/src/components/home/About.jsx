@@ -6,18 +6,13 @@ export default function About() {
       id="about-container"
       className="flex flex-col justify-center items-center"
     >
-      <div id="col-wrapper" className="flex flex-col md:flex-col p-8 h-full">
+      <div id="col-wrapper" className="flex flex-col md:flex-col py-8 h-full">
         <div id="about-me-container" className="lg:h-1/2 py-8">
           <div id="about-me-wrapper" className="h-full">
-            <h2 className="text-5xl px-2 w-full md:text-start">About Me</h2>
+            <h2 className="text-5xl px-2 w-full text-center md:text-start text-textSecondary">
+              About Me
+            </h2>
             <div className="md:flex">
-              {/* <div className="flex md:flex-none items-center justify-center md:order-last">
-                <img
-                  className="rounded-full h-60 w-60 py-2"
-                  src={AboutWill}
-                  alt="Pic of will"
-                />
-              </div> */}
               <div className="my-auto">
                 <p className="p-2 h-fit lg:text-2xl align-middle">
                   Hello! I am a software developer with a Computer Science
@@ -36,17 +31,10 @@ export default function About() {
 
         <div id="about-site-container" className="lg:h-1/2 py-8">
           <div id="about-site-wrapper" className="h-full">
-            <h2 className="text-5xl px-2 w-full text-center md:text-start">
+            <h2 className="text-5xl px-2 w-full text-center md:text-start text-textSecondary">
               About This Web Page
             </h2>
             <div className="md:flex">
-              {/* <div className="flex md:flex-none items-center justify-center">
-                <img
-                  className="rounded-full h-60 py-2"
-                  src={AboutWeb}
-                  alt="Page Splash image"
-                />
-              </div> */}
               <div className="my-auto">
                 <p className="p-2 h-fit lg:text-2xl align-middle">
                   The purpose of this page is to showcase my professional and

@@ -13,14 +13,14 @@ function ThemeMenu() {
   return (
     <>
       <label
-        className="chevron-menu absolute top-3 right-2 cursor-pointer"
         id="theme-menu"
+        className="chevron-menu z-50 justify-center cursor-pointer"
       >
         <input type="checkbox" />
       </label>
       <div
         id="theme-sidebar"
-        className="flex flex-col z-40 shadow-xl shadow-grey-800 bg-bgSecondary justify-start absolute p-4 pt-6 rounded-bl-xl text-xl text-textPrimary"
+        className="flex flex-col z-30 absolute bg-bgSecondary justify-start p-4 pt-6 rounded-bl-xl text-xl text-textPrimary"
       >
         <div className="flex flex-col">
           <p>Themes</p>
