@@ -63,53 +63,6 @@ textarea {
   text-decoration: underline;
 }
 
-#hamburger-menu {
-  --x-width: calc(var(--hamburger-height) * 1.41421356237);
-  gap: var(--bar-gap);
-}
-
-#hamburger-menu::before,
-#hamburger-menu::after,
-#hamburger-menu input {
-  content: "";
-  width: var(--bar-width);
-  height: var(--bar-height);
-  border-radius: 9999px;
-  transform-origin: left center;
-  @apply bg-textPrimary;
-  transition: opacity var(--animation-timing), width var(--animation-timing),
-    rotate var(--animation-timing), translate var(--animation-timing);
-}
-
-#hamburger-menu input:checked {
-  width: 0;
-  opacity: 0;
-}
-
-#hamburger-menu:has(input:checked)::before {
-  rotate: 45deg;
-  width: var(--x-width);
-  translate: 0 calc(var(--bar-height) / -2);
-}
-
-#hamburger-menu:has(input:checked)::after {
-  rotate: -45deg;
-  width: var(--x-width);
-  translate: 0 calc(var(--bar-height) / 2);
-}
-
-#sidebar {
-  transition: transform var(--animation-timing), opacity var(--animation-timing);
-  transform: translateY(-100%);
-  opacity: 0;
-  padding-top: calc(var(--hamburger-height) + 3rem);
-}
-
-#hamburger-menu:has(input:checked) + #sidebar {
-  transform: translateY(0);
-  opacity: 1;
-}
-
 .controls {
   display: grid;
   place-items: center;
@@ -123,8 +76,9 @@ textarea {
   border-radius: 0.5rem;
   padding: 0.5rem;
   @apply bg-textSecondary;
-  @apply text-textPrimary;
+  @apply text-white;
   cursor: pointer;
+  margin-right: 0.5rem;
 }
 
 .row-container {
@@ -295,21 +249,68 @@ textarea {
   transition: transform var(--animation-timing);
   padding-top: calc(var(--bar-height) + 2rem);
   transform: translateY(-100%);
-  position: absolute;
   right: 0;
   top: 0;
+}
+
+#hamburger-menu {
+  --x-width: calc(var(--hamburger-height) * 1.41421356237);
+  gap: var(--bar-gap);
+}
+
+#hamburger-menu::before,
+#hamburger-menu::after,
+#hamburger-menu input {
+  content: "";
+  width: var(--bar-width);
+  height: var(--bar-height);
+  border-radius: 9999px;
+  transform-origin: left center;
+  @apply bg-textPrimary;
+  transition: opacity var(--animation-timing), width var(--animation-timing),
+    rotate var(--animation-timing), translate var(--animation-timing);
+}
+
+#hamburger-menu input:checked {
+  width: 0;
+  opacity: 0;
+}
+
+#hamburger-menu:has(input:checked)::before {
+  rotate: 45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / -2);
+}
+
+#hamburger-menu:has(input:checked)::after {
+  rotate: -45deg;
+  width: var(--x-width);
+  translate: 0 calc(var(--bar-height) / 2);
+}
+
+#sidebar {
+  transition: transform var(--animation-timing), opacity var(--animation-timing);
+  transform: translateY(-100%);
+  opacity: 0;
+  padding-top: calc(var(--hamburger-height) + 3rem);
+  position: absolute;
+}
+
+#theme-sidebar {
+  transition: transform var(--animation-timing), opacity var(--animation-timing);
+  transform: translateY(-100%);
+  opacity: 0;
+  padding-top: calc(var(--hamburger-height) + 3rem);
+  right: 0;
+  position: absolute;
+}
+
+#hamburger-menu:has(input:checked) + #sidebar {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .chevron-menu:has(input:checked) + #theme-sidebar {
   transform: translateY(0%);
-  @apply shadow-lg;
-}
-
-#theme-sidebar {
-  transition: transform var(--animation-timing);
-  padding-top: calc(var(--bar-height) + 3rem);
-  transform: translateY(-100%);
-  position: absolute;
-  right: 0;
-  top: 0;
+  opacity: 1;
 }

@@ -30,7 +30,7 @@ export default function Demo(props) {
     },
   ];
   return (
-    <div id="links-container" className="flex flex-col w-full h-full">
+    <div id="links-container" className="flex flex-col w-full pt-24 h-full">
       <div>
         <h2 className="text-5xl px-2 w-full text-center md:text-start text-textSecondary">
           Links

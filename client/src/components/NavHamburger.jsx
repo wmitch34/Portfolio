@@ -40,7 +40,7 @@ function NavHamburger() {
       </label>
       <div
         id="sidebar"
-        className="flex flex-col z-0 shadow-lg bg-bgSecondary justify-start absolute p-4 rounded-br-xl text-xl text-textPrimary"
+        className="flex flex-col z-10 shadow-lg bg-bgSecondary justify-start absolute p-4 rounded-br-xl text-xl text-textPrimary"
       >
         <button
           className="text-left w-full "

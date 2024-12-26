@@ -173,14 +173,13 @@ function TypeRacer() {
   };
 
   return (
-    <>
-      <div className="min-h-screen max-w-screen-md mx-auto">
-        <NavBar>
-          <div className="w-full text-center">
-            <h1 className="text-xl pt-2">Type Racer</h1>
-          </div>
-        </NavBar>
-
+    <div className="flex flex-col flex-center w-full">
+      <NavBar>
+        <div className="flex w-full items-center justify-center text-center">
+          <h1 className="text-4xl">Type Racer</h1>
+        </div>
+      </NavBar>
+      <div className="w-full max-w-screen-md mx-auto pt-8 p-2 md:p-0 md:pt-8">
         {isMobile && (
           <div in={isMobile}>
             <p className="text-lg mb-4">
@@ -190,13 +189,13 @@ function TypeRacer() {
           </div>
         )}
         <div>
-          <div className="">
+          <div id="button-wrapper" className="w-full flex justify-center pb-4">
             <button
               autoFocus
               disabled={session}
               ref={startGameBtnRef}
               onClick={handleBegin}
-              className="p-2 mr-2 mb-4 rounded-lg"
+              className="my-button"
             >
               START
             </button>
@@ -204,7 +203,7 @@ function TypeRacer() {
             <button
               disabled={!session}
               onClick={handleReset}
-              className="p-2 mr-2 mb-4 rounded-lg"
+              className="my-button"
             >
               RESET
             </button>
@@ -216,9 +215,9 @@ function TypeRacer() {
                 getRandomSentence(handleSetSentence);
                 setResults(false);
               }}
-              className="p-2 mr-2 mb-4 rounded-lg"
+              className="my-button"
             >
-              NEW CHALLENGE
+              NEW
             </button>
 
             <button
@@ -228,9 +227,9 @@ function TypeRacer() {
                 setSubmitNewFlag((prev) => !prev);
                 setResults(false);
               }}
-              className="p-2 mr-2 mb-4 rounded-lg"
+              className="my-button"
             >
-              CUSTOM CHALLENGE
+              CUSTOM
             </button>
           </div>
         </div>
@@ -242,7 +241,7 @@ function TypeRacer() {
               ref={userInputBoxRef}
               value={userInput}
               placeholder="Type Here"
-              className="w-full p-2 h-24"
+              className="w-full p-2 h-24 shadow-lg"
               spellCheck={false}
               onChange={handleSetUserInput}
             ></textarea>
@@ -282,7 +281,7 @@ function TypeRacer() {
                     setSubmitNewFlag(false);
                   }
                 }}
-                className="p-2 mr-2 mb-4 rounded-lg"
+                className="my-button"
               >
                 Submit
               </button>
@@ -304,7 +303,7 @@ function TypeRacer() {
           {history.map((value, index) => (
             <div
               onClick={() => handleSetSentence(value)}
-              className="border-2 border-t-0 p-6 rounded-xl cursor-pointer border-bgSecondary"
+              className="mb-1 p-6 cursor-pointer shadow-lg bg-bgSecondary"
               key={index}
             >
               {value}
@@ -312,7 +311,7 @@ function TypeRacer() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

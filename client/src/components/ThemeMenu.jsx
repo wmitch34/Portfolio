@@ -20,7 +20,7 @@ function ThemeMenu() {
       </label>
       <div
         id="theme-sidebar"
-        className="flex flex-col z-30 absolute bg-bgSecondary justify-start p-4 pt-6 rounded-bl-xl text-xl text-textPrimary"
+        className="flex flex-col z-[-1] absolute bg-bgSecondary justify-start p-4 rounded-bl-xl text-xl text-textPrimary"
       >
         <div className="flex flex-col">
           <p>Themes</p>

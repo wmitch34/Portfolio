@@ -94,10 +94,10 @@ export default function Home(props) {
         <div id="Hero" className="h-screen">
           <Hero />
         </div>
-        <div id="About">
+        <div id="About" className="min-h-screen">
           <About />
         </div>
-        <div id="Links" className="h-screen">
+        <div id="Links" className="min-h-screen">
           <Links handleOpenModal={setContactModal} />
         </div>
         <Modal
