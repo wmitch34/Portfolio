@@ -4,6 +4,7 @@ import { submitBoard } from "../api";
 import Chatbox from "../components/ChatBox";
 import Modal from "../components/modal";
 import NavBar from "../components/NavBar";
+import { parseCookies } from "../components/tools";
 
 let socket_url;
 
@@ -167,14 +168,6 @@ export default function Bingo() {
       }
     });
   };
-
-  function parseCookies() {
-    return document.cookie.split("; ").reduce((acc, cookie) => {
-      const [key, value] = cookie.split("=");
-      acc[key] = decodeURIComponent(value); // Decode URI-encoded values
-      return acc;
-    }, {});
-  }
 
   useEffect(() => {
     // on rolled number

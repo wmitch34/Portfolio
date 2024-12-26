@@ -8,6 +8,7 @@ import Modal from "../components/modal.jsx";
 import NavBar from "../components/NavBar.jsx";
 import { useLocation } from "react-router-dom";
 import { sendMessage } from "../api.js";
+import { parseCookies } from "../components/tools.js";
 
 export default function Home(props) {
   const [contactModal, setContactModal] = useState(false);
@@ -46,6 +47,8 @@ export default function Home(props) {
   };
 
   const location = useLocation();
+  let cookieObj = parseCookies();
+  console.log(cookieObj);
 
   useEffect(() => {
     if (location.state?.scrollTo) {

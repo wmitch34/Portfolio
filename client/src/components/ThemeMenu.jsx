@@ -2,6 +2,7 @@ import React from "react";
 
 const handleChangeTheme = (theme) => {
   document.documentElement.classList.remove("dark", "light", "red");
+  document.cookie = `theme=${theme}; max-age=${2.592e6}`;
   document.documentElement.classList.add(
     theme,
     "bg-bgPrimary",
