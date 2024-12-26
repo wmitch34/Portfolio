@@ -37,7 +37,10 @@ export default function Chatbox(props) {
   }
 
   return (
-    <div className="w-full pt-5 flex flex-col " id="chatBox">
+    <div
+      className="w-full flex flex-col bg-bgSecondary p-2 rounded-lg"
+      id="chatBox"
+    >
       <h2 className="p-2">Chat Box</h2>
       <form className="flex " onSubmit={(e) => e.preventDefault()}>
         <input
@@ -51,7 +54,7 @@ export default function Chatbox(props) {
       </form>
 
       <div
-        className="py-6 h-80 m-0 overflow-y-auto max-w-full w-full bg-bgSecondary"
+        className="py-6 h-80 m-0 overflow-y-auto max-w-full w-full"
         ref={scrollRef}
       >
         {chatHistory.map((message, index) => (

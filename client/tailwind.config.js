@@ -13,6 +13,8 @@ export default {
         textChatBoxMe: "var(--text-chatBox-me)",
         bgChatBoxNotMe: "var(--bg-chatBox-notMe)",
         textChatBoxNotMe: "var(--text-chatBox-notMe)",
+        buttonText: "var(--button-text)",
+        buttonColor: "var(--button-color)",
       },
 
       fontFamily: {

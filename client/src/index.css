@@ -19,6 +19,8 @@
   --text-chatBox-me: white;
   --bg-chatBox-notMe: darkgrey;
   --text-chatBox-notMe: white;
+  --button-text: white;
+  --button-color: #454ade;
 }
 
 .dark {
@@ -30,17 +32,21 @@
   --text-chatBox-me: white;
   --bg-chatBox-notMe: darkgrey;
   --text-chatBox-notMe: white;
+  --button-text: white;
+  --button-color: #454ade;
 }
 
 .red {
   --text-primary: black;
-  --text-secondary: #cf4f84;
+  --text-secondary: white;
   --bg-primary: #ffc0cb;
   --bg-secondary: #cf4f84;
   --bg-chatBox-me: #454ade;
   --text-chatBox-me: white;
   --bg-chatBox-notMe: #a9a9a9;
   --text-chatBox-notMe: white;
+  --button-text: white;
+  --button-color: #bd2665;
 }
 
 .dessert {
@@ -75,8 +81,8 @@ textarea {
 .my-button {
   border-radius: 0.5rem;
   padding: 0.5rem;
-  @apply bg-textSecondary;
-  @apply text-white;
+  @apply bg-buttonColor;
+  @apply text-buttonText;
   cursor: pointer;
   margin-right: 0.5rem;
 }
@@ -98,6 +104,7 @@ textarea {
   aspect-ratio: 1 / 1;
   border: 2px solid;
   @apply border-bgPrimary;
+  @apply bg-bgSecondary;
 }
 
 .roll-hist-container {
@@ -129,6 +136,7 @@ textarea {
   animation: 1.5s hoverAnimation linear infinite;
   border: 2px solid;
   @apply border-bgPrimary;
+  @apply shadow-lg;
 }
 
 .roll-hist-bingo:hover {
@@ -142,6 +150,7 @@ textarea {
   0% {
     transform: scale(1);
     rotate: 0deg;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
   25% {
     rotate: 5deg;
@@ -149,6 +158,7 @@ textarea {
   50% {
     transform: scale(1.2);
     rotate: 0deg;
+    @apply shadow-lg;
   }
   75% {
     rotate: -5deg;
@@ -156,6 +166,7 @@ textarea {
   100% {
     transform: scale(1);
     rotate: 0deg;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0);
   }
 }
 
@@ -306,7 +317,7 @@ textarea {
 }
 
 #hamburger-menu:has(input:checked) + #sidebar {
-  transform: translateY(0);
+  transform: translateY(0%);
   opacity: 1;
 }
 

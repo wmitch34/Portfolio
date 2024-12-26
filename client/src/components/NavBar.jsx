@@ -47,7 +47,7 @@ function NavBar({ children }) {
         </label>
         <div
           id="sidebar"
-          className="flex flex-col z-[-50] absolute  bg-bgSecondary justify-start p-4 rounded-xl text-xl text-textPrimary"
+          className="flex flex-col z-[-50] absolute shadow-lg bg-bgSecondary justify-start p-4 rounded-xl text-xl text-textPrimary"
         >
           <button
             className="text-left w-full "
