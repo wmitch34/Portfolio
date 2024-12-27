@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useRef } from "react";
-import NavHamburger from "./NavHamburger";
 import ThemeMenu from "./ThemeMenu";
 
 let links = [
@@ -15,7 +14,7 @@ let links = [
   },
 ];
 
-function NavBar({ children }) {
+function NavBar({ children, fullScreen }) {
   const checkboxRef = useRef(null);
   const navigate = useNavigate();
 
@@ -29,12 +28,21 @@ function NavBar({ children }) {
       navigate(page, { state: { scrollTo: section } });
     }
   };
+
+  let className = "";
+  if (fullScreen) {
+    className =
+      "w-full h-full relative bg-bgPrimary flex mx-auto justify-between";
+  } else
+    className =
+      "w-full h-full relative bg-bgPrimary flex md:max-w-screen-md mx-auto justify-between";
+
   return (
     <div
-      className="w-full shadow-lg sticky   top-0 h-16 bg-bgPrimary items-center text-xl "
+      className="w-full shadow-lg sticky top-0 h-16 bg-bgPrimary items-center text-xl "
       id="app-nav-bar"
     >
-      <div className="w-full h-full relative bg-bgPrimary flex md:max-w-screen-md mx-auto justify-between">
+      <div className={className}>
         <label
           id="hamburger-menu"
           className="flex flex-col justify-center p-3 min-w-[64px] z-50  cursor-pointer"

@@ -1,4 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
+import { parseCookies } from "./tools";
 
 export default function Chatbox(props) {
   const inputRef = useRef(null);
@@ -28,81 +29,79 @@ export default function Chatbox(props) {
     inputRef.current.focus();
   };
 
-  function parseCookies() {
-    return document.cookie.split("; ").reduce((acc, cookie) => {
-      const [key, value] = cookie.split("=");
-      acc[key] = decodeURIComponent(value);
-      return acc;
-    }, {});
-  }
-
   return (
     <div
-      className="w-full flex flex-col bg-bgSecondary p-2 rounded-lg"
       id="chatBox"
+      className="w-full flex flex-col bg-bgSecondary p-2 rounded-lg max-h-fit"
     >
-      <h2 className="p-2">Chat Box</h2>
-      <form className="flex " onSubmit={(e) => e.preventDefault()}>
-        <input
-          placeholder="Enter user name..."
-          value={user}
-          onChange={(event) => {
-            handleSetUser(event.target.value);
-          }}
-          className="p-1 w-full rounded-sm border-2 border-textSecondary"
-        />
-      </form>
+      <label id="chatBox-menu" className="w-full flex py-2">
+        <h2 className="mr-auto">Chat Box</h2>
+        <input type="checkbox" className="ml-auto" />
+      </label>
 
-      <div
-        className="py-6 h-80 m-0 overflow-y-auto max-w-full w-full"
-        ref={scrollRef}
-      >
-        {chatHistory.map((message, index) => (
-          <div key={index} className="bg-bgSecondary">
-            <div className="text-sm mx-2">{message.user}</div>
-            {message.user == parseCookies().username ? (
-              <div
-                key={index}
-                className="w-fit rounded-xl p-2 mx-2 bg-bgChatBoxMe text-textChatBoxMe"
-              >
-                {message.message}
-              </div>
-            ) : (
-              <div
-                key={index}
-                className="w-fit rounded-xl p-2 mx-2 bg-bgChatBoxNotMe text-textChatBoxNotMe"
-              >
-                {message.message}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
+      <div id="chatBox-tray" className="bg-bgSecondary w-full">
+        <form className="flex" onSubmit={(e) => e.preventDefault()}>
+          <input
+            placeholder="Enter user name..."
+            value={user}
+            onChange={(event) => {
+              handleSetUser(event.target.value);
+            }}
+            className="p-1 w-full rounded-sm border-2 border-textSecondary"
+          />
+        </form>
 
-      <div className="row flex-grow-1">
-        <div className="overFlow-auto" style={{ display: "inline" }}>
-          <form
-            className="flex bg-transparent mb-1 items-center"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              autoFocus
-              value={inputVal}
-              placeholder="Message..."
-              onChange={(event) => {
-                setInputVal(event.target.value);
-              }}
-              ref={inputRef}
-              className="p-1 w-full rounded-sm border-2 border-textSecondary"
-            />
-            <button
-              type="submit"
-              onClick={handlSendMessage}
-              className="my-button text-md mx-1"
+        <div
+          className="py-6 h-80 m-0 overflow-y-auto max-w-full w-full"
+          ref={scrollRef}
+        >
+          {chatHistory.map((message, index) => (
+            <div key={index} className="bg-bgSecondary">
+              <div className="text-sm mx-2">{message.user}</div>
+              {message.user == parseCookies().username ? (
+                <div
+                  key={index}
+                  className="w-fit rounded-xl p-2 mx-2 bg-bgChatBoxMe text-textChatBoxMe"
+                >
+                  {message.message}
+                </div>
+              ) : (
+                <div
+                  key={index}
+                  className="w-fit rounded-xl p-2 mx-2 bg-bgChatBoxNotMe text-textChatBoxNotMe"
+                >
+                  {message.message}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        <div className="row flex-grow-1">
+          <div className="overFlow-auto" style={{ display: "inline" }}>
+            <form
+              className="flex bg-transparent mb-1 items-center"
+              onSubmit={(e) => e.preventDefault()}
             >
-              Send
-            </button>
-          </form>
+              <input
+                autoFocus
+                value={inputVal}
+                placeholder="Message..."
+                onChange={(event) => {
+                  setInputVal(event.target.value);
+                }}
+                ref={inputRef}
+                className="p-1 w-full rounded-sm border-2 border-textSecondary"
+              />
+              <button
+                type="submit"
+                onClick={handlSendMessage}
+                className="my-button text-md mx-1"
+              >
+                Send
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

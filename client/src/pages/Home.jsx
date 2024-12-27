@@ -61,7 +61,7 @@ export default function Home(props) {
 
   return (
     <div className="flex flex-col flex-center w-full">
-      <NavBar>
+      <NavBar fullScreen={false}>
         <nav className="w-full hidden md:flex flex-center space-x-4 justify-center">
           <button
             onClick={() => {

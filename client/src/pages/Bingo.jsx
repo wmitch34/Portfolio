@@ -257,30 +257,11 @@ export default function Bingo() {
 
   return (
     <div id="bingo" className="">
-      <NavBar>
+      <NavBar fullScreen={true}>
         <div className="w-full text-center">
           <h1 className="text-3xl pt-2">Bingo</h1>
         </div>
       </NavBar>
-      <div className="w-full flex items-center p-4">
-        <h1 className="text-4xl mx-auto"></h1>
-      </div>
-      <label className="chevron-menu absolute top-3 right-0">
-        <input type="checkbox" defaultChecked={true} />
-      </label>
-      <div
-        id="chatbox-sidebar"
-        className="flex flex-col justify-start absolute p-4 rounded-xl text-xl"
-      >
-        <Chatbox
-          user={user}
-          handleSetUser={handleSetUser}
-          chatHistory={chatHistory}
-          handleSetChatHistory={setChatHistory}
-          socket={socket}
-        />
-      </div>
-
       <Modal
         message={`${winner}`}
         state={gameOverModal}
@@ -325,7 +306,21 @@ export default function Bingo() {
           "Enter a username into the chatbox before you submit your board."
         }
       ></Modal>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap pt-0 md:pt-24">
+        <div
+          id="chatboxContainer"
+          className="w-full md:w-1/3 p-7 md:p-0 flex md:hidden"
+        >
+          <div className="p-2 md:p-0 w-full md:w-3/4 flex mx-auto">
+            <Chatbox
+              user={user}
+              handleSetUser={handleSetUser}
+              chatHistory={chatHistory}
+              handleSetChatHistory={setChatHistory}
+              socket={socket}
+            />
+          </div>
+        </div>
         <div
           id="lastes-roll"
           className="flex flex-col w-full md:w-1/3 p-7 md:p-0 justify-center text-center items-center"
@@ -334,7 +329,7 @@ export default function Bingo() {
           <div className="">
             {!gameOver && (
               <div>
-                <div className="current-roll w-20 md:w-40">{roll}</div>
+                <div className="current-roll w-28 md:w-40">{roll}</div>
 
                 <div style={{ color: "white" }}>
                   00:
@@ -377,6 +372,20 @@ export default function Bingo() {
           >
             Submit Board
           </button>
+        </div>
+        <div
+          id="chatboxContainer"
+          className="w-full md:w-1/3 p-7 md:p-0 hidden md:flex"
+        >
+          <div className="p-2 md:p-0 w-full md:w-3/4 flex mx-auto">
+            <Chatbox
+              user={user}
+              handleSetUser={handleSetUser}
+              chatHistory={chatHistory}
+              handleSetChatHistory={setChatHistory}
+              socket={socket}
+            />
+          </div>
         </div>
       </div>
 

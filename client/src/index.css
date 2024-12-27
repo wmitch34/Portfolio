@@ -172,6 +172,7 @@ textarea {
 
 .highlight-obj {
   @apply bg-textSecondary;
+  @apply text-buttonText;
 }
 
 .current-roll {
@@ -183,8 +184,8 @@ textarea {
   border-radius: 10%;
   aspect-ratio: 1 / 1;
   border: 2px solid;
-  @apply border-bgPrimary;
   @apply bg-textSecondary;
+  @apply text-buttonText;
 }
 
 /* Define the animation */
@@ -252,18 +253,6 @@ textarea {
   rotate: -90deg;
 }
 
-.chevron-menu:has(input:checked) + #chatbox-sidebar {
-  transform: translateY(0%);
-}
-
-#chatbox-sidebar {
-  transition: transform var(--animation-timing);
-  padding-top: calc(var(--bar-height) + 2rem);
-  transform: translateY(-100%);
-  right: 0;
-  top: 0;
-}
-
 #hamburger-menu {
   --x-width: calc(var(--hamburger-height) * 1.41421356237);
   gap: var(--bar-gap);
@@ -317,11 +306,31 @@ textarea {
 }
 
 #hamburger-menu:has(input:checked) + #sidebar {
-  transform: translateY(0%);
+  transform: translateY(100%);
   opacity: 1;
 }
 
 .chevron-menu:has(input:checked) + #theme-sidebar {
   transform: translateY(0%);
   opacity: 1;
+}
+
+/* Chat Box animation stuff */
+#chatBox {
+  overflow: hidden;
+  transition: height var(--animation-timing);
+}
+
+#chatBox-tray {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height var(--animation-timing);
+}
+
+#chatBox-menu:has(input:checked) + #chatBox {
+  height: auto;
+}
+
+#chatBox-menu:has(input:checked) + #chatBox-tray {
+  max-height: 500px;
 }
