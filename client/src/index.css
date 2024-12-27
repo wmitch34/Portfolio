@@ -172,7 +172,7 @@ textarea {
 
 .highlight-obj {
   @apply bg-textSecondary;
-  @apply text-buttonText;
+  @apply text-textPrimary;
 }
 
 .current-roll {
@@ -184,8 +184,9 @@ textarea {
   border-radius: 10%;
   aspect-ratio: 1 / 1;
   border: 2px solid;
+  @apply border-bgPrimary;
   @apply bg-textSecondary;
-  @apply text-buttonText;
+  @apply text-textPrimary;
 }
 
 /* Define the animation */

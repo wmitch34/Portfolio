@@ -331,7 +331,7 @@ export default function Bingo() {
               <div>
                 <div className="current-roll w-28 md:w-40">{roll}</div>
 
-                <div style={{ color: "white" }}>
+                <div>
                   00:
                   {rollDelay - (timer % rollDelay) < 10
                     ? "0" + (rollDelay - (timer % rollDelay))
@@ -340,9 +340,7 @@ export default function Bingo() {
               </div>
             )}
             {gameOver && (
-              <div className="text-xl" style={{ color: "white" }}>
-                Next Game starting soon!
-              </div>
+              <div className="text-xl">Next Game starting soon!</div>
             )}
           </div>
         </div>
