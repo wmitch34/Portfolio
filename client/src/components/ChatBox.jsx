@@ -36,7 +36,7 @@ export default function Chatbox(props) {
     >
       <label id="chatBox-menu" className="w-full flex py-2">
         <h2 className="mr-auto">Chat Box</h2>
-        <input type="checkbox" className="ml-auto" />
+        <input type="checkbox" className="ml-auto" defaultChecked />
       </label>
 
       <div id="chatBox-tray" className="bg-bgSecondary w-full">
