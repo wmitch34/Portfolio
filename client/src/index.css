@@ -306,7 +306,7 @@ textarea {
 }
 
 #hamburger-menu:has(input:checked) + #sidebar {
-  transform: translateY(100%);
+  transform: translateY(0%);
   opacity: 1;
 }
 
