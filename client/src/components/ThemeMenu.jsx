@@ -31,7 +31,7 @@ function ThemeMenu() {
               onClick={() => handleChangeTheme("dark")}
             >
               <p className="w-16 text-start flex-start">Dark</p>
-              <div className="w-1 h-3/4 rounded-full bg-[#202124] mx-1">
+              {/* <div className="w-1 h-3/4 rounded-full bg-[#202124] mx-1">
                 {""}
               </div>
               <div className="w-1 h-3/4 rounded-full bg-[#28292a] mx-1">
@@ -43,7 +43,7 @@ function ThemeMenu() {
               </div>
               <div className="w-1 h-3/4 rounded-full bg-[darkgrey] mx-1">
                 {""}
-              </div>
+              </div> */}
             </button>
           </div>
           <div className="flex min-w-36">
@@ -52,7 +52,7 @@ function ThemeMenu() {
               onClick={() => handleChangeTheme("light")}
             >
               <p className="w-16 text-start flex-start">Light</p>
-              <div className="w-1 h-3/4 rounded-full bg-[#202124] mx-1">
+              {/* <div className="w-1 h-3/4 rounded-full bg-[#202124] mx-1">
                 {""}
               </div>
               <div className="w-1 h-3/4 rounded-full bg-[#28292a] mx-1">
@@ -64,7 +64,7 @@ function ThemeMenu() {
               </div>
               <div className="w-1 h-3/4 rounded-full bg-[darkgrey] mx-1">
                 {""}
-              </div>
+              </div> */}
             </button>
           </div>
           <div className="flex min-w-36">
@@ -73,7 +73,7 @@ function ThemeMenu() {
               onClick={() => handleChangeTheme("red")}
             >
               <p className="w-16 text-start flex-start">Red</p>
-              <div className="w-1 h-3/4 rounded-full bg-[#202124] mx-1">
+              {/* <div className="w-1 h-3/4 rounded-full bg-[#202124] mx-1">
                 {""}
               </div>
               <div className="w-1 h-3/4 rounded-full bg-[#28292a] mx-1">
@@ -85,7 +85,7 @@ function ThemeMenu() {
               </div>
               <div className="w-1 h-3/4 rounded-full bg-[darkgrey] mx-1">
                 {""}
-              </div>
+              </div> */}
             </button>
           </div>
         </div>

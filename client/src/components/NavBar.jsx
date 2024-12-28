@@ -72,7 +72,7 @@ function NavBar({ children, fullScreen }) {
 
           <button
             className="text-left w-full "
-            onClick={() => handleClick("/Home", "Links")}
+            onClick={() => handleClick("/Home", "About")}
           >
             Links
           </button>

@@ -21,6 +21,7 @@
   --text-chatBox-notMe: white;
   --button-text: white;
   --button-color: #454ade;
+  --bg-bingo-highlight: #454ade;
 }
 
 .dark {
@@ -34,11 +35,12 @@
   --text-chatBox-notMe: white;
   --button-text: white;
   --button-color: #454ade;
+  --bg-bingo-highlight: #454ade;
 }
 
 .red {
   --text-primary: black;
-  --text-secondary: white;
+  --text-secondary: #bd2665;
   --bg-primary: #ffc0cb;
   --bg-secondary: #cf4f84;
   --bg-chatBox-me: #454ade;
@@ -47,6 +49,7 @@
   --text-chatBox-notMe: white;
   --button-text: white;
   --button-color: #bd2665;
+  --bg-bingo-highlight: white;
 }
 
 .dessert {
@@ -171,7 +174,7 @@ textarea {
 }
 
 .highlight-obj {
-  @apply bg-textSecondary;
+  @apply bg-highlightColor;
   @apply text-textPrimary;
 }
 
@@ -185,7 +188,7 @@ textarea {
   aspect-ratio: 1 / 1;
   border: 2px solid;
   @apply border-bgPrimary;
-  @apply bg-textSecondary;
+  @apply bg-highlightColor;
   @apply text-textPrimary;
 }
 

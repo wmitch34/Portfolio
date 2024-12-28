@@ -352,7 +352,7 @@ export default function Demo(props) {
         className="flex w-full flex-wrap h-full justify-left sm:justify-between"
       >
         <button
-          className="bg-bgSecondary shadow-lg flex flex-col items-center w-24 h-24 m-1"
+          className="bg-bgSecondary shadow-lg flex flex-col items-center rounded-lg w-24 h-24 m-1"
           onClick={props.handleOpenModal}
           title={"Contact"}
         >
@@ -389,7 +389,7 @@ export default function Demo(props) {
           <Link
             key={index}
             to={item.link}
-            className="bg-bgSecondary shadow-lg flex flex-col items-center w-24 h-24 m-1"
+            className="bg-bgSecondary shadow-lg flex flex-col items-center rounded-lg w-24 h-24 m-1"
             title={item.name}
             target="_blank"
             rel="noopener noreferrer"

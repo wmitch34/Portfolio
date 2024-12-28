@@ -15,6 +15,7 @@ export default {
         textChatBoxNotMe: "var(--text-chatBox-notMe)",
         buttonText: "var(--button-text)",
         buttonColor: "var(--button-color)",
+        highlightColor: "var(--bg-bingo-highlight)",
       },
 
       fontFamily: {
