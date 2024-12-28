@@ -1,60 +1,400 @@
+import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../../assets/icons/nodejs.svg";
 
 export default function Demo(props) {
   const items = [
     {
       name: "Bingo",
-      //   icon: bingoIcon,
       link: "/Bingo",
-    },
-    {
-      name: "Typeracer",
-      //   icon: typeRacerIcon,
-      link: "/Typeracer",
-    },
-    {
-      name: "Resume",
-      //   icon: resumeIcon,
-      link: "/WILLMITCHELL.pdf",
-    },
-    {
-      name: "Github",
-      //   icon: githubIcon,
-      link: "https://github.com/wmitch34",
+      component: (
+        <svg
+          fill="var(--text-primary)"
+          version="1.1"
+          id="Layer_1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 512 512"
+          xml:space="preserve"
+          stroke="#fffff"
+          className="p-2"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <path d="M401.067,0H110.933c-4.713,0-8.533,3.821-8.533,8.533v494.933c0,4.713,3.821,8.533,8.533,8.533h290.133 c4.713,0,8.533-3.821,8.533-8.533V8.533C409.6,3.821,405.779,0,401.067,0z M392.533,494.933H119.467V17.067h273.067V494.933z" />{" "}
+              </g>{" "}
+            </g>{" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <path d="M359.467,153.6h-59.733h-17.067h-51.2H214.4h-59.733c-4.713,0-9.6,3.821-9.6,8.533v59.733v17.067v51.2V307.2v51.2v17.067 V435.2c0,4.713,4.887,8.533,9.6,8.533h58.667H230.4h51.2h17.067h60.8c4.713,0,7.467-3.821,7.467-8.533v-59.733V358.4v-51.2 v-17.067v-51.2v-17.067v-59.733C366.933,157.421,364.179,153.6,359.467,153.6z M213.333,426.667h-51.2v-51.2h51.2V426.667z M213.333,358.4h-51.2v-51.2h51.2V358.4z M213.333,290.133h-51.2v-51.2h51.2V290.133z M213.333,221.867h-51.2v-51.2h51.2V221.867z M281.6,426.667h-51.2v-51.2h51.2V426.667z M281.6,358.4h-51.2v-51.2h51.2V358.4z M281.6,290.133h-51.2v-51.2h51.2V290.133z M281.6,221.867h-51.2v-51.2h51.2V221.867z M349.867,426.667h-51.2v-51.2h51.2V426.667z M349.867,358.4h-51.2v-51.2h51.2V358.4z M349.867,290.133h-51.2v-51.2h51.2V290.133z M349.867,221.867h-51.2v-51.2h51.2V221.867z" />{" "}
+              </g>{" "}
+            </g>{" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <path d="M364.083,64.333c-4.522-4.667-10.594-7-18.217-7c-7.667,0-13.755,2.333-18.267,7s-6.767,10.967-6.767,18.9 c0,7.845,2.245,14.123,6.733,18.833c4.49,4.71,10.478,7.067,17.966,7.067c7.845,0,14.028-2.323,18.55-6.967 c4.523-4.645,6.783-10.989,6.783-19.033C370.867,75.267,368.606,69,364.083,64.333z M356.117,97.15 c-2.567,3.455-6.05,5.183-10.45,5.183c-4.178,0-7.545-1.75-10.1-5.25c-2.556-3.5-3.833-8.127-3.833-13.883 c0-5.8,1.283-10.433,3.85-13.9c2.568-3.467,5.994-5.2,10.283-5.2c4.244,0,7.655,1.733,10.233,5.2 c2.578,3.467,3.867,8.067,3.867,13.8C359.967,89.011,358.683,93.694,356.117,97.15z" />{" "}
+              </g>{" "}
+            </g>{" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <path d="M175.033,82.246c7.888-2.467,11.833-6.723,11.833-12.656c0-3.577-1.295-6.812-3.883-8.678 c-2.588-1.867-6.361-3.311-11.317-3.311h-15.933v51.2H173.2c5.044,0,8.917-1.5,11.617-3.6s4.05-5.342,4.05-9.275 C188.867,89.125,184.256,84.491,175.033,82.246z M164.267,66.133h2.367c3.8,0,6.383,0.005,7.749,0.817 c1.368,0.812,2.051,2.15,2.051,4.417c0,2.444-0.85,4.195-2.549,5.617c-1.701,1.423-3.995,1.95-6.884,1.95h-2.733V66.133z M175.683,99.154c-1.633,0.923-4.605,1.113-8.917,1.113h-2.5V85.333h2.3c3.333,0,6.094,1.017,8.283,2.683 c2.189,1.667,3.283,3.847,3.283,6.358C178.133,96.82,177.317,98.231,175.683,99.154z" />{" "}
+              </g>{" "}
+            </g>{" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <path d="M296.775,64.1c3.955,0,10.425,1.055,14.692,3.167v-8.034c-4.267-1.267-10.217-1.9-15.617-1.9 c-8.445,0-14.725,2.233-19.293,6.7c-4.566,4.467-6.736,10.844-6.736,19.133c0,8.356,2.106,14.772,6.673,19.25 c4.567,4.478,10.928,6.717,19.44,6.717c4.489,0,11.267-0.8,15.533-2.4v-21.4h-8.533v16.4c-2.133,0.333-3.355,0.5-4.533,0.5 c-5.355,0-9.755-1.683-12.8-5.05c-3.045-3.367-4.667-8.006-4.667-13.917c0-6.111,1.372-10.833,4.217-14.167 C287.995,65.767,291.552,64.1,296.775,64.1z" />{" "}
+              </g>{" "}
+            </g>{" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <rect x="198.4" y="57.6" width="10.667" height="51.2" />{" "}
+              </g>{" "}
+            </g>{" "}
+            <g>
+              {" "}
+              <g>
+                {" "}
+                <polygon points="251.733,57.6 251.733,92.267 229.567,57.6 219.733,57.6 219.733,108.8 228.267,108.8 228.267,74.2 251.467,108.8 260.267,108.8 260.267,57.6 " />{" "}
+              </g>{" "}
+            </g>{" "}
+          </g>
+        </svg>
+      ),
     },
     {
       name: "LinkedIn",
-      //   icon: linkedInIcon,
       link: "https://www.linkedin.com/in/will-mitchell-connect/",
+      component: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="var(--text-primary)"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <path
+              d="M18.72 3.99997H5.37C5.19793 3.99191 5.02595 4.01786 4.86392 4.07635C4.70189 4.13484 4.55299 4.22471 4.42573 4.34081C4.29848 4.45692 4.19537 4.59699 4.12232 4.75299C4.04927 4.909 4.0077 5.07788 4 5.24997V18.63C4.01008 18.9901 4.15766 19.3328 4.41243 19.5875C4.6672 19.8423 5.00984 19.9899 5.37 20H18.72C19.0701 19.9844 19.4002 19.8322 19.6395 19.5761C19.8788 19.32 20.0082 18.9804 20 18.63V5.24997C20.0029 5.08247 19.9715 4.91616 19.9078 4.76122C19.8441 4.60629 19.7494 4.466 19.6295 4.34895C19.5097 4.23191 19.3672 4.14059 19.2108 4.08058C19.0544 4.02057 18.8874 3.99314 18.72 3.99997ZM9 17.34H6.67V10.21H9V17.34ZM7.89 9.12997C7.72741 9.13564 7.5654 9.10762 7.41416 9.04768C7.26291 8.98774 7.12569 8.89717 7.01113 8.78166C6.89656 8.66615 6.80711 8.5282 6.74841 8.37647C6.6897 8.22474 6.66301 8.06251 6.67 7.89997C6.66281 7.73567 6.69004 7.57169 6.74995 7.41854C6.80986 7.26538 6.90112 7.12644 7.01787 7.01063C7.13463 6.89481 7.2743 6.80468 7.42793 6.74602C7.58157 6.68735 7.74577 6.66145 7.91 6.66997C8.07259 6.66431 8.2346 6.69232 8.38584 6.75226C8.53709 6.8122 8.67431 6.90277 8.78887 7.01828C8.90344 7.13379 8.99289 7.27174 9.05159 7.42347C9.1103 7.5752 9.13699 7.73743 9.13 7.89997C9.13719 8.06427 9.10996 8.22825 9.05005 8.3814C8.99014 8.53456 8.89888 8.6735 8.78213 8.78931C8.66537 8.90513 8.5257 8.99526 8.37207 9.05392C8.21843 9.11259 8.05423 9.13849 7.89 9.12997ZM17.34 17.34H15V13.44C15 12.51 14.67 11.87 13.84 11.87C13.5822 11.8722 13.3313 11.9541 13.1219 12.1045C12.9124 12.2549 12.7546 12.4664 12.67 12.71C12.605 12.8926 12.5778 13.0865 12.59 13.28V17.34H10.29V10.21H12.59V11.21C12.7945 10.8343 13.0988 10.5225 13.4694 10.3089C13.84 10.0954 14.2624 9.98848 14.69 9.99997C16.2 9.99997 17.34 11 17.34 13.13V17.34Z"
+              fill="var(--text-primary)"
+            />{" "}
+          </g>
+        </svg>
+      ),
+    },
+    {
+      name: "TypeRacer",
+      link: "/Typeracer",
+      component: (
+        <svg
+          version="1.1"
+          id="_x32_"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          viewBox="0 0 512 512"
+          xml:space="preserve"
+          fill="var(--text-primary)"
+          className="p-2"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <g>
+              {" "}
+              <path
+                class="st0"
+                d="M459.576,99.307H52.423C23.524,99.307,0,122.837,0,151.736v192.879c0,37.536,30.537,68.078,68.068,68.078 h375.862c37.532,0,68.069-30.542,68.069-68.078V151.736C512,122.837,488.475,99.307,459.576,99.307z M485.515,344.615 c0,22.934-18.655,41.589-41.584,41.589H68.068c-22.929,0-41.584-18.655-41.584-41.589V151.736 c0-14.306,11.638-25.938,25.938-25.938h407.154c14.301,0,25.938,11.633,25.938,25.938V344.615z"
+              />{" "}
+              <rect
+                x="189.792"
+                y="233.929"
+                class="st0"
+                width="44.138"
+                height="44.142"
+              />{" "}
+              <rect
+                x="256.002"
+                y="233.929"
+                class="st0"
+                width="44.134"
+                height="44.142"
+              />{" "}
+              <rect
+                x="322.207"
+                y="233.929"
+                class="st0"
+                width="44.138"
+                height="44.142"
+              />{" "}
+              <rect
+                x="410.484"
+                y="300.139"
+                class="st0"
+                width="44.134"
+                height="44.134"
+              />{" "}
+              <rect
+                x="189.792"
+                y="167.729"
+                class="st0"
+                width="44.138"
+                height="44.134"
+              />{" "}
+              <rect
+                x="123.587"
+                y="233.929"
+                class="st0"
+                width="44.138"
+                height="44.142"
+              />{" "}
+              <rect
+                x="123.587"
+                y="167.729"
+                class="st0"
+                width="44.138"
+                height="44.134"
+              />{" "}
+              <rect
+                x="57.382"
+                y="300.139"
+                class="st0"
+                width="44.134"
+                height="44.134"
+              />{" "}
+              <rect
+                x="57.382"
+                y="233.929"
+                class="st0"
+                width="44.134"
+                height="44.142"
+              />{" "}
+              <rect
+                x="57.382"
+                y="167.729"
+                class="st0"
+                width="44.134"
+                height="44.134"
+              />{" "}
+              <rect
+                x="256.002"
+                y="167.729"
+                class="st0"
+                width="44.134"
+                height="44.134"
+              />{" "}
+              <rect
+                x="322.207"
+                y="167.729"
+                class="st0"
+                width="44.138"
+                height="44.134"
+              />{" "}
+              <rect
+                x="123.587"
+                y="300.139"
+                class="st0"
+                width="264.825"
+                height="44.134"
+              />{" "}
+              <rect
+                x="388.412"
+                y="167.729"
+                class="st0"
+                width="66.205"
+                height="110.343"
+              />{" "}
+            </g>{" "}
+          </g>
+        </svg>
+      ),
+    },
+    {
+      name: "Github",
+      link: "https://github.com/wmitch34",
+      component: (
+        <svg
+          viewBox="0 0 20 20"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          fill="var(--text-primary)"
+          stroke="var(--text-primary)"
+          className="p-2"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <title>github [#ffffffffff]</title>{" "}
+            <desc>Created with Sketch.</desc> <defs> </defs>{" "}
+            <g
+              id="Page-1"
+              stroke="none"
+              stroke-width="1"
+              fill="none"
+              fill-rule="evenodd"
+            >
+              {" "}
+              <g
+                id="Dribbble-Light-Preview"
+                transform="translate(-140.000000, -7559.000000)"
+                fill="var(--text-primary)"
+              >
+                {" "}
+                <g id="icons" transform="translate(56.000000, 160.000000)">
+                  {" "}
+                  <path
+                    d="M94,7399 C99.523,7399 104,7403.59 104,7409.253 C104,7413.782 101.138,7417.624 97.167,7418.981 C96.66,7419.082 96.48,7418.762 96.48,7418.489 C96.48,7418.151 96.492,7417.047 96.492,7415.675 C96.492,7414.719 96.172,7414.095 95.813,7413.777 C98.04,7413.523 100.38,7412.656 100.38,7408.718 C100.38,7407.598 99.992,7406.684 99.35,7405.966 C99.454,7405.707 99.797,7404.664 99.252,7403.252 C99.252,7403.252 98.414,7402.977 96.505,7404.303 C95.706,7404.076 94.85,7403.962 94,7403.958 C93.15,7403.962 92.295,7404.076 91.497,7404.303 C89.586,7402.977 88.746,7403.252 88.746,7403.252 C88.203,7404.664 88.546,7405.707 88.649,7405.966 C88.01,7406.684 87.619,7407.598 87.619,7408.718 C87.619,7412.646 89.954,7413.526 92.175,7413.785 C91.889,7414.041 91.63,7414.493 91.54,7415.156 C90.97,7415.418 89.522,7415.871 88.63,7414.304 C88.63,7414.304 88.101,7413.319 87.097,7413.247 C87.097,7413.247 86.122,7413.234 87.029,7413.87 C87.029,7413.87 87.684,7414.185 88.139,7415.37 C88.139,7415.37 88.726,7417.2 91.508,7416.58 C91.513,7417.437 91.522,7418.245 91.522,7418.489 C91.522,7418.76 91.338,7419.077 90.839,7418.982 C86.865,7417.627 84,7413.783 84,7409.253 C84,7403.59 88.478,7399 94,7399"
+                    id="github-[#ffffffffff]"
+                  >
+                    {" "}
+                  </path>{" "}
+                </g>{" "}
+              </g>{" "}
+            </g>{" "}
+          </g>
+        </svg>
+      ),
+    },
+    {
+      name: "Resume",
+      link: "/WILLMITCHELL.pdf",
+      component: (
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          stroke="var(--text-primary)"
+          className="p-2"
+        >
+          <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+          <g
+            id="SVGRepo_tracerCarrier"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+
+          <g id="SVGRepo_iconCarrier">
+            {" "}
+            <path
+              d="M8 12H9M16 12H12"
+              stroke="var(--text-primary)"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />{" "}
+            <path
+              d="M16 8H15M12 8H8"
+              stroke="var(--text-primary)"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />{" "}
+            <path
+              d="M8 16H13"
+              stroke="var(--text-primary)"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />{" "}
+            <path
+              d="M3 14V10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C20.4816 3.82476 20.7706 4.69989 20.8985 6M21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3.51839 20.1752 3.22937 19.3001 3.10149 18"
+              stroke="var(--text-primary)"
+              stroke-width="1.5"
+              stroke-linecap="round"
+            />{" "}
+          </g>
+        </svg>
+      ),
     },
   ];
   return (
-    <div id="links-container" className="flex flex-col w-full pt-24 h-full">
-      <div>
-        <h2 className="text-5xl px-2 w-full text-center md:text-start text-textSecondary">
-          Links
-        </h2>
-      </div>
+    <div id="links-container" className="flex flex-col w-full">
       <div
         id="Link-card-container"
-        className="flex w-full flex-wrap h-full justify-center"
+        className="flex w-full flex-wrap h-full justify-left sm:justify-between"
       >
         <button
-          className="w-60 h-60 border-2 m-2 rounded-xl flex flex-col items-center"
+          className="bg-bgSecondary shadow-lg flex flex-col items-center w-24 h-24 m-1"
           onClick={props.handleOpenModal}
+          title={"Contact"}
         >
-          <p className="text-center">Contact</p>
-          <img src={Logo} alt="Contact-logo" className="w-48" />
+          <svg
+            viewBox="0 0 24.00 24.00"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            stroke="var(--text-primary)"
+            stroke-width="0.00024000000000000003"
+            transform="rotate(0)"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0" />
+
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke="var(--text-primary)"
+              stroke-width="0.144"
+            />
+
+            <g id="SVGRepo_iconCarrier">
+              {" "}
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M3.75 5.25L3 6V18L3.75 18.75H20.25L21 18V6L20.25 5.25H3.75ZM4.5 7.6955V17.25H19.5V7.69525L11.9999 14.5136L4.5 7.6955ZM18.3099 6.75H5.68986L11.9999 12.4864L18.3099 6.75Z"
+                fill="var(--text-primary)"
+              />{" "}
+            </g>
+          </svg>
         </button>
         {items.map((item, index) => (
           <Link
             key={index}
             to={item.link}
-            className="w-60 h-60 border-2 m-2 rounded-xl flex flex-col items-center"
+            className="bg-bgSecondary shadow-lg flex flex-col items-center w-24 h-24 m-1"
+            title={item.name}
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <p className="text-center">{item.name}</p>
-            <img src={item.Logo} alt={item.name + " Logo"} className="w-48" />
+            {item.component}
           </Link>
         ))}
       </div>

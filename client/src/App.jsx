@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Bingo from "./pages/Bingo";
-import Snake from "./pages/Snake";
 import TypeRacer from "./pages/TypeRacer";
 import NoMatch from "./pages/NoMatch";
 
@@ -36,8 +35,7 @@ export default function App() {
         <Route index path="/" element={<Home />} />
         <Route path="Home" element={<Home />} />
         <Route path="Bingo" element={<Bingo />} />
-        <Route path="ApplePicker" element={<Snake />} />
-        <Route path="TypeRacer" element={<TypeRacer />} />
+        <Route path="TypeRacer" element={<TypeRacer />} />\
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </div>

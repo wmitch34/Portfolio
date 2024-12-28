@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import Hero from "../components/home/Hero.jsx";
 import About from "../components/home/About.jsx";
-import Projects from "../components/home/Projects.jsx";
-import Experience from "../components/home/Experience.jsx";
 import Links from "../components/home/Links.jsx";
 import Modal from "../components/modal.jsx";
 import NavBar from "../components/NavBar.jsx";
@@ -81,26 +79,14 @@ export default function Home(props) {
           >
             About
           </button>
-
-          <button
-            onClick={() => {
-              document.getElementById("Links").scrollIntoView({
-                behavior: "smooth",
-              });
-            }}
-          >
-            Links
-          </button>
         </nav>
       </NavBar>
       <div className="max-w-screen-md mx-auto">
         <div id="Hero" className="h-screen">
           <Hero />
         </div>
-        <div id="About" className="min-h-screen">
+        <div id="About" className="h-screen">
           <About />
-        </div>
-        <div id="Links" className="min-h-screen">
           <Links handleOpenModal={setContactModal} />
         </div>
         <Modal

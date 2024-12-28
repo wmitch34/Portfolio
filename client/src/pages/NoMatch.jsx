@@ -1,9 +1,12 @@
-import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function NoMatch() {
-  return (
-    <h1 className="w-full justify-center m-auto">
-      There is no content available at this url!
-    </h1>
-  );
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    navigate("/", { replace: true });
+  }, [navigate]);
+
+  return <div>Redirecting...</div>;
 }
