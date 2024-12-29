@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import Hero from "../components/home/Hero.jsx";
 import About from "../components/home/About.jsx";
 import Links from "../components/home/Links.jsx";
+import PhotoCarousel from "../components/PhotoCarousel.jsx";
 import Modal from "../components/modal.jsx";
 import NavBar from "../components/NavBar.jsx";
 import { useLocation } from "react-router-dom";
@@ -85,9 +86,10 @@ export default function Home(props) {
         <div id="Hero" className="h-screen">
           <Hero />
         </div>
-        <div id="About" className="h-screen">
+        <div id="About" className="min-h-screen">
           <About />
           <Links handleOpenModal={setContactModal} />
+          <PhotoCarousel />
         </div>
         <Modal
           message={`Ask a question, send feedback, or just say 'Hi'. If you want me to get back to you, leave your email.`}
